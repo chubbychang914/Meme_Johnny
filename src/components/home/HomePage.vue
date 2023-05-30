@@ -3,14 +3,15 @@
 
 </script>
 
-<template lang="pug">
-#HomePage
-  .right-panel
-  .main-content
-    .name {{ "Johnny" }}
-    .role {{ "Frontend Developer" }}
-    .contact-box
-
+<template>
+  <div id="HomePage">
+    <div class="right-panel"></div>
+    <div class="main-content">
+      <div class="name">Johnny</div>
+      <div class="role">Frontend Developer</div>
+      <div class="contact-box"></div>
+    </div>
+  </div>
 </template>
 
 
@@ -57,7 +58,7 @@
   }
 }
 
-.center{
+.center {
   display: flex;
   justify-content: center;
   align-items: center;
