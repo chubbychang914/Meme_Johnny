@@ -4,15 +4,15 @@
 
 <template lang="pug">
 //- 請填寫功能描述👈
-#AboutView
-  p AboutView
+#HomeView
+  p HomeView
 </template>
 
 <style lang="scss" scoped>
 // 排版
-#AboutView {
+#HomeView {
 }
 // 元件
-#AboutView {
+#HomeView {
 }
 </style>
