@@ -1,11 +1,11 @@
 <script setup>
-
+import HomePage from "@/components/home/HomePage.vue"
 </script>
 
 <template lang="pug">
 //- 請填寫功能描述👈
 #HomeView
-  p HomeView
+  HomePage
 </template>
 
 <style lang="scss" scoped>
