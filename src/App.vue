@@ -1,13 +1,16 @@
 <script setup>
-// import { RouterLink, RouterView } from 'vue-router'
-import HomePage from './components/HomePage.vue';
-
-
+import { RouterView } from 'vue-router'
 
 </script>
 
 <template>
-  <HomePage />
+  <RouterView></RouterView>
 </template>
 
 
+<style lang="scss">
+* {
+  margin: 0;
+  padding: 0;
+}
+</style>
