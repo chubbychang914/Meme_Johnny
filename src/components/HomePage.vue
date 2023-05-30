@@ -5,9 +5,12 @@ import { ref } from 'vue';
 
 <template lang="pug">
 #HomePage
-  .left-panel
-    .content
   .right-panel
+  .main-content
+    .name {{ "Johnny" }}
+    .role {{ "Frontend Developer" }}
+    .contact-box
+
 </template>
 
 
@@ -20,14 +23,6 @@ import { ref } from 'vue';
 
 // 元件
 #HomePage {
-  .left-panel {
-    position: absolute;
-    left: 0;
-    width: 20%;
-    height: 0;
-    border-top: 100vh solid yellow;
-    border-right: 300px solid transparent;
-  }
 
   .right-panel {
     position: absolute;
@@ -37,5 +32,34 @@ import { ref } from 'vue';
     border-bottom: 100vh solid yellow;
     border-left: 300px solid transparent;
   }
+
+  .main-content {
+    // background-color:blue;
+    position: absolute;
+    right: 0;
+    transform: translateY(50%);
+
+    .name {
+      font-size: 100px;
+      color: white;
+    }
+
+    .role {
+      font-size: 50px;
+      color: black;
+    }
+
+    .contact-box {
+      width: 100px;
+      height: 100px;
+      background-color: white;
+    }
+  }
+}
+
+.center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>
