@@ -27,9 +27,9 @@
   .right-panel {
     position: absolute;
     right: 0;
-    width: 30%;
+    width: 25%;
     height: 0;
-    border-bottom: 100vh solid yellow;
+    border-bottom: 100vh solid #E4D00A;
     border-left: 300px solid transparent;
   }
 

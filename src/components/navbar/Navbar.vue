@@ -1,24 +1,42 @@
 <template>
   <div id="Navbar">
-    <nav>
-      <router-link to="/">Home</router-link>
-      <router-link to="/about">About</router-link>
-      <router-link to="/projects">Projects</router-link>
+    <nav class="nav-links">
+      <div class="test">
+        <router-link to="/">Home</router-link>
+      </div>
+      <div class="test">
+        <router-link to="/about">About</router-link>
+      </div>
+      <div class="test">
+        <router-link to="/projects">Projects</router-link>
+      </div>
     </nav>
   </div>
-  <router-view></router-view>
 </template>
 
 <script setup>
-import { RouterLink, RouterView } from 'vue-router';
+import { RouterLink } from 'vue-router';
 </script>
 
 <style lang="scss" scoped>
 // 排版
 #Navbar {
-  background-color: blue;
+  background-color: #E4D00A;
+  position: absolute;
+  height: 100vh;
+  width: 25%;
 }
 
 // 元件
-#Navbar {}
+#Navbar {
+  .nav-links {
+    text-decoration: none;
+  }
+
+  .test {
+    padding: 10px 20px;
+    background-color: white;
+    margin: 10px;
+  }
+}
 </style>
