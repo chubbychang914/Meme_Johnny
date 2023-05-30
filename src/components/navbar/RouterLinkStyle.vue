@@ -1,5 +1,5 @@
 <template>
-  <div id="RouterLinktag">
+  <div id="RouterLinkStyle">
     <router-link :to="url"></router-link>
   </div>
 </template>
@@ -17,8 +17,8 @@ const props = defineProps({
 
 <style lang="scss" scoped>
 // 排版
-#RouterLinkTag {}
+#RouterLinkStyle {}
 
 // 元件
-#RouterLinkTag {}
+#RouterLinkStyle {}
 </style>
