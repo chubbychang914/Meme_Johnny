@@ -1,8 +1,3 @@
-<script setup>
-// import { ref } from 'vue';
-
-</script>
-
 <template>
   <div id="HomePage">
     <div class="right-panel"></div>
@@ -14,6 +9,11 @@
   </div>
 </template>
 
+<script setup>
+// import { ref } from 'vue';
+import Navbar from '../navbar/Navbar.vue';
+
+</script>
 
 <style lang="scss" scoped>
 // 排版
