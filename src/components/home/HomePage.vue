@@ -11,7 +11,6 @@
 
 <script setup>
 // import { ref } from 'vue';
-import Navbar from '../navbar/Navbar.vue';
 
 </script>
 
