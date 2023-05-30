@@ -11,7 +11,7 @@ import AboutContent from "../../components/about/AboutContent.vue"
 </script>
 
 <style lang="scss" scoped>
-// 排版
+// 排版E4D00A
 #AboutView {
   display: flex;
 }

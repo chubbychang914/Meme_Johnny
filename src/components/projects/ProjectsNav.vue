@@ -1,6 +1,6 @@
 <template>
-  <div id="AboutNav">
-    <h1>This is about nav</h1>
+  <div id="ProjectsNav">
+    <h1>This is the nav</h1>
   </div>
 </template>
 
@@ -8,15 +8,14 @@
 
 </script>
 
-
 <style lang="scss" scoped>
 // 排版
-#AboutNav {
+#ProjectsNav {
   width: 25%;
   height: 100vh;
   background-color: #E4D00A;
 }
 
 // 元件
-#AboutNav {}
+#ProjectsNav {}
 </style>

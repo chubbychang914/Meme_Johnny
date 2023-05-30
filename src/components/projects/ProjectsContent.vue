@@ -1,6 +1,6 @@
 <template>
-  <div id="AboutContent">
-    <h1>This is the content area</h1>
+  <div id="ProjectsContent">
+    <h1>This is the content</h1>
   </div>
 </template>
 
@@ -10,12 +10,12 @@
 
 <style lang="scss" scoped>
 // 排版
-#AboutContent {
+#ProjectsContent {
   height: 100vh;
   width: 75%;
   background-color: white;
 }
 
 // 元件
-#AboutContent {}
+#ProjectsContent {}
 </style>
