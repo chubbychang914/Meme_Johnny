@@ -1,7 +1,7 @@
 <template>
   <div id="AboutView">
-    <AboutNav></AboutNav>
-    <AboutContent></AboutContent>
+    <AboutNav />
+    <AboutContent />
   </div>
 </template>
 

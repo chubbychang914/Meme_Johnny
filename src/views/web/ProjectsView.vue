@@ -1,7 +1,7 @@
 <template>
   <div id="ProjectsView">
-    <ProjectsContent></ProjectsContent>
-    <ProjectsNav></ProjectsNav>
+    <ProjectsContent />
+    <ProjectsNav />
   </div>
 </template>
 
