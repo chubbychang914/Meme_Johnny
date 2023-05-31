@@ -11,10 +11,12 @@
 
 <script setup>
 import { onMounted } from 'vue';
-import gsapAnimations from '../../tools/animations/gsapAnimations';
+import gsapAnimations from '@/tools/animations/gsapAnimations.js'
+
+const $gsapAnimations = gsapAnimations()
 
 onMounted(() => {
-  gsapAnimations.rPanelEnter()
+  $gsapAnimations.rPanelEnter()
 })
 </script>
 
@@ -32,6 +34,7 @@ onMounted(() => {
   .right-panel {
     position: absolute;
     right: 0;
+    min-width: 450px;
     width: 25%;
     height: 100vh;
     background-color: #E4D00A;
