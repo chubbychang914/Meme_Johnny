@@ -14,6 +14,10 @@
       </div>
       <div class="content-section"></div>
     </div>
+    <div class="person-info">
+      <PersonInfo />
+    </div>
+
   </div>
 </template>
 
@@ -21,6 +25,7 @@
 import { onMounted } from 'vue';
 import gsapAnimations from '@/tools/animations/gsapAnimations.js' // 將動畫包引入
 const $gsapAnimations = gsapAnimations() // 因為是包js function，執行就可以取得return值
+import PersonInfo from './PersonInfo.vue';
 
 onMounted(() => {
   $gsapAnimations.onPageLoadAnimation()
@@ -30,7 +35,7 @@ onMounted(() => {
 <style lang="scss" scoped>
 // 變數
 $themeColor: #E4D00A;
-$contentWidthPercent: 60%;
+$contentWidthPercent: 55%;
 $triangleWidthPercent: 100% - $contentWidthPercent;
 
 // 排版
@@ -87,6 +92,11 @@ $triangleWidthPercent: 100% - $contentWidthPercent;
         transform: rotate(180deg);
       }
     }
+  }
+
+  .person-info {
+    position: absolute;
+    right: 0;
   }
 }
 
