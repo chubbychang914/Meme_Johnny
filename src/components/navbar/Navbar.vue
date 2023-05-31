@@ -16,6 +16,12 @@
 
 <script setup>
 import { RouterLink } from 'vue-router';
+import { onMounted } from 'vue'
+import gsapAnimations from '../../tools/animations/gsapAnimations';
+
+onMounted(() => {
+  gsapAnimations.lPanelEnter()
+})
 </script>
 
 <style lang="scss" scoped>

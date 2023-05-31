@@ -11,10 +11,10 @@
 
 <script setup>
 import { onMounted } from 'vue';
-import { gsap_enter } from '@/tools/animations/gsapAnimations.js'
+import gsapAnimations from '../../tools/animations/gsapAnimations';
 
 onMounted(() => {
-  gsap_enter()
+  gsapAnimations.rPanelEnter()
 })
 </script>
 
