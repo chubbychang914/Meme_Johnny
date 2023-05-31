@@ -16,19 +16,41 @@
 
 <script setup>
 import { RouterLink } from 'vue-router';
+import { onMounted } from 'vue'
+import gsapAnimations from '../../tools/animations/gsapAnimations';
+
+const $gsapAnimations = gsapAnimations()
+
+onMounted(() => {
+  $gsapAnimations.homeNavEnter()
+})
 </script>
 
 <style lang="scss" scoped>
+// 變數
+$themeColor: #E4D00A;
+
 // 排版
-#Navbar {
-  background-color: #E4D00A;
-  position: absolute;
-  height: 100vh;
-  width: 25%;
-}
+#Navbar {}
 
 // 元件
 #Navbar {
+  position: absolute;
+  height: 100vh;
+  min-width: 450px;
+  width: 25%;
+  background-color: $themeColor;
+
+  // &::after {
+  //   content: "";
+  //   position: absolute;
+  //   top: 0;
+  //   right: -500px;
+  //   width: 500px;
+  //   height: 100vh;
+  //   background-color: blue;
+  // }
+
   .nav-links {
     text-decoration: none;
   }
