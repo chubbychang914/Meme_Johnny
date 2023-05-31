@@ -22,7 +22,7 @@ import gsapAnimations from '../../tools/animations/gsapAnimations';
 const $gsapAnimations = gsapAnimations()
 
 onMounted(() => {
-  $gsapAnimations.lPanelEnter()
+  $gsapAnimations.homeNavEnter()
 })
 </script>
 

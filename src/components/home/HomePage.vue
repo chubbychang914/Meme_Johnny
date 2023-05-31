@@ -11,12 +11,11 @@
 
 <script setup>
 import { onMounted } from 'vue';
-import gsapAnimations from '@/tools/animations/gsapAnimations.js'
-
-const $gsapAnimations = gsapAnimations()
+import gsapAnimations from '@/tools/animations/gsapAnimations.js' // 將動畫包引入
+const $gsapAnimations = gsapAnimations() // 因為是包js function，執行就可以取得return值
 
 onMounted(() => {
-  $gsapAnimations.rPanelEnter()
+  $gsapAnimations.homeRightPanelEnter()
 })
 </script>
 
