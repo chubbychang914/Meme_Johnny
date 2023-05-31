@@ -20,6 +20,9 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
+// 變數
+$themeColor: #E4D00A;
+
 // 排版
 #HomePage {
   overflow: hidden;
@@ -29,14 +32,13 @@ onMounted(() => {
 
 // 元件
 #HomePage {
-
   .right-panel {
     position: absolute;
     right: 0;
     min-width: 450px;
     width: 25%;
     height: 100vh;
-    background-color: #E4D00A;
+    background-color: $themeColor;
   }
 
   .main-content {

@@ -27,6 +27,9 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
+// 變數
+$themeColor: #E4D00A;
+
 // 排版
 #Navbar {}
 
@@ -36,17 +39,17 @@ onMounted(() => {
   height: 100vh;
   min-width: 450px;
   width: 25%;
-  background-color: #E4D00A;
+  background-color: $themeColor;
 
-  &::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: -500px;
-    width: 500px;
-    height: 100vh;
-    background-color: blue;
-  }
+  // &::after {
+  //   content: "";
+  //   position: absolute;
+  //   top: 0;
+  //   right: -500px;
+  //   width: 500px;
+  //   height: 100vh;
+  //   background-color: blue;
+  // }
 
   .nav-links {
     text-decoration: none;
