@@ -1,13 +1,20 @@
 <template>
   <div id="HomePage">
-    <div class="left-panel"></div>
-    <!-- <img class="triangle" src="@/assets/svgs/homeTriangle.svg" alt="triangle" /> -->
-    <div class="right-panel"></div>
-    <div class="main-content">
-      <div class="name">Johnny</div>
-      <div class="role">Frontend Developer</div>
-      <div class="contact-box"></div>
+    <!-- left side -->
+    <div class="left-panel">
+      <div class="content-section"></div>
+      <div class="triangle-section">
+        <img class="triangleSvg" src="@/assets/svgs/homeTriangle.svg" alt="triangle" />
+      </div>
     </div>
+    <!-- right side -->
+    <div class="right-panel">
+      <div class="triangle-section">
+        <img class="triangleSvg" src="@/assets/svgs/homeTriangle.svg" alt="triangle" />
+      </div>
+      <div class="content-section"></div>
+    </div>
+
   </div>
 </template>
 
@@ -29,48 +36,56 @@ $themeColor: #E4D00A;
 #HomePage {
   height: 100vh;
   background-color: black;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
 // 元件
 #HomePage {
   .left-panel {
-    position: absolute;
-    left: 0;
-    min-width: 450px;
-    width: 25%;
-    height: 100vh;
-    background-color: $themeColor;
+    display: flex;
+
+    .content-section {
+      width: 50%;
+      height: 100vh;
+      background-color: $themeColor;
+    }
+
+    .triangle-section {
+      position: relative;
+      width: 50%;
+      height: 100vh;
+
+      .triangleSvg {
+        position: absolute;
+        left: -1px;
+        height: 100vh;
+      }
+    }
   }
 
   .right-panel {
-    position: absolute;
-    right: 0;
-    min-width: 450px;
-    width: 25%;
-    height: 100vh;
-    background-color: $themeColor;
-  }
+    display: flex;
+    justify-content: flex-end;
 
-  .main-content {
-    // background-color:blue;
-    position: absolute;
-    right: 0;
-    transform: translateY(50%);
-
-    .name {
-      font-size: 100px;
-      color: white;
+    .content-section {
+      width: 50%;
+      height: 100vh;
+      background-color: $themeColor;
     }
 
-    .role {
-      font-size: 50px;
-      color: black;
-    }
+    .triangle-section {
+      position: relative;
+      width: 50%;
+      height: 100vh;
 
-    .contact-box {
-      width: 100px;
-      height: 100px;
-      background-color: white;
+      .triangleSvg {
+        position: absolute;
+        right: -1px;
+        height: 100vh;
+        transform: rotate(180deg);
+
+      }
     }
   }
 }
