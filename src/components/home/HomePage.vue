@@ -1,6 +1,6 @@
 <template>
   <div id="HomePage">
-    <div class="right-panel"></div>
+    <div class="right-panel" @click="testClick"></div>
     <div class="main-content">
       <div class="name">Johnny</div>
       <div class="role">Frontend Developer</div>
@@ -10,7 +10,19 @@
 </template>
 
 <script setup>
-// import { ref } from 'vue';
+import gsap from 'gsap'
+
+
+const testClick = () => {
+  gsap.fromTo(".right-panel",
+    {
+      x: 1000
+    },
+    {
+      duration: 3,
+      x: 0,
+    })
+}
 
 </script>
 
@@ -28,9 +40,8 @@
     position: absolute;
     right: 0;
     width: 25%;
-    height: 0;
-    border-bottom: 100vh solid #E4D00A;
-    border-left: 300px solid transparent;
+    height: 100vh;
+    background-color: #E4D00A;
   }
 
   .main-content {
