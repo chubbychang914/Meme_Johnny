@@ -3,9 +3,9 @@
     <!-- left side -->
     <div class="left-panel">
       <div class="content-section">
-        <RouterLinkStyle url="/" urlName="Home" />
-        <RouterLinkStyle url="/about" urlName="About" />
-        <RouterLinkStyle url="/projects" urlName="Projects" />
+        <RouterLinkBtn url="/" urlName="Home" />
+        <RouterLinkBtn url="/about" urlName="About" />
+        <RouterLinkBtn url="/projects" urlName="Projects" />
       </div>
       <div class="triangle-section">
         <img class="triangleSvg" src="@/assets/svgs/homeTriangle.svg" alt="triangle" />
@@ -26,10 +26,10 @@
 </template>
 
 <script setup>
-import RouterLinkStyle from '../navbar/RouterLinkStyle.vue';
 import { onMounted } from 'vue';
 import gsapAnimations from '@/tools/animations/gsapAnimations.js' // 將動畫包引入
 const $gsapAnimations = gsapAnimations() // 因為是包js function，執行就可以取得return值
+import RouterLinkBtn from '../navbar/RouterLinkBtn.vue';
 
 onMounted(() => {
   $gsapAnimations.onPageLoadAnimation()
