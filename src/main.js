@@ -1,7 +1,7 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
-import $gsap from '@/tools/index.js'
+import $gsap from '@/tools/animations/index.js'
 
 const app = createApp(App)
 // 把 GSAP 的各個套件引入全局
