@@ -1,6 +1,6 @@
 <template>
   <div id="HomePage">
-    <div class="right-panel" @click="testClick"></div>
+    <div class="right-panel"></div>
     <div class="main-content">
       <div class="name">Johnny</div>
       <div class="role">Frontend Developer</div>
@@ -11,9 +11,9 @@
 
 <script setup>
 import gsap from 'gsap'
+import { onMounted } from 'vue';
 
-
-const testClick = () => {
+const gsap_enter = () => {
   gsap.fromTo(".right-panel",
     {
       x: 1000
@@ -23,7 +23,9 @@ const testClick = () => {
       x: 0,
     })
 }
-
+onMounted(() => {
+  gsap_enter()
+})
 </script>
 
 <style lang="scss" scoped>
