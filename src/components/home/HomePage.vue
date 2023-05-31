@@ -1,5 +1,7 @@
 <template>
   <div id="HomePage">
+    <div class="left-panel"></div>
+    <!-- <img class="triangle" src="@/assets/svgs/homeTriangle.svg" alt="triangle" /> -->
     <div class="right-panel"></div>
     <div class="main-content">
       <div class="name">Johnny</div>
@@ -15,7 +17,7 @@ import gsapAnimations from '@/tools/animations/gsapAnimations.js' // 將動畫�
 const $gsapAnimations = gsapAnimations() // 因為是包js function，執行就可以取得return值
 
 onMounted(() => {
-  $gsapAnimations.homeRightPanelEnter()
+  $gsapAnimations.onPageLoadAnimation()
 })
 </script>
 
@@ -25,13 +27,21 @@ $themeColor: #E4D00A;
 
 // 排版
 #HomePage {
-  overflow: hidden;
   height: 100vh;
   background-color: black;
 }
 
 // 元件
 #HomePage {
+  .left-panel {
+    position: absolute;
+    left: 0;
+    min-width: 450px;
+    width: 25%;
+    height: 100vh;
+    background-color: $themeColor;
+  }
+
   .right-panel {
     position: absolute;
     right: 0;
