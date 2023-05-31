@@ -31,6 +31,8 @@ onMounted(() => {
 <style lang="scss" scoped>
 // 變數
 $themeColor: #E4D00A;
+$contentWidthPercent: 60%;
+$triangleWidthPercent: 100% - $contentWidthPercent;
 
 // 排版
 #HomePage {
@@ -46,14 +48,14 @@ $themeColor: #E4D00A;
     display: flex;
 
     .content-section {
-      width: 50%;
+      width: $contentWidthPercent;
       height: 100vh;
       background-color: $themeColor;
     }
 
     .triangle-section {
       position: relative;
-      width: 50%;
+      width: $triangleWidthPercent;
       height: 100vh;
 
       .triangleSvg {
@@ -69,14 +71,14 @@ $themeColor: #E4D00A;
     justify-content: flex-end;
 
     .content-section {
-      width: 50%;
+      width: $contentWidthPercent;
       height: 100vh;
       background-color: $themeColor;
     }
 
     .triangle-section {
       position: relative;
-      width: 50%;
+      width: $triangleWidthPercent;
       height: 100vh;
 
       .triangleSvg {
@@ -84,7 +86,6 @@ $themeColor: #E4D00A;
         right: -1px;
         height: 100vh;
         transform: rotate(180deg);
-
       }
     }
   }

@@ -14,5 +14,6 @@ export default () => {
       { xPercent: 100 },
       { duration: 2, xPercent: 0, ease: "power.out" }, "<")
   }
+
   return { onPageLoadAnimation }
 }

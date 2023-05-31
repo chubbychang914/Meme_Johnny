@@ -9,7 +9,7 @@ import HomePage from "@/components/home/HomePage.vue"
 <style lang="scss" scoped>
 // 排版
 #HomeView {
-  overflow: hiddenf;
+  overflow: hidden;
 }
 
 // 元件
