@@ -2,7 +2,11 @@
   <div id="HomePage">
     <!-- left side -->
     <div class="left-panel">
-      <div class="content-section"></div>
+      <div class="content-section">
+        <RouterLinkStyle url="/" urlName="Home" />
+        <RouterLinkStyle url="/about" urlName="About" />
+        <RouterLinkStyle url="/projects" urlName="Projects" />
+      </div>
       <div class="triangle-section">
         <img class="triangleSvg" src="@/assets/svgs/homeTriangle.svg" alt="triangle" />
       </div>
@@ -15,17 +19,17 @@
       <div class="content-section"></div>
     </div>
     <div class="person-info">
-      <PersonInfo />
+      <!-- <PersonInfo /> -->
     </div>
 
   </div>
 </template>
 
 <script setup>
+import RouterLinkStyle from '../navbar/RouterLinkStyle.vue';
 import { onMounted } from 'vue';
 import gsapAnimations from '@/tools/animations/gsapAnimations.js' // 將動畫包引入
 const $gsapAnimations = gsapAnimations() // 因為是包js function，執行就可以取得return值
-import PersonInfo from './PersonInfo.vue';
 
 onMounted(() => {
   $gsapAnimations.onPageLoadAnimation()
@@ -41,6 +45,7 @@ $triangleWidthPercent: 100% - $contentWidthPercent;
 // 排版
 #HomePage {
   height: 100vh;
+  overflow: hidden;
   background-color: black;
   display: grid;
   grid-template-columns: 1fr 1fr;

@@ -1,16 +1,20 @@
 <template>
   <div id="RouterLinkStyle">
-    <router-link :to="url"></router-link>
+    <router-link :to="url">{{ urlName }}</router-link>
   </div>
 </template>
 
 <script setup>
 import { defineProps } from 'vue';
 
-const props = defineProps({
+defineProps({
   url: {
     type: String,
-    default: "/home"
+    default: "/"
+  },
+  urlName: {
+    type: String,
+    default: ""
   }
 })
 </script>
@@ -20,5 +24,11 @@ const props = defineProps({
 #RouterLinkStyle {}
 
 // 元件
-#RouterLinkStyle {}
+#RouterLinkStyle {
+  padding: 10px 20px;
+  border-radius: 5px;
+  color: white;
+  border: 5px double white;
+  background-color: black;
+}
 </style>
