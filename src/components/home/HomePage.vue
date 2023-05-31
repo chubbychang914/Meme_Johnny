@@ -14,7 +14,6 @@
       </div>
       <div class="content-section"></div>
     </div>
-
   </div>
 </template>
 
