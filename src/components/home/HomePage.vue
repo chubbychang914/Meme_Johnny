@@ -10,19 +10,9 @@
 </template>
 
 <script setup>
-import gsap from 'gsap'
 import { onMounted } from 'vue';
+import { gsap_enter } from '@/tools/animations/gsapAnimations.js'
 
-const gsap_enter = () => {
-  gsap.fromTo(".right-panel",
-    {
-      x: 1000
-    },
-    {
-      duration: 3,
-      x: 0,
-    })
-}
 onMounted(() => {
   gsap_enter()
 })
@@ -31,6 +21,7 @@ onMounted(() => {
 <style lang="scss" scoped>
 // 排版
 #HomePage {
+  overflow: hidden;
   height: 100vh;
   background-color: black;
 }
