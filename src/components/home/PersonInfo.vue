@@ -1,12 +1,19 @@
 <template>
   <div id="PersonInfo">
     <div class="bio-left-panel">
+
       <div class="btn-box">
-        <CustomButton class="redirect home-btn" btnContent="Click Me" @on-click="btnRedirectHome" />
-        <CustomButton class="redirect about-btn" btnContent="About" @on-click="btnRedirectAbout" />
-        <CustomButton class="redirect projects-btn" btnContent="Projects"
-          @on-click="btnRedirectProjects" />
+        <div class="redirect">
+          <CustomButton class="home-btn" btnContent="Click Me" @on-click="btnRedirectHome" />
+        </div>
+        <div class="redirect">
+          <CustomButton class="about-btn" btnContent="About" @on-click="btnRedirectAbout" />
+        </div>
+        <div class="redirect">
+          <CustomButton class="projects-btn" btnContent="Projects" @on-click="btnRedirectProjects" />
+        </div>
       </div>
+      
     </div>
     <!--  -->
     <div class="bio-right-panel">
@@ -54,13 +61,13 @@ const animateRouterLeave = () => {
   return new Promise((resolve) => {
     animationEndResolve = resolve
 
-    $gsapPack.gsap.to(".redirect",{
-        // x:-window.innerWidth,
-        y: -window.innerHeight,
-        duration: 1,
-        stagger: 0.1,
-        onComplete: onAnimationComplete,
-      })
+    $gsapPack.gsap.to(".redirect", {
+      // x:-window.innerWidth,
+      y: -window.innerHeight,
+      duration: 1,
+      stagger: 0.1,
+      onComplete: onAnimationComplete,
+    })
   })
 }
 function onAnimationComplete() {
@@ -165,5 +172,4 @@ onBeforeRouteLeave(async (to, from, next) => {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-</style>
+}</style>
