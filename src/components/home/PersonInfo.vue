@@ -1,7 +1,14 @@
 <template>
   <div id="PersonInfo">
     <div class="bio-left-panel">Hello</div>
-    <div class="bio-right-panel"></div>
+    <!--  -->
+    <div class="bio-right-panel">
+      <!-- 實際內容 -->
+      <div class="bio-right-panel-content">
+        <div class="name">Johnny</div>
+        <h3>Frontend Developer</h3>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -14,7 +21,7 @@
 #PersonInfo {
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.3);
+  // background-color: rgba(0, 0, 0, 0.3);
   position: absolute;
   top: 0;
   left: 0;
@@ -23,14 +30,17 @@
   .bio-left-panel {
     width: 50%;
     height: 100vh;
-    // background-color: blue;
+    background-color: blue;
 
   }
 
   .bio-right-panel {
     width: 50%;
     height: 100vh;
-    background-color: blueviolet;
+    color: white;
+    .name{
+      font-size: 200px;
+    }
   }
 }
 
