@@ -5,8 +5,11 @@
     <div class="bio-right-panel">
       <!-- 實際內容 -->
       <div class="bio-right-panel-content">
-        <div class="name">Johnny</div>
-        <h3>Frontend Developer</h3>
+        <div class="personal-info">
+          <div class="name">Johnny</div>
+          <div class="career">Frontend Developer</div>
+        </div>
+        <div class="contact-info"></div>
       </div>
     </div>
   </div>
@@ -30,22 +33,52 @@
   .bio-left-panel {
     width: 50%;
     height: 100vh;
-    background-color: blue;
+    // background-color: blue;
 
   }
 
   .bio-right-panel {
     width: 50%;
     height: 100vh;
-    color: white;
+    color: white;;
+    font-family: 'VT323', monospace;
+    // @extend .center;
 
-    .name {
-      font-size: 200px;
-      font-family: 'VT323', monospace;
+    .bio-right-panel-content {
+      height: 100vh;
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+    }
+    // name & job description
+    .personal-info {
+      // background-color: red;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      .name {
+        font-size: 250px;
+        transform: skewX(-10deg) rotate(-10deg);
+        margin-top: 120px;
+      }
+      .career {
+        font-size: 50px;
+        transform: skewX(-10deg) rotate(-10deg);
+        margin-left: 200px;
+      }
+    }
+    // phone + email + github link
+    .contact-info{
+      // background-color: green;
     }
   }
 }
 
 // 元件
 #PersonInfo {}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 </style>
