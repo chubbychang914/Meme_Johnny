@@ -1,7 +1,7 @@
 <template>
   <div id="PersonInfo">
     <div class="bio-left-panel">
-      <RouterLinkBtn url="/about" urlName="About" />
+      <CustomButton btnContent="Home" @on-click="btnRedirect" />
     </div>
     <!--  -->
     <div class="bio-right-panel">
@@ -21,18 +21,22 @@
 // packs
 import { getCurrentInstance, onMounted } from 'vue';
 const { proxy: { $gsapPack } } = getCurrentInstance()
+import { useRouter } from 'vue-router';
+const router = useRouter()
 // components
-import RouterLinkBtn from "@/components/navbar/RouterLinkBtn.vue"
-
-onMounted(() => {
-  animateInfoLayer()
-})
-
+import CustomButton from "@/components/reusable/CustomButton.vue"
+// Methods ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+const btnRedirect = () => {
+  router.push("/about")
+}
 // Animations ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 const animateInfoLayer = () => {
   const tl = $gsapPack.gsap.timeline()
   tl.from(".name", { yPercent: 100, opacity: 0, duration: 3 })
 }
+onMounted(() => {
+  animateInfoLayer()
+})
 </script>
 
 <style lang="scss" scoped>

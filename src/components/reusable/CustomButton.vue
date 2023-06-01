@@ -1,17 +1,13 @@
 <template>
-  <div id="RouterLinkBtn" @click="handleClick">
-    <router-link class="router-link" :to="url">{{ urlName }}</router-link>
+  <div id="CustomButton" @click="handleClick">
+    <div class="btn-content">{{ btnContent }}</div>
   </div>
 </template>
 
 <script setup>
 // props =======================================
 defineProps({
-  url: {
-    type: String,
-    default: "/"
-  },
-  urlName: {
+  btnContent: {
     type: String,
     default: ""
   }
@@ -26,13 +22,13 @@ function handleClick() {
 
 <style lang="scss" scoped>
 // 排版
-#RouterLinkBtn {
+#CustomButton {
   display: flex;
 }
 
 // 元件
-#RouterLinkBtn {
-  .router-link {
+#CustomButton {
+  .btn-content {
     display: flex;
     background-color: white;
     border: 1px solid black;
