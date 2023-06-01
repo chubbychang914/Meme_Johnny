@@ -16,7 +16,6 @@
 </template>
 
 <script setup>
-
 </script>
 
 <style lang="scss" scoped>
@@ -40,7 +39,8 @@
   .bio-right-panel {
     width: 50%;
     height: 100vh;
-    color: white;;
+    color: white;
+    ;
     font-family: 'VT323', monospace;
     // @extend .center;
 
@@ -49,25 +49,29 @@
       display: grid;
       grid-template-rows: 1fr 1fr;
     }
+
     // name & job description
     .personal-info {
       // background-color: red;
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
+
       .name {
         font-size: 250px;
         transform: skewX(-10deg) rotate(-10deg);
         margin-top: 120px;
       }
+
       .career {
         font-size: 50px;
         transform: skewX(-10deg) rotate(-10deg);
         margin-left: 200px;
       }
     }
+
     // phone + email + github link
-    .contact-info{
+    .contact-info {
       // background-color: green;
     }
   }

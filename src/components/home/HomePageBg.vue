@@ -20,13 +20,11 @@
 </template>
 
 <script setup>
-import { onMounted } from 'vue';
-import gsapAnimations from '@/tools/animations/gsapAnimations.js' // 將動畫包引入
-const $gsapAnimations = gsapAnimations() // 因為是包js function，執行就可以取得return值
-// import RouterLinkBtn from '../navbar/RouterLinkBtn.vue';
+import { onMounted, getCurrentInstance } from 'vue';
+const { proxy: { $gsapPack } } = getCurrentInstance() // 要引入這包才能使用 gsap 的所有東西
 
 onMounted(() => {
-  $gsapAnimations.onPageLoadAnimation()
+  $gsapPack.gsap.to(".left-panel", { x: 1000 })
 })
 </script>
 
