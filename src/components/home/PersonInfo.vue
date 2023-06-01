@@ -2,7 +2,7 @@
   <div id="PersonInfo">
     <div class="bio-left-panel">
       <div class="btn-box">
-        <CustomButton class="redirect home-btn" btnContent="Home" @on-click="btnRedirectHome" />
+        <CustomButton class="redirect home-btn" btnContent="Click Me" @on-click="btnRedirectHome" />
         <CustomButton class="redirect about-btn" btnContent="About" @on-click="btnRedirectAbout" />
         <CustomButton class="redirect projects-btn" btnContent="Projects"
           @on-click="btnRedirectProjects" />
@@ -53,9 +53,10 @@ let animationEndResolve = null
 const animateRouterLeave = () => {
   return new Promise((resolve) => {
     animationEndResolve = resolve
-    $gsapPack.gsap.to(".redirect",
-      {
-        x:-window.innerWidth,
+
+    $gsapPack.gsap.to(".redirect",{
+        // x:-window.innerWidth,
+        y: -window.innerHeight,
         duration: 1,
         stagger: 0.1,
         onComplete: onAnimationComplete,
@@ -73,7 +74,7 @@ onMounted(() => {
 })
 onBeforeRouteLeave(async (to, from, next) => {
   await animateRouterLeave()
-  next()
+  next() // must have next to finish the router action
 })
 </script>
 
@@ -103,15 +104,15 @@ onBeforeRouteLeave(async (to, from, next) => {
     }
 
     .home-btn {
-      margin-left: 300px;
+      // margin-left: 300px;
     }
 
     .about-btn {
-      margin-left: 200px;
+      // margin-left: 200px;
     }
 
     .projects-btn {
-      margin-left: 100px;
+      // margin-left: 100px;
     }
 
   }
