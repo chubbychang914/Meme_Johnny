@@ -18,7 +18,11 @@ const props = defineProps({
   },
   padding: {
     type: String,
-    default: "0 24px"
+    default: "20px 50px"
+  },
+  bgColor: {
+    type: String,
+    default: "#F5F5F5"
   }
 })
 // methods ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
@@ -31,7 +35,8 @@ function handleClick() {
 const btnStyles = computed(() => {
   return {
     width: props.width,
-    padding: props.padding
+    padding: props.padding,
+    backgroundColor: props.bgColor
   }
 })
 </script>
@@ -49,9 +54,8 @@ const btnStyles = computed(() => {
   @extend .center;
 
   &:hover {
-    background-color: black;
+    background-color: blue;
     color: white;
-    // display: flex;
   }
 
   .btn-content {

@@ -2,10 +2,9 @@
   <div id="PersonInfo">
     <div class="bio-left-panel">
       <div class="btn-box">
-        <CustomButton btnContent="Home" @on-click="btnRedirectHome" />
-        <CustomButton btnContent="About" @on-click="btnRedirectAbout" />
-        <CustomButton btnContent="Projects" @on-click="btnRedirectProjects" />
-        <CustomButton />
+        <CustomButton class="redirect home-btn" btnContent="Home" @on-click="btnRedirectHome" />
+        <CustomButton class="redirect about-btn" btnContent="About" @on-click="btnRedirectAbout" />
+        <CustomButton class="redirect projects-btn" btnContent="Projects" @on-click="btnRedirectProjects" />
       </div>
     </div>
     <!--  -->
@@ -43,7 +42,12 @@ const btnRedirectProjects = () => {
 // Animations ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 const animateInfoLayer = () => {
   const tl = $gsapPack.gsap.timeline()
-  tl.from(".name", { yPercent: 100, opacity: 0, duration: 3 })
+  tl.from(".name", { yPercent: 100, opacity: 0, duration: 1, delay: 0.5 })
+  tl.from(".home-btn", { x: -1000, rotate: -720, duration: 2 })
+}
+const animateTransitionToOtherPage = () => {
+  const tl = $gsapPack.gsap.timeline()
+  tl.to(".about-btn", "x: 100")
 }
 // Hooks ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 onMounted(() => {
@@ -56,7 +60,7 @@ onMounted(() => {
 #PersonInfo {
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.3);
+  // background-color: rgba(0, 0, 0, 0.3);
   display: grid;
   grid-template-columns: 1fr 1fr;
   position: absolute;
@@ -68,22 +72,34 @@ onMounted(() => {
     height: 100vh;
     // background-color: blue;
     display: flex;
-    justify-content: flex-start;
     align-items: center;
 
     .btn-box {
-      // width: 200px;
+      display: flex;
+      flex-direction: column;
+      gap: 100px;
+    }
+
+    .home-btn {
+      margin-left: 300px;
+    }
+
+    .about-btn {
+      margin-left: 200px;
+    }
+
+    .projects-btn {
+      margin-left: 100px;
     }
 
   }
-//  ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+
+  //  ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
   .bio-right-panel {
     width: 50%;
     height: 100vh;
     color: white;
-    ;
     font-family: 'VT323', monospace;
-    // @extend .center;
 
     .bio-right-panel-content {
       height: 100vh;
@@ -99,9 +115,10 @@ onMounted(() => {
       justify-content: flex-end;
 
       .name {
-        font-size: 250px;
+        font-size: 300px;
         transform: skewX(-10deg) rotate(-10deg);
-        margin-top: 120px;
+        margin-top: 200px;
+        margin-left: 100px;
       }
 
       .career {

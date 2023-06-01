@@ -27,20 +27,16 @@ onMounted(() => {
 })
 // Animations ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 const animateBgLayer = () => {
-  const tl = $gsapPack.gsap.timeline()
-  tl.fromTo(".left-panel",
-    { xPercent: -100 },
-    { duration: 2, xPercent: 0, ease: "power.out" })
-  tl.fromTo(".right-panel",
-    { xPercent: 100 },
-    { duration: 2, xPercent: 0, ease: "power.out" }, "<")
+  const tl = $gsapPack.gsap.timeline({ defaults: { duration: 1, ease: "power.out" } })
+  tl.from(".left-panel", { xPercent: -100 })
+  tl.from(".right-panel", { xPercent: 100 }, "<")
 }
 </script>
 
 <style lang="scss" scoped>
 // 變數
 $themeColor: #E4D00A;
-$contentWidthPercent: 55%;
+$contentWidthPercent: 50%;
 $triangleWidthPercent: 100% - $contentWidthPercent;
 
 // 排版
