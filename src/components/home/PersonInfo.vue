@@ -1,7 +1,7 @@
 <template>
   <div id="PersonInfo">
-    <div class="name">Johnny</div>
-    <div class="career"></div>
+    <div class="bio-left-panel">Hello</div>
+    <div class="bio-right-panel"></div>
   </div>
 </template>
 
@@ -12,9 +12,26 @@
 <style lang="scss" scoped>
 // 排版
 #PersonInfo {
-  width: 1000px;
-  height: 500px;
-  background-color: blue;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+
+  .bio-left-panel {
+    width: 50%;
+    height: 100vh;
+    // background-color: blue;
+
+  }
+
+  .bio-right-panel {
+    width: 50%;
+    height: 100vh;
+    background-color: blueviolet;
+  }
 }
 
 // 元件

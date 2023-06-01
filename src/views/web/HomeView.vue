@@ -1,15 +1,23 @@
 <script setup>
-import HomePage from "@/components/home/HomePage.vue"
+import HomePageBg from "@/components/home/HomePageBg.vue"
+import PersonInfo from "../../components/home/PersonInfo.vue";
 </script>
 
 <template>
-  <HomePage />
+  <HomePageBg />
+  <PersonInfo />
 </template>
 
 <style lang="scss" scoped>
 // 排版
 #HomeView {
   overflow: hidden;
+
+  .home-page-bg {}
+
+  .person-info {
+    position: absolute;
+  }
 }
 
 // 元件
