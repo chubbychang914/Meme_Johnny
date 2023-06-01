@@ -16,6 +16,18 @@
 </template>
 
 <script setup>
+import { getCurrentInstance, onMounted } from 'vue';
+const { proxy: { $gsapPack } } = getCurrentInstance()
+
+onMounted(() => {
+  animateInfoLayer()
+})
+
+// Animations ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+const animateInfoLayer = () => {
+  const tl = $gsapPack.gsap.timeline()
+  tl.from(".name", { yPercent: 100, opacity: 0, duration: 3 })
+}
 </script>
 
 <style lang="scss" scoped>

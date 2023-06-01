@@ -15,7 +15,6 @@
       </div>
       <div class="content-section"></div>
     </div>
-    <!-- end -->
   </div>
 </template>
 
@@ -24,8 +23,18 @@ import { onMounted, getCurrentInstance } from 'vue';
 const { proxy: { $gsapPack } } = getCurrentInstance() // 要引入這包才能使用 gsap 的所有東西
 
 onMounted(() => {
-  $gsapPack.gsap.to(".left-panel", { x: 1000 })
+  animateBgLayer()
 })
+// Animations ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+const animateBgLayer = () => {
+  const tl = $gsapPack.gsap.timeline()
+  tl.fromTo(".left-panel",
+    { xPercent: -100 },
+    { duration: 2, xPercent: 0, ease: "power.out" })
+  tl.fromTo(".right-panel",
+    { xPercent: 100 },
+    { duration: 2, xPercent: 0, ease: "power.out" }, "<")
+}
 </script>
 
 <style lang="scss" scoped>
