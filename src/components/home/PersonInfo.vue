@@ -23,20 +23,20 @@
 </template>
 
 <script setup>
-import { getCurrentInstance, onMounted } from 'vue';
-const { proxy: { $gsapPack } } = getCurrentInstance() // 把GSAP包引入個別使用
-import { useRouter } from 'vue-router';
-const router = useRouter()
-
-
+import { getCurrentInstance, onMounted, ref } from 'vue';
+import { useRouter, onBeforeRouteLeave } from 'vue-router';
 import CustomButton from "@/components/reusable/CustomButton.vue"
+
+const { proxy: { $gsapPack } } = getCurrentInstance() // 把GSAP包引入個別使用
+const router = useRouter()
+// State ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+const isAnimationEnd = ref(false) // 跳轉頁面前動畫是否完成
 // Methods ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 const btnRedirectHome = () => {
   router.push("/")
 }
 const btnRedirectAbout = () => {
   router.push("/about")
-  
 }
 const btnRedirectProjects = () => {
   router.push("/projects")
@@ -45,11 +45,33 @@ const btnRedirectProjects = () => {
 const animateInfoLayer = () => {
   const tl = $gsapPack.gsap.timeline()
   tl.from(".name", { yPercent: 100, opacity: 0, duration: 1, delay: 0.5 })
-  tl.from(".redirect", { x: -1000, stagger: 0.1, duration: 1,opacity: 0 },"<")
+  tl.from(".redirect", { x: -1000, stagger: 0.1, duration: 1, opacity: 0 }, "<")
 }
+let completeResolve = null
+const animateRouterLeave = () => {
+  return new Promise((resolve) => {
+    completeResolve = resolve
+    $gsapPack.gsap.to(".home-btn",
+      {
+        x: 200,
+        duration: 2,
+        onComplete: onComplete,
+      })
+  })
+}
+
+function onComplete() {
+  isAnimationEnd.value = true
+  completeResolve()
+}
+
 // Hooks ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 onMounted(() => {
   animateInfoLayer()
+})
+onBeforeRouteLeave(async (to, from, next) => {
+  await animateRouterLeave()
+  next()
 })
 </script>
 

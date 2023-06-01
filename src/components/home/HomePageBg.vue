@@ -21,16 +21,16 @@
 <script setup>
 import { onMounted, getCurrentInstance } from 'vue';
 const { proxy: { $gsapPack } } = getCurrentInstance() // 要引入這包才能使用 gsap 的所有東西
-
-onMounted(() => {
-  animateBgLayer()
-})
 // Animations ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 const animateBgLayer = () => {
   const tl = $gsapPack.gsap.timeline({ defaults: { duration: 1, ease: "power1.out" } })
   tl.from(".left-panel", { xPercent: -100 })
   tl.from(".right-panel", { xPercent: 100 }, "<")
 }
+// Hooks ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+onMounted(() => {
+  animateBgLayer()
+})
 </script>
 
 <style lang="scss" scoped>
