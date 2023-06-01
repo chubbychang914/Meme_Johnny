@@ -38,8 +38,10 @@
     width: 50%;
     height: 100vh;
     color: white;
-    .name{
+
+    .name {
       font-size: 200px;
+      font-family: 'VT323', monospace;
     }
   }
 }
