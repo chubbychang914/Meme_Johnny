@@ -1,41 +1,68 @@
 <template>
-  <div id="CustomButton" @click="handleClick">
-    <div class="btn-content">{{ btnContent }}</div>
+  <div id="CustomButton" @click="handleClick" :style="btnStyles">
+    <div class="btn-content">{{ props.btnContent }}</div>
   </div>
 </template>
 
 <script setup>
-// props =======================================
-defineProps({
+import { computed, defineProps, defineEmits } from 'vue';
+// props ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+const props = defineProps({
   btnContent: {
     type: String,
-    default: ""
+    default: "Custom Btn"
+  },
+  width: {
+    type: String,
+    default: "100px"
+  },
+  padding: {
+    type: String,
+    default: "0 24px"
   }
 })
-// methods =======================================
+// methods ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 const emit = defineEmits(['on-click'])
 
 function handleClick() {
   emit('on-click')
 }
+// hooks ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+const btnStyles = computed(() => {
+  return {
+    width: props.width,
+    padding: props.padding
+  }
+})
 </script>
+
 
 <style lang="scss" scoped>
 // 排版
-#CustomButton {
-  display: flex;
-}
+#CustomButton {}
 
 // 元件
 #CustomButton {
+  display: flex;
+  background-color: white;
+  padding: 10px 20px;
+  @extend .center;
+
+  &:hover {
+    background-color: black;
+    color: white;
+    // display: flex;
+  }
+
   .btn-content {
-    display: flex;
-    background-color: white;
-    border: 1px solid black;
-    padding: 10px 20px;
     text-decoration: none;
     font-size: 30px;
-    // color: white;
   }
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>

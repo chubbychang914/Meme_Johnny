@@ -1,7 +1,12 @@
 <template>
   <div id="PersonInfo">
     <div class="bio-left-panel">
-      <CustomButton btnContent="Home" @on-click="btnRedirect" />
+      <div class="btn-box">
+        <CustomButton btnContent="Home" @on-click="btnRedirectHome" />
+        <CustomButton btnContent="About" @on-click="btnRedirectAbout" />
+        <CustomButton btnContent="Projects" @on-click="btnRedirectProjects" />
+        <CustomButton />
+      </div>
     </div>
     <!--  -->
     <div class="bio-right-panel">
@@ -18,22 +23,29 @@
 </template>
 
 <script setup>
-// packs
 import { getCurrentInstance, onMounted } from 'vue';
-const { proxy: { $gsapPack } } = getCurrentInstance()
+const { proxy: { $gsapPack } } = getCurrentInstance() // 把GSAP包引入個別使用
 import { useRouter } from 'vue-router';
 const router = useRouter()
-// components
+
+
 import CustomButton from "@/components/reusable/CustomButton.vue"
 // Methods ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
-const btnRedirect = () => {
+const btnRedirectHome = () => {
+  router.push("/")
+}
+const btnRedirectAbout = () => {
   router.push("/about")
+}
+const btnRedirectProjects = () => {
+  router.push("/projects")
 }
 // Animations ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 const animateInfoLayer = () => {
   const tl = $gsapPack.gsap.timeline()
   tl.from(".name", { yPercent: 100, opacity: 0, duration: 3 })
 }
+// Hooks ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 onMounted(() => {
   animateInfoLayer()
 })
@@ -44,19 +56,27 @@ onMounted(() => {
 #PersonInfo {
   width: 100vw;
   height: 100vh;
-  // background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.3);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   position: absolute;
   top: 0;
   left: 0;
-  display: flex;
 
   .bio-left-panel {
     width: 50%;
     height: 100vh;
-    background-color: blue;
+    // background-color: blue;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    .btn-box {
+      // width: 200px;
+    }
 
   }
-
+//  ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
   .bio-right-panel {
     width: 50%;
     height: 100vh;
