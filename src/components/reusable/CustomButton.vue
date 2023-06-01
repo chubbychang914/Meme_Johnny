@@ -12,13 +12,9 @@ const props = defineProps({
     type: String,
     default: "Custom Btn"
   },
-  width: {
-    type: String,
-    default: "200px"
-  },
   padding: {
     type: String,
-    default: "20px 50px"
+    default: "10px 20px"
   },
   bgColor: {
     type: String,
@@ -34,7 +30,6 @@ function handleClick() {
 // hooks ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 const btnStyles = computed(() => {
   return {
-    width: props.width,
     padding: props.padding,
     backgroundColor: props.bgColor
   }

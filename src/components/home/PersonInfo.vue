@@ -1,10 +1,10 @@
 <template>
   <div id="PersonInfo">
     <div class="bio-left-panel">
-
+      <!-- 實際內容 -->
       <div class="btn-box">
         <div class="redirect">
-          <CustomButton class="home-btn" btnContent="Click Me" @on-click="btnRedirectHome" />
+          <CustomButton class="home-btn" btnContent="Click Me" padding="20px" @on-click="btnRedirectHome" />
         </div>
         <div class="redirect">
           <CustomButton class="about-btn" btnContent="About" @on-click="btnRedirectAbout" />
@@ -13,7 +13,6 @@
           <CustomButton class="projects-btn" btnContent="Projects" @on-click="btnRedirectProjects" />
         </div>
       </div>
-      
     </div>
     <!--  -->
     <div class="bio-right-panel">
@@ -104,6 +103,10 @@ onBeforeRouteLeave(async (to, from, next) => {
     display: flex;
     align-items: center;
 
+    .redirect {
+      width: 200px; // set button width
+    }
+
     .btn-box {
       display: flex;
       flex-direction: column;
@@ -172,4 +175,5 @@ onBeforeRouteLeave(async (to, from, next) => {
   display: flex;
   justify-content: center;
   align-items: center;
-}</style>
+}
+</style>
