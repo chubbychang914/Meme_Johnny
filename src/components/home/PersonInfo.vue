@@ -42,27 +42,29 @@ const btnRedirectProjects = () => {
   router.push("/projects")
 }
 // Animations ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+// 進場動畫
 const animateInfoLayer = () => {
   const tl = $gsapPack.gsap.timeline()
   tl.from(".name", { yPercent: 100, opacity: 0, duration: 1, delay: 0.5 })
   tl.from(".redirect", { x: -1000, stagger: 0.1, duration: 1, opacity: 0 }, "<")
 }
-let completeResolve = null
+// 離開頁面前的動畫
+let animationEndResolve = null
 const animateRouterLeave = () => {
   return new Promise((resolve) => {
-    completeResolve = resolve
-    $gsapPack.gsap.to(".home-btn",
+    animationEndResolve = resolve
+    $gsapPack.gsap.to(".redirect",
       {
-        x: 200,
-        duration: 2,
-        onComplete: onComplete,
+        x:-window.innerWidth,
+        duration: 1,
+        stagger: 0.1,
+        onComplete: onAnimationComplete,
       })
   })
 }
-
-function onComplete() {
+function onAnimationComplete() {
   isAnimationEnd.value = true
-  completeResolve()
+  animationEndResolve()
 }
 
 // Hooks ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
