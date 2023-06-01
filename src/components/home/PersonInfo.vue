@@ -80,7 +80,7 @@ onBeforeRouteLeave(async (to, from, next) => {
 #PersonInfo {
   width: 100vw;
   height: 100vh;
-  // background-color: rgba(0, 0, 0, 0.3);
+  overflow: hidden;
   display: grid;
   grid-template-columns: 1fr 1fr;
   position: absolute;
