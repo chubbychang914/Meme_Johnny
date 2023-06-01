@@ -4,7 +4,8 @@
       <div class="btn-box">
         <CustomButton class="redirect home-btn" btnContent="Home" @on-click="btnRedirectHome" />
         <CustomButton class="redirect about-btn" btnContent="About" @on-click="btnRedirectAbout" />
-        <CustomButton class="redirect projects-btn" btnContent="Projects" @on-click="btnRedirectProjects" />
+        <CustomButton class="redirect projects-btn" btnContent="Projects"
+          @on-click="btnRedirectProjects" />
       </div>
     </div>
     <!--  -->
@@ -35,6 +36,7 @@ const btnRedirectHome = () => {
 }
 const btnRedirectAbout = () => {
   router.push("/about")
+  
 }
 const btnRedirectProjects = () => {
   router.push("/projects")
@@ -43,11 +45,7 @@ const btnRedirectProjects = () => {
 const animateInfoLayer = () => {
   const tl = $gsapPack.gsap.timeline()
   tl.from(".name", { yPercent: 100, opacity: 0, duration: 1, delay: 0.5 })
-  tl.from(".home-btn", { x: -1000, rotate: -720, duration: 2 })
-}
-const animateTransitionToOtherPage = () => {
-  const tl = $gsapPack.gsap.timeline()
-  tl.to(".about-btn", "x: 100")
+  tl.from(".redirect", { x: -1000, stagger: 0.1, duration: 1,opacity: 0 },"<")
 }
 // Hooks ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 onMounted(() => {

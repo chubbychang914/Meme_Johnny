@@ -27,7 +27,7 @@ onMounted(() => {
 })
 // Animations ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 const animateBgLayer = () => {
-  const tl = $gsapPack.gsap.timeline({ defaults: { duration: 1, ease: "power.out" } })
+  const tl = $gsapPack.gsap.timeline({ defaults: { duration: 1, ease: "power1.out" } })
   tl.from(".left-panel", { xPercent: -100 })
   tl.from(".right-panel", { xPercent: 100 }, "<")
 }
