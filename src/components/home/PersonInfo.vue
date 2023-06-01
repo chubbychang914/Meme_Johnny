@@ -1,6 +1,8 @@
 <template>
   <div id="PersonInfo">
-    <div class="bio-left-panel">Hello</div>
+    <div class="bio-left-panel">
+      <RouterLinkBtn url="/about" urlName="About" />
+    </div>
     <!--  -->
     <div class="bio-right-panel">
       <!-- 實際內容 -->
@@ -16,8 +18,11 @@
 </template>
 
 <script setup>
+// packs
 import { getCurrentInstance, onMounted } from 'vue';
 const { proxy: { $gsapPack } } = getCurrentInstance()
+// components
+import RouterLinkBtn from "@/components/navbar/RouterLinkBtn.vue"
 
 onMounted(() => {
   animateInfoLayer()
@@ -44,7 +49,7 @@ const animateInfoLayer = () => {
   .bio-left-panel {
     width: 50%;
     height: 100vh;
-    // background-color: blue;
+    background-color: blue;
 
   }
 
