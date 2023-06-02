@@ -4,7 +4,8 @@
       <!-- 實際內容 -->
       <div class="btn-box">
         <div class="redirect">
-          <CustomButton class="home-btn" btnContent="Click Me" padding="20px" @on-click="btnRedirectHome" />
+          <CustomButton class="home-btn" btnContent="Click Me" padding="20px"
+            @on-click="btnRedirectHome" />
         </div>
         <div class="redirect">
           <CustomButton class="about-btn" btnContent="About" @on-click="btnRedirectAbout" />
@@ -86,6 +87,9 @@ onBeforeRouteLeave(async (to, from, next) => {
 
 <style lang="scss" scoped>
 // 排版
+#PersonInfo {}
+
+// 元件
 #PersonInfo {
   width: 100vw;
   height: 100vh;
@@ -168,8 +172,7 @@ onBeforeRouteLeave(async (to, from, next) => {
   }
 }
 
-// 元件
-#PersonInfo {}
+
 
 .center {
   display: flex;
