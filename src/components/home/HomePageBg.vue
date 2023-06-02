@@ -26,14 +26,18 @@
 import { onMounted, getCurrentInstance } from 'vue';
 const { proxy: { $gsapPack } } = getCurrentInstance() // 要引入這包才能使用 gsap 的所有東西
 // Animations ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
-const animateBgLayer = () => {
-  const tl = $gsapPack.gsap.timeline({ defaults: { duration: 1, ease: "power1.out" } })
+let animateBgLayer = null;
+const _animateBgLayer = () => {
+  const tl = $gsapPack.gsap.timeline({ paused: true, defaults: { duration: 1, ease: "power1.out" } })
   tl.from(".left-panel", { xPercent: -100 })
   tl.from(".right-panel", { xPercent: 100 }, "<")
+  return tl
 }
 // Hooks ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 onMounted(() => {
-  animateBgLayer()
+  animateBgLayer = _animateBgLayer()
+  animateBgLayer.play()
+
 })
 </script>
 
@@ -82,9 +86,10 @@ $triangleWidthPercent: 100% - $contentWidthPercent;
     z-index: 2;
     left: 50%;
     transform: translateX(-60%);
-    bottom: 0;
+    bottom: -5px;
+
     // background-color: red;
-    img{
+    img {
       height: 100vh;
     }
   }
