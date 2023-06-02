@@ -4,7 +4,7 @@
       <!-- 實際內容 -->
       <div class="btn-box">
         <div class="redirect">
-          <CustomButton class="home-btn" btnContent="Click Me" padding="20px"
+          <CustomButton class="home-btn" btnContent="Contact Me" padding="20px"
             @on-click="btnRedirectHome" />
         </div>
         <div class="redirect">
@@ -15,12 +15,19 @@
         </div>
       </div>
     </div>
-    <!--  -->
+    <!-- ---------- -->
     <div class="bio-right-panel">
       <!-- 實際內容 -->
       <div class="bio-right-panel-content">
         <div class="personal-info">
-          <div class="name">Johnny</div>
+          <div class="name">
+            <div class="name-letters">J</div>
+            <div class="name-letters">o</div>
+            <div class="name-letters">h</div>
+            <div class="name-letters">n</div>
+            <div class="name-letters">n</div>
+            <div class="name-letters">y</div>
+          </div>
           <div class="career">Frontend Developer</div>
         </div>
         <div class="contact-info"></div>
@@ -30,37 +37,60 @@
 </template>
 
 <script setup>
-import { getCurrentInstance, onMounted, ref } from 'vue';
+import { getCurrentInstance, onMounted } from 'vue';
 import { useRouter, onBeforeRouteLeave } from 'vue-router';
 import CustomButton from "@/components/reusable/CustomButton.vue"
 import debounce from 'lodash/debounce'
+import { Bounce } from 'gsap';
 const { proxy: { $gsapPack } } = getCurrentInstance() // 把GSAP包引入個別使用
 const router = useRouter()
 
 // Methods ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 const btnRedirectHome = debounce(() => {
-  console.log("press");
   router.push("/")
 }, 400)
-const btnRedirectAbout = () => {
+const btnRedirectAbout = debounce(() => {
   router.push("/about")
-}
-const btnRedirectProjects = () => {
+}, 400)
+const btnRedirectProjects = debounce(() => {
   router.push("/projects")
-}
-// 可用的 timelines ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
-let animateInfoLayer = null // 左邊按鈕進退場
-// Animations 敘述動作 ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
-const _animateInfoLayer = () => {
+}, 400)
+// Flow ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+let EnterPageAnimationFlow = null
+const _EnterPageAnimationFlow = () => {
   const tl = $gsapPack.gsap.timeline({ paused: true })
-  tl.from(".name", { yPercent: 100, opacity: 0, duration: 1, delay: 0.5 })
-  tl.from(".redirect", { x: -1000, stagger: 0.1, duration: 1, opacity: 0 }, "<")
+  tl.add(_animateNavBtns().play())
+    .add(_animateNameLetters().play(), "<")
   return tl;
 }
 
-// const reverseAnimateInfoLayer = () => {
-//   if (animateInfoLayer) animateInfoLayer.reverse()
-// }
+// Animations ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+// 導覽按鈕進場
+const _animateNavBtns = () => {
+  const tl = $gsapPack.gsap.timeline({ paused: true })
+  tl.from(".redirect", {
+    x: -window.innerWidth,
+    duration: 1,
+    opacity: 0,
+    stagger: 0.1
+  })
+  return tl
+}
+// 名字進場
+const _animateNameLetters = () => {
+  const tl = $gsapPack.gsap.timeline({ paused: true })
+  tl.from(".name-letters", {
+    xPercent: window.innerWidth,
+    opacity: 0,
+    duration: 1.2,
+    stagger: 0.1,
+    ease: "power.in",
+    delay: 0.8
+  })
+  return tl
+}
+// 職稱進場
+
 //  ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 // 離開頁面前的動畫
 let animationComplete = null
@@ -78,11 +108,10 @@ const animateRouterLeave = () => {
     })
   })
 }
-
 // Hooks ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 onMounted(() => {
-  animateInfoLayer = _animateInfoLayer()
-  animateInfoLayer.play()
+  EnterPageAnimationFlow = _EnterPageAnimationFlow()
+  EnterPageAnimationFlow.play()
 })
 onBeforeRouteLeave(async (to, from, next) => {
   await animateRouterLeave()
@@ -125,25 +154,17 @@ onBeforeRouteLeave(async (to, from, next) => {
       gap: 100px;
     }
 
-    .home-btn {
-      // margin-left: 300px;
-    }
+    .home-btn {}
 
-    .about-btn {
-      // margin-left: 200px;
-    }
+    .about-btn {}
 
-    .projects-btn {
-      // margin-left: 100px;
-    }
+    .projects-btn {}
 
   }
 
   //  ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
   .bio-right-panel {
-    width: 50%;
     height: 100vh;
-    color: white;
     font-family: 'VT323', monospace;
 
     .bio-right-panel-content {
@@ -154,29 +175,35 @@ onBeforeRouteLeave(async (to, from, next) => {
 
     // name & job description
     .personal-info {
-      // background-color: red;
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
+      align-items: flex-end;
+      padding-right: 40px;
+
 
       .name {
-        font-size: 300px;
+        display: flex;
+        gap: 10px;
+        font-size: 10em;
+        color: white;
         transform: skewX(-10deg) rotate(-10deg);
-        margin-top: 200px;
-        margin-left: 100px;
+        margin-top: 1.2em;
+      }
+
+      .name-letters {
+        border: 10px double white;
+        border-radius: 10px;
       }
 
       .career {
-        font-size: 50px;
+        font-size: 3.5em;
         transform: skewX(-10deg) rotate(-10deg);
-        margin-left: 200px;
       }
     }
 
     // phone + email + github link
-    .contact-info {
-      // background-color: green;
-    }
+    .contact-info {}
   }
 }
 
