@@ -56,8 +56,8 @@ const btnRedirectProjects = debounce(() => {
   router.push("/projects")
 }, 400)
 // Flow ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
-let EnterAnimationFlow = null
-const _EnterAnimationFlow = () => {
+let EnterPageAnimationFlow = null
+const _EnterPageAnimationFlow = () => {
   const tl = $gsapPack.gsap.timeline({ paused: true })
   tl.add(_animateNavBtns().play())
     .add(_animateNameLetters().play(), "<")
@@ -110,8 +110,8 @@ const animateRouterLeave = () => {
 }
 // Hooks ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 onMounted(() => {
-  EnterAnimationFlow = _EnterAnimationFlow()
-  EnterAnimationFlow.play()
+  EnterPageAnimationFlow = _EnterPageAnimationFlow()
+  EnterPageAnimationFlow.play()
 })
 onBeforeRouteLeave(async (to, from, next) => {
   await animateRouterLeave()

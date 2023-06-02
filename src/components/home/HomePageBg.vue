@@ -10,7 +10,7 @@
     </div>
     <!-- middle -->
     <div class="middle-panel">
-      <img src="@/assets/svgs/personBg.png">
+      <img class="person-img" src="@/assets/svgs/personBg.png">
     </div>
     <!-- right side -->
     <div class="right-panel">
@@ -25,19 +25,23 @@
 <script setup>
 import { onMounted, getCurrentInstance } from 'vue';
 const { proxy: { $gsapPack } } = getCurrentInstance() // 要引入這包才能使用 gsap 的所有東西
-// Animations ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
-let animateBgLayer = null;
-const _animateBgLayer = () => {
-  const tl = $gsapPack.gsap.timeline({ paused: true, defaults: { duration: 1, ease: "power1.out" } })
-  tl.from(".left-panel", { xPercent: -100 })
-  tl.from(".right-panel", { xPercent: 100 }, "<")
+// Flow ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+const EnterPageAnimationFlow = () => {
+  const tl = $gsapPack.gsap.timeline()
+  tl.add(_animatePanel().play())
   return tl
 }
-// Hooks ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+// Animations ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+const _animatePanel = () => {
+  const tl = $gsapPack.gsap.timeline({ paused: true, defaults: { duration: 1, ease: "power1.out" } })
+  tl.from(".left-panel", { xPercent: -100 })
+    .from(".right-panel", { xPercent: 100 }, "<")
+    .from(".person-img", { y: window.innerHeight, delay: 0.4 }, "<")
+  return tl
+}
+// Hooks ≡≡≡≡≡≡≡≡ ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 onMounted(() => {
-  animateBgLayer = _animateBgLayer()
-  animateBgLayer.play()
-
+  EnterPageAnimationFlow()
 })
 </script>
 
