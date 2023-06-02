@@ -89,9 +89,9 @@ $triangleWidthPercent: 100% - $contentWidthPercent;
     bottom: 0;
     overflow: hidden;
 
-    // background-color: red;
     img {
       height: 100vh;
+      // background-color: black
     }
   }
 

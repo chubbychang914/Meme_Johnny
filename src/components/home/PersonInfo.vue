@@ -46,28 +46,48 @@ const router = useRouter()
 
 // Methods ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 const btnRedirectHome = debounce(() => {
-  console.log("press");
   router.push("/")
 }, 400)
-const btnRedirectAbout = () => {
+const btnRedirectAbout = debounce(() => {
   router.push("/about")
-}
-const btnRedirectProjects = () => {
+}, 400)
+const btnRedirectProjects = debounce(() => {
   router.push("/projects")
-}
-// 可用的 timelines ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
-let animateInfoLayer = null // 左邊按鈕進退場
-// Animations 敘述動作 ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
-const _animateInfoLayer = () => {
+}, 400)
+// Flow ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+let EnterAnimationFlow = null
+const _EnterAnimationFlow = () => {
   const tl = $gsapPack.gsap.timeline({ paused: true })
-  tl.from(".name", { yPercent: 100, opacity: 0, duration: 1, delay: 0.5 })
-  tl.from(".redirect", { x: -1000, stagger: 0.1, duration: 1, opacity: 0 }, "<")
+  tl.add(_animateNavBtns().play())
+    .add(_animateNameLetters().play(), "<")
   return tl;
 }
 
-// const reverseAnimateInfoLayer = () => {
-//   if (animateInfoLayer) animateInfoLayer.reverse()
-// }
+// Animations ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+// 導覽按鈕進場
+const _animateNavBtns = () => {
+  const tl = $gsapPack.gsap.timeline({ paused: true })
+  tl.from(".redirect", {
+    x: -window.innerWidth,
+    duration: 1,
+    opacity: 0,
+    stagger: 0.1
+  })
+  return tl
+}
+// 名字進場
+const _animateNameLetters = () => {
+  const tl = $gsapPack.gsap.timeline({ paused: true })
+  tl.from(".name-letters", {
+    y: -window.innerHeight,
+    ease: "bounce.inOut",
+    stagger: 0.1,
+    duration: 1.5
+  })
+  return tl
+}
+// 職稱進場
+
 //  ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 // 離開頁面前的動畫
 let animationComplete = null
@@ -85,11 +105,12 @@ const animateRouterLeave = () => {
     })
   })
 }
-
 // Hooks ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 onMounted(() => {
-  animateInfoLayer = _animateInfoLayer()
-  animateInfoLayer.play()
+  EnterAnimationFlow = _EnterAnimationFlow()
+  // animateNameLetters = _animateNameLetters()
+  EnterAnimationFlow.play()
+  // animateNameLetters.play()
 })
 onBeforeRouteLeave(async (to, from, next) => {
   await animateRouterLeave()
@@ -102,7 +123,7 @@ onBeforeRouteLeave(async (to, from, next) => {
 #PersonInfo {
   position: absolute;
   z-index: 100; // 這樣才能蓋過底層的圖片
-  background-color: yellowgreen;
+  // background-color: yellowgreen;
 }
 
 // 元件
