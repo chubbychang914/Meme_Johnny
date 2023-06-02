@@ -4,7 +4,7 @@
       <!-- 實際內容 -->
       <div class="btn-box">
         <div class="redirect">
-          <CustomButton class="home-btn" btnContent="Click Me" padding="20px"
+          <CustomButton class="home-btn" btnContent="Contact Me" padding="20px"
             @on-click="btnRedirectHome" />
         </div>
         <div class="redirect">
@@ -20,7 +20,14 @@
       <!-- 實際內容 -->
       <div class="bio-right-panel-content">
         <div class="personal-info">
-          <div class="name">Johnny</div>
+          <div class="name">
+            <div class="name-letters">J</div>
+            <div class="name-letters">o</div>
+            <div class="name-letters">h</div>
+            <div class="name-letters">n</div>
+            <div class="name-letters">n</div>
+            <div class="name-letters">y</div>
+          </div>
           <div class="career">Frontend Developer</div>
         </div>
         <div class="contact-info"></div>
@@ -30,7 +37,7 @@
 </template>
 
 <script setup>
-import { getCurrentInstance, onMounted, ref } from 'vue';
+import { getCurrentInstance, onMounted } from 'vue';
 import { useRouter, onBeforeRouteLeave } from 'vue-router';
 import CustomButton from "@/components/reusable/CustomButton.vue"
 import debounce from 'lodash/debounce'
@@ -95,6 +102,7 @@ onBeforeRouteLeave(async (to, from, next) => {
 #PersonInfo {
   position: absolute;
   z-index: 100; // 這樣才能蓋過底層的圖片
+  background-color: yellowgreen;
 }
 
 // 元件
@@ -161,6 +169,7 @@ onBeforeRouteLeave(async (to, from, next) => {
       padding-right: 40px;
 
       .name {
+        display: flex;
         font-size: 300px;
         color: white;
         transform: skewX(-10deg) rotate(-10deg);

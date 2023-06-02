@@ -44,7 +44,7 @@ onMounted(() => {
 <style lang="scss" scoped>
 // 變數
 $themeColor: #E4D00A;
-$contentWidthPercent: 50%;
+$contentWidthPercent: 55%;
 $triangleWidthPercent: 100% - $contentWidthPercent;
 
 // 排版
@@ -85,8 +85,9 @@ $triangleWidthPercent: 100% - $contentWidthPercent;
     position: absolute;
     z-index: 2;
     left: 50%;
-    transform: translateX(-60%);
+    transform: translateX(-70%);
     bottom: 0;
+    overflow: hidden;
 
     // background-color: red;
     img {

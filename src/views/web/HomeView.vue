@@ -4,7 +4,7 @@ import PersonInfo from "../../components/home/PersonInfo.vue";
 </script>
 
 <template>
-  <HomePageBg />
+  <!-- <HomePageBg /> -->
   <PersonInfo />
 </template>
 
