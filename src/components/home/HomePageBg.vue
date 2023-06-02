@@ -86,7 +86,7 @@ $triangleWidthPercent: 100% - $contentWidthPercent;
     z-index: 2;
     left: 50%;
     transform: translateX(-60%);
-    bottom: -5px;
+    bottom: 0;
 
     // background-color: red;
     img {

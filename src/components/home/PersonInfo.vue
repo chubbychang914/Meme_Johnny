@@ -15,7 +15,7 @@
         </div>
       </div>
     </div>
-    <!--  -->
+    <!-- ---------- -->
     <div class="bio-right-panel">
       <!-- 實際內容 -->
       <div class="bio-right-panel-content">
@@ -141,10 +141,9 @@ onBeforeRouteLeave(async (to, from, next) => {
 
   //  ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
   .bio-right-panel {
-    width: 50%;
     height: 100vh;
-    color: white;
     font-family: 'VT323', monospace;
+    // background-color: green;
 
     .bio-right-panel-content {
       height: 100vh;
@@ -158,18 +157,18 @@ onBeforeRouteLeave(async (to, from, next) => {
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
+      align-items: flex-end;
+      padding-right: 40px;
 
       .name {
         font-size: 300px;
+        color: white;
         transform: skewX(-10deg) rotate(-10deg);
-        margin-top: 200px;
-        margin-left: 100px;
       }
 
       .career {
-        font-size: 50px;
+        font-size: 70px;
         transform: skewX(-10deg) rotate(-10deg);
-        margin-left: 200px;
       }
     }
 
