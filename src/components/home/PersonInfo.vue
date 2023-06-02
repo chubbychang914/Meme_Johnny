@@ -41,6 +41,7 @@ import { getCurrentInstance, onMounted } from 'vue';
 import { useRouter, onBeforeRouteLeave } from 'vue-router';
 import CustomButton from "@/components/reusable/CustomButton.vue"
 import debounce from 'lodash/debounce'
+import { Bounce } from 'gsap';
 const { proxy: { $gsapPack } } = getCurrentInstance() // 把GSAP包引入個別使用
 const router = useRouter()
 
@@ -81,9 +82,10 @@ const _animateNameLetters = () => {
   tl.from(".name-letters", {
     xPercent: window.innerWidth,
     opacity: 0,
-    duration: 1,
+    duration: 1.2,
     stagger: 0.1,
-    delay: 0.5
+    ease: "power.in",
+    delay: 0.8
   })
   return tl
 }
@@ -192,7 +194,7 @@ onBeforeRouteLeave(async (to, from, next) => {
       .name-letters {
         border: 10px double white;
         border-radius: 10px;
-        background-color: black;
+        // background-color: rgba(0, 0, 0, 0.8);
       }
 
       .career {
