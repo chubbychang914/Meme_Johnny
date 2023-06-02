@@ -9,7 +9,7 @@
 
 <script setup>
 import { useRouter } from 'vue-router';
-import { getCurrentInstance } from 'vue';
+import { getCurrentInstance, onMounted } from 'vue';
 const { proxy: { $gsapPack } } = getCurrentInstance()
 const router = useRouter()
 
@@ -17,6 +17,7 @@ const testHome = () => {
   router.push('/')
 }
 
+let moveH1 = null
 
 //  ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 const gsapAnimation = () => {
@@ -25,7 +26,10 @@ const gsapAnimation = () => {
   return tl
 }
 
-let moveH1 = null
+const _moveNav = () => {
+  $gsapPack.gsap.from("#AboutNav", { xPercent: -100, duration: 1 })
+}
+
 
 const testGsap = () => {
   moveH1 = gsapAnimation();
@@ -37,7 +41,9 @@ const reverse = () => {
     moveH1.reverse()
   }
 }
-
+onMounted(() => {
+  _moveNav()
+})
 </script>
 
 

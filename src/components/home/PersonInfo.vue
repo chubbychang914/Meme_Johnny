@@ -36,8 +36,6 @@ import CustomButton from "@/components/reusable/CustomButton.vue"
 
 const { proxy: { $gsapPack } } = getCurrentInstance() // 把GSAP包引入個別使用
 const router = useRouter()
-// State ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
-const isAnimationEnd = ref(false) // 跳轉頁面前動畫是否完成
 // Methods ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 const btnRedirectHome = () => {
   router.push("/")
@@ -58,9 +56,9 @@ const _animateInfoLayer = () => {
   return tl;
 }
 
-const reverseAnimateInfoLayer = () => {
-  if (animateInfoLayer) animateInfoLayer.reverse()
-}
+// const reverseAnimateInfoLayer = () => {
+//   if (animateInfoLayer) animateInfoLayer.reverse()
+// }
 //  ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 // 離開頁面前的動畫
 let animationComplete = null
@@ -73,8 +71,6 @@ const animateRouterLeave = () => {
       duration: 1,
       stagger: 0.1,
       onComplete: () => {
-        isAnimationEnd.value = true // this is a state that I set
-        reverseAnimateInfoLayer()
         animationComplete()
       },
     })
