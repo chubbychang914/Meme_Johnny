@@ -92,7 +92,10 @@ onBeforeRouteLeave(async (to, from, next) => {
 
 <style lang="scss" scoped>
 // 排版
-#PersonInfo {}
+#PersonInfo {
+  position: absolute;
+  z-index: 100; // 這樣才能蓋過底層的圖片
+}
 
 // 元件
 #PersonInfo {

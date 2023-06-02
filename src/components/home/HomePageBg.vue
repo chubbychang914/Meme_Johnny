@@ -8,6 +8,10 @@
         <img class="triangleSvg" src="@/assets/svgs/homeTriangle.svg" alt="triangle" />
       </div>
     </div>
+    <!-- middle -->
+    <div class="middle-panel">
+      <img src="@/assets/svgs/personBg.svg">
+    </div>
     <!-- right side -->
     <div class="right-panel">
       <div class="triangle-section">
@@ -70,6 +74,18 @@ $triangleWidthPercent: 100% - $contentWidthPercent;
         left: -1px;
         height: 100vh;
       }
+    }
+  }
+
+  .middle-panel {
+    position: absolute;
+    z-index: 2;
+    left: 50%;
+    transform: translateX(-60%);
+    bottom: 0;
+    // background-color: red;
+    img{
+      height: 100vh;
     }
   }
 
