@@ -12,12 +12,7 @@ import PersonInfo from "../../components/home/PersonInfo.vue";
 // 排版
 #HomeView {
   overflow: hidden;
-
-  .home-page-bg {}
-
-  .person-info {
-    position: absolute;
-  }
+  min-width: 1500px;
 }
 
 // 元件

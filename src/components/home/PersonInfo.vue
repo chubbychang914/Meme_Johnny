@@ -33,13 +33,15 @@
 import { getCurrentInstance, onMounted, ref } from 'vue';
 import { useRouter, onBeforeRouteLeave } from 'vue-router';
 import CustomButton from "@/components/reusable/CustomButton.vue"
-
+import debounce from 'lodash/debounce'
 const { proxy: { $gsapPack } } = getCurrentInstance() // 把GSAP包引入個別使用
 const router = useRouter()
+
 // Methods ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
-const btnRedirectHome = () => {
+const btnRedirectHome = debounce(() => {
+  console.log("press");
   router.push("/")
-}
+}, 400)
 const btnRedirectAbout = () => {
   router.push("/about")
 }
@@ -90,7 +92,10 @@ onBeforeRouteLeave(async (to, from, next) => {
 
 <style lang="scss" scoped>
 // 排版
-#PersonInfo {}
+#PersonInfo {
+  position: absolute;
+  z-index: 100; // 這樣才能蓋過底層的圖片
+}
 
 // 元件
 #PersonInfo {
