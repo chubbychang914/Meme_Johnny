@@ -2,16 +2,40 @@
   <div id="AboutNav">
     <h1>This is about nav</h1>
     <button @click="testHome">Home</button>
+    <button @click="testGsap">GSAP</button>
+    <button @click="reverse">reverse</button>
   </div>
 </template>
 
 <script setup>
 import { useRouter } from 'vue-router';
-
+import { getCurrentInstance } from 'vue';
+const { proxy: { $gsapPack } } = getCurrentInstance()
 const router = useRouter()
 
 const testHome = () => {
   router.push('/')
+}
+
+
+//  ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+const gsapAnimation = () => {
+  let tl = $gsapPack.gsap.timeline({ paused: true })
+  tl.to("h1", { x: 1000, duration: 2 })
+  return tl
+}
+
+let moveH1 = null
+
+const testGsap = () => {
+  moveH1 = gsapAnimation();
+  moveH1.play()
+}
+
+const reverse = () => {
+  if (moveH1) {
+    moveH1.reverse()
+  }
 }
 
 </script>
