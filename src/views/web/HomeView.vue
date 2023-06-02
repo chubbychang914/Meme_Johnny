@@ -5,7 +5,7 @@ import PersonInfo from "../../components/home/PersonInfo.vue";
 
 <template>
   <HomePageBg />
-  <!-- <PersonInfo /> -->
+  <PersonInfo />
 </template>
 
 <style lang="scss" scoped>

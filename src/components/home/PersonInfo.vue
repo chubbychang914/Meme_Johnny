@@ -79,10 +79,11 @@ const _animateNavBtns = () => {
 const _animateNameLetters = () => {
   const tl = $gsapPack.gsap.timeline({ paused: true })
   tl.from(".name-letters", {
-    y: -window.innerHeight,
-    ease: "bounce.inOut",
+    xPercent: window.innerWidth,
+    opacity: 0,
+    duration: 1,
     stagger: 0.1,
-    duration: 1.5
+    delay: 0.5
   })
   return tl
 }
@@ -108,9 +109,7 @@ const animateRouterLeave = () => {
 // Hooks ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 onMounted(() => {
   EnterAnimationFlow = _EnterAnimationFlow()
-  // animateNameLetters = _animateNameLetters()
   EnterAnimationFlow.play()
-  // animateNameLetters.play()
 })
 onBeforeRouteLeave(async (to, from, next) => {
   await animateRouterLeave()
@@ -123,7 +122,6 @@ onBeforeRouteLeave(async (to, from, next) => {
 #PersonInfo {
   position: absolute;
   z-index: 100; // 這樣才能蓋過底層的圖片
-  // background-color: yellowgreen;
 }
 
 // 元件
@@ -154,17 +152,11 @@ onBeforeRouteLeave(async (to, from, next) => {
       gap: 100px;
     }
 
-    .home-btn {
-      // margin-left: 300px;
-    }
+    .home-btn {}
 
-    .about-btn {
-      // margin-left: 200px;
-    }
+    .about-btn {}
 
-    .projects-btn {
-      // margin-left: 100px;
-    }
+    .projects-btn {}
 
   }
 
@@ -172,7 +164,6 @@ onBeforeRouteLeave(async (to, from, next) => {
   .bio-right-panel {
     height: 100vh;
     font-family: 'VT323', monospace;
-    // background-color: green;
 
     .bio-right-panel-content {
       height: 100vh;
@@ -182,18 +173,26 @@ onBeforeRouteLeave(async (to, from, next) => {
 
     // name & job description
     .personal-info {
-      // background-color: red;
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
       align-items: flex-end;
       padding-right: 40px;
 
+
       .name {
         display: flex;
-        font-size: 300px;
+        gap: 10px;
+        font-size: 250px;
         color: white;
         transform: skewX(-10deg) rotate(-10deg);
+        margin-top: 200px;
+      }
+
+      .name-letters {
+        border: 10px double white;
+        border-radius: 10px;
+        background-color: black;
       }
 
       .career {
@@ -203,9 +202,7 @@ onBeforeRouteLeave(async (to, from, next) => {
     }
 
     // phone + email + github link
-    .contact-info {
-      // background-color: green;
-    }
+    .contact-info {}
   }
 }
 
