@@ -10,7 +10,7 @@
     </div>
     <!-- middle -->
     <div class="middle-panel">
-      <img src="@/assets/svgs/personBg.svg">
+      <img src="@/assets/svgs/personBg.png">
     </div>
     <!-- right side -->
     <div class="right-panel">
@@ -91,7 +91,6 @@ $triangleWidthPercent: 100% - $contentWidthPercent;
 
     img {
       height: 100vh;
-      // background-color: black
     }
   }
 
