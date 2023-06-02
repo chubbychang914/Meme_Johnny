@@ -48,36 +48,43 @@ const btnRedirectAbout = () => {
 const btnRedirectProjects = () => {
   router.push("/projects")
 }
-// Animations ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
-// 進場動畫
-const animateInfoLayer = () => {
-  const tl = $gsapPack.gsap.timeline()
+// 可用的 timelines ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+let animateInfoLayer = null // 左邊按鈕進退場
+// Animations 敘述動作 ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+const _animateInfoLayer = () => {
+  const tl = $gsapPack.gsap.timeline({ paused: true })
   tl.from(".name", { yPercent: 100, opacity: 0, duration: 1, delay: 0.5 })
   tl.from(".redirect", { x: -1000, stagger: 0.1, duration: 1, opacity: 0 }, "<")
+  return tl;
 }
+
+const reverseAnimateInfoLayer = () => {
+  if (animateInfoLayer) animateInfoLayer.reverse()
+}
+//  ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 // 離開頁面前的動畫
-let animationEndResolve = null
+let animationComplete = null
+
 const animateRouterLeave = () => {
   return new Promise((resolve) => {
-    animationEndResolve = resolve
-
+    animationComplete = resolve
     $gsapPack.gsap.to(".redirect", {
-      // x:-window.innerWidth,
       y: -window.innerHeight,
       duration: 1,
       stagger: 0.1,
-      onComplete: onAnimationComplete,
+      onComplete: () => {
+        isAnimationEnd.value = true // this is a state that I set
+        reverseAnimateInfoLayer()
+        animationComplete()
+      },
     })
   })
-}
-function onAnimationComplete() {
-  isAnimationEnd.value = true
-  animationEndResolve()
 }
 
 // Hooks ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 onMounted(() => {
-  animateInfoLayer()
+  animateInfoLayer = _animateInfoLayer()
+  animateInfoLayer.play()
 })
 onBeforeRouteLeave(async (to, from, next) => {
   await animateRouterLeave()
