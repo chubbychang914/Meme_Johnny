@@ -7,7 +7,7 @@
           <CustomButton class="click-btn" btnContent="Click Me" padding="20px"
             @on-click="btnActivateclick" />
         </div>
-        <button>Click me to reverse</button>
+        <button @click="testReverse">Click me to reverse</button>
         <div class="redirect">
           <CustomButton class="about-btn" btnContent="About" @on-click="btnRedirectAbout" />
         </div>
@@ -45,10 +45,19 @@ import debounce from 'lodash/debounce'
 const { proxy: { $gsapPack } } = getCurrentInstance() // 把GSAP包引入個別使用
 const router = useRouter()
 
+
+let reversibleContactTimeline = null
+const testReverse = () => {
+  console.log('jdafs')
+  if (reversibleContactTimeline) {
+    reversibleContactTimeline.reverse()
+  }
+}
 // Methods ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 // 把 flow 自己設定成一個 timeline，再加入不同時間軸的動畫
 const btnActivateclick = debounce(() => {
-  clickInfoAnimationFlow().play()
+  reversibleContactTimeline = clickInfoAnimationFlow()
+  reversibleContactTimeline.play()
 }, 400)
 const btnRedirectAbout = debounce(() => {
   router.push("/about")
@@ -57,7 +66,7 @@ const btnRedirectProjects = debounce(() => {
   router.push("/projects")
 }, 400)
 // Flow ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
-const EnterPageAnimationFlow = () => {
+const enterPageAnimationFlow = () => {
   const tl = $gsapPack.gsap.timeline({ paused: true })
   tl.add(_animateNavBtns().play())
     .add(_animateNameLetters().play(), "<")
@@ -98,7 +107,7 @@ const _animateNameLetters = () => {
 // when click me is pressed
 const _animateClickMe = () => {
   let offsetHeight = document.getElementsByClassName("name-letters")[0].offsetHeight
-  const tl = $gsapPack.gsap.timeline({ defaults: { x: -offsetHeight * 2, rotate: -70, duration: 2 } })
+  const tl = $gsapPack.gsap.timeline({ defaults: { x: -offsetHeight * 2, rotate: -70, duration: 1 } })
   tl.to('.name-letters', { stagger: 0.1 })
   return tl
 }
@@ -120,7 +129,7 @@ const animateRouterLeave = () => {
 }
 // Hooks ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 onMounted(() => {
-  EnterPageAnimationFlow().play()
+  enterPageAnimationFlow().play()
 })
 onBeforeRouteLeave(async (to, from, next) => {
   await animateRouterLeave()
