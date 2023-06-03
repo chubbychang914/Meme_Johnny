@@ -22,7 +22,7 @@
       <div class="bio-right-panel-content">
         <div class="personal-info">
           <div class="name">
-            <div class="name-letters letterJ">J</div>
+            <div class="name-letters letterJ" ref="letterJRef">J</div>
             <div class="name-letters letterO">o</div>
             <div class="name-letters letterH">h</div>
             <div class="name-letters letterN1">n</div>
@@ -44,9 +44,10 @@ import CustomButton from "@/components/reusable/CustomButton.vue"
 import debounce from 'lodash/debounce'
 const { proxy: { $gsapPack } } = getCurrentInstance() // 把GSAP包引入個別使用
 const router = useRouter()
-
+// State ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 // set variable for timelines that need reverse
 const twoWayContactTimeline = ref(null)
+const letterJRef = ref(null)
 
 const testReverse = () => {
   if (twoWayContactTimeline.value) {
@@ -106,9 +107,10 @@ const _animateNameLetters = () => {
 
 // when click me is pressed
 const _animateClickMe = () => {
-  let offsetHeight = document.getElementsByClassName("name-letters")[0].offsetHeight
-  const tl = $gsapPack.gsap.timeline({ defaults: { x: -offsetHeight * 2, rotate: -70, duration: 1 } })
-  tl.to('.name-letters', { stagger: 0.1 })
+  const offsetHeight = letterJRef.value.offsetHeight
+  const screenHeight = window.innerHeight
+  const tl = $gsapPack.gsap.timeline({ defaults: { x: -offsetHeight, y: screenHeight - offsetHeight * 2, duration: 1 } })
+  tl.to('.name-letters', { rotate: 10, stagger: 0.1 })
   return tl
 }
 //  ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
@@ -205,8 +207,8 @@ onBeforeRouteLeave(async (to, from, next) => {
         gap: 10px;
         font-size: 10em;
         color: white;
-        transform: skewX(-10deg) rotate(-10deg);
         margin-top: 1.2em;
+        transform: skewX(-10deg) rotate(-10deg);
       }
 
       .name-letters {
