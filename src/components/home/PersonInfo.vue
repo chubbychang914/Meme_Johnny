@@ -45,8 +45,9 @@ const { proxy: { $gsapPack } } = getCurrentInstance() // 把GSAP包引入個別�
 const router = useRouter()
 
 // Methods ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+// 把 flow 自己設定成一個 timeline，再加入不同時間軸的動畫
 const btnActivateContact = debounce(() => {
-  _animateContactMe()
+  ContactInfoAnimationFlow().play()
 }, 400)
 const btnRedirectAbout = debounce(() => {
   router.push("/about")
@@ -55,14 +56,17 @@ const btnRedirectProjects = debounce(() => {
   router.push("/projects")
 }, 400)
 // Flow ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
-let EnterPageAnimationFlow = null
-const _EnterPageAnimationFlow = () => {
+const EnterPageAnimationFlow = () => {
   const tl = $gsapPack.gsap.timeline({ paused: true })
   tl.add(_animateNavBtns().play())
     .add(_animateNameLetters().play(), "<")
   return tl;
 }
-
+const ContactInfoAnimationFlow = () => {
+  const tl = $gsapPack.gsap.timeline({ paused: true })
+  tl.add(_animateContactMe().play())
+  return tl
+}
 // Animations ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 // 導覽按鈕進場
 const _animateNavBtns = () => {
@@ -92,18 +96,18 @@ const _animateNameLetters = () => {
 
 // when contact me is pressed
 const _animateContactMe = () => {
-  const tl = $gsapPack.gsap.timeline()
-  tl.to('.letterJ', { left: 0, bottom: 0, duration: 2 })
+  const tl = $gsapPack.gsap.timeline({ defaults: { skewX: 10, duration: 2 } })
+  tl.to('.name-letters', { x: -200 })
+  return tl
 }
 //  ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 // 離開頁面前的動畫
-let animationComplete = null
-
+let animationComplete = null // this is the resolve function
 const animateRouterLeave = () => {
   return new Promise((resolve) => {
     animationComplete = resolve
     $gsapPack.gsap.to(".redirect", {
-      y: -window.innerHeight,
+      xPercent: -100,
       duration: 1,
       stagger: 0.1,
       onComplete: () => {
@@ -114,8 +118,7 @@ const animateRouterLeave = () => {
 }
 // Hooks ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 onMounted(() => {
-  EnterPageAnimationFlow = _EnterPageAnimationFlow()
-  EnterPageAnimationFlow.play()
+  EnterPageAnimationFlow().play()
 })
 onBeforeRouteLeave(async (to, from, next) => {
   await animateRouterLeave()
@@ -198,6 +201,7 @@ onBeforeRouteLeave(async (to, from, next) => {
       .name-letters {
         border: 10px double white;
         border-radius: 10px;
+        background-color: black;
       }
 
       .career {
