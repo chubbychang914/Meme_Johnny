@@ -38,26 +38,26 @@
 </template>
 
 <script setup>
-import { getCurrentInstance, onMounted } from 'vue';
+import { getCurrentInstance, onMounted, ref } from 'vue';
 import { useRouter, onBeforeRouteLeave } from 'vue-router';
 import CustomButton from "@/components/reusable/CustomButton.vue"
 import debounce from 'lodash/debounce'
 const { proxy: { $gsapPack } } = getCurrentInstance() // 把GSAP包引入個別使用
 const router = useRouter()
 
+// set variable for timelines that need reverse
+const twoWayContactTimeline = ref(null)
 
-let reversibleContactTimeline = null
 const testReverse = () => {
-  console.log('jdafs')
-  if (reversibleContactTimeline) {
-    reversibleContactTimeline.reverse()
+  if (twoWayContactTimeline.value) {
+    twoWayContactTimeline.value.reverse()
   }
 }
 // Methods ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 // 把 flow 自己設定成一個 timeline，再加入不同時間軸的動畫
 const btnActivateclick = debounce(() => {
-  reversibleContactTimeline = clickInfoAnimationFlow()
-  reversibleContactTimeline.play()
+  twoWayContactTimeline.value = clickInfoAnimationFlow()
+  twoWayContactTimeline.value.play()
 }, 400)
 const btnRedirectAbout = debounce(() => {
   router.push("/about")
