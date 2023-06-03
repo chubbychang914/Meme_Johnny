@@ -4,8 +4,8 @@
       <!-- 實際內容 -->
       <div class="btn-box">
         <div class="redirect">
-          <CustomButton class="home-btn" btnContent="Contact Me" padding="20px"
-            @on-click="btnRedirectHome" />
+          <CustomButton class="contact-btn" btnContent="Contact Me" padding="20px"
+            @on-click="btnActivateContact" />
         </div>
         <div class="redirect">
           <CustomButton class="about-btn" btnContent="About" @on-click="btnRedirectAbout" />
@@ -21,12 +21,12 @@
       <div class="bio-right-panel-content">
         <div class="personal-info">
           <div class="name">
-            <div class="name-letters">J</div>
-            <div class="name-letters">o</div>
-            <div class="name-letters">h</div>
-            <div class="name-letters">n</div>
-            <div class="name-letters">n</div>
-            <div class="name-letters">y</div>
+            <div class="name-letters letterJ">J</div>
+            <div class="name-letters letterO">o</div>
+            <div class="name-letters letterH">h</div>
+            <div class="name-letters letterN1">n</div>
+            <div class="name-letters letterN2">n</div>
+            <div class="name-letters letterY">y</div>
           </div>
           <div class="career">Frontend Developer</div>
         </div>
@@ -45,8 +45,8 @@ const { proxy: { $gsapPack } } = getCurrentInstance() // 把GSAP包引入個別�
 const router = useRouter()
 
 // Methods ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
-const btnRedirectHome = debounce(() => {
-  router.push("/")
+const btnActivateContact = debounce(() => {
+  _animateContactMe()
 }, 400)
 const btnRedirectAbout = debounce(() => {
   router.push("/about")
@@ -90,6 +90,11 @@ const _animateNameLetters = () => {
 }
 // 職稱進場
 
+// when contact me is pressed
+const _animateContactMe = () => {
+  const tl = $gsapPack.gsap.timeline()
+  tl.to('.letterJ', { left: 0, bottom: 0, duration: 2 })
+}
 //  ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 // 離開頁面前的動畫
 let animationComplete = null
@@ -153,7 +158,7 @@ onBeforeRouteLeave(async (to, from, next) => {
       gap: 100px;
     }
 
-    .home-btn {}
+    .contact-btn {}
 
     .about-btn {}
 
