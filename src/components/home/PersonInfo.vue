@@ -4,9 +4,10 @@
       <!-- 實際內容 -->
       <div class="btn-box">
         <div class="redirect">
-          <CustomButton class="contact-btn" btnContent="Contact Me" padding="20px"
-            @on-click="btnActivateContact" />
+          <CustomButton class="click-btn" btnContent="Click Me" padding="20px"
+            @on-click="btnActivateclick" />
         </div>
+        <button>Click me to reverse</button>
         <div class="redirect">
           <CustomButton class="about-btn" btnContent="About" @on-click="btnRedirectAbout" />
         </div>
@@ -30,7 +31,7 @@
           </div>
           <div class="career">Frontend Developer</div>
         </div>
-        <div class="contact-info"></div>
+        <div class="click-info"></div>
       </div>
     </div>
   </div>
@@ -46,8 +47,8 @@ const router = useRouter()
 
 // Methods ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 // 把 flow 自己設定成一個 timeline，再加入不同時間軸的動畫
-const btnActivateContact = debounce(() => {
-  ContactInfoAnimationFlow().play()
+const btnActivateclick = debounce(() => {
+  clickInfoAnimationFlow().play()
 }, 400)
 const btnRedirectAbout = debounce(() => {
   router.push("/about")
@@ -62,9 +63,9 @@ const EnterPageAnimationFlow = () => {
     .add(_animateNameLetters().play(), "<")
   return tl;
 }
-const ContactInfoAnimationFlow = () => {
+const clickInfoAnimationFlow = () => {
   const tl = $gsapPack.gsap.timeline({ paused: true })
-  tl.add(_animateContactMe().play())
+  tl.add(_animateClickMe().play())
   return tl
 }
 // Animations ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
@@ -94,10 +95,11 @@ const _animateNameLetters = () => {
 }
 // 職稱進場
 
-// when contact me is pressed
-const _animateContactMe = () => {
-  const tl = $gsapPack.gsap.timeline({ defaults: { skewX: 10, duration: 2 } })
-  tl.to('.name-letters', { x: -200 })
+// when click me is pressed
+const _animateClickMe = () => {
+  let offsetHeight = document.getElementsByClassName("name-letters")[0].offsetHeight
+  const tl = $gsapPack.gsap.timeline({ defaults: { x: -offsetHeight * 2, rotate: -70, duration: 2 } })
+  tl.to('.name-letters', { stagger: 0.1 })
   return tl
 }
 //  ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
@@ -161,7 +163,7 @@ onBeforeRouteLeave(async (to, from, next) => {
       gap: 100px;
     }
 
-    .contact-btn {}
+    .click-btn {}
 
     .about-btn {}
 
@@ -211,7 +213,7 @@ onBeforeRouteLeave(async (to, from, next) => {
     }
 
     // phone + email + github link
-    .contact-info {}
+    .click-info {}
   }
 }
 
