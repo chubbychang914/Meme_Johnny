@@ -109,9 +109,10 @@ const _animateNameLetters = () => {
 // when click me is pressed
 const _animateClickMe = () => {
   const offsetHeight = letterJRef.value.offsetHeight
+  const screenWidth = window.innerWidth
   const screenHeight = window.innerHeight
   const tl = $gsapPack.gsap.timeline({ defaults: { y: screenHeight - offsetHeight * 2, duration: 1, rotate: 10, skewX: 10 } })
-  tl.to('.letterJ', {})
+  tl.to('.letterJ', { x: screenWidth - 1000 })
   tl.to('.name-letters', { rotate: 10, stagger: 0.1 })
   return tl
 }
