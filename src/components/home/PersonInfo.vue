@@ -47,6 +47,7 @@ const router = useRouter()
 // State ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 // set variable for timelines that need reverse
 const twoWayContactTimeline = ref(null)
+// 用來計算要從底部加多少
 const letterJRef = ref(null)
 
 const testReverse = () => {
@@ -109,7 +110,8 @@ const _animateNameLetters = () => {
 const _animateClickMe = () => {
   const offsetHeight = letterJRef.value.offsetHeight
   const screenHeight = window.innerHeight
-  const tl = $gsapPack.gsap.timeline({ defaults: { x: -offsetHeight, y: screenHeight - offsetHeight * 2, duration: 1 } })
+  const tl = $gsapPack.gsap.timeline({ defaults: { y: screenHeight - offsetHeight * 2, duration: 1, rotate: 10, skewX: 10 } })
+  tl.to('.letterJ', {})
   tl.to('.name-letters', { rotate: 10, stagger: 0.1 })
   return tl
 }
