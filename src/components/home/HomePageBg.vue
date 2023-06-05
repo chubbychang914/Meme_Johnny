@@ -28,15 +28,22 @@
 </template>
 
 <script setup>
-import { onMounted, getCurrentInstance } from 'vue';
+import { onMounted, getCurrentInstance, Teleport } from 'vue';
 const { proxy: { $gsapPack } } = getCurrentInstance() // 要引入這包才能使用 gsap 的所有東西
 // Flow ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 const EnterPageAnimationFlow = () => {
   const tl = $gsapPack.gsap.timeline()
-  tl.add(_animatePanel().paused())
+  tl.add(_animatePanel().play())
+    .add(_animateBgLoop().play())
   return tl
 }
 // Animations ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+const _animateBgLoop = () => {
+  const tl = $gsapPack.gsap.timeline({ paused: true, defaults: { repeat: -1 } })
+  tl.to('.bg-image', { x: "100vw" })
+  return tl
+}
+
 const _animatePanel = () => {
   const tl = $gsapPack.gsap.timeline({ paused: true, defaults: { duration: 1, ease: "power1.out" } })
   tl.from(".left-panel", { xPercent: -100 })
