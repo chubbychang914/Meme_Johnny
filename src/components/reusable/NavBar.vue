@@ -1,5 +1,6 @@
 <template>
   <nav id="Navbar">
+    akfjas;ldkfja
   </nav>
 </template>
 
@@ -11,10 +12,8 @@
 // 排版
 #Navbar {
   width: 100vw;
+  height: 80px;
   background-color: black;
-  position: absolute;
-  top: 0;
-  left: 0;
   color: yellow;
 }
 

@@ -1,7 +1,7 @@
 <template>
   <div id="AboutTemplate">
-    <h1 class="title">title</h1>
-    <p class="content">content</p>
+    <div class="header"><slot name="header"></slot></div>
+    <div class="content"><slot name="content"></slot></div>
   </div>
 </template>
 
@@ -11,19 +11,24 @@
 
 <style lang="scss" scoped>
 $themeColor: #E4D00A;
-// 排版
 
+// 排版
 #AboutTemplate {
   display: grid;
-  grid-template-columns: 80px auto;
+  grid-template-columns: 100px 1fr;
+  height: 100%;
 }
 
 // 元件
 #AboutTemplate {
 
 
-  .title {
+  .header {
     background-color: $themeColor;
+
+    .title {
+      background-color: black;
+    }
   }
 }
 </style>
