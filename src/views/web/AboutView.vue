@@ -1,20 +1,18 @@
 <template>
   <div id="AboutView">
-    <AboutNav />
-    <AboutContent />
+    <NavBar />
+    <AboutTemplate />
   </div>
 </template>
 
 <script setup>
-import AboutNav from '../../components/about/AboutNav.vue';
-import AboutContent from "../../components/about/AboutContent.vue"
+import NavBar from '@/components/reusable/NavBar.vue'
+import AboutTemplate from '@/components/reusable/AboutTemplate.vue';
 </script>
 
 <style lang="scss" scoped>
 // 排版E4D00A
-#AboutView {
-  display: flex;
-}
+#AboutView {}
 
 // 元件
 #AboutView {}
