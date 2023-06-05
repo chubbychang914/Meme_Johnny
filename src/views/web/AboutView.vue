@@ -1,11 +1,13 @@
 <template>
   <div id="AboutView">
     <NavBar />
+    <Summary />
   </div>
 </template>
 
 <script setup>
 import NavBar from '@/components/reusable/NavBar.vue'
+import Summary from '@/components/reusable/about/Summary.vue';
 </script>
 
 <style lang="scss" scoped>
@@ -17,6 +19,5 @@ import NavBar from '@/components/reusable/NavBar.vue'
 }
 
 // 元件
-#AboutView {
-}
+#AboutView {}
 </style>
