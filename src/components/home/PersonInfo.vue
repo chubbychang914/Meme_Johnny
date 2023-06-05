@@ -42,7 +42,7 @@
 </template>
 
 <script setup>
-import { getCurrentInstance, onMounted, ref } from 'vue';
+import { Teleport, getCurrentInstance, onMounted, ref } from 'vue';
 import { useRouter, onBeforeRouteLeave } from 'vue-router';
 import CustomButton from "@/components/reusable/CustomButton.vue"
 import debounce from 'lodash/debounce'
@@ -104,7 +104,7 @@ const _animateNameLetters = () => {
     duration: 1.2,
     stagger: 0.1,
     ease: "power.in",
-    delay: 0.8
+    delay: 0.8,
   })
   return tl
 }
@@ -114,8 +114,8 @@ const _animateNameLetters = () => {
 const _animateNameDown = () => {
   const offsetHeight = letterJRef.value.offsetHeight
   const screenHeight = window.innerHeight
-  const tl = $gsapPack.gsap.timeline({ defaults: { y: screenHeight - offsetHeight * 2, duration: 0.8, rotate: 10, skewX: 10 } })
-  tl.to('.name-letters', { rotate: 10 })
+  const tl = $gsapPack.gsap.timeline()
+  tl.to('.name-letters', { yPercent: 200, duration: 0.8 })
   return tl
 }
 //  ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
@@ -157,7 +157,7 @@ onBeforeRouteLeave(async (to, from, next) => {
   height: 100vh;
   overflow: hidden;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 2fr;
   position: absolute;
   top: 0;
   left: 0;
@@ -213,7 +213,7 @@ onBeforeRouteLeave(async (to, from, next) => {
         font-size: 24vh;
         color: white;
         margin-top: 200px;
-        transform: skewX(-10deg) rotate(-10deg);
+        // transform: skewX(-10deg) rotate(-10deg);
       }
 
       .name-letters {
@@ -224,7 +224,7 @@ onBeforeRouteLeave(async (to, from, next) => {
 
       .career {
         font-size: 7vh;
-        transform: skewX(-10deg) rotate(-10deg);
+        // transform: skewX(-10deg) rotate(-10deg);
       }
     }
 
