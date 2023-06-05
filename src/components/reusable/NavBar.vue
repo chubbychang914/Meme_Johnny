@@ -1,11 +1,20 @@
 <template>
   <nav id="Navbar">
-    akfjas;ldkfja
+    <button @click="redirectHome">Home Page</button>
+    <button @click="redirectAbout">About Page</button>
   </nav>
 </template>
 
 <script setup>
+import { useRouter } from 'vue-router';
+const router = useRouter()
 
+const redirectHome = () => {
+  router.push("./")
+}
+const redirectAbout = () => {
+  router.push("./about")
+}
 </script>
 
 <style lang="scss" scoped>
