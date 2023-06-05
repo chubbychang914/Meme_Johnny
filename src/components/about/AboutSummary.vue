@@ -1,5 +1,5 @@
 <template>
-  <div id="Summary">
+  <div id="AboutSummary">
     <AboutTemplate title="Experience" iconUrl="src/assets/imgs/experienceIcon.png">
       <template v-slot:content>
         <div class="content-container"></div>
@@ -10,16 +10,16 @@
 </template>
 
 <script setup>
-import AboutTemplate from './AboutTemplate.vue';
+import AboutTemplate from '@/components/reusable/AboutTemplate.vue';
 
 </script>
 
 <style lang="scss" scoped>
 // 排版
-#Summary {}
+#AboutSummary {}
 
 // 元件
-#Summary {
+#AboutSummary {
   .content-container {}
 }
 </style>
