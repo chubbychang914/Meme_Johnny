@@ -7,7 +7,7 @@
           <CustomButton class="click-btn" btnContent="Click Me" padding="20px"
             @on-click="btnActivateClickMe" />
         </div>
-        <button @click="testReverse">Click me to reverse</button>
+        <!-- <button @click="testReverse">Click me to reverse</button> -->
         <div class="redirect">
           <CustomButton class="about-btn" btnContent="About" @on-click="btnRedirectAbout" />
         </div>
@@ -46,6 +46,7 @@ import { getCurrentInstance, onMounted, ref } from 'vue';
 import { useRouter, onBeforeRouteLeave } from 'vue-router';
 import CustomButton from "@/components/reusable/CustomButton.vue"
 import debounce from 'lodash/debounce'
+import { Bounce } from 'gsap';
 const { proxy: { $gsapPack } } = getCurrentInstance() // 把GSAP包引入個別使用
 const router = useRouter()
 // State ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
@@ -79,12 +80,13 @@ const enterPageAnimationFlow = () => {
   const tl = $gsapPack.gsap.timeline({ paused: true })
   tl.add(_animateNavBtns().play())
     .add(_animateNameLettersEnter().play(), "<")
+    .add(_animateCareerEnter().play(), "<")
   return tl;
 }
 const clickInfoAnimationFlow = () => {
-  const tl = $gsapPack.gsap.timeline({ paused: true })
-  tl.add(_animateNameDown().play())
-  return tl
+  // const tl = $gsapPack.gsap.timeline({ paused: true })
+  // tl.add(_animateNameDown().play())
+  // return tl
 }
 // Animations ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 // 導覽按鈕進場
@@ -112,15 +114,19 @@ const _animateNameLettersEnter = () => {
   return tl
 }
 // 職稱進場
-
-// when click me is pressed
-const _animateNameDown = () => {
-  // const offsetHeight = letterJRef.value.offsetHeight
-  // const screenHeight = window.innerHeight
-  const tl = $gsapPack.gsap.timeline()
-  tl.to('.name-letters', { yPercent: 170, duration: 0.8 })
+const _animateCareerEnter = () => {
+  const tl = $gsapPack.gsap.timeline({ paused: true })
+  tl.from('.career', { y: window.innerHeight, duration: 1.5, opacity: 0, ease: "power1.out" })
   return tl
 }
+// when click me is pressed
+// const _animateNameDown = () => {
+//   // const offsetHeight = letterJRef.value.offsetHeight
+//   // const screenHeight = window.innerHeight
+//   const tl = $gsapPack.gsap.timeline()
+//   tl.to('.name-letters', { yPercent: 170, duration: 0.8 })
+//   return tl
+// }
 //  ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 // 離開頁面前的動畫
 let animationComplete = null // this is the resolve function
@@ -215,7 +221,7 @@ onBeforeRouteLeave(async (to, from, next) => {
         gap: 10px;
         font-size: 24vh;
         color: white;
-        margin-top: 200px;
+        margin-top: 22vh;
         transform: skewX(-10deg) rotate(-10deg);
       }
 
