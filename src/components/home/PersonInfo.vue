@@ -1,7 +1,7 @@
 <template>
   <div id="PersonInfo">
     <div class="bio-left-panel">
-      <!-- 實際內容 -->
+      <!-- nav and links -->
       <div class="btn-box">
         <div class="redirect">
           <CustomButton class="click-btn" btnContent="Click Me" padding="20px"
@@ -16,22 +16,26 @@
         </div>
       </div>
     </div>
-    <!-- ---------- -->
+    <!-- name and job -->
     <div class="bio-right-panel">
       <!-- 實際內容 -->
       <div class="bio-right-panel-content">
         <div class="personal-info">
           <div class="name">
-            <div class="name-letters letterJ" ref="letterJRef">J</div>
-            <div class="name-letters letterO">o</div>
-            <div class="name-letters letterH">h</div>
-            <div class="name-letters letterN1">n</div>
-            <div class="name-letters letterN2">n</div>
-            <div class="name-letters letterY">y</div>
+            <div class="name-letters" ref="letterJRef">J</div>
+            <div class="name-letters">o</div>
+            <div class="name-letters">h</div>
+            <div class="name-letters">n</div>
+            <div class="name-letters">n</div>
+            <div class="name-letters">y</div>
           </div>
           <div class="career">Frontend Developer</div>
         </div>
-        <div class="click-info"></div>
+        <!-- links -->
+        <div class="click-info">
+          <a target="_blank" href="https://github.com/chubbychang914"><button>Github</button></a>
+          <a target="_blank"><button>LinkedIn</button></a>
+        </div>
       </div>
     </div>
   </div>
@@ -76,7 +80,7 @@ const enterPageAnimationFlow = () => {
 }
 const clickInfoAnimationFlow = () => {
   const tl = $gsapPack.gsap.timeline({ paused: true })
-  tl.add(_animateClickMe().play())
+  tl.add(_animateNameDown().play())
   return tl
 }
 // Animations ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
@@ -107,13 +111,11 @@ const _animateNameLetters = () => {
 // 職稱進場
 
 // when click me is pressed
-const _animateClickMe = () => {
+const _animateNameDown = () => {
   const offsetHeight = letterJRef.value.offsetHeight
-  const screenWidth = window.innerWidth
   const screenHeight = window.innerHeight
-  const tl = $gsapPack.gsap.timeline({ defaults: { y: screenHeight - offsetHeight * 2, duration: 1, rotate: 10, skewX: 10 } })
-  tl.to('.letterJ', { x: screenWidth - 1000 })
-  tl.to('.name-letters', { rotate: 10, stagger: 0.1 })
+  const tl = $gsapPack.gsap.timeline({ defaults: { y: screenHeight - offsetHeight * 2, duration: 0.8, rotate: 10, skewX: 10 } })
+  tl.to('.name-letters', { rotate: 10 })
   return tl
 }
 //  ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
@@ -227,7 +229,16 @@ onBeforeRouteLeave(async (to, from, next) => {
     }
 
     // phone + email + github link
-    .click-info {}
+    .click-info {
+      .contact-platform {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        width: 100px;
+        height: 100vh;
+        background-color: white;
+      }
+    }
   }
 }
 

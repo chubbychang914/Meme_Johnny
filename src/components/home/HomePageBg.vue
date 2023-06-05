@@ -48,7 +48,7 @@ onMounted(() => {
 <style lang="scss" scoped>
 // 變數
 $themeColor: #E4D00A;
-$contentWidthPercent: 55%;
+$contentWidthPercent: 35%;
 $triangleWidthPercent: 100% - $contentWidthPercent;
 
 // 排版
@@ -56,7 +56,8 @@ $triangleWidthPercent: 100% - $contentWidthPercent;
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  background-color: black;
+  // background-color: black;
+  background-image: url("https://marketplace.canva.com/EAE6ROnD0JQ/1/0/1600w/canva-pixel-art-illustration-wallpaper-desktop-eaH9vinM_Xw.jpg");
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
