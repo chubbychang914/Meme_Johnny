@@ -5,7 +5,7 @@
       <div class="btn-box">
         <div class="redirect">
           <CustomButton class="click-btn" btnContent="Click Me" padding="20px"
-            @on-click="btnActivateclick" />
+            @on-click="btnActivateClickMe" />
         </div>
         <button @click="testReverse">Click me to reverse</button>
         <div class="redirect">
@@ -42,7 +42,7 @@
 </template>
 
 <script setup>
-import { Teleport, getCurrentInstance, onMounted, ref } from 'vue';
+import { getCurrentInstance, onMounted, ref } from 'vue';
 import { useRouter, onBeforeRouteLeave } from 'vue-router';
 import CustomButton from "@/components/reusable/CustomButton.vue"
 import debounce from 'lodash/debounce'
@@ -57,13 +57,16 @@ const letterJRef = ref(null)
 const testReverse = () => {
   if (twoWayContactTimeline.value) {
     twoWayContactTimeline.value.reverse()
+    twoWayContactTimeline.value = null
   }
 }
 // Methods ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 // 把 flow 自己設定成一個 timeline，再加入不同時間軸的動畫
-const btnActivateclick = debounce(() => {
-  twoWayContactTimeline.value = clickInfoAnimationFlow()
-  twoWayContactTimeline.value.play()
+const btnActivateClickMe = debounce(() => {
+  if (!twoWayContactTimeline.value) {
+    twoWayContactTimeline.value = clickInfoAnimationFlow()
+    twoWayContactTimeline.value.play()
+  }
 }, 400)
 const btnRedirectAbout = debounce(() => {
   router.push("/about")
@@ -75,7 +78,7 @@ const btnRedirectProjects = debounce(() => {
 const enterPageAnimationFlow = () => {
   const tl = $gsapPack.gsap.timeline({ paused: true })
   tl.add(_animateNavBtns().play())
-    .add(_animateNameLetters().play(), "<")
+    .add(_animateNameLettersEnter().play(), "<")
   return tl;
 }
 const clickInfoAnimationFlow = () => {
@@ -96,15 +99,15 @@ const _animateNavBtns = () => {
   return tl
 }
 // 名字進場
-const _animateNameLetters = () => {
+const _animateNameLettersEnter = () => {
   const tl = $gsapPack.gsap.timeline({ paused: true })
   tl.from(".name-letters", {
     xPercent: window.innerWidth,
     opacity: 0,
-    duration: 1.2,
+    duration: 0.8,
     stagger: 0.1,
-    ease: "power.in",
-    delay: 0.8,
+    ease: "power1.out",
+    delay: 0.5,
   })
   return tl
 }
@@ -112,10 +115,10 @@ const _animateNameLetters = () => {
 
 // when click me is pressed
 const _animateNameDown = () => {
-  const offsetHeight = letterJRef.value.offsetHeight
-  const screenHeight = window.innerHeight
+  // const offsetHeight = letterJRef.value.offsetHeight
+  // const screenHeight = window.innerHeight
   const tl = $gsapPack.gsap.timeline()
-  tl.to('.name-letters', { yPercent: 200, duration: 0.8 })
+  tl.to('.name-letters', { yPercent: 170, duration: 0.8 })
   return tl
 }
 //  ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
@@ -213,7 +216,7 @@ onBeforeRouteLeave(async (to, from, next) => {
         font-size: 24vh;
         color: white;
         margin-top: 200px;
-        // transform: skewX(-10deg) rotate(-10deg);
+        transform: skewX(-10deg) rotate(-10deg);
       }
 
       .name-letters {
@@ -224,7 +227,8 @@ onBeforeRouteLeave(async (to, from, next) => {
 
       .career {
         font-size: 7vh;
-        // transform: skewX(-10deg) rotate(-10deg);
+        color: white;
+        transform: skewX(-10deg) rotate(-10deg);
       }
     }
 
