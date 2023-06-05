@@ -5,7 +5,6 @@
         <div class="content-container"></div>
       </template>
     </AboutTemplate>
-
   </div>
 </template>
 

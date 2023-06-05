@@ -221,7 +221,7 @@ onBeforeRouteLeave(async (to, from, next) => {
         gap: 10px;
         font-size: 24vh;
         color: white;
-        margin-top: 22vh;
+        margin-top: 26vh;
         transform: skewX(-10deg) rotate(-10deg);
       }
 

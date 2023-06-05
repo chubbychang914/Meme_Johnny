@@ -1,5 +1,10 @@
 <template>
   <div id="HomePageBg">
+    <div class="bg-image">
+      <img
+        src="https://marketplace.canva.com/EAE6ROnD0JQ/1/0/1600w/canva-pixel-art-illustration-wallpaper-desktop-eaH9vinM_Xw.jpg"
+        alt="">
+    </div>
     <!-- left side -->
     <div class="left-panel">
       <div class="content-section">
@@ -28,7 +33,7 @@ const { proxy: { $gsapPack } } = getCurrentInstance() // 要引入這包才能�
 // Flow ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 const EnterPageAnimationFlow = () => {
   const tl = $gsapPack.gsap.timeline()
-  tl.add(_animatePanel().play())
+  tl.add(_animatePanel().paused())
   return tl
 }
 // Animations ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
@@ -57,13 +62,26 @@ $triangleWidthPercent: 100% - $contentWidthPercent;
   height: 100vh;
   overflow: hidden;
   // background-color: black;
-  background-image: url("https://marketplace.canva.com/EAE6ROnD0JQ/1/0/1600w/canva-pixel-art-illustration-wallpaper-desktop-eaH9vinM_Xw.jpg");
+  // background-image: url("https://marketplace.canva.com/EAE6ROnD0JQ/1/0/1600w/canva-pixel-art-illustration-wallpaper-desktop-eaH9vinM_Xw.jpg");
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
 
 // 元件
 #HomePageBg {
+  .bg-image {
+    position: absolute;
+    z-index: 1;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .left-panel,
+  .middle-panel,
+  .right-panel {
+    z-index: 10;
+  }
+
   .left-panel {
     display: flex;
 

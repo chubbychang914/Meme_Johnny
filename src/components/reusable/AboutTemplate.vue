@@ -5,7 +5,7 @@
         <img :src="iconUrl">
       </div>
       <div class="title">
-        <div class="title-text">{{ title }}</div>
+        <div class="title-text">{{ props.title }}</div>
       </div>
     </div>
     <div class="content">

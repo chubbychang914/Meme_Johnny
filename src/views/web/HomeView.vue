@@ -1,12 +1,12 @@
-<script setup>
-import HomePageBg from "@/components/home/HomePageBg.vue"
-import PersonInfo from "../../components/home/PersonInfo.vue";
-</script>
-
 <template>
   <HomePageBg />
-  <PersonInfo />
+  <!-- <PersonInfo /> -->
 </template>
+
+<script setup>
+import HomePageBg from "@/components/home/HomePageBg.vue"
+import PersonInfo from "@/components/home/PersonInfo.vue";
+</script>
 
 <style lang="scss" scoped>
 // 排版
