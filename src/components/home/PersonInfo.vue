@@ -208,9 +208,9 @@ onBeforeRouteLeave(async (to, from, next) => {
       .name {
         display: flex;
         gap: 10px;
-        font-size: 10em;
+        font-size: 24vh;
         color: white;
-        margin-top: 1.2em;
+        margin-top: 200px;
         transform: skewX(-10deg) rotate(-10deg);
       }
 
@@ -221,7 +221,7 @@ onBeforeRouteLeave(async (to, from, next) => {
       }
 
       .career {
-        font-size: 3.5em;
+        font-size: 7vh;
         transform: skewX(-10deg) rotate(-10deg);
       }
     }
