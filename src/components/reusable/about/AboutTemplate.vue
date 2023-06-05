@@ -1,7 +1,9 @@
 <template>
   <div id="AboutTemplate">
     <div class="header">
-      <div class="icon">icon</div>
+      <div class="icon">
+        <img :src="iconUrl">
+      </div>
       <div class="title">
         <div class="title-text">{{ title }}</div>
       </div>
@@ -17,18 +19,22 @@ const props = defineProps({
   title: {
     type: String,
     default: "title"
+  },
+  iconUrl: {
+    type: String,
+    default: ""
   }
 })
 </script>
 
 <style lang="scss" scoped>
 $themeColor: #E4D00A;
-$iconSize: 100px;
-
+$iconDivSize: 100px;
 // 排版
+
 #AboutTemplate {
   display: grid;
-  grid-template-columns: $iconSize 1fr;
+  grid-template-columns: $iconDivSize 1fr;
   height: 100%;
 }
 
@@ -37,11 +43,19 @@ $iconSize: 100px;
   .header {
     background-color: $themeColor;
     display: grid;
-    grid-template-rows: $iconSize 1fr;
+    grid-template-rows: $iconDivSize 1fr;
 
     // icon box
     .icon {
-      background-color: red;
+      // background-color: red;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      img {
+        object-fit: contain;
+        width: calc($iconDivSize - 20px);
+      }
     }
 
     // title box

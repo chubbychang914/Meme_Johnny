@@ -1,7 +1,11 @@
 <template>
   <div id="Summary">
-    <AboutTemplate title="Experience">
+    <AboutTemplate title="Experience" iconUrl="src/assets/imgs/experienceIcon.png">
+      <template v-slot:content>
+        <div class="content-container"></div>
+      </template>
     </AboutTemplate>
+
   </div>
 </template>
 
@@ -15,5 +19,7 @@ import AboutTemplate from './AboutTemplate.vue';
 #Summary {}
 
 // 元件
-#Summary {}
+#Summary {
+  .content-container {}
+}
 </style>
