@@ -38,7 +38,7 @@ const EnterPageAnimationFlow = () => {
 // Animations ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 const _animateBgLoop = () => {
   const tl = $gsapPack.gsap.timeline({ paused: true, defaults: { repeat: -1 } })
-  tl.to('.space', { backgroundPosition: "-3000px 0px", duration: 10, ease: "linear" })
+  tl.to('.space', { backgroundPosition: "-5000px 0px", duration: 30, ease: "linear" })
   return tl
 }
 
@@ -82,9 +82,10 @@ $triangleWidthPercent: 100% - $contentWidthPercent;
     overflow: hidden;
 
     .space {
-      background: url("https://static.vecteezy.com/system/resources/previews/009/877/673/non_2x/pixel-art-sky-background-with-clouds-cloudy-blue-sky-for-8bit-game-on-white-background-vector.jpg") no-repeat 0 0 transparent;
+      background: url("@/assets/imgs/spacebg.jpg") no-repeat 0 0 transparent;
       background-repeat: repeat;
       background-size: cover;
+      // transform: rotate(-75deg);
       width: 100%;
       height: 100%;
     }
