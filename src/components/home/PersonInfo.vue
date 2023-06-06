@@ -37,7 +37,7 @@
 </template>
 
 <script setup>
-import { getCurrentInstance, onMounted, ref } from 'vue';
+import { getCurrentInstance, onMounted} from 'vue';
 import { useRouter, onBeforeRouteLeave } from 'vue-router';
 import CustomButton from "@/components/reusable/CustomButton.vue";
 import DrawButton from "@/components/reusable/DrawButton.vue"
