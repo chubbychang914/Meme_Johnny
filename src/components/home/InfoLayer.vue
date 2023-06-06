@@ -60,7 +60,6 @@ const enterPageAnimationFlow = () => {
   const tl = $gsapPack.gsap.timeline({ paused: true })
   tl.add(_animateNavBtns().play())
     .add(_animateNameLettersEnter().play(), "<")
-    .add(_animateButtonBox, "+=1")
     .add(_animateCareerEnter().play(), "<")
   return tl;
 }
@@ -89,27 +88,11 @@ const _animateNameLettersEnter = () => {
   })
   return tl
 }
-// button box 進場
-const _animateButtonBox = () => {
-  $gsapPack.gsap.from(".btn-box", { y: -window.innerHeight, duration: 2 })
-}
 // 職稱進場
 const _animateCareerEnter = () => {
   const tl = $gsapPack.gsap.timeline({ paused: true })
-  tl.from('.career', { y: window.innerHeight, duration: 1.5, opacity: 0, ease: "power1.out" })
+  tl.from('.career', { y: window.innerHeight, duration: 1, opacity: 0 })
   return tl
-}
-// when click me is pressed
-// const _animateNameDown = () => {
-//   // const offsetHeight = letterJRef.value.offsetHeight
-//   // const screenHeight = window.innerHeight
-//   const tl = $gsapPack.gsap.timeline()
-//   tl.to('.name-letters', { yPercent: 170, duration: 0.8 })
-//   return tl
-// }
-// nav leave animation
-const _animateNavLeave = () => {
-
 }
 //  ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 // 離開頁面前的動畫
@@ -118,7 +101,7 @@ const animateRouterLeave = () => {
   return new Promise((resolve) => {
     animationComplete = resolve
     $gsapPack.gsap.to(".redirect", {
-      xPercent: -100,
+      y: -window.innerHeight,
       duration: 1,
       stagger: 0.1,
       onComplete: () => {
@@ -150,13 +133,13 @@ onBeforeRouteLeave(async (to, from, next) => {
   height: 100vh;
   overflow: hidden;
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 350px 2fr;
   position: absolute;
   top: 0;
   left: 0;
 
   .bio-left-panel {
-    width: 50%;
+    width: 100%;
     height: 100vh;
     // background-color: blue;
     @extend .center;
@@ -169,7 +152,7 @@ onBeforeRouteLeave(async (to, from, next) => {
       display: flex;
       flex-direction: column;
       gap: 100px;
-      outline: auto;
+      // outline: auto;
       padding: 10px 20px;
     }
 
@@ -198,18 +181,22 @@ onBeforeRouteLeave(async (to, from, next) => {
       .name {
         display: flex;
         gap: 10px;
-        font-size: 22vh;
+        font-size: 20vh;
         color: #FAE900;
-        // color: white;
         margin-top: 25vh;
         transform: skewX(-10deg) rotate(-10deg);
       }
 
       .name-letters {
-        padding: 10px;
         border: 10px double #FAE900;
         border-radius: 10px;
         background-color: black;
+
+        &:hover {
+          background-color: white;
+          color: black;
+          border: 10px double black;
+        }
       }
 
       .career {
