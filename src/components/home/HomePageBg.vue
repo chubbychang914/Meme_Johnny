@@ -1,9 +1,7 @@
 <template>
   <div id="HomePageBg">
     <div class="bg-image">
-      <img
-        src="https://marketplace.canva.com/EAE6ROnD0JQ/1/0/1600w/canva-pixel-art-illustration-wallpaper-desktop-eaH9vinM_Xw.jpg"
-        alt="">
+      <div class="space"></div>
     </div>
     <!-- left side -->
     <div class="left-panel">
@@ -28,19 +26,19 @@
 </template>
 
 <script setup>
-import { onMounted, getCurrentInstance, Teleport } from 'vue';
+import { onMounted, getCurrentInstance } from 'vue';
 const { proxy: { $gsapPack } } = getCurrentInstance() // 要引入這包才能使用 gsap 的所有東西
 // Flow ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 const EnterPageAnimationFlow = () => {
   const tl = $gsapPack.gsap.timeline()
   tl.add(_animatePanel().play())
-  // .add(_animateBgLoop().play())
+    .add(_animateBgLoop().play(), "<")
   return tl
 }
 // Animations ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 const _animateBgLoop = () => {
   const tl = $gsapPack.gsap.timeline({ paused: true, defaults: { repeat: -1 } })
-  tl.to('.bg-image', { x: "100vw" })
+  tl.to('.space', { backgroundPosition: "-3000px 0px", duration: 10, ease: "linear" })
   return tl
 }
 
@@ -69,7 +67,8 @@ $triangleWidthPercent: 100% - $contentWidthPercent;
   height: 100vh;
   overflow: hidden;
   // background-color: black;
-  // background-image: url("https://marketplace.canva.com/EAE6ROnD0JQ/1/0/1600w/canva-pixel-art-illustration-wallpaper-desktop-eaH9vinM_Xw.jpg");
+  // background-repeat: no-repeat;
+  // object-fit: cover;
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
@@ -78,14 +77,16 @@ $triangleWidthPercent: 100% - $contentWidthPercent;
 #HomePageBg {
   .bg-image {
     position: absolute;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     overflow: hidden;
 
-    img {
+    .space {
+      background: url("https://static.vecteezy.com/system/resources/previews/009/877/673/non_2x/pixel-art-sky-background-with-clouds-cloudy-blue-sky-for-8bit-game-on-white-background-vector.jpg") no-repeat 0 0 transparent;
+      background-repeat: repeat;
+      background-size: cover;
       width: 100%;
       height: 100%;
-      object-fit: cover;
     }
   }
 

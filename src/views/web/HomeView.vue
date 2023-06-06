@@ -1,6 +1,6 @@
 <template>
   <HomePageBg />
-  <!-- <PersonInfo /> -->
+  <PersonInfo />
 </template>
 
 <script setup>
