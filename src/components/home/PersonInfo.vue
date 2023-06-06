@@ -7,7 +7,6 @@
           <CustomButton class="click-btn" btnContent="Click Me" padding="20px"
             @on-click="btnActivateClickMe" />
         </div>
-        <button @click="testReverse">Click me to reverse</button>
         <DrawButton />
         <div class="redirect">
           <CustomButton class="about-btn" btnContent="About" @on-click="btnRedirectAbout" />
@@ -47,23 +46,10 @@ const { proxy: { $gsapPack } } = getCurrentInstance() // 把GSAP包引入個別�
 const router = useRouter()
 // State ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 // set variable for timelines that need reverse
-const twoWayContactTimeline = ref(null)
-// 用來計算要從底部加多少
-const letterJRef = ref(null)
-
-const testReverse = () => {
-  // if (twoWayContactTimeline.value) {
-  //   twoWayContactTimeline.value.reverse()
-  //   twoWayContactTimeline.value = null
-  // }
-}
 // Methods ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 // 把 flow 自己設定成一個 timeline，再加入不同時間軸的動畫
 const btnActivateClickMe = debounce(() => {
-  if (!twoWayContactTimeline.value) {
-    twoWayContactTimeline.value = clickInfoAnimationFlow()
-    twoWayContactTimeline.value.play()
-  }
+
 }, 400)
 const btnRedirectAbout = debounce(() => {
   router.push("/about")
@@ -76,13 +62,9 @@ const enterPageAnimationFlow = () => {
   const tl = $gsapPack.gsap.timeline({ paused: true })
   tl.add(_animateNavBtns().play())
     .add(_animateNameLettersEnter().play(), "<")
+    .add(_animateButtonBox, "+=1")
     .add(_animateCareerEnter().play(), "<")
   return tl;
-}
-const clickInfoAnimationFlow = () => {
-  // const tl = $gsapPack.gsap.timeline({ paused: true })
-  // tl.add(_animateNameDown().play())
-  // return tl
 }
 // Animations ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 // 導覽按鈕進場
@@ -108,6 +90,10 @@ const _animateNameLettersEnter = () => {
     delay: 0.5,
   })
   return tl
+}
+// button box 進場
+const _animateButtonBox = () => {
+  $gsapPack.gsap.from(".btn-box", { y: -window.innerHeight, duration: 2 })
 }
 // 職稱進場
 const _animateCareerEnter = () => {
@@ -186,6 +172,9 @@ onBeforeRouteLeave(async (to, from, next) => {
       display: flex;
       flex-direction: column;
       gap: 100px;
+      outline: auto;
+      border: 10px solid black;
+      padding: 10px 20px;
     }
 
     .click-btn {}
