@@ -1,5 +1,8 @@
 <template>
   <div id="HomePageBg">
+    <div class="bg-image">
+      <img src="@/assets/svgs/bg.svg" alt="">
+    </div>
     <!-- left side -->
     <div class="left-panel">
       <img class="trapezoidSvg" src="@/assets/svgs/trapezoid.svg" alt="triangle" />
@@ -61,11 +64,18 @@ onMounted(() => {
 
 // 元件
 #HomePageBg {
-  // .bg-image {
-  //   position: absolute;
-  //   width: 100%;
-  //   height: 100%;
-  //   overflow: hidden;
+  .bg-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
 
   //   .space {
   //     image-rendering: pixelated;

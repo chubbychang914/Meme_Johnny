@@ -32,11 +32,6 @@
           </div>
           <div class="career">Frontend Developer</div>
         </div>
-        <!-- links -->
-        <div class="click-info">
-          <a target="_blank" href="https://github.com/chubbychang914"><button>Github</button></a>
-          <a target="_blank"><button>LinkedIn</button></a>
-        </div>
       </div>
     </div>
   </div>
