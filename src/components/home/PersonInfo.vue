@@ -8,6 +8,7 @@
             @on-click="btnActivateClickMe" />
         </div>
         <button @click="testReverse">Click me to reverse</button>
+        <DrawButton />
         <div class="redirect">
           <CustomButton class="about-btn" btnContent="About" @on-click="btnRedirectAbout" />
         </div>
@@ -44,7 +45,8 @@
 <script setup>
 import { getCurrentInstance, onMounted, ref } from 'vue';
 import { useRouter, onBeforeRouteLeave } from 'vue-router';
-import CustomButton from "@/components/reusable/CustomButton.vue"
+import CustomButton from "@/components/reusable/CustomButton.vue";
+import DrawButton from "@/components/reusable/DrawButton.vue"
 import debounce from 'lodash/debounce'
 const { proxy: { $gsapPack } } = getCurrentInstance() // 把GSAP包引入個別使用
 const router = useRouter()

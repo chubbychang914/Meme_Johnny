@@ -22,7 +22,7 @@ const { proxy: { $gsapPack } } = getCurrentInstance() // 要引入這包才能�
 const EnterPageAnimationFlow = () => {
   const tl = $gsapPack.gsap.timeline()
   tl.add(_animatePanel().play())
-    // .add(_animateBgLoop().play(), "<")
+  // .add(_animateBgLoop().play(), "<")
   return tl
 }
 // Animations ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
