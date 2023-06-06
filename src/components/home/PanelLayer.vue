@@ -1,5 +1,5 @@
 <template>
-  <div id="HomePageBg">
+  <div id="PanelLayer">
     <div class="bg-image">
       <img src="@/assets/svgs/bg.svg" alt="">
     </div>
@@ -54,7 +54,7 @@ onMounted(() => {
 // $triangleWidthPercent: 100% - $contentWidthPercent;
 
 // 排版
-#HomePageBg {
+#PanelLayer {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
@@ -63,7 +63,7 @@ onMounted(() => {
 }
 
 // 元件
-#HomePageBg {
+#PanelLayer {
   .bg-image {
     position: absolute;
     width: 100%;

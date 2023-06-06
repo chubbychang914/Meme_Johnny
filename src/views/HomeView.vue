@@ -1,11 +1,11 @@
 <template>
-  <HomePageBg />
-  <PersonInfo />
+  <PanelLayer />
+  <InfoLayer />
 </template>
 
 <script setup>
-import HomePageBg from "@/components/home/HomePageBg.vue"
-import PersonInfo from "@/components/home/PersonInfo.vue";
+import PanelLayer from "@/components/home/PanelLayer.vue"
+import InfoLayer from "@/components/home/InfoLayer.vue";
 </script>
 
 <style lang="scss" scoped>
