@@ -54,6 +54,7 @@ const btnStyles = computed(() => {
     background-color: white;
     box-shadow: 0 5px rgba(0, 0, 0, 0.5);
     transform: scale(0.95);
+    user-select: none;
   }
 
   &:hover {

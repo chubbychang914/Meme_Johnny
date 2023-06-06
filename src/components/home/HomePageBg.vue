@@ -5,10 +5,10 @@
     </div>
     <!-- left side -->
     <div class="left-panel">
-      <div class="content-section">
-      </div>
+      <!-- <div class="content-section">
+      </div> -->
       <div class="triangle-section">
-        <img class="triangleSvg" src="@/assets/svgs/homeTriangle.svg" alt="triangle" />
+        <img class="triangleSvg" src="src/assets/imgs/trapezoid.png" alt="triangle" />
       </div>
     </div>
     <!-- middle -->
@@ -18,9 +18,9 @@
     <!-- right side -->
     <div class="right-panel">
       <div class="triangle-section">
-        <img class="triangleSvg" src="@/assets/svgs/homeTriangle.svg" alt="triangle" />
+        <img class="triangleSvg" src="src/assets/imgs/trapezoid.png" alt="triangle" />
       </div>
-      <div class="content-section"></div>
+      <!-- <div class="content-section"></div> -->
     </div>
   </div>
 </template>
@@ -38,7 +38,7 @@ const EnterPageAnimationFlow = () => {
 // Animations ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 const _animateBgLoop = () => {
   const tl = $gsapPack.gsap.timeline({ paused: true, defaults: { repeat: -1 } })
-  tl.to('.space', { backgroundPosition: "-5000px 0px", duration: 30, ease: "linear" })
+  tl.to('.space', { backgroundPosition: "-5000px 0px", duration: 25, ease: "linear" })
   return tl
 }
 
@@ -58,7 +58,7 @@ onMounted(() => {
 <style lang="scss" scoped>
 // 變數
 $themeColor: #E4D00A;
-$contentWidthPercent: 35%;
+$contentWidthPercent: 50%;
 $triangleWidthPercent: 100% - $contentWidthPercent;
 
 // 排版
@@ -66,9 +66,6 @@ $triangleWidthPercent: 100% - $contentWidthPercent;
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  // background-color: black;
-  // background-repeat: no-repeat;
-  // object-fit: cover;
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
@@ -82,10 +79,11 @@ $triangleWidthPercent: 100% - $contentWidthPercent;
     overflow: hidden;
 
     .space {
-      background: url("@/assets/imgs/spacebg.jpg") no-repeat 0 0 transparent;
+      image-rendering: pixelated;
+      // background: url("@/assets/imgs/spacebg.jpg") no-repeat 0 0 transparent;
       background-repeat: repeat;
       background-size: cover;
-      // transform: rotate(-75deg);
+      transform: rotate(-75deg);
       width: 100%;
       height: 100%;
     }

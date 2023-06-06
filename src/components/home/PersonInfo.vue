@@ -7,7 +7,7 @@
           <CustomButton class="click-btn" btnContent="Click Me" padding="20px"
             @on-click="btnActivateClickMe" />
         </div>
-        <!-- <button @click="testReverse">Click me to reverse</button> -->
+        <button @click="testReverse">Click me to reverse</button>
         <div class="redirect">
           <CustomButton class="about-btn" btnContent="About" @on-click="btnRedirectAbout" />
         </div>
@@ -46,7 +46,6 @@ import { getCurrentInstance, onMounted, ref } from 'vue';
 import { useRouter, onBeforeRouteLeave } from 'vue-router';
 import CustomButton from "@/components/reusable/CustomButton.vue"
 import debounce from 'lodash/debounce'
-import { Bounce } from 'gsap';
 const { proxy: { $gsapPack } } = getCurrentInstance() // 把GSAP包引入個別使用
 const router = useRouter()
 // State ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
@@ -56,10 +55,10 @@ const twoWayContactTimeline = ref(null)
 const letterJRef = ref(null)
 
 const testReverse = () => {
-  if (twoWayContactTimeline.value) {
-    twoWayContactTimeline.value.reverse()
-    twoWayContactTimeline.value = null
-  }
+  // if (twoWayContactTimeline.value) {
+  //   twoWayContactTimeline.value.reverse()
+  //   twoWayContactTimeline.value = null
+  // }
 }
 // Methods ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 // 把 flow 自己設定成一個 timeline，再加入不同時間軸的動畫
@@ -127,6 +126,10 @@ const _animateCareerEnter = () => {
 //   tl.to('.name-letters', { yPercent: 170, duration: 0.8 })
 //   return tl
 // }
+// nav leave animation
+const _animateNavLeave = () => {
+
+}
 //  ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 // 離開頁面前的動畫
 let animationComplete = null // this is the resolve function
@@ -218,15 +221,15 @@ onBeforeRouteLeave(async (to, from, next) => {
 
       .name {
         display: flex;
-        gap: 10px;
-        font-size: 24vh;
+        gap: 15px;
+        font-size: 22vh;
         color: white;
-        margin-top: 26vh;
+        margin-top: 25vh;
         transform: skewX(-10deg) rotate(-10deg);
       }
 
       .name-letters {
-        border: 10px double white;
+        border: 10px outset white;
         border-radius: 10px;
         background-color: black;
       }
