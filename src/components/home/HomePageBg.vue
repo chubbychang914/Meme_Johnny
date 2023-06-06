@@ -34,7 +34,7 @@ const { proxy: { $gsapPack } } = getCurrentInstance() // 要引入這包才能�
 const EnterPageAnimationFlow = () => {
   const tl = $gsapPack.gsap.timeline()
   tl.add(_animatePanel().play())
-    .add(_animateBgLoop().play())
+  // .add(_animateBgLoop().play())
   return tl
 }
 // Animations ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
@@ -78,15 +78,15 @@ $triangleWidthPercent: 100% - $contentWidthPercent;
 #HomePageBg {
   .bg-image {
     position: absolute;
-    z-index: 1;
+    width: 100vw;
     height: 100vh;
     overflow: hidden;
-  }
 
-  .left-panel,
-  .middle-panel,
-  .right-panel {
-    z-index: 10;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
   }
 
   .left-panel {
