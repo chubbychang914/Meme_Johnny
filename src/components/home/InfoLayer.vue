@@ -19,25 +19,23 @@
     <!-- name and job -->
     <div class="bio-right-panel">
       <!-- 實際內容 -->
-      <div class="bio-right-panel-content">
-        <div class="personal-info">
-          <div class="name">
-            <div class="name-letters" ref="letterJRef">J</div>
-            <div class="name-letters">o</div>
-            <div class="name-letters">h</div>
-            <div class="name-letters">n</div>
-            <div class="name-letters">n</div>
-            <div class="name-letters">y</div>
-          </div>
-          <div class="career">Frontend Developer</div>
+      <div class="personal-info">
+        <div class="name">
+          <div class="name-letters" ref="letterJRef">J</div>
+          <div class="name-letters">o</div>
+          <div class="name-letters">h</div>
+          <div class="name-letters">n</div>
+          <div class="name-letters">n</div>
+          <div class="name-letters">y</div>
         </div>
+        <div class="career">Frontend Developer</div>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { getCurrentInstance, onMounted} from 'vue';
+import { getCurrentInstance, onMounted } from 'vue';
 import { useRouter, onBeforeRouteLeave } from 'vue-router';
 import CustomButton from "@/components/templates/CustomButton.vue";
 import DrawButton from "@/components/templates/DrawButton.vue"
@@ -161,8 +159,7 @@ onBeforeRouteLeave(async (to, from, next) => {
     width: 50%;
     height: 100vh;
     // background-color: blue;
-    display: flex;
-    align-items: center;
+    @extend .center;
 
     .redirect {
       width: 200px; // set button width
@@ -173,7 +170,6 @@ onBeforeRouteLeave(async (to, from, next) => {
       flex-direction: column;
       gap: 100px;
       outline: auto;
-      border: 10px solid black;
       padding: 10px 20px;
     }
 
@@ -190,12 +186,6 @@ onBeforeRouteLeave(async (to, from, next) => {
     height: 100vh;
     font-family: 'VT323', monospace;
 
-    .bio-right-panel-content {
-      height: 100vh;
-      display: grid;
-      grid-template-rows: 1fr 1fr;
-    }
-
     // name & job description
     .personal-info {
       display: flex;
@@ -207,15 +197,17 @@ onBeforeRouteLeave(async (to, from, next) => {
 
       .name {
         display: flex;
-        gap: 15px;
+        gap: 10px;
         font-size: 22vh;
-        color: white;
+        color: #FAE900;
+        // color: white;
         margin-top: 25vh;
         transform: skewX(-10deg) rotate(-10deg);
       }
 
       .name-letters {
-        border: 10px outset white;
+        padding: 10px;
+        border: 10px double #FAE900;
         border-radius: 10px;
         background-color: black;
       }
