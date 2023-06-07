@@ -1,5 +1,5 @@
 <template>
-  <div id="DrawButton">
+  <div id="DrawButton" @click="handleClick">
     <div class="btn-txt">
       {{ props.btnText }}
       <span></span>
@@ -17,6 +17,9 @@ const props = defineProps({
     default: "Button"
   }
 })
+
+const emit = defineEmits(['on-click'])
+const handleClick = () => emit('on-click')
 </script>
 
 <style lang="scss" scoped>
@@ -28,8 +31,8 @@ const props = defineProps({
   .btn-txt {
     border-radius: 10px;
     position: relative;
-    padding: 10px 20px;
-    font-size: 30px;
+    // padding: 10px 20px;
+    font-size: 5rem;
     letter-spacing: 0.1em;
     color: white;
     @extend .center;
@@ -76,6 +79,12 @@ const props = defineProps({
       transition-delay: 0s;
     }
 
+    &:hover span:nth-child(4) {
+      transform: scaleX(1);
+      transition: 0.2s;
+      transition-delay: 0s;
+    }
+
 
     span {
       position: absolute;
@@ -84,14 +93,14 @@ const props = defineProps({
       &:nth-child(3) {
         width: 100%;
         height: 2px;
-        background-color: black;
+        background-color: #FAE900;
       }
 
       &:nth-child(2),
       &:nth-child(4) {
         width: 2px;
         height: 100%;
-        background-color: black;
+        background-color: #FAE900;
       }
 
       &:nth-child(1) {

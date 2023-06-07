@@ -3,9 +3,15 @@
     <div class="bio-left-panel">
       <!-- nav and links -->
       <div class="btn-box">
-        <div class="redirect startLabel">Start</div>
-        <div class="redirect aboutLabel">About</div>
-        <div class="redirect projectsLabel">Projects</div>
+        <div class="redirect startLabel">
+          <DrawButton btnText="Start" />
+        </div>
+        <div class="redirect aboutLabel">
+          <DrawButton btnText="About" @on-click="btnRedirectAbout" />
+        </div>
+        <div class="redirect projectsLabel">
+          <DrawButton btnText="Projects" @on-click="btnRedirectProjects" />
+        </div>
       </div>
     </div>
     <!-- name and job -->
@@ -126,7 +132,7 @@ onBeforeRouteLeave(async (to, from, next) => {
   height: 100vh;
   overflow: hidden;
   display: grid;
-  grid-template-columns: 350px 2fr;
+  grid-template-columns: 1fr 3fr; // 調整寬度
   position: absolute;
   top: 0;
   left: 0;
