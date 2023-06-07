@@ -1,6 +1,10 @@
 <template>
   <div id="CustomButton" @click="handleClick" :style="btnStyles">
     <div class="btn-content">{{ props.btnContent }}</div>
+    <div class="hover-style">
+      <img style="object-fit: contain;width: 50px;height: 50px;"
+        src="https://freepngimg.com/download/pacman/21623-6-pac-man-ghost-file.png" alt="">
+    </div>
   </div>
 </template>
 
@@ -15,10 +19,6 @@ const props = defineProps({
   padding: {
     type: String,
     default: "10px 20px"
-  },
-  bgColor: {
-    type: String,
-    default: "#F5F5F5"
   }
 })
 // methods ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
@@ -43,19 +43,42 @@ const btnStyles = computed(() => {
 
 // 元件
 #CustomButton {
+  background-color: black;
+  color: white;
   display: flex;
-  background-color: white;
-  padding: 10px 20px;
+  border-radius: 10px;
   @extend .center;
 
+  &:active {
+    color: black;
+    background-color: white;
+    box-shadow: 0 5px rgba(0, 0, 0, 0.5);
+    transform: scale(0.95);
+    user-select: none;
+  }
+
   &:hover {
-    background-color: blue;
-    color: white;
+    background-color: white;
+    color: black;
   }
 
   .btn-content {
     text-decoration: none;
     font-size: 30px;
+  }
+
+  .hover-style {
+    display: none;
+    position: absolute;
+  }
+
+
+  &:hover .hover-style {
+    display: block;
+  }
+
+  &:hover .btn-content {
+    z-index: 2;
   }
 }
 
