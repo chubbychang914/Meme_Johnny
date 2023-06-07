@@ -3,17 +3,9 @@
     <div class="bio-left-panel">
       <!-- nav and links -->
       <div class="btn-box">
-        <div class="redirect">
-          <CustomButton class="click-btn" btnContent="Click Me" padding="20px"
-            @on-click="btnActivateClickMe" />
-        </div>
-        <DrawButton />
-        <div class="redirect">
-          <CustomButton class="about-btn" btnContent="About" @on-click="btnRedirectAbout" />
-        </div>
-        <div class="redirect">
-          <CustomButton class="projects-btn" btnContent="Projects" @on-click="btnRedirectProjects" />
-        </div>
+        <div class="redirect startLabel">Start</div>
+        <div class="redirect aboutLabel">About</div>
+        <div class="redirect projectsLabel">Projects</div>
       </div>
     </div>
     <!-- name and job -->
@@ -125,6 +117,7 @@ onBeforeRouteLeave(async (to, from, next) => {
 #PersonInfo {
   position: absolute;
   z-index: 100; // 這樣才能蓋過底層的圖片
+  font-family: 'VT323', monospace;
 }
 
 // 元件
@@ -144,17 +137,31 @@ onBeforeRouteLeave(async (to, from, next) => {
     // background-color: blue;
     @extend .center;
 
-    .redirect {
-      width: 200px; // set button width
-    }
-
     .btn-box {
       display: flex;
       flex-direction: column;
+      justify-content: flex-start;
       gap: 100px;
       // outline: auto;
-      padding: 10px 20px;
     }
+
+    .redirect {
+      // width: 200px; // set button width
+    }
+
+    .startLabel {
+      font-size: 150px;
+      // background-color: blue;
+      color: yellow;
+    }
+
+    .aboutLabel,
+    .projectsLabel {
+      font-size: 100px;
+      color: white;
+    }
+
+
 
     .click-btn {}
 
@@ -167,7 +174,6 @@ onBeforeRouteLeave(async (to, from, next) => {
   //  ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
   .bio-right-panel {
     height: 100vh;
-    font-family: 'VT323', monospace;
 
     // name & job description
     .personal-info {
@@ -201,6 +207,7 @@ onBeforeRouteLeave(async (to, from, next) => {
 
       .career {
         font-size: 7vh;
+        // color: #9999FF;
         color: white;
         transform: skewX(-10deg) rotate(-10deg);
       }
