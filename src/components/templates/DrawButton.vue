@@ -31,7 +31,7 @@ const handleClick = () => emit('on-click')
   .btn-txt {
     border-radius: 10px;
     position: relative;
-    // padding: 10px 20px;
+    padding: 20px 10px;
     font-size: 5rem;
     letter-spacing: 0.1em;
     color: white;

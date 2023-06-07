@@ -92,20 +92,25 @@ const _animateCareerEnter = () => {
   tl.from('.career', { y: window.innerHeight, duration: 1, opacity: 0 })
   return tl
 }
+// btn leave
+const _animateButtonsLeave = () => {
+  const action = $gsapPack.gsap.to('.redirect', {
+    y: -window.innerHeight,
+    duration: 1,
+    stagger: 0.1,
+    paused: true
+  })
+  return action
+}
 //  ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 // 離開頁面前的動畫
 let animationComplete = null // this is the resolve function
 const animateRouterLeave = () => {
   return new Promise((resolve) => {
     animationComplete = resolve
-    $gsapPack.gsap.to(".redirect", {
-      y: -window.innerHeight,
-      duration: 1,
-      stagger: 0.1,
-      onComplete: () => {
-        animationComplete()
-      },
-    })
+    const tl = $gsapPack.gsap.timeline()
+    tl.add(_animateButtonsLeave().play())
+      .eventCallback("onComplete", () => animationComplete())
   })
 }
 // Hooks ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
