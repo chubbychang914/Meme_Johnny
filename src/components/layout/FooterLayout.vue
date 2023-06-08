@@ -13,13 +13,13 @@
         <img src="@/assets/svgs/linkedInIcon.svg" alt="Github">
       </div>
     </li>
-    <li class="contact-box" @click="redirectEmail">
+    <li class="contact-box" @click="openExternalPage('mailto:johnny22375@gmail.com')">
       <div class="title">Email</div>
       <div class="icon">
         <img src="@/assets/svgs/gmailIcon.svg" alt="Github">
       </div>
     </li>
-    <li class="contact-box">
+    <li class="contact-box" @click="openExternalPage('tel:+886981093375')">
       <div class="title">Phone</div>
       <div class="icon">
         <img src="@/assets/svgs/linkedInIcon.svg" alt="Github">

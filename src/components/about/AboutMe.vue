@@ -38,9 +38,9 @@ const _animateAboutPanels = () => {
       trigger: ".card-box",
       pin: true,
       scrub: 0.5,
-      markers: true,
-      start: "-=80",
-      end: `+=${screenHeight * 5}`,
+      // markers: true,
+      start: "-=80", // 從trigger的-80px開始執行
+      end: `+=${screenHeight * 3}`, // 調整滾動速度
       scroll: true
     }
   })
