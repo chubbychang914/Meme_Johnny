@@ -1,6 +1,6 @@
 <template>
   <div id="NavbarLayout">
-    <h1>a;dfjasdk</h1>
+    <h1>icon</h1>
   </div>
 </template>
 
@@ -13,7 +13,7 @@
 #NavbarLayout {
   width: 100%;
   height: 100%;
-  background-color: grey;
+  background-color: #0C243C;
 }
 
 // 元件

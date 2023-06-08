@@ -38,8 +38,9 @@ const openExternalPage = (url) => {
 <style lang="scss" scoped>
 // 排版
 #FooterLayout {
+  --divHeight: 75px;
   width: 100%;
-  height: 100%;
+  height: var(--divHeight);
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   list-style-type: none;
@@ -52,12 +53,12 @@ const openExternalPage = (url) => {
   .contact-box {
     // outline: auto;
     width: 100%;
-    height: 100%;
+    height: var(--divHeight);
     display: flex;
     align-items: center;
 
     .title {
-      font-size: 60px;
+      font-size: 50px;
       color: white;
     }
 

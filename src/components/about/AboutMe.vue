@@ -61,43 +61,42 @@ onMounted(() => {
 // 元件
 #AboutMe {
   .card-box {
-    --spacing: 12%;
+    --spacing: 10vw;
     position: relative;
     // outline: auto;
     width: 100%;
     height: 100%;
     background-color: black;
-    background-image: url('src/assets/svgs/bg.svg');
+    // background-image: url('src/assets/svgs/bg.svg');
     background-repeat: no-repeat;
     background-size: cover;
-
-
+    
+    
     .card {
+      box-sizing: border-box;
       list-style-type: none;
       position: absolute;
-      width: 50%;
+      width: 100%;
       height: 100%;
+      border: 10px double black;
+      border-radius: 50px;
 
       &:nth-child(1) {
         background-color: blue;
-        left: var(--spacing);
         z-index: 1;
       }
 
       &:nth-child(2) {
         background-color: green;
-        left: calc(var(--spacing)*2);
+        left: var(--spacing);
         z-index: 2;
       }
 
       &:nth-child(3) {
         background-color: red;
-        left: calc(var(--spacing)*3);
-        // left: var(--spacing);
+        left: calc(var(--spacing)*2);
         z-index: 3;
       }
-
-
     }
   }
 }
