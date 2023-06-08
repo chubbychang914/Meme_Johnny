@@ -33,7 +33,33 @@ onMounted(() => {
     outline: auto;
     width: 100%;
     height: 100%;
-    background-color: blue;
+    background-color: cyan;
+
+    .card {
+      list-style-type: none;
+      position: absolute;
+      width: 50%;
+      height: 50%;
+      border: 10px solid black;
+
+      &:nth-child(3) {
+        background-color: blue;
+        left: 100px;
+        z-index: 1;
+      }
+
+      &:nth-child(2) {
+        background-color: green;
+        left: 200px;
+        z-index: 2;
+      }
+
+      &:nth-child(1) {
+        background-color: red;
+        left: 300px;
+        z-index: 3;
+      }
+    }
   }
 }
 
