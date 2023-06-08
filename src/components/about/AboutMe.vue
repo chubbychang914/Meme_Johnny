@@ -1,9 +1,15 @@
 <template>
   <div id="AboutMe">
     <ul class="card-box">
-      <li class="card">1</li>
-      <li class="card">2</li>
-      <li class="card">3</li>
+      <li class="card">
+        <AboutTemplate />
+      </li>
+      <li class="card">
+        <AboutTemplate />
+      </li>
+      <li class="card">
+        <AboutTemplate title="Summary"/>
+      </li>
     </ul>
   </div>
 </template>
@@ -14,6 +20,8 @@ import { useRouter, onBeforeRouteLeave } from 'vue-router';
 import debounce from 'lodash/debounce';
 const { proxy: { $gsapPack } } = getCurrentInstance()
 const router = useRouter()
+
+import AboutTemplate from '../templates/AboutTemplate.vue';
 
 // Animations ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 const _animateAboutPanels = () => {
@@ -33,7 +41,7 @@ const _animateAboutPanels = () => {
     scrollTrigger: {
       trigger: ".card-box",
       pin: true,
-      scrub: true,
+      scrub: 0.5,
       markers: true,
       start: "-=80",
       end: `+=${screenHeight * 5}`,
@@ -58,7 +66,7 @@ onMounted(() => {
 // 元件
 #AboutMe {
   .card-box {
-    --spacing: 10vh;
+    --spacing: 15vh;
     position: relative;
     outline: auto;
     width: 100%;
@@ -68,7 +76,7 @@ onMounted(() => {
     .card {
       list-style-type: none;
       position: absolute;
-      width: 75%;
+      width: 80%;
       height: 100%;
 
       &:nth-child(1) {
@@ -98,5 +106,4 @@ onMounted(() => {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-</style>
+}</style>
