@@ -1,13 +1,13 @@
 <template>
   <div id="AboutView">
     <nav>
-      <NavbarLayout />
+      <!-- <NavbarLayout /> -->
     </nav>
-    <div class="aboutMeComponent">
+    <div class="content">
       <AboutMe />
     </div>
     <footer>
-      <FooterLayout />
+      <!-- <FooterLayout /> -->
     </footer>
   </div>
 </template>
@@ -51,6 +51,7 @@ onMounted(() => {
   grid-template-rows: 80px 1fr 80px;
 
   nav {
+    background-color: yellow;
     position: fixed;
     top: 0;
     left: 0;
@@ -58,10 +59,11 @@ onMounted(() => {
     height: 80px;
   }
 
-  .aboutMeComponent {
+  .content {
     width: 100%;
     height: 100%;
     @extend .center;
+    grid-row: 2;
   }
 
   footer {

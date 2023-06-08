@@ -40,7 +40,7 @@ const _scrollAboutPanels = () => {
       // markers: true,
       start: "-=80", // 從trigger的-80px開始執行
       end: `+=${screenHeight * 3}`, // 調整滾動速度
-      scroll: true
+      scroll: true,
     }
   })
 }
@@ -67,7 +67,7 @@ onMounted(() => {
     width: 100%;
     height: 100%;
     background-color: black;
-    // background-image: url('src/assets/svgs/bg.svg');
+    background-image: url('src/assets/svgs/bg.svg');
     background-repeat: no-repeat;
     background-size: cover;
 

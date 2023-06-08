@@ -11,9 +11,9 @@
 <style lang="scss" scoped>
 // 排版
 #NavbarLayout {
-  background-color: yellow;
-  width: 100%;
-  height: 80px;
+  // background-color: yellow;
+  // width: 100%;
+  // height: 80px;
 }
 
 // 元件
