@@ -2,13 +2,10 @@
   <div id="AboutMe">
     <ul class="card-box">
       <li class="card">
-        <AboutTemplate />
       </li>
       <li class="card">
-        <AboutTemplate />
       </li>
       <li class="card">
-        <AboutTemplate title="Summary"/>
       </li>
     </ul>
   </div>
@@ -21,7 +18,6 @@ import debounce from 'lodash/debounce';
 const { proxy: { $gsapPack } } = getCurrentInstance()
 const router = useRouter()
 
-import AboutTemplate from '../templates/AboutTemplate.vue';
 
 // Animations ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 const _animateAboutPanels = () => {
@@ -106,4 +102,5 @@ onMounted(() => {
   display: flex;
   justify-content: center;
   align-items: center;
-}</style>
+}
+</style>
