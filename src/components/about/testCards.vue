@@ -1,18 +1,10 @@
 <template>
   <div id="AboutPage">
-
-    <!-- <div class="card">asdkfjajad;lfkaj;flkajdf;lakdjf;lakdsjk</div>
-    <div class="card">There</div>
-    <div class="card">Its me</div> -->
-
     <ul class="cards">
       <li class="card"></li>
       <li class="card"></li>
       <li class="card"></li>
     </ul>
-
-
-    <h1>Ending</h1>
   </div>
 </template>
 

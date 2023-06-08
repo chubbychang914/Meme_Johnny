@@ -1,11 +1,13 @@
 <template>
   <div id="AboutView">
-    <AboutPageCards />
+    <!-- <testCards /> -->
+    <AboutMe />
   </div>
 </template>
 
 <script setup>
-import AboutPageCards from "@/components/about/AboutPageCards.vue"
+import testCards from "@/components/about/testCards.vue"
+import AboutMe from "../components/about/AboutMe.vue";
 </script>
 
 <style lang="scss" scoped>
