@@ -1,5 +1,7 @@
 <template>
-  <div id="NavbarLayout"></div>
+  <div id="NavbarLayout">
+    <h1>a;dfjasdk</h1>
+  </div>
 </template>
 
 <script setup>
@@ -8,7 +10,11 @@
 
 <style lang="scss" scoped>
 // 排版
-#NavbarLayout {}
+#NavbarLayout {
+  background-color: yellow;
+  width: 100%;
+  height: 80px;
+}
 
 // 元件
 #NavbarLayout {}

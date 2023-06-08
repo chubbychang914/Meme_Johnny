@@ -1,6 +1,8 @@
 <template>
   <div id="AboutView">
-    <nav style="background-color: white;"></nav>
+    <nav>
+      <NavbarLayout />
+    </nav>
     <div class="aboutMeComponent">
       <AboutMe />
     </div>
@@ -15,6 +17,7 @@ import { getCurrentInstance, onMounted, ref, toHandlerKey } from 'vue';
 const { proxy: { $gsapPack } } = getCurrentInstance()
 import AboutMe from "@/components/about/AboutMe.vue";
 import FooterLayout from "@/components/layout/FooterLayout.vue";
+import NavbarLayout from '../components/layout/NavbarLayout.vue';
 
 // Flows ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 const enterPageAnimationFlow = () => {
@@ -46,6 +49,14 @@ onMounted(() => {
   // background-color: black;
   display: grid;
   grid-template-rows: 80px 1fr 80px;
+
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+  }
 
   .aboutMeComponent {
     width: 100%;
