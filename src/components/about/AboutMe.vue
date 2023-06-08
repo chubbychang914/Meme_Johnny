@@ -11,14 +11,24 @@
 <script setup>
 import { getCurrentInstance, onMounted, ref } from 'vue';
 import { useRouter, onBeforeRouteLeave } from 'vue-router';
+import debounce from 'lodash/debounce';
 const { proxy: { $gsapPack } } = getCurrentInstance()
 const router = useRouter()
 
 // Animations ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 const _animateAboutPanels = () => {
-  const screenHeight = window.innerHeight
+  // 根據螢幕大小去設定元件的寬度跟高度
+  let screenHeight = window.innerHeight;
+  let screenWidth = window.innerWidth
+  const updateScrollTrigger = debounce(() => {
+    screenHeight = window.innerHeight;
+    screenWidth = window.innerWidth
+    $gsapPack.ScrollTrigger.refresh();
+  }, 500);
+  window.addEventListener('resize', updateScrollTrigger);
+  // action
   $gsapPack.gsap.from(".card", {
-    x: window.innerWidth,
+    x: screenWidth,
     stagger: 0.5,
     scrollTrigger: {
       trigger: ".card-box",
@@ -48,7 +58,7 @@ onMounted(() => {
 // 元件
 #AboutMe {
   .card-box {
-    --spacing: 20vh;
+    --spacing: 10vh;
     position: relative;
     outline: auto;
     width: 100%;
