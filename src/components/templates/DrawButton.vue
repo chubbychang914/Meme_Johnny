@@ -87,18 +87,19 @@ const handleClick = () => emit('on-click')
 
 
     span {
+      --spanHeight: 3px;
       position: absolute;
 
       &:nth-child(1),
       &:nth-child(3) {
         width: 100%;
-        height: 2px;
+        height: var(--spanHeight);
         background-color: #FAE900;
       }
 
       &:nth-child(2),
       &:nth-child(4) {
-        width: 2px;
+        width: var(--spanHeight);
         height: 100%;
         background-color: #FAE900;
       }

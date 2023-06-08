@@ -1,0 +1,109 @@
+<template>
+  <div id="AboutMe">
+    <ul class="card-box">
+      <li class="card">
+        <AboutTemplate />
+      </li>
+      <li class="card">
+        <AboutTemplate />
+      </li>
+      <li class="card">
+        <AboutTemplate title="Summary"/>
+      </li>
+    </ul>
+  </div>
+</template>
+
+<script setup>
+import { getCurrentInstance, onMounted, ref } from 'vue';
+import { useRouter, onBeforeRouteLeave } from 'vue-router';
+import debounce from 'lodash/debounce';
+const { proxy: { $gsapPack } } = getCurrentInstance()
+const router = useRouter()
+
+import AboutTemplate from '../templates/AboutTemplate.vue';
+
+// Animations ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+const _animateAboutPanels = () => {
+  // 根據螢幕大小去設定元件的寬度跟高度
+  let screenHeight = window.innerHeight;
+  let screenWidth = window.innerWidth
+  const updateScrollTrigger = debounce(() => {
+    screenHeight = window.innerHeight;
+    screenWidth = window.innerWidth
+    $gsapPack.ScrollTrigger.refresh();
+  }, 500);
+  window.addEventListener('resize', updateScrollTrigger);
+  // action
+  $gsapPack.gsap.from(".card", {
+    x: screenWidth,
+    stagger: 0.5,
+    scrollTrigger: {
+      trigger: ".card-box",
+      pin: true,
+      scrub: 0.5,
+      markers: true,
+      start: "-=80",
+      end: `+=${screenHeight * 5}`,
+      scroll: true
+    }
+  })
+}
+
+onMounted(() => {
+  _animateAboutPanels()
+})
+</script>
+
+<style lang="scss" scoped>
+// 排版
+#AboutMe {
+  // 不用動，是根據外層設定長寬
+  width: 100%;
+  height: 100%;
+}
+
+// 元件
+#AboutMe {
+  .card-box {
+    --spacing: 15vh;
+    position: relative;
+    outline: auto;
+    width: 100%;
+    height: 100%;
+    background-color: cyan;
+
+    .card {
+      list-style-type: none;
+      position: absolute;
+      width: 80%;
+      height: 100%;
+
+      &:nth-child(1) {
+        background-color: blue;
+        z-index: 1;
+      }
+
+      &:nth-child(2) {
+        background-color: green;
+        left: var(--spacing);
+        z-index: 2;
+      }
+
+      &:nth-child(3) {
+        background-color: red;
+        left: calc(var(--spacing)*2);
+        // left: var(--spacing);
+        z-index: 3;
+      }
+
+
+    }
+  }
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}</style>
