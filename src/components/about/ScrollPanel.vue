@@ -1,11 +1,13 @@
 <template>
   <div id="AboutMe">
     <ul class="card-box">
-      <li class="card">
+      <li class="card">Summary
       </li>
-      <li class="card">
+      <li class="card">Skills
       </li>
-      <li class="card">
+      <li class="card">iSpan
+      </li>
+      <li class="card">Tyr
       </li>
     </ul>
   </div>
@@ -43,7 +45,7 @@ const _scrollAboutPanels = () => {
       scrub: 0.5,
       // markers: true,
       start: "-=80", // 從trigger的-80px開始執行
-      end: `+=${screenHeight * 3}`, // 調整滾動速度
+      end: `+=${screenHeight * 4.5}`, // 調整滾動速度
     }
   })
 }
@@ -69,7 +71,7 @@ onMounted(() => {
     // outline: auto;
     width: 100%;
     height: 100%;
-    background-color: black;
+    // background-color: black;
     // background-image: url('src/assets/svgs/bg.svg');
     background-repeat: no-repeat;
     background-size: cover;
@@ -79,9 +81,9 @@ onMounted(() => {
       box-sizing: border-box;
       list-style-type: none;
       position: absolute;
-      width: 100%;
+      width: 50%;
       height: 100%;
-      border-left: 10px solid white;
+      // border-left: 10px solid darkblue;
       // border-radius: 10px;
 
       &:nth-child(1) {
@@ -99,6 +101,13 @@ onMounted(() => {
         background-color: red;
         left: calc(var(--spacing)*2);
         z-index: 3;
+      }
+
+      &:nth-child(4) {
+        background-color: hotpink;
+        left: calc(var(--spacing)*3);
+        width: 70%;
+        z-index: 4;
       }
     }
   }

@@ -4,7 +4,7 @@
       <NavbarLayout />
     </nav>
     <div class="aboutContent">
-      <AboutMe />
+      <ScrollPanel />
     </div>
     <footer class="aboutFooter">
       <FooterLayout />
@@ -15,7 +15,7 @@
 <script setup>
 import { getCurrentInstance, onMounted, ref, toHandlerKey } from 'vue';
 const { proxy: { $gsapPack } } = getCurrentInstance()
-import AboutMe from "@/components/about/AboutMe.vue";
+import ScrollPanel from "@/components/about/ScrollPanel.vue";
 import FooterLayout from "@/components/layout/FooterLayout.vue";
 import NavbarLayout from '../components/layout/NavbarLayout.vue';
 
