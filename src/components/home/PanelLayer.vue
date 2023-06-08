@@ -92,7 +92,6 @@ onMounted(() => {
     .trapezoidSvg {
       position: absolute;
       height: 100vh;
-      // transform: rotate(30deg);
     }
   }
 

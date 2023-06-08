@@ -1,29 +1,29 @@
 <template>
   <ul id="FooterLayout">
     <li class="contact-box" @click="openExternalPage('https://github.com/chubbychang914')">
-      <div class="title">Github</div>
       <div class="icon">
-        <img src="@/assets/svgs/githubIcon.svg" alt="Github">
+        <img src="@/assets/svgs/icons/githubIcon.svg" alt="Github">
       </div>
+      <div class="title">Github</div>
     </li>
     <li class="contact-box"
       @click="openExternalPage('https://www.linkedin.com/in/johnny-chang-b6b609204/')">
-      <div class="title">LinkedIn</div>
       <div class="icon">
-        <img src="@/assets/svgs/linkedInIcon.svg" alt="Github">
+        <img src="@/assets/svgs/icons/linkedInIcon.svg" alt="Github">
       </div>
+      <div class="title">LinkedIn</div>
     </li>
     <li class="contact-box" @click="openExternalPage('mailto:johnny22375@gmail.com')">
-      <div class="title">Email</div>
       <div class="icon">
-        <img src="@/assets/svgs/gmailIcon.svg" alt="Github">
+        <img src="@/assets/svgs/icons/gmailIcon.svg" alt="Github">
       </div>
+      <div class="title">Email</div>
     </li>
     <li class="contact-box" @click="openExternalPage('tel:+886981093375')">
-      <div class="title">Phone</div>
       <div class="icon">
-        <img src="@/assets/svgs/linkedInIcon.svg" alt="Github">
+        <img src="@/assets/svgs/icons/phoneIcon.svg" alt="Github">
       </div>
+      <div class="title">Phone</div>
     </li>
   </ul>
 </template>
@@ -38,8 +38,9 @@ const openExternalPage = (url) => {
 <style lang="scss" scoped>
 // 排版
 #FooterLayout {
+  --divHeight: 75px;
   width: 100%;
-  height: 100%;
+  height: var(--divHeight);
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   list-style-type: none;
@@ -52,17 +53,21 @@ const openExternalPage = (url) => {
   .contact-box {
     // outline: auto;
     width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
+    height: var(--divHeight);
+    @extend .center;
+    letter-spacing: 0.3em;
+    // gap: 10px;
 
     .title {
-      font-size: 60px;
+      font-size: 40px;
       color: white;
+      margin-left: -20px;
+
     }
 
     .icon {
-      width: 120px;
+      width: 70px;
+      margin-top: 4px;
 
       img {
         object-fit: contain;

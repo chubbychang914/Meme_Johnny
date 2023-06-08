@@ -4,7 +4,7 @@
       <NavbarLayout />
     </nav>
     <div class="aboutContent">
-      <AboutMe />
+      <ScrollPanel />
     </div>
     <footer class="aboutFooter">
       <FooterLayout />
@@ -15,7 +15,7 @@
 <script setup>
 import { getCurrentInstance, onMounted, ref, toHandlerKey } from 'vue';
 const { proxy: { $gsapPack } } = getCurrentInstance()
-import AboutMe from "@/components/about/AboutMe.vue";
+import ScrollPanel from "@/components/about/ScrollPanel.vue";
 import FooterLayout from "@/components/layout/FooterLayout.vue";
 import NavbarLayout from '../components/layout/NavbarLayout.vue';
 
@@ -58,19 +58,32 @@ onMounted(() => {
 <style lang="scss" scoped>
 // 排版
 #AboutView {
+  --navHeight: 80px;
+  --footerHeight: 75px;
   width: 100%;
   height: 100vh;
-  // background-color: black;
   display: grid;
-  grid-template-rows: 80px 1fr 80px;
+  grid-template-rows: var(--navHeight) auto var(--footerHeight);
 
+}
+
+// 元件
+#AboutView {
   .aboutNav {
     width: 100%;
-    height: 80px;
+    height: var(--navHeight);
     position: fixed;
     top: 0;
     left: 0;
     background-color: yellow;
+  }
+
+  .aboutFooter {
+    width: 100%;
+    height: var(--footerHeight);
+    position: fixed;
+    bottom: 0;
+    left: 0;
   }
 
   .aboutContent {
@@ -80,22 +93,11 @@ onMounted(() => {
     // 這邊是為了解決 GSAP 的 pin-spacer 問題
     grid-row: 2;
   }
-
-  .aboutFooter {
-    width: 100%;
-    height: 80px;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-  }
 }
-
-// 元件
-#AboutView {}
 
 .center {
   display: flex;
-  justify-aboutContent: center;
+  justify-content: center;
   align-items: center;
 }
 </style>

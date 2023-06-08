@@ -1,17 +1,22 @@
 <template>
   <div id="AboutMe">
     <ul class="card-box">
-      <li class="card">
+      <li class="card">Summary
       </li>
-      <li class="card">
+      <li class="card">Skills
       </li>
-      <li class="card">
+      <li class="card">iSpan
+      </li>
+      <li class="card">Tyr
       </li>
     </ul>
   </div>
 </template>
 
 <script setup>
+import PanelTemplate from "@/components/about/PanelTemplate.vue"
+
+
 import { getCurrentInstance, onMounted, ref } from 'vue';
 import { useRouter, onBeforeRouteLeave } from 'vue-router';
 import debounce from 'lodash/debounce';
@@ -40,7 +45,7 @@ const _scrollAboutPanels = () => {
       scrub: 0.5,
       // markers: true,
       start: "-=80", // 從trigger的-80px開始執行
-      end: `+=${screenHeight * 3}`, // 調整滾動速度
+      end: `+=${screenHeight * 4.5}`, // 調整滾動速度
     }
   })
 }
@@ -61,43 +66,49 @@ onMounted(() => {
 // 元件
 #AboutMe {
   .card-box {
-    --spacing: 12%;
+    --spacing: 10vw;
     position: relative;
     // outline: auto;
     width: 100%;
     height: 100%;
-    background-color: black;
-    background-image: url('src/assets/svgs/bg.svg');
+    // background-color: black;
+    // background-image: url('src/assets/svgs/bg.svg');
     background-repeat: no-repeat;
     background-size: cover;
 
 
     .card {
+      box-sizing: border-box;
       list-style-type: none;
       position: absolute;
       width: 50%;
       height: 100%;
+      // border-left: 10px solid darkblue;
+      // border-radius: 10px;
 
       &:nth-child(1) {
-        background-color: blue;
-        left: var(--spacing);
+        background-color: #798dc5;
         z-index: 1;
       }
 
       &:nth-child(2) {
         background-color: green;
-        left: calc(var(--spacing)*2);
+        left: var(--spacing);
         z-index: 2;
       }
 
       &:nth-child(3) {
         background-color: red;
-        left: calc(var(--spacing)*3);
-        // left: var(--spacing);
+        left: calc(var(--spacing)*2);
         z-index: 3;
       }
 
-
+      &:nth-child(4) {
+        background-color: hotpink;
+        left: calc(var(--spacing)*3);
+        width: 70%;
+        z-index: 4;
+      }
     }
   }
 }
