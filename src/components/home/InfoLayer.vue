@@ -35,7 +35,6 @@
 <script setup>
 import { getCurrentInstance, onMounted } from 'vue';
 import { useRouter, onBeforeRouteLeave } from 'vue-router';
-import CustomButton from "@/components/templates/CustomButton.vue";
 import DrawButton from "@/components/templates/DrawButton.vue"
 import debounce from 'lodash/debounce'
 const { proxy: { $gsapPack } } = getCurrentInstance() // 把GSAP包引入個別使用

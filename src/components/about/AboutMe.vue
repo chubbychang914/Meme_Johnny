@@ -2,13 +2,10 @@
   <div id="AboutMe">
     <ul class="card-box">
       <li class="card">
-        <AboutTemplate />
       </li>
       <li class="card">
-        <AboutTemplate />
       </li>
       <li class="card">
-        <AboutTemplate title="Summary"/>
       </li>
     </ul>
   </div>
@@ -21,10 +18,8 @@ import debounce from 'lodash/debounce';
 const { proxy: { $gsapPack } } = getCurrentInstance()
 const router = useRouter()
 
-import AboutTemplate from '../templates/AboutTemplate.vue';
-
 // Animations ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
-const _animateAboutPanels = () => {
+const _scrollAboutPanels = () => {
   // 根據螢幕大小去設定元件的寬度跟高度
   let screenHeight = window.innerHeight;
   let screenWidth = window.innerWidth
@@ -34,7 +29,8 @@ const _animateAboutPanels = () => {
     $gsapPack.ScrollTrigger.refresh();
   }, 500);
   window.addEventListener('resize', updateScrollTrigger);
-  // action
+
+  // scrolltrigger action
   $gsapPack.gsap.from(".card", {
     x: screenWidth,
     stagger: 0.5,
@@ -42,16 +38,15 @@ const _animateAboutPanels = () => {
       trigger: ".card-box",
       pin: true,
       scrub: 0.5,
-      markers: true,
-      start: "-=80",
-      end: `+=${screenHeight * 5}`,
-      scroll: true
+      // markers: true,
+      start: "-=80", // 從trigger的-80px開始執行
+      end: `+=${screenHeight * 3}`, // 調整滾動速度
     }
   })
 }
 
 onMounted(() => {
-  _animateAboutPanels()
+  _scrollAboutPanels()
 })
 </script>
 
@@ -66,33 +61,38 @@ onMounted(() => {
 // 元件
 #AboutMe {
   .card-box {
-    --spacing: 15vh;
+    --spacing: 12%;
     position: relative;
-    outline: auto;
+    // outline: auto;
     width: 100%;
     height: 100%;
-    background-color: cyan;
+    background-color: black;
+    background-image: url('src/assets/svgs/bg.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+
 
     .card {
       list-style-type: none;
       position: absolute;
-      width: 80%;
+      width: 50%;
       height: 100%;
 
       &:nth-child(1) {
         background-color: blue;
+        left: var(--spacing);
         z-index: 1;
       }
 
       &:nth-child(2) {
         background-color: green;
-        left: var(--spacing);
+        left: calc(var(--spacing)*2);
         z-index: 2;
       }
 
       &:nth-child(3) {
         background-color: red;
-        left: calc(var(--spacing)*2);
+        left: calc(var(--spacing)*3);
         // left: var(--spacing);
         z-index: 3;
       }
@@ -106,4 +106,5 @@ onMounted(() => {
   display: flex;
   justify-content: center;
   align-items: center;
-}</style>
+}
+</style>
