@@ -25,8 +25,9 @@ const _animateAboutPanels = () => {
       pin: true,
       scrub: true,
       markers: true,
-      start: "top top",
-      end: `+=${screenHeight * 30}`
+      start: "-=80",
+      end: `+=${screenHeight * 5}`,
+      scroll: true
     }
   })
 }
@@ -39,14 +40,15 @@ onMounted(() => {
 <style lang="scss" scoped>
 // 排版
 #AboutMe {
+  // 不用動，是根據外層設定長寬
   width: 100%;
   height: 100%;
-  // background-color: yellow;
 }
 
 // 元件
 #AboutMe {
   .card-box {
+    --spacing: 20vh;
     position: relative;
     outline: auto;
     width: 100%;
@@ -56,26 +58,25 @@ onMounted(() => {
     .card {
       list-style-type: none;
       position: absolute;
-      width: 80%;
+      width: 75%;
       height: 100%;
-      border: 10px solid black;
 
-      &:nth-child(3) {
-        background-color: red;
-        left: 300px;
-        z-index: 3;
+      &:nth-child(1) {
+        background-color: blue;
+        z-index: 1;
       }
 
       &:nth-child(2) {
         background-color: green;
-        left: 200px;
+        left: var(--spacing);
         z-index: 2;
       }
 
-      &:nth-child(1) {
-        background-color: blue;
-        left: 100px;
-        z-index: 1;
+      &:nth-child(3) {
+        background-color: red;
+        left: calc(var(--spacing)*2);
+        // left: var(--spacing);
+        z-index: 3;
       }
 
 

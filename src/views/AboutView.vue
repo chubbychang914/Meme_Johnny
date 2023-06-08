@@ -16,14 +16,13 @@ import AboutMe from "../components/about/AboutMe.vue";
 #AboutView {
   width: 100%;
   height: 100vh;
-  background-color: chocolate;
+  background-color: black;
   display: grid;
   grid-template-rows: 80px 1fr;
 
   .aboutMeComponent {
     width: 100%;
     height: 100%;
-    overflow: hidden;
     @extend .center;
   }
 
