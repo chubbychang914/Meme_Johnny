@@ -29,7 +29,8 @@ const _scrollAboutPanels = () => {
     $gsapPack.ScrollTrigger.refresh();
   }, 500);
   window.addEventListener('resize', updateScrollTrigger);
-  // action
+
+  // scrolltrigger action
   $gsapPack.gsap.from(".card", {
     x: screenWidth,
     stagger: 0.5,
@@ -40,7 +41,6 @@ const _scrollAboutPanels = () => {
       // markers: true,
       start: "-=80", // 從trigger的-80px開始執行
       end: `+=${screenHeight * 3}`, // 調整滾動速度
-      scroll: true,
     }
   })
 }
@@ -61,7 +61,7 @@ onMounted(() => {
 // 元件
 #AboutMe {
   .card-box {
-    --spacing: 15vh;
+    --spacing: 12%;
     position: relative;
     // outline: auto;
     width: 100%;
@@ -75,23 +75,24 @@ onMounted(() => {
     .card {
       list-style-type: none;
       position: absolute;
-      width: 86%;
+      width: 50%;
       height: 100%;
 
       &:nth-child(1) {
         background-color: blue;
+        left: var(--spacing);
         z-index: 1;
       }
 
       &:nth-child(2) {
         background-color: green;
-        left: var(--spacing);
+        left: calc(var(--spacing)*2);
         z-index: 2;
       }
 
       &:nth-child(3) {
         background-color: red;
-        left: calc(var(--spacing)*2);
+        left: calc(var(--spacing)*3);
         // left: var(--spacing);
         z-index: 3;
       }

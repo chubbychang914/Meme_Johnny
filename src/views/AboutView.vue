@@ -1,9 +1,9 @@
 <template>
   <div id="AboutView">
     <nav class="aboutNav">
-      <!-- <NavbarLayout /> -->/
+      <NavbarLayout />
     </nav>
-    <div class="content">
+    <div class="aboutContent">
       <AboutMe />
     </div>
     <footer class="aboutFooter">
@@ -21,22 +21,36 @@ import NavbarLayout from '../components/layout/NavbarLayout.vue';
 
 // Flows ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 const enterPageAnimationFlow = () => {
-  const tl = $gsapPack.gsap.timeline({ paused: true })
-  tl.add(_animateFooterEnter().play())
-  return tl
+  _animateContentEnter()
+  _animateFooterEnter()
+  _animateNavEnter()
 }
 // Animations ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 // 進場動畫
-const _animateFooterEnter = () => {
-  const action = $gsapPack.gsap.from('footer', {
-    x: window.innerWidth,
+const _animateNavEnter = () => {
+  $gsapPack.gsap.from('.aboutNav', {
+    y: -window.innerHeight,
     duration: 1,
-    paused: true
+    ease: "power3.out"
   })
-  return action
 }
+const _animateFooterEnter = () => {
+  $gsapPack.gsap.from('.aboutFooter', {
+    y: window.innerHeight,
+    duration: 1,
+    ease: "power3.out"
+  })
+}
+const _animateContentEnter = () => {
+  $gsapPack.gsap.from('.aboutContent', {
+    opacity: 0,
+    duration: 3
+  })
+}
+
+
 onMounted(() => {
-  enterPageAnimationFlow().play()
+  enterPageAnimationFlow()
 })
 
 </script>
@@ -59,10 +73,11 @@ onMounted(() => {
     background-color: yellow;
   }
 
-  .content {
+  .aboutContent {
     width: 100%;
     height: 100%;
     @extend .center;
+    // 這邊是為了解決 GSAP 的 pin-spacer 問題
     grid-row: 2;
   }
 
@@ -80,7 +95,7 @@ onMounted(() => {
 
 .center {
   display: flex;
-  justify-content: center;
+  justify-aboutContent: center;
   align-items: center;
 }
 </style>

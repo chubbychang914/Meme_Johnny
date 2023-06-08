@@ -38,11 +38,10 @@ const openExternalPage = (url) => {
 <style lang="scss" scoped>
 // 排版
 #FooterLayout {
-  // background-color: blueviolet;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
   width: 100%;
   height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   list-style-type: none;
 }
 
