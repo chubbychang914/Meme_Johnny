@@ -18,9 +18,8 @@ import debounce from 'lodash/debounce';
 const { proxy: { $gsapPack } } = getCurrentInstance()
 const router = useRouter()
 
-
 // Animations ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
-const _animateAboutPanels = () => {
+const _scrollAboutPanels = () => {
   // 根據螢幕大小去設定元件的寬度跟高度
   let screenHeight = window.innerHeight;
   let screenWidth = window.innerWidth
@@ -47,7 +46,7 @@ const _animateAboutPanels = () => {
 }
 
 onMounted(() => {
-  _animateAboutPanels()
+  _scrollAboutPanels()
 })
 </script>
 

@@ -11,8 +11,31 @@
 </template>
 
 <script setup>
+import { getCurrentInstance, onMounted, ref, toHandlerKey } from 'vue';
+const { proxy: { $gsapPack } } = getCurrentInstance()
 import AboutMe from "@/components/about/AboutMe.vue";
 import FooterLayout from "@/components/layout/FooterLayout.vue";
+
+// Flows ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+const enterPageAnimationFlow = () => {
+  const tl = $gsapPack.gsap.timeline({ paused: true })
+  tl.add(_animateFooterEnter().play())
+  return tl
+}
+// Animations ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+// 進場動畫
+const _animateFooterEnter = () => {
+  const action = $gsapPack.gsap.from('footer', {
+    x: window.innerWidth,
+    duration: 1,
+    paused: true
+  })
+  return action
+}
+onMounted(() => {
+  enterPageAnimationFlow().play()
+})
+
 </script>
 
 <style lang="scss" scoped>
