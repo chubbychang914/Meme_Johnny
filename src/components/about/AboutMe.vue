@@ -14,7 +14,25 @@ import { useRouter, onBeforeRouteLeave } from 'vue-router';
 const { proxy: { $gsapPack } } = getCurrentInstance()
 const router = useRouter()
 
+// Animations ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+const _animateAboutPanels = () => {
+  const screenHeight = window.innerHeight
+  $gsapPack.gsap.from(".card", {
+    x: window.innerWidth,
+    stagger: 0.5,
+    scrollTrigger: {
+      trigger: ".card-box",
+      pin: true,
+      scrub: true,
+      markers: true,
+      start: "top top",
+      end: `+=${screenHeight * 30}`
+    }
+  })
+}
+
 onMounted(() => {
+  _animateAboutPanels()
 })
 </script>
 
@@ -38,14 +56,14 @@ onMounted(() => {
     .card {
       list-style-type: none;
       position: absolute;
-      width: 50%;
-      height: 50%;
+      width: 80%;
+      height: 100%;
       border: 10px solid black;
 
       &:nth-child(3) {
-        background-color: blue;
-        left: 100px;
-        z-index: 1;
+        background-color: red;
+        left: 300px;
+        z-index: 3;
       }
 
       &:nth-child(2) {
@@ -55,10 +73,12 @@ onMounted(() => {
       }
 
       &:nth-child(1) {
-        background-color: red;
-        left: 300px;
-        z-index: 3;
+        background-color: blue;
+        left: 100px;
+        z-index: 1;
       }
+
+
     }
   }
 }

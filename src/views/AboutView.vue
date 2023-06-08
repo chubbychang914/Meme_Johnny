@@ -23,7 +23,7 @@ import AboutMe from "../components/about/AboutMe.vue";
   .aboutMeComponent {
     width: 100%;
     height: 100%;
-    // background-color: black;
+    overflow: hidden;
     @extend .center;
   }
 
