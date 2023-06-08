@@ -50,7 +50,7 @@ onMounted(() => {
   position: relative;
 
   .card {
-    --spacing: 4rem;
+    --spacing: 5rem;
     --zNum: 2;
     position: absolute;
     top: var(--spacing);

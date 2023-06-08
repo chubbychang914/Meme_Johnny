@@ -9,40 +9,32 @@
 </template>
 
 <script setup>
+import { getCurrentInstance, onMounted, ref } from 'vue';
+import { useRouter, onBeforeRouteLeave } from 'vue-router';
+const { proxy: { $gsapPack } } = getCurrentInstance()
+const router = useRouter()
 
+onMounted(() => {
+})
 </script>
 
 <style lang="scss" scoped>
 // 排版
-#AboutMe {}
+#AboutMe {
+  width: 100%;
+  height: 100%;
+  // background-color: yellow;
+}
 
 // 元件
 #AboutMe {
-  position: relative;
-
-  .card {
-    --spacing: 4rem;
-    --zIndexNum: 1;
+  .card-box {
     position: relative;
-    width: 30vw;
-    height: calc(100vh - var(--spacing)*4);
-    border: 5px solid black;
-    margin-bottom: 100px;
-    @extend .center;
-
-    &:nth-child(1) {
-      background-color: blue;
-    }
-
-    &:nth-child(2) {
-      background-color: red;
-    }
-
-    &:nth-child(3) {
-      background-color: green;
-    }
+    outline: auto;
+    width: 100%;
+    height: 100%;
+    background-color: blue;
   }
-
 }
 
 .center {
