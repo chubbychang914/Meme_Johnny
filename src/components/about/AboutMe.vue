@@ -12,6 +12,9 @@
 </template>
 
 <script setup>
+import PanelTemplate from "@/components/about/PanelTemplate.vue"
+
+
 import { getCurrentInstance, onMounted, ref } from 'vue';
 import { useRouter, onBeforeRouteLeave } from 'vue-router';
 import debounce from 'lodash/debounce';
@@ -70,19 +73,19 @@ onMounted(() => {
     // background-image: url('src/assets/svgs/bg.svg');
     background-repeat: no-repeat;
     background-size: cover;
-    
-    
+
+
     .card {
       box-sizing: border-box;
       list-style-type: none;
       position: absolute;
       width: 100%;
       height: 100%;
-      border: 10px double black;
-      border-radius: 50px;
+      border-left: 10px solid white;
+      // border-radius: 10px;
 
       &:nth-child(1) {
-        background-color: blue;
+        background-color: #798dc5;
         z-index: 1;
       }
 

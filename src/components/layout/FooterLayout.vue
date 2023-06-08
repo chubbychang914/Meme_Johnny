@@ -3,26 +3,26 @@
     <li class="contact-box" @click="openExternalPage('https://github.com/chubbychang914')">
       <div class="title">Github</div>
       <div class="icon">
-        <img src="@/assets/svgs/githubIcon.svg" alt="Github">
+        <img src="@/assets/svgs/icons/githubIcon.svg" alt="Github">
       </div>
     </li>
     <li class="contact-box"
       @click="openExternalPage('https://www.linkedin.com/in/johnny-chang-b6b609204/')">
       <div class="title">LinkedIn</div>
       <div class="icon">
-        <img src="@/assets/svgs/linkedInIcon.svg" alt="Github">
+        <img src="@/assets/svgs/icons/linkedInIcon.svg" alt="Github">
       </div>
     </li>
     <li class="contact-box" @click="openExternalPage('mailto:johnny22375@gmail.com')">
       <div class="title">Email</div>
       <div class="icon">
-        <img src="@/assets/svgs/gmailIcon.svg" alt="Github">
+        <img src="@/assets/svgs/icons/gmailIcon.svg" alt="Github">
       </div>
     </li>
     <li class="contact-box" @click="openExternalPage('tel:+886981093375')">
       <div class="title">Phone</div>
       <div class="icon">
-        <img src="@/assets/svgs/linkedInIcon.svg" alt="Github">
+        <img src="@/assets/svgs/icons/phoneIcon.svg" alt="Github">
       </div>
     </li>
   </ul>
