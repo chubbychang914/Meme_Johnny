@@ -11,8 +11,8 @@
 </template>
 
 <script setup>
-import AboutMe from "../components/about/AboutMe.vue";
-import FooterLayout from "../components/templates/FooterLayout.vue";
+import AboutMe from "@/components/about/AboutMe.vue";
+import FooterLayout from "@/components/layout/FooterLayout.vue";
 </script>
 
 <style lang="scss" scoped>

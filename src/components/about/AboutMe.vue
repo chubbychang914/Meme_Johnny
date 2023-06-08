@@ -64,15 +64,19 @@ onMounted(() => {
   .card-box {
     --spacing: 15vh;
     position: relative;
-    outline: auto;
+    // outline: auto;
     width: 100%;
     height: 100%;
-    background-color: cyan;
+    background-color: black;
+    // background-image: url('src/assets/svgs/bg.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+
 
     .card {
       list-style-type: none;
       position: absolute;
-      width: 80%;
+      width: 86%;
       height: 100%;
 
       &:nth-child(1) {
