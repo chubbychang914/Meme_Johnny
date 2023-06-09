@@ -73,7 +73,7 @@ onMounted(() => {
     height: 100%;
     // background-color: black;
     // background-image: url('src/assets/svgs/bg.svg');
-    background-image: url("https://w.forfun.com/fetch/6e/6eddbe3a57d332ce35985449ac0320d3.jpeg");
+    // background-image: url("https://w.forfun.com/fetch/6e/6eddbe3a57d332ce35985449ac0320d3.jpeg");
     background-repeat: no-repeat;
     background-size: cover;
 

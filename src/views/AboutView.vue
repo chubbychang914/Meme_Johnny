@@ -4,6 +4,7 @@
       <NavbarLayout />
     </nav>
     <div class="aboutContent">
+      <div class="bgMap"></div>
       <ScrollPanel />
     </div>
     <footer class="aboutFooter">
@@ -42,7 +43,7 @@ const _animateFooterEnter = () => {
   })
 }
 const _animateContentEnter = () => {
-  $gsapPack.gsap.from('.aboutContent', {
+  $gsapPack.gsap.from('.bgMap', {
     opacity: 0,
     duration: 3
   })
@@ -64,11 +65,21 @@ onMounted(() => {
   height: 100vh;
   display: grid;
   grid-template-rows: var(--navHeight) auto var(--footerHeight);
-
 }
 
 // 元件
 #AboutView {
+  .bgMap {
+    position: fixed;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    background-image: url("https://w.forfun.com/fetch/6e/6eddbe3a57d332ce35985449ac0320d3.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
   .aboutNav {
     width: 100%;
     height: var(--navHeight);
