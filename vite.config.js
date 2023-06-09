@@ -13,6 +13,6 @@ export default defineConfig({
     }
   },
   // ================
-  base: "/test/", // 設定 github page
+  base: "/Meme_Johnny/", // 設定 github page
   // ================
 })
