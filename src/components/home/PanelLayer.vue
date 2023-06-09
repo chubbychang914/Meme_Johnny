@@ -5,7 +5,7 @@
     </div>
     <!-- left side -->
     <div class="left-panel">
-      <img class="trapezoidSvg" src="@/assets/svgs/trapezoid.svg" alt="triangle" />
+      <img class="trapezoidSvg" src="@/assets/svgs/trapezoidNew.png" alt="triangle" />
     </div>
     <!-- middle -->
     <div class="middle-panel">
@@ -13,7 +13,7 @@
     </div>
     <!-- right side -->
     <div class="right-panel">
-      <img class="trapezoidSvg" src="@/assets/svgs/trapezoid.svg" alt="triangle" />
+      <img class="trapezoidSvg" src="@/assets/svgs/trapezoidNew.png" alt="triangle" />
     </div>
   </div>
 </template>
@@ -31,7 +31,7 @@ const EnterPageAnimationFlow = () => {
 // Animations ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 // const _animateBgLoop = () => {
 //   const tl = $gsapPack.gsap.timeline({ paused: true, defaults: { repeat: -1 } })
-//   tl.to('.space', { backgroundPosition: "-5000px 0px", duration: 25, ease: "linear" })
+//   tl.to('.middle-panel', { backgroundPosition: "-5000px 0px", duration: 25, ease: "linear" })
 //   return tl
 // }
 

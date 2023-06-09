@@ -13,7 +13,7 @@
 </template>
 
 <script setup>
-import { getCurrentInstance, onMounted, ref, toHandlerKey } from 'vue';
+import { getCurrentInstance, onMounted } from 'vue';
 const { proxy: { $gsapPack } } = getCurrentInstance()
 import ScrollPanel from "@/components/about/ScrollPanel.vue";
 import FooterLayout from "@/components/layout/FooterLayout.vue";

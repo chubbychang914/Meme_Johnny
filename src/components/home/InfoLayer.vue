@@ -29,6 +29,10 @@
         <div class="career">Frontend Developer</div>
       </div>
     </div>
+    <!-- footer -->
+    <!-- <div class="footer">
+      <FooterLayout />
+    </div> -->
   </div>
 </template>
 
@@ -39,6 +43,8 @@ import DrawButton from "@/components/templates/DrawButton.vue"
 import debounce from 'lodash/debounce'
 const { proxy: { $gsapPack } } = getCurrentInstance() // 把GSAP包引入個別使用
 const router = useRouter()
+
+import FooterLayout from '@/components/layout/FooterLayout.vue';
 // State ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 // set variable for timelines that need reverse
 // Methods ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
@@ -85,6 +91,7 @@ const _animateNameLettersEnter = () => {
   })
   return tl
 }
+
 // 職稱進場
 const _animateCareerEnter = () => {
   const tl = $gsapPack.gsap.timeline({ paused: true })
@@ -234,6 +241,14 @@ onBeforeRouteLeave(async (to, from, next) => {
         background-color: white;
       }
     }
+  }
+
+  //  ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+  .footer {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
   }
 }
 
