@@ -18,13 +18,14 @@ import { getCurrentInstance, onMounted } from 'vue';
 const { proxy: { $gsapPack } } = getCurrentInstance()
 import ScrollPanel from "@/components/about/ScrollPanel.vue";
 import FooterLayout from "@/components/layout/FooterLayout.vue";
-import NavbarLayout from '../components/layout/NavbarLayout.vue';
+import NavbarLayout from '@/components/layout/NavbarLayout.vue';
 
 // Flows ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 const enterPageAnimationFlow = () => {
   _animateContentEnter()
   _animateFooterEnter()
   _animateNavEnter()
+  _animateBgLoop().play()
 }
 // Animations ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 // 進場動畫
@@ -47,6 +48,12 @@ const _animateContentEnter = () => {
     opacity: 0,
     duration: 3
   })
+}
+
+const _animateBgLoop = () => {
+  const tl = $gsapPack.gsap.timeline({ paused: true, defaults: { repeat: -1 } })
+  tl.to('.bgMap', { backgroundPosition: "-5000px 0px", duration: 25, ease: "linear" })
+  return tl
 }
 
 
@@ -76,7 +83,7 @@ onMounted(() => {
     height: 100%;
     top: 0;
     background-image: url("https://w.forfun.com/fetch/6e/6eddbe3a57d332ce35985449ac0320d3.jpeg");
-    background-repeat: no-repeat;
+    // background-repeat: no-repeat;
     background-size: cover;
   }
 
