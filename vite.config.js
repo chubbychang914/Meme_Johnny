@@ -11,5 +11,8 @@ export default defineConfig({
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
-  }
+  },
+  // ================
+  base: "/Meme_Johnny/", // 設定 github page
+  // ================
 })
