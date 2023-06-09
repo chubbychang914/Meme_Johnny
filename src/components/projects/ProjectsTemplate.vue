@@ -1,12 +1,13 @@
 <template>
   <div id="ProjectsTemplate" :class="{ reverse: props.infoObj.reverseLayout }">
-    <div class="row">
+    <div class="row" :style="{ order: props.infoObj.reverseLayout ? 2 : 1 }">
       <div class="projectPic">
         <img :src=props.infoObj.imgUrl>
       </div>
     </div>
-    <div class="row">
+    <div class="row" :style="{ order: props.infoObj.reverseLayout ? 1 : 2 }">
       <div class="projectDesc">
+        <h1>{{ props.infoObj.title }}</h1>
         <div class="text"> {{ props.infoObj.description }}</div>
       </div>
     </div>

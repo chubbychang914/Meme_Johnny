@@ -3,6 +3,9 @@
     <nav style="background-color: black;">asdfasd</nav>
     <div class="content">
       <ProjectsTemplate />
+      <ProjectsTemplate :infoObj="testDataObj" />
+      <ProjectsTemplate />
+      <ProjectsTemplate />
     </div>
     <footer>
       <FooterLayout />
@@ -13,6 +16,12 @@
 <script setup>
 import ProjectsTemplate from '@/components/projects/ProjectsTemplate.vue';
 import FooterLayout from '@/components/layout/FooterLayout.vue';
+
+const testDataObj = {
+  title: "Testing title",
+  description: "alskdjfhaslkdjfhalkdjhfakjhalkjehf",
+  reverseLayout: true
+}
 </script>
 
 <style lang="scss" scoped>
@@ -21,6 +30,12 @@ import FooterLayout from '@/components/layout/FooterLayout.vue';
   height: 100vh;
   display: grid;
   grid-template-rows: 80px auto 80px;
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+  }
 }
 
 // 元件
