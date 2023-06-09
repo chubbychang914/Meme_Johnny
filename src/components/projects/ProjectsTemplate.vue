@@ -38,7 +38,7 @@ const props = defineProps({
   grid-template-columns: 1fr 1fr;
 
   .row {
-    background-color: blue;
+    // background-color: blue;
     outline: auto;
     @extend .center;
   }
