@@ -2,25 +2,7 @@
   <div id="ProjectsView">
     <nav style="background-color: black;">asdfasd</nav>
     <div class="content">
-      <h1>alkdjfhadfjha</h1>
-      <h1>alkdjfhadfjha</h1>
-      <h1>alkdjfhadfjha</h1>
-      <h1>alkdjfhadfjha</h1>
-      <h1>alkdjfhadfjha</h1>
-      <h1>alkdjfhadfjha</h1>
-      <h1>alkdjfhadfjha</h1>
-      <h1>alkdjfhadfjha</h1>
-      <h1>alkdjfhadfjha</h1>
-      <h1>alkdjfhadfjha</h1>
-      <h1>alkdjfhadfjha</h1>
-      <h1>alkdjfhadfjha</h1>
-      <h1>alkdjfhadfjha</h1>
-      <h1>alkdjfhadfjha</h1>
-      <h1>alkdjfhadfjha</h1>
-      <h1>alkdjfhadfjha</h1>
-      <h1>alkdjfhadfjha</h1>
-      <h1>alkdjfhadfjha</h1>
-      <h1>alkdjfhadfjha</h1>
+      <ProjectsTemplate />
     </div>
     <footer>
       <FooterLayout />
@@ -29,7 +11,8 @@
 </template>
 
 <script setup>
-import FooterLayout from '../components/layout/FooterLayout.vue';
+import ProjectsTemplate from '@/components/projects/ProjectsTemplate.vue';
+import FooterLayout from '@/components/layout/FooterLayout.vue';
 </script>
 
 <style lang="scss" scoped>
@@ -37,7 +20,7 @@ import FooterLayout from '../components/layout/FooterLayout.vue';
 #ProjectsView {
   height: 100vh;
   display: grid;
-  grid-template-rows: 80px 1fr 80px;
+  grid-template-rows: 80px auto 80px;
 }
 
 // 元件
