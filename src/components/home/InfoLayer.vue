@@ -2,7 +2,7 @@
   <div id="InfoLayer">
     <!-- 左半 -->
     <div class="left-side">
-      
+
     </div>
     <!-- 右半 -->
     <div class="right-side">
@@ -37,6 +37,7 @@ onMounted(() => {
   display: grid;
   grid-template-columns: 5fr 4fr;
   grid-template-areas: "left right";
+  overflow: hidden;
 
   .left-side {
     grid-area: left;
@@ -55,6 +56,8 @@ onMounted(() => {
     .right-content {
       width: 85%; // 調整內容寬度
       height: 90%;
+      min-width: 450px;
+      min-height: 600px;
       // background-color: lightcoral;
     }
   }
@@ -82,6 +85,7 @@ onMounted(() => {
       position: absolute;
       bottom: 0;
       height: 90vh;
+      min-height: 600px;
       object-fit: contain;
 
     }
