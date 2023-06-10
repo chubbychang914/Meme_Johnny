@@ -43,8 +43,6 @@ import DrawButton from "@/components/templates/DrawButton.vue"
 import debounce from 'lodash/debounce'
 const { proxy: { $gsapPack } } = getCurrentInstance() // 把GSAP包引入個別使用
 const router = useRouter()
-// 所有的 timeline 陣列
-const tlArr = []
 // Methods ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 // 把 flow 自己設定成一個 timeline，再加入不同時間軸的動畫
 const btnActivateClickMe = debounce(() => {
@@ -125,9 +123,8 @@ onBeforeRouteLeave(async (to, from, next) => {
   await animateRouterLeave()
   next() // must have next to finish the router action
 })
-
 onUnmounted(() => {
-  //
+  $gsapPack.gsap.globalTimeline.clear();
 })
 </script>
 
