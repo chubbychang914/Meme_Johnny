@@ -1,10 +1,10 @@
 <template>
-  <PanelLayer />
+  <BaseLayer />
   <InfoLayer />
 </template>
 
 <script setup>
-import PanelLayer from "@/components/home/PanelLayer.vue"
+import BaseLayer from "@/components/home/BaseLayer.vue"
 import InfoLayer from "@/components/home/InfoLayer.vue";
 </script>
 
