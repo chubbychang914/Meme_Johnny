@@ -14,7 +14,7 @@
 </template>
 
 <script setup>
-import { getCurrentInstance, onMounted } from 'vue';
+import { getCurrentInstance, onMounted, onUnmounted } from 'vue';
 const { proxy: { $gsapPack } } = getCurrentInstance()
 import ScrollPanel from "@/components/about/ScrollPanel.vue";
 import FooterLayout from "@/components/layout/FooterLayout.vue";
@@ -61,6 +61,9 @@ onMounted(() => {
   enterPageAnimationFlow()
 })
 
+// onUnmounted(() => {
+//   $gsapPack.gsap.globalTimeline.clear();
+// })
 </script>
 
 <style lang="scss" scoped>

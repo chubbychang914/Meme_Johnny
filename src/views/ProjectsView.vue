@@ -3,40 +3,46 @@
     <nav style="background-color: black;">asdfasd</nav>
     <div class="content">
       <ProjectsTemplate />
-      <ProjectsTemplate :infoObj="testDataObj" :style="bgStyle" />
-      <button @click="handleClick">CLick to changeBg</button>
-      <ProjectsTemplate />
-      <ProjectsTemplate />
+      <ProjectsTemplate :infoObj="SelectGoInfoObj" />
+      <ProjectsTemplate :infoObj="ArcaneInfoObj" />
     </div>
     <footer>
       <FooterLayout />
     </footer>
   </div>
-</template>
+</template >
 
-<script setup>
-import { ref, computed } from 'vue';
+<script setup >
+// import { ref, computed } from 'vue';
 import ProjectsTemplate from '@/components/projects/ProjectsTemplate.vue';
 import FooterLayout from '@/components/layout/FooterLayout.vue';
 
-let showStyle = ref(false)
+// let showStyle = ref(false)
 
-const bgStyle = computed(() => {
-  if (!showStyle.value) return {}
-  return {
-    backgroundColor: 'red',
-    color: 'white'
-  }
-})
+// const bgStyle = computed(() => {
+//   if (!showStyle.value) return {}
+//   return {
+//     backgroundColor: 'red',
+//     color: 'white'
+//   }
+// })
 
-const handleClick = () => {
-  showStyle.value = true
+// const handleClick = () => {
+//   showStyle.value = true
+// }
+
+
+const SelectGoInfoObj = {
+  title: "Select Go",
+  imgUrl: "src/assets/imgs/projects/SelectGoScreenShot.png",
+  description: "E-commerce website built with React and LaravelL",
+  reverseLayout: false
 }
 
-
-const testDataObj = {
-  title: "Testing title",
-  description: "alskdjfhaslkdjfhalkdjhfakjhalkjehf",
+const ArcaneInfoObj = {
+  title: "Arcane",
+  imgUrl: "src/assets/imgs/projects/ArcaneScreenShot.png",
+  description: "Website",
   reverseLayout: true
 }
 

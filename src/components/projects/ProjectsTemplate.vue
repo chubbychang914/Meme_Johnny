@@ -1,5 +1,5 @@
 <template>
-  <div id="ProjectsTemplate" :class="{ reverse: props.infoObj.reverseLayout }">
+  <div id="ProjectsTemplate">
     <div class="row" :style="{ order: props.infoObj.reverseLayout ? 2 : 1 }">
       <div class="projectPic">
         <img :src=props.infoObj.imgUrl>
@@ -20,8 +20,8 @@ const props = defineProps({
     type: Object,
     default: () => ({
       title: "",
-      description: "Hello world",
       imgUrl: "https://cdn.pixabay.com/photo/2015/04/19/08/32/marguerite-729510_1280.jpg",
+      description: "Hello world",
       reverseLayout: false
     })
   }
@@ -32,8 +32,8 @@ const props = defineProps({
 <style lang="scss" scoped>
 // 排版
 #ProjectsTemplate {
-  width: 1000px;
-  height: 500px;
+  width: 100%;
+  height: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
 
@@ -58,8 +58,6 @@ const props = defineProps({
 
   .projectDesc {}
 }
-
-.reverse {}
 
 .center {
   display: flex;
