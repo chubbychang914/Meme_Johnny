@@ -85,7 +85,7 @@ onMounted(() => {
     width: 100%;
     height: 100%;
     top: 0;
-    background-image: url("src/assets/imgs/aboutBg.jpeg");
+    background-image: url("src/assets/imgs/about/aboutBg.jpeg");
     // background-repeat: no-repeat;
     background-size: cover;
   }
