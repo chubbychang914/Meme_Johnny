@@ -82,7 +82,7 @@ onMounted(() => {
     width: 100%;
     height: 100%;
     top: 0;
-    background-image: url("https://w.forfun.com/fetch/6e/6eddbe3a57d332ce35985449ac0320d3.jpeg");
+    background-image: url("src/assets/imgs/aboutBg.jpeg");
     // background-repeat: no-repeat;
     background-size: cover;
   }
