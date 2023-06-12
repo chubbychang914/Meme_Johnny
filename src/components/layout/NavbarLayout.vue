@@ -15,7 +15,6 @@
           <span class="text">Projects</span>
         </li>
       </ul>
-      <div class="show-bg"></div>
     </nav>
   </div>
 </template>
@@ -45,16 +44,6 @@ const redirectTo = (url) => {
     display: flex;
     justify-content: center;
 
-    .show-bg {
-      position: absolute;
-      left: 0;
-      width: 80px;
-      height: 80px;
-      background-color: blue;
-      border-radius: 10px;
-      transition: 0.5s;
-    }
-
     .navbarContent {
       width: 100%;
       @extend .center;
@@ -65,33 +54,41 @@ const redirectTo = (url) => {
 
     .link {
       @extend .center;
+      width: 100px;
+      height: 70px;
       flex-direction: column;
       position: relative;
+      border-radius: 10px;
 
-      &:hover .icon {
-        font-size: 20px;
+      &:hover,
+      &:active {
+        background-color: #102336;
+      }
+
+      &:hover .icon,
+      &:active .icon {
+        font-size: 25px;
         transform: translateY(-6px);
       }
 
-      &:hover .text {
+      &:hover .text,
+      &:active .text {
         transform: scale(1)
       }
 
       .icon {
-        position: relative;
         line-height: 75px;
         transition: .5s;
-        font-size: 30px;
+        font-size: 35px;
       }
 
       .text {
         position: absolute;
-        font-size: 12px;
-        color: white;
+        font-size: 15px;
         transition: 0.25s;
         text-transform: uppercase;
         transform: scale(0);
-        bottom: 20px;
+        bottom: 3px;
       }
     }
   }
