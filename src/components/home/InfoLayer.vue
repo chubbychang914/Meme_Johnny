@@ -2,7 +2,18 @@
   <div id="InfoLayer">
     <!-- 左半 -->
     <div class="left-side">
-
+      <div class="left-content">
+        <div class="name">
+          <div class="name-letters">J</div>
+          <div class="name-letters">o</div>
+          <div class="name-letters">h</div>
+          <div class="name-letters">n</div>
+          <div class="name-letters">n</div>
+          <div class="name-letters">y</div>
+        </div>
+        <div class="job">Frontend Developer</div>
+        <div class="menu"></div>
+      </div>
     </div>
     <!-- 右半 -->
     <div class="right-side">
@@ -13,7 +24,7 @@
         <img src="@/assets/imgs/home/personBg.png" alt="" class="img-bg">
         <!-- 連結 -->
         <div class="link">
-          <!-- <FooterLayout /> -->
+          <FooterLayout />
         </div>
       </div>
     </div>
@@ -44,6 +55,32 @@ onMounted(() => {
     width: 100%; // 5fr
     height: 100vh;
     // background-color: blue;
+    @extend .center;
+
+    .left-content {
+      width: 80%;
+      min-width: 800px;
+      height: 90%;
+      background-color: white;
+      display: grid;
+      grid-template-rows: 2fr 1fr 4fr;
+      grid-template-areas:
+        "name"
+        "job"
+        "menu";
+
+      .name,
+      .job,
+      .menu {
+        outline: auto;
+      }
+
+      .name {}
+
+      .job {}
+
+      .menu {}
+    }
   }
 
   .right-side {
@@ -65,6 +102,25 @@ onMounted(() => {
 
 // 元件
 #InfoLayer {
+  .left-content {
+    .name {
+      background-color: yellow;
+      display: flex;
+      font-size: 150px;
+      .name-letters{
+
+      }
+    }
+
+    .job {
+      background-color: blue;
+    }
+
+    .menu {
+      background-color: green;
+    }
+  }
+
   .right-content {
     position: relative;
     display: flex;
@@ -73,10 +129,10 @@ onMounted(() => {
 
     // 條整頭像後面的背景正方形
     .square-bg {
-      width: 100%;
-      height: 90%;
+      width: 700px;
+      height: 700px;
       background-color: cyan;
-      // border-radius: 50%;
+      border-radius: 50%;
       background-image: url("src/assets/svgs/bg.svg");
     }
 
