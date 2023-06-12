@@ -40,7 +40,8 @@ const redirectTo = (url) => {
     z-index: 999;
     width: 100%;
     height: 80px;
-    color: #FAE900;
+    // color: #FAE900;
+    color: white;
     font-family: 'VT323', monospace;
     display: flex;
     justify-content: center;
@@ -51,10 +52,14 @@ const redirectTo = (url) => {
     }
 
     .navbarContent {
-      width: 100%;
-      @extend .center;
-      gap: 30px;
+      width: 70%;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      // padding-right: 30px;
+      // gap: 10px;
       background-color: #1B3B5B;
+      // background-color: yellow;
       list-style-type: none;
     }
 
