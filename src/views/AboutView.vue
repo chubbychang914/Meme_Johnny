@@ -52,7 +52,7 @@ const _animateContentEnter = () => {
 
 const _animateBgLoop = () => {
   const tl = $gsapPack.gsap.timeline({ paused: true, defaults: { repeat: -1 } })
-  tl.to('.bgMap', { backgroundPosition: "-5000px 0px", duration: 25, ease: "linear" })
+  tl.to('.bgMap', { backgroundPosition: "-10000px 0px", duration: 60, ease: "linear" })
   return tl
 }
 

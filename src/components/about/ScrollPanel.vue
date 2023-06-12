@@ -34,26 +34,28 @@ const router = useRouter()
 // Props ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 const ispanInfoObj = {
   companyIcon: "src/assets/svgs/ispanLogo.svg",
+  companyName: "iSpan",
+  jobPeriod: "2022/09 - 2023/02",
+  jobTitle: "FullStack Developer Bootcamp",
   companyDesc: [
     "Learned frontend and backend languages such as JavaScript, PHP, and SQL",
     "Collaborated with a team to build a fully functional e-commerce website",
     "Utilized frontend and backend frameworks such as React and Laravel",
     "Utilized MySQL for database management",
   ],
-  companyName: "iSpan",
-  jobTitle: "FullStack Developer Bootcamp"
 }
 const tyrInfoObj = {
   companyIcon: "src/assets/svgs/tyrLogo.svg",
+  companyName: "Tyr Tech",
+  jobPeriod: "2023/03 - 2023/06",
+  jobTitle: "Frontend Developer",
   companyDesc: [
     "Utilized Vue and Nuxt to create frontend interfaces",
     "Utilized Git Branches for version control",
     "Created and maintained frontend code of website",
     "Collaborated with team members to implement a Line login system",
     "Worked in an agile environment with daily standup meetings"
-  ],
-  companyName: "Tyr Tech",
-  jobTitle: "Frontend Developer"
+  ]
 }
 // Animations ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 const _scrollAboutPanels = () => {
@@ -105,12 +107,13 @@ onMounted(() => {
     height: 100%;
 
     .card {
-      box-sizing: border-box;
-      list-style-type: none;
       position: absolute;
       width: 40%;
       height: 100%;
+      box-sizing: border-box;
+      list-style-type: none;
       padding-top: var(--panelPaddingTop);
+      transform: rotate(-5deg);
 
 
       &:nth-child(1) {

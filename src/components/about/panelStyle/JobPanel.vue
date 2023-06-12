@@ -2,9 +2,13 @@
   <div id="JobPanel">
     <!-- 上半 -->
     <div class="title">
-      <img class="companyIcon" :src=props.jobInfoObj.companyIcon />
+      <div class="companyIcon">
+        <img :src=props.jobInfoObj.companyIcon />
+      </div>
       <div class="companyDesc">
-        <h1 class="companyName">{{ props.jobInfoObj.companyName }}</h1>
+        <h1 class="companyName">{{ props.jobInfoObj.companyName }}
+          <span class="jobPeriod">{{ props.jobInfoObj.jobPeriod }}</span>
+        </h1>
         <h3 class="jobTitle">{{ props.jobInfoObj.jobTitle }}</h3>
       </div>
     </div>
@@ -23,9 +27,10 @@ const props = defineProps({
     type: Object,
     default: () => ({
       companyIcon: "",
-      companyDesc: ["one", "two", "three", "four", "five"],
       companyName: "公司名稱",
-      jobTitle: "職位"
+      jobPeriod: "1111/11 - 2222/22",
+      jobTitle: "職位",
+      companyDesc: ["one", "two", "three", "four", "five"],
     })
   }
 })
@@ -50,16 +55,28 @@ const props = defineProps({
     }
 
     .companyDesc {
+      --descPadding: 15px;
       outline: auto;
       display: grid;
       grid-template-rows: 1fr 1fr;
 
       .companyName {
         outline: auto;
+        display: flex;
+        align-items: center;
+        padding-left: var(--descPadding);
+
+        .jobPeriod {
+          font-size: 15px;
+          padding-left: var(--descPadding);
+        }
       }
 
       .jobTitle {
         outline: auto;
+        display: flex;
+        align-items: center;
+        padding-left: var(--descPadding);
       }
     }
   }
@@ -74,10 +91,27 @@ const props = defineProps({
   border: 5px solid black;
   border-radius: 20px;
 
+  .companyIcon {
+    @extend .center;
+
+    img {
+      width: 150px;
+      height: 150px;
+      object-fit: contain;
+    }
+  }
+
   .content {
     .jobDesc {
       // list-style-type: none;
     }
   }
+}
+
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>
