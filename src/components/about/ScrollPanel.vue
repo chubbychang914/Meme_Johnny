@@ -5,7 +5,7 @@
         <JobPanel />
       </li>
       <li class="card">
-        <JobPanel />
+        <SkillPanel />
       </li>
       <li class="card">
         <JobPanel :jobInfoObj="ispanInfoObj" />
@@ -21,16 +21,15 @@
 </template>
 
 <script setup>
-// import PanelTemplate from "@/components/about/PanelTemplate.vue"
-import JobPanel from "@/components/about/panelStyle/JobPanel.vue";
-
-
 import { getCurrentInstance, onMounted, ref } from 'vue';
 import { useRouter, onBeforeRouteLeave } from 'vue-router';
 import debounce from 'lodash/debounce';
 const { proxy: { $gsapPack } } = getCurrentInstance()
 const router = useRouter()
 
+// import PanelTemplate from "@/components/about/PanelTemplate.vue"
+import JobPanel from "@/components/about/panelStyle/JobPanel.vue";
+import SkillPanel from './panelStyle/SkillPanel.vue';
 // Props ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 const ispanInfoObj = {
   companyIcon: "src/assets/svgs/ispanLogo.svg",

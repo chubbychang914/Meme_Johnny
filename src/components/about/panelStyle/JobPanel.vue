@@ -37,34 +37,33 @@ const props = defineProps({
 </script>
 
 <style lang="scss" scoped>
+* {
+  // outline: auto;
+}
+
 // 排版
 #JobPanel {
   display: grid;
   grid-template-rows: 1fr 3fr;
   width: 600px;
   height: 600px;
-  background-color: white;
 
   .title {
-    outline: auto;
     display: grid;
     grid-template-columns: 1fr 2fr;
 
-    .companyIcon {
-      outline: auto;
-    }
+    .companyIcon {}
 
     .companyDesc {
       --descPadding: 15px;
-      outline: auto;
       display: grid;
       grid-template-rows: 1fr 1fr;
 
       .companyName {
-        outline: auto;
         display: flex;
         align-items: center;
         padding-left: var(--descPadding);
+        padding-top: var(--descPadding);
 
         .jobPeriod {
           font-size: 15px;
@@ -73,16 +72,16 @@ const props = defineProps({
       }
 
       .jobTitle {
-        outline: auto;
         display: flex;
-        align-items: center;
+        align-items: flex-start;
         padding-left: var(--descPadding);
       }
     }
   }
 
   .content {
-    outline: auto;
+    display: flex;
+    justify-content: center;
   }
 }
 
@@ -90,6 +89,8 @@ const props = defineProps({
 #JobPanel {
   border: 5px solid black;
   border-radius: 20px;
+  background-color: white;
+  background-image: url("src/assets/svgs/wave-haikei.svg");
 
   .companyIcon {
     @extend .center;
@@ -101,9 +102,26 @@ const props = defineProps({
     }
   }
 
+  .companyDesc {
+
+    // background-color: blue;
+    .companyName {
+      font-size: 40px
+    }
+  }
+
   .content {
+    // @extend .center;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+
     .jobDesc {
-      // list-style-type: none;
+      list-style-type: square;
+      max-width: 450px;
+      word-wrap: break-word;
+      font-size: 18px;
     }
   }
 }
