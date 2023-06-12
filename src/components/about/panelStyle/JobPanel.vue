@@ -2,15 +2,15 @@
   <div id="JobPanel">
     <!-- 上半 -->
     <div class="title">
-      <div class="companyIcon"></div>
+      <div class="companyIcon">{{ props.jobInfoObj.companyIcon }}</div>
       <div class="companyDesc">
-        <h1 class="companyName"></h1>
-        <h3 class="jobTitle"></h3>
+        <h1 class="companyName">{{ props.jobInfoObj.companyName }}</h1>
+        <h3 class="jobTitle">{{ props.jobInfoObj.jobTitle }}</h3>
       </div>
     </div>
     <!-- 下半 -->
     <div class="content">
-      <ul>
+      <ul class="jobDesc">
         <li v-for="(item, index) in props.jobInfoObj.companyDesc" :key="index">{{ item }}</li>
       </ul>
     </div>
@@ -41,36 +41,42 @@ const props = defineProps({
   background-color: white;
 
   .title {
-    outline: auto;
+    // outline: auto;
     display: grid;
     grid-template-columns: 1fr 2fr;
 
     .companyIcon {
-      outline: auto;
+      // outline: auto;
     }
 
     .companyDesc {
-      outline: auto;
+      // outline: auto;
       display: grid;
       grid-template-rows: 1fr 1fr;
 
       .companyName {
-        outline: auto;
+        // outline: auto;
       }
 
       .jobTitle {
-        outline: auto;
+        // outline: auto;
       }
     }
   }
 
   .content {
-    outline: auto;
+    // outline: auto;
   }
 }
 
 // 元件
 #JobPanel {
-  .content {}
+  border: 5px solid black;
+  border-radius: 20px;
+  .content {
+    .jobDesc {
+      list-style-type: none;
+    }
+  }
 }
 </style>

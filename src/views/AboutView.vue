@@ -94,6 +94,7 @@ onMounted(() => {
     width: 100%;
     height: var(--navHeight);
     position: fixed;
+    z-index: 999;
     top: 0;
     left: 0;
     background-color: yellow;
@@ -103,6 +104,7 @@ onMounted(() => {
     width: 100%;
     height: var(--footerHeight);
     position: fixed;
+    z-index: 999;
     bottom: 0;
     left: 0;
   }

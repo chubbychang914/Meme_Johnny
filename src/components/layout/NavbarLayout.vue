@@ -36,7 +36,8 @@ const redirectTo = (url) => {
 // 元件
 #NavbarLayout {
   .nav {
-    position: relative;
+    position: absolute;
+    z-index: 999;
     width: 100%;
     height: 80px;
     color: #FAE900;
