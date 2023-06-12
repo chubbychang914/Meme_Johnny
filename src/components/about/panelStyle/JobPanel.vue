@@ -10,16 +10,9 @@
     </div>
     <!-- 下半 -->
     <div class="content">
-      <h1>adjfhadkjf</h1>
-      <h1>adjfhadkjf</h1>
-      <h1>adjfhadkjf</h1>
-      <h1>adjfhadkjf</h1>
-      <h1>adjfhadkjf</h1>
-      <h1>adjfhadkjf</h1>
-      <h1>adjfhadkjfaalsdhfa</h1>
-      <h1>adjfhadkjfaalsdhfa</h1>
-      <h1>adjfhadkjfaalsdhfa</h1>
-      <h1>adjfhadkjfaalsdhfa</h1>
+      <ul>
+        <li v-for="(item, index) in props.jobInfoObj.companyDesc" :key="index">{{ item }}</li>
+      </ul>
     </div>
   </div>
 </template>
@@ -30,9 +23,9 @@ const props = defineProps({
     type: Object,
     default: () => ({
       companyIcon: "",
-      companyDesc: [],
-      companyName: "",
-      jobTitle: ""
+      companyDesc: ["one", "two", "three", "four", "five"],
+      companyName: "公司名稱",
+      jobTitle: "職位"
     })
   }
 })
