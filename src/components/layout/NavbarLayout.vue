@@ -3,7 +3,7 @@
     <nav class="nav">
       <ul class="bar">
         <li class="link">
-          <div class="icon"><img src="@/assets/imgs/icons/homeIcon.png" /></div>
+          <div class="icon"> <font-awesome-icon icon="fa-solid fa-user-secret" /></div>
           <div class="title">Home</div>
         </li>
         <li class="link">
