@@ -8,10 +8,10 @@
         <JobPanel />
       </li>
       <li class="card">
-        <JobPanel />
+        <JobPanel :jobInfoObj="ispanInfoObj" />
       </li>
       <li class="card">
-        <JobPanel />
+        <JobPanel :jobInfoObj="tyrInfoObj" />
       </li>
       <li class="card">
         <button>Next</button>
@@ -31,6 +31,30 @@ import debounce from 'lodash/debounce';
 const { proxy: { $gsapPack } } = getCurrentInstance()
 const router = useRouter()
 
+// Props ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+const ispanInfoObj = {
+  companyIcon: "src/assets/svgs/ispanLogo.svg",
+  companyDesc: [
+    "Learned frontend and backend languages such as JavaScript, PHP, and SQL",
+    "Collaborated with a team to build a fully functional e-commerce website",
+    "Utilized frontend and backend frameworks such as React and Laravel",
+    "Utilized MySQL for database management",
+  ],
+  companyName: "iSpan",
+  jobTitle: "FullStack Developer Bootcamp"
+}
+const tyrInfoObj = {
+  companyIcon: "src/assets/svgs/tyrLogo.svg",
+  companyDesc: [
+    "Utilized Vue and Nuxt to create frontend interfaces",
+    "Utilized Git Branches for version control",
+    "Created and maintained frontend code of website",
+    "Collaborated with team members to implement a Line login system",
+    "Worked in an agile environment with daily standup meetings"
+  ],
+  companyName: "Tyr Tech",
+  jobTitle: "Frontend Developer"
+}
 // Animations ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 const _scrollAboutPanels = () => {
   // 根據螢幕大小去設定元件的寬度跟高度
