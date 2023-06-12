@@ -7,14 +7,16 @@
       </li>
       <li class="card">iSpan
       </li>
-      <li class="card">Tyr
+      <li class="card">
+        <JobPanel />
       </li>
     </ul>
   </div>
 </template>
 
 <script setup>
-import PanelTemplate from "@/components/about/PanelTemplate.vue"
+// import PanelTemplate from "@/components/about/PanelTemplate.vue"
+import JobPanel from "@/components/about/panelStyle/JobPanel.vue";
 
 
 import { getCurrentInstance, onMounted, ref } from 'vue';
