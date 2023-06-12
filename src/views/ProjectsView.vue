@@ -57,7 +57,7 @@ const ArcaneInfoObj = {
   height: 100vh;
   display: grid;
   grid-template-rows: 80px auto 80px;
-  background-color: blue;
+  // background-color: blue;
 
   .content {
     display: flex;
