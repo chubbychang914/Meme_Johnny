@@ -53,7 +53,7 @@ const redirectTo = (url) => {
     .navbarContent {
       width: 100%;
       @extend .center;
-      gap: 40px;
+      gap: 30px;
       background-color: #1B3B5B;
       list-style-type: none;
     }

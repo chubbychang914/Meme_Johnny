@@ -25,12 +25,14 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
+$background: black;
+
 // 排版
 #BaseLayer {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-areas: "left right";
-  background-color: black;
+  background-color: $background ;
 }
 
 // 元件
@@ -53,7 +55,7 @@ onMounted(() => {
       position: absolute;
       right: 0;
       top: 0;
-      background-color: black;
+      background-color: $background;
     }
   }
 

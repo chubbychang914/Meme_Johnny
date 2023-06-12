@@ -6,7 +6,7 @@
   </clipPath>
   <g clip-path="url(#p.0)">
     <path d="m0 0l528.0 0l0 540.0l-528.0 0z" fill-rule="evenodd" />
-    <path fill="#0c243c" d="m116.45563 0l-102.88609 540.0l514.4305 0l0 -540.0z"
+    <path fill="blue" d="m116.45563 0l-102.88609 540.0l514.4305 0l0 -540.0z"
       fill-rule="evenodd" />
   </g>
 </svg>

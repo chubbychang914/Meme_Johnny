@@ -4,15 +4,25 @@
     <div class="left-side">
       <div class="left-content">
         <div class="name">
+          <div class="icon-left">
+            <font-awesome-icon icon="fa-solid fa-caret-left" />
+          </div>
           <div class="name-letters">J</div>
           <div class="name-letters">o</div>
           <div class="name-letters">h</div>
           <div class="name-letters">n</div>
           <div class="name-letters">n</div>
           <div class="name-letters">y</div>
+          <div class="icon-right">
+            <font-awesome-icon icon="fa-solid fa-caret-right" />
+          </div>
         </div>
         <div class="job">Frontend Developer</div>
-        <div class="menu"></div>
+        <div class="menu">
+          <CustomButton />
+          <CustomButton />
+          <DrawButton />
+        </div>
       </div>
     </div>
     <!-- 右半 -->
@@ -35,6 +45,8 @@
 import { onMounted, getCurrentInstance } from 'vue';
 const { proxy: { $gsapPack } } = getCurrentInstance() // 要引入這包才能使用 gsap 的所有東西
 
+import CustomButton from "@/components/templates/CustomButton.vue"
+import DrawButton from "@/components/templates/DrawButton.vue"
 import FooterLayout from "@/components/layout/FooterLayout.vue"
 
 onMounted(() => {
@@ -45,6 +57,7 @@ onMounted(() => {
 <style lang="scss" scoped>
 // 排版
 #InfoLayer {
+  font-family: 'VT323', monospace;
   display: grid;
   grid-template-columns: 5fr 4fr;
   grid-template-areas: "left right";
@@ -61,25 +74,14 @@ onMounted(() => {
       width: 80%;
       min-width: 800px;
       height: 90%;
-      background-color: white;
       display: grid;
       grid-template-rows: 2fr 1fr 4fr;
-      grid-template-areas:
-        "name"
-        "job"
-        "menu";
 
       .name,
       .job,
       .menu {
-        outline: auto;
+        // outline: auto;
       }
-
-      .name {}
-
-      .job {}
-
-      .menu {}
     }
   }
 
@@ -103,24 +105,48 @@ onMounted(() => {
 // 元件
 #InfoLayer {
   .left-content {
-    .name {
-      background-color: yellow;
-      display: flex;
-      font-size: 150px;
-      .name-letters{
+    transform: rotate(-10deg);
 
+    .name {
+      display: flex;
+      gap: 10px;
+      @extend .center;
+      color: #FAE900;
+
+      .icon-left {
+        font-size: 150px;
+      }
+
+      .icon-right {
+        font-size: 150px;
+      }
+
+      .name-letters {
+        font-size: 250px;
+        // border: 10px double #FAE900;
       }
     }
 
     .job {
-      background-color: blue;
+      color: white;
+      font-size: 60px;
+      @extend .center;
+
     }
 
     .menu {
-      background-color: green;
+      // background-color: green;
+      @extend .center;
+      flex-direction: column;
+      color: white;
+
+      h1 {
+        font-size: 100px;
+      }
     }
   }
 
+  //  ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
   .right-content {
     position: relative;
     display: flex;
