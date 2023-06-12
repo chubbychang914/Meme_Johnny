@@ -1,6 +1,8 @@
 <template>
   <div id="ProjectsView">
-    <nav style="background-color: black;">asdfasd</nav>
+    <nav class="nav">
+      <NavbarLayout />
+    </nav>
     <div class="content">
       <ProjectsTemplate />
       <ProjectsTemplate :infoObj="SelectGoInfoObj" />
@@ -14,6 +16,7 @@
 
 <script setup >
 // import { ref, computed } from 'vue';
+import NavbarLayout from '@/components/layout/NavbarLayout.vue'
 import ProjectsTemplate from '@/components/projects/ProjectsTemplate.vue';
 import FooterLayout from '@/components/layout/FooterLayout.vue';
 
@@ -36,14 +39,14 @@ const SelectGoInfoObj = {
   title: "Select Go",
   imgUrl: "src/assets/imgs/projects/SelectGoScreenShot.png",
   description: "E-commerce website built with React and LaravelL",
-  reverseLayout: false
+  reverseLayout: true
 }
 
 const ArcaneInfoObj = {
   title: "Arcane",
   imgUrl: "src/assets/imgs/projects/ArcaneScreenShot.png",
   description: "Website",
-  reverseLayout: true
+  reverseLayout: false
 }
 
 </script>
@@ -54,6 +57,7 @@ const ArcaneInfoObj = {
   height: 100vh;
   display: grid;
   grid-template-rows: 80px auto 80px;
+  background-color: blue;
 
   .content {
     display: flex;
