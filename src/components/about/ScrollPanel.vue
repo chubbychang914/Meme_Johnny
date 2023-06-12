@@ -2,7 +2,7 @@
   <div id="AboutMe">
     <ul class="card-box">
       <li class="card">
-        <JobPanel />
+        <JohnnyPanel />
       </li>
       <li class="card">
         <SkillPanel />
@@ -28,8 +28,9 @@ const { proxy: { $gsapPack } } = getCurrentInstance()
 const router = useRouter()
 
 // import PanelTemplate from "@/components/about/PanelTemplate.vue"
+import JohnnyPanel from '@/components/about/panelStyle/JohnnyPanel.vue'
 import JobPanel from "@/components/about/panelStyle/JobPanel.vue";
-import SkillPanel from './panelStyle/SkillPanel.vue';
+import SkillPanel from '@/components/about/panelStyle/SkillPanel.vue';
 // Props ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 const ispanInfoObj = {
   companyIcon: "src/assets/svgs/ispanLogo.svg",
