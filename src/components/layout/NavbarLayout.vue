@@ -39,10 +39,15 @@ const redirectTo = (url) => {
     position: relative;
     width: 100%;
     height: 80px;
-    // background-color: #1B3B5B;
     color: #FAE900;
+    font-family: 'VT323', monospace;
     display: flex;
     justify-content: center;
+    user-select: none;
+
+    &:hover {
+      cursor: pointer;
+    }
 
     .navbarContent {
       width: 100%;
@@ -58,7 +63,7 @@ const redirectTo = (url) => {
       height: 70px;
       flex-direction: column;
       position: relative;
-      border-radius: 10px;
+      border-radius: 12px;
 
       &:hover,
       &:active {
@@ -84,7 +89,7 @@ const redirectTo = (url) => {
 
       .text {
         position: absolute;
-        font-size: 15px;
+        font-size: 25px;
         transition: 0.25s;
         text-transform: uppercase;
         transform: scale(0);
