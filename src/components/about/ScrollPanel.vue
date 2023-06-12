@@ -76,7 +76,6 @@ onMounted(() => {
   .card-box {
     --spacing: 14vw;
     --panelPaddingTop: 10vh;
-    --panelPaddingLeft: 50px;
     position: relative;
     width: 100%;
     height: 100%;
@@ -88,43 +87,36 @@ onMounted(() => {
       width: 40%;
       height: 100%;
       padding-top: var(--panelPaddingTop);
-      // @extend .center;
 
 
       &:nth-child(1) {
-        // padding-top: calc(var(--panelPaddingTop)*2);
-        // padding-left: var(--panelPaddingLeft);
         // background-color: #798dc5;
+        left: var(--spacing);
         z-index: 1;
       }
 
       &:nth-child(2) {
-        // padding-top: calc(var(--panelPaddingTop)*4);
-        // padding-left: var(--panelPaddingLeft);
         // background-color: green;
-        left: var(--spacing);
+        // left: var(--spacing*);
+        left: calc(var(--spacing)*2);
         z-index: 2;
       }
 
       &:nth-child(3) {
-        // padding-top: calc(var(--panelPaddingTop)*6);
-        // padding-left: var(--panelPaddingLeft);
         // background-color: red;
-        left: calc(var(--spacing)*2);
+        left: calc(var(--spacing)*3);
         z-index: 3;
       }
 
       &:nth-child(4) {
         // background-color: hotpink;
-        // padding-top: calc(var(--panelPaddingTop)*8);
-        // padding-left: var(--panelPaddingLeft);
-        left: calc(var(--spacing)*3);
+        left: calc(var(--spacing)*4);
         z-index: 4;
       }
 
       // next button
       &:nth-child(5) {
-        background-color: hotpink;
+        // background-color: hotpink;
         left: calc(var(--spacing)*5);
         width: 25%;
         z-index: 5;
