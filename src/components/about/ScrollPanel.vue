@@ -1,14 +1,20 @@
 <template>
   <div id="AboutMe">
     <ul class="card-box">
-      <li class="card">Summary
-      </li>
-      <li class="card">Skills
-      </li>
-      <li class="card">iSpan
+      <li class="card">
+        <JobPanel />
       </li>
       <li class="card">
         <JobPanel />
+      </li>
+      <li class="card">
+        <JobPanel />
+      </li>
+      <li class="card">
+        <JobPanel />
+      </li>
+      <li class="card">
+        <button>Next</button>
       </li>
     </ul>
   </div>
@@ -68,7 +74,9 @@ onMounted(() => {
 // 元件
 #AboutMe {
   .card-box {
-    --spacing: 9vw;
+    --spacing: 14vw;
+    --panelPaddingTop: 10vh;
+    --panelPaddingLeft: 50px;
     position: relative;
     width: 100%;
     height: 100%;
@@ -79,29 +87,50 @@ onMounted(() => {
       position: absolute;
       width: 40%;
       height: 100%;
+      padding-top: var(--panelPaddingTop);
+      // @extend .center;
+
 
       &:nth-child(1) {
-        background-color: #798dc5;
+        // padding-top: calc(var(--panelPaddingTop)*2);
+        // padding-left: var(--panelPaddingLeft);
+        // background-color: #798dc5;
         z-index: 1;
       }
 
       &:nth-child(2) {
-        background-color: green;
+        // padding-top: calc(var(--panelPaddingTop)*4);
+        // padding-left: var(--panelPaddingLeft);
+        // background-color: green;
         left: var(--spacing);
         z-index: 2;
       }
 
       &:nth-child(3) {
-        background-color: red;
+        // padding-top: calc(var(--panelPaddingTop)*6);
+        // padding-left: var(--panelPaddingLeft);
+        // background-color: red;
         left: calc(var(--spacing)*2);
         z-index: 3;
       }
 
       &:nth-child(4) {
-        background-color: hotpink;
+        // background-color: hotpink;
+        // padding-top: calc(var(--panelPaddingTop)*8);
+        // padding-left: var(--panelPaddingLeft);
         left: calc(var(--spacing)*3);
-        width: 75%;
         z-index: 4;
+      }
+
+      // next button
+      &:nth-child(5) {
+        background-color: hotpink;
+        left: calc(var(--spacing)*5);
+        width: 25%;
+        z-index: 5;
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-end;
       }
     }
   }

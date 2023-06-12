@@ -43,9 +43,9 @@ const props = defineProps({
 #JobPanel {
   display: grid;
   grid-template-rows: 1fr 3fr;
-  width: 35vw;
-  height: 35vw;
-  background-color: lightcoral;
+  width: 600px;
+  height: 600px;
+  background-color: white;
 
   .title {
     outline: auto;
