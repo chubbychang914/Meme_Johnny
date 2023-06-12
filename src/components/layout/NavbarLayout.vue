@@ -3,15 +3,15 @@
     <nav class="nav">
       <ul class="bar">
         <li class="link">
-          <div class="icon"> <font-awesome-icon icon="fa-solid fa-user-secret" /></div>
+          <div class="icon"><font-awesome-icon icon="fa-solid fa-house" /></div>
           <div class="title">Home</div>
         </li>
         <li class="link">
-          <div class="icon"><img src="@/assets/imgs/icons/aboutIcon.png" /></div>
+          <div class="icon"><font-awesome-icon icon="fa-solid fa-user" /></div>
           <div class="title">About</div>
         </li>
         <li class="link">
-          <div class="icon"><img src="@/assets/imgs/icons/projectsIcon.png" /></div>
+          <div class="icon"><font-awesome-icon icon="fa-solid fa-layer-group" /></div>
           <div class="title">Projects</div>
         </li>
       </ul>
@@ -58,16 +58,7 @@
 
     .link {
 
-      .icon {
-        width: 30px;
-        height: 30px;
-
-        img {
-          width: 100%;
-          height: auto;
-          object-fit: contain;
-        }
-      }
+      .icon {}
     }
   }
 }
