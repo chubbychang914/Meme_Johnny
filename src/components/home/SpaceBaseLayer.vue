@@ -71,6 +71,7 @@ onBeforeRouteLeave(async (to, from, next) => {
     height: 100%;
     background-image: url($spaceSvg);
     background-size: cover;
+    background-position: center;
     overflow: hidden;
     z-index: 1;
   }
