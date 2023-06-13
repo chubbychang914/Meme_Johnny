@@ -20,9 +20,9 @@
         <div class="job">Frontend Developer</div>
         <div class="menu">
           <div class="btn-group">
-            <CustomButton btnContent="Start" />
-            <CustomButton btnContent="About" />
-            <CustomButton btnContent="Projects" />
+            <CustomButton btnContent="Start" @on-click="redirectTo('/about')" />
+            <CustomButton btnContent="About" @on-click="redirectTo('/about')" />
+            <CustomButton btnContent="Projects" @on-click="redirectTo('/projects')" />
           </div>
         </div>
       </div>
@@ -36,7 +36,7 @@
         <img src="@/assets/imgs/home/personBg.png" alt="" class="img-bg">
         <!-- 連結 -->
         <div class="link">
-          <FooterLayout />
+          <div class="link-btn"></div>
         </div>
       </div>
     </div>
@@ -44,12 +44,19 @@
 </template>
 
 <script setup>
-import { onMounted, getCurrentInstance } from 'vue';
-const { proxy: { $gsapPack } } = getCurrentInstance() // 要引入這包才能使用 gsap 的所有東西
+import { getCurrentInstance, onMounted, onUnmounted } from 'vue';
+import { useRouter, onBeforeRouteLeave } from 'vue-router';
+import debounce from 'lodash/debounce'
+const { proxy: { $gsapPack } } = getCurrentInstance() // 把GSAP包引入個別使用
+const router = useRouter()
 
 import CustomButton from "@/components/templates/CustomButton.vue"
-import DrawButton from "@/components/templates/DrawButton.vue"
-import FooterLayout from "@/components/layout/FooterLayout.vue"
+// import DrawButton from "@/components/templates/DrawButton.vue"
+
+// Events ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+const redirectTo = debounce((url) => {
+  router.push(url)
+})
 
 onMounted(() => {
 
