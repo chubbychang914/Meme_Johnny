@@ -124,7 +124,7 @@ onBeforeRouteLeave(async (to, from, next) => {
   next() // must have next to finish the router action
 })
 onUnmounted(() => {
-  $gsapPack.gsap.globalTimeline.clear();
+  $gsapPack.gsap.globalTimeline.kill();
 })
 </script>
 
