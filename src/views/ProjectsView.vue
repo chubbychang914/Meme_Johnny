@@ -29,7 +29,7 @@ const SelectGoInfoObj = {
   imgUrl: "src/assets/imgs/projects/SelectGoScreenShot.png",
   description: "Developed a fully functional e-commerce website using React for the frontend and Laravel for the backend. Implemented features such as user authentication, shopping cart, and product listing.",
   skillsUsedList: ["Utilized React Hooks and React Router", "Created RESTful APIs using Laravel", "Set up MySQL database", "Utilized Git and Sourcetree for version control"],
-  reverseLayout: false
+  reverseLayout: true
 }
 
 const ArcaneInfoObj = {
@@ -76,6 +76,7 @@ onMounted(() => {
   }
 
   .content {
+    padding-top: 100px;
     display: flex;
     flex-direction: column;
     gap: 50px;

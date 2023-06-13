@@ -51,27 +51,29 @@ const props = defineProps({
 
   .row {
     // background-color: blue;
-    // outline: auto;
+    outline: auto;
     @extend .center;
   }
 }
 
 // 元件
 #ProjectsTemplate {
+  --contentWidth: 650px;
 
   .projectPic {
     width: 100%;
     @extend .center;
 
     img {
-      width: 700px;
+      width: var(--contentWidth);
       height: auto;
       object-fit: contain;
     }
   }
 
   .projectDesc {
-    max-width: 600px;
+    max-width: var(--contentWidth);
+    padding: 30px 50px;
     background-color: white;
 
     .title {}
