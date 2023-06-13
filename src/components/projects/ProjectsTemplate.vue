@@ -58,21 +58,21 @@ const props = defineProps({
 
 // 元件
 #ProjectsTemplate {
-  --contentWidth: 650px;
-
   .projectPic {
     width: 100%;
     @extend .center;
 
     img {
-      width: var(--contentWidth);
+      width: 35vw;
+      min-width: 650px;
       height: auto;
       object-fit: contain;
     }
   }
 
   .projectDesc {
-    max-width: var(--contentWidth);
+    width: 25vw;
+    min-width: 500px;
     padding: 30px 50px;
     background-color: white;
 
