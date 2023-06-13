@@ -9,19 +9,31 @@
       <div class="projectDesc">
         <h1>{{ props.infoObj.title }}</h1>
         <div class="text"> {{ props.infoObj.description }}</div>
+        <ul class="skills-used">
+          <li class="list" v-for="(item, index) in props.infoObj.skillsUsedList" :key="index">
+            {{ item }}
+          </li>
+        </ul>
+        <div class="btn">
+          <DrawButton />
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
+import DrawButton from "@/components/templates/DrawButton.vue"
+
+
 const props = defineProps({
   infoObj: {
     type: Object,
     default: () => ({
-      title: "",
+      title: "Title",
       imgUrl: "https://cdn.pixabay.com/photo/2015/04/19/08/32/marguerite-729510_1280.jpg",
       description: "Hello world",
+      skillsUsedList: ["1", "2", "3"],
       reverseLayout: false
     })
   }
