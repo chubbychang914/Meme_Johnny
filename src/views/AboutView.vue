@@ -88,6 +88,7 @@ onMounted(() => {
     background-image: url("src/assets/imgs/about/aboutBg.jpeg");
     // background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
   }
 
   .aboutNav {

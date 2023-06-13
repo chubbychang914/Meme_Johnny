@@ -58,6 +58,7 @@ const props = defineProps({
 
 // 元件
 #ProjectsTemplate {
+
   .projectPic {
     width: 100%;
     @extend .center;
@@ -71,7 +72,7 @@ const props = defineProps({
 
   .projectDesc {
     max-width: 600px;
-    // background-color: blue;
+    background-color: white;
 
     .title {}
 

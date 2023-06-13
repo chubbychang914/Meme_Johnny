@@ -15,11 +15,13 @@
 </template >
 
 <script setup >
-// import { ref, computed } from 'vue';
+import { ref, onMounted, getCurrentInstance } from 'vue';
+const { proxy: { $gsapPack } } = getCurrentInstance()
+
 import NavbarLayout from '@/components/layout/NavbarLayout.vue'
 import ProjectsTemplate from '@/components/projects/ProjectsTemplate.vue';
 import FooterLayout from '@/components/layout/FooterLayout.vue';
-
+// Props ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 const SelectGoInfoObj = {
   title: "Select Go",
   imgUrl: "src/assets/imgs/projects/SelectGoScreenShot.png",
@@ -35,7 +37,17 @@ const ArcaneInfoObj = {
   skillsUsedList: ["Utilized CSS Flexbox for layout design", "Utilized GSAP for animations", "Implemented GSAP Scrolltrigger to achieve on scroll effects and scrolltrigger"],
   reverseLayout: false
 }
+// Animations ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+const _animateBgLoop = () => {
+  const tl = $gsapPack.gsap.timeline({ paused: true, defaults: { repeat: -1 } })
+  tl.to('.content', { backgroundPosition: "10000px 0px", duration: 60, ease: "linear" })
+  return tl
+}
 
+//  ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+onMounted(() => {
+  _animateBgLoop().play()
+})
 </script>
 
 <style lang="scss" scoped>
@@ -45,12 +57,22 @@ const ArcaneInfoObj = {
   display: grid;
   grid-template-rows: 80px auto 80px;
 
+  .nav {
+    position: sticky;
+    top: 0;
+    left: 0;
+  }
+
   .content {
     display: flex;
     flex-direction: column;
     gap: 50px;
-    background-color: violet;
-    background-image: url("");
+    background-image: url("https://rare-gallery.com/uploads/posts/523062-pixels-pixel.jpg");
+    background-size: contain;
+    // background-repeat: no-repeat;
+    background-attachment: fixed;
+    // background-position: center;
+    background-color: lightskyblue;
   }
 }
 
