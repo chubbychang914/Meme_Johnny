@@ -1,0 +1,33 @@
+<svg version="1.1" viewBox="0.0 0.0 960.0 540.0" fill="none" stroke="none" stroke-linecap="square"
+  stroke-miterlimit="10" xmlns:xlink="http://www.w3.org/1999/xlink"
+  xmlns="http://www.w3.org/2000/svg">
+  <clipPath id="g251f5b8c633_0_20.0">
+    <path d="m0 0l960.0 0l0 540.0l-960.0 0l0 -540.0z" clip-rule="nonzero" />
+  </clipPath>
+  <g clip-path="url(#g251f5b8c633_0_20.0)">
+    <path fill="#102336" d="m0 540.0l187.82646 -74.11023l584.34705 0l187.82648 74.11023z"
+      fill-rule="evenodd" />
+    <path fill="#102336"
+      d="m-0.12598425 0.026246719l147.28142 59.84252l665.6891 0l147.28143 -59.84252z"
+      fill-rule="evenodd" />
+    <path fill="#000000" fill-opacity="0.0" d="m772.97614 44.90026l-29.921265 423.7795"
+      fill-rule="evenodd" />
+    <path stroke="#102336" stroke-width="24.0" stroke-linejoin="round" stroke-linecap="butt"
+      d="m772.97614 44.90026l-29.921265 423.7795" fill-rule="evenodd" />
+    <path fill="#000000" fill-opacity="0.0" d="m799.60895 49.304462l-29.921265 423.7795"
+      fill-rule="evenodd" />
+    <path stroke="#102336" stroke-width="24.0" stroke-linejoin="round" stroke-linecap="butt"
+      d="m799.60895 49.304462l-29.921265 423.7795" fill-rule="evenodd" />
+    <path fill="#eeeeee"
+      d="m248.14174 468.2966l0 -36.897644l0 0c0 -20.378021 103.80647 -36.897644 231.85826 -36.897644c128.05176 0 231.85828 16.519623 231.85828 36.897644l0 36.897644z"
+      fill-rule="evenodd" />
+    <path fill="#000000" fill-opacity="0.0" d="m191.9029 55.90814l29.92125 423.7795"
+      fill-rule="evenodd" />
+    <path stroke="#102336" stroke-width="24.0" stroke-linejoin="round" stroke-linecap="butt"
+      d="m191.9029 55.90814l29.92125 423.7795" fill-rule="evenodd" />
+    <path fill="#000000" fill-opacity="0.0" d="m165.27011 52.312336l29.92125 423.7795"
+      fill-rule="evenodd" />
+    <path stroke="#102336" stroke-width="24.0" stroke-linejoin="round" stroke-linecap="butt"
+      d="m165.27011 52.312336l29.92125 423.7795" fill-rule="evenodd" />
+  </g>
+</svg>

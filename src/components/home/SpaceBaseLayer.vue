@@ -2,7 +2,7 @@
   <div id="SpaceBaseLayer">
     <div class="spaceBg"></div>
     <div class="spaceShip">
-      <img class="ship-img" src="@/assets/svgs/spaceship.svg">
+      <img class="ship-img" src="@/assets/svgs/spaceship2.svg">
     </div>
     <div class="planet" ref="planetRef"></div>
   </div>
@@ -22,13 +22,6 @@ const _animatePlanetEnlarge = () => {
   return action;
 }
 // 背景旋轉
-const _animateRotateBg = () => {
-  const action = $gsapPack.gsap.to(".spaceBg", {
-    rotate: "-30",
-    duration: 1.5
-  })
-  return action
-}
 
 // onMount ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 onMounted(() => {
@@ -41,8 +34,7 @@ const _animateRouterLeave = () => {
   return new Promise((resolve) => {
     completeAnimation = resolve
     const tl = $gsapPack.gsap.timeline()
-    tl.add(_animateRotateBg())
-      .add(_animatePlanetEnlarge(), "<")
+    tl.add(_animatePlanetEnlarge())
       .eventCallback("onComplete", () => completeAnimation())
   })
 }
@@ -59,9 +51,7 @@ onBeforeRouteLeave(async (to, from, next) => {
   width: 100%;
   height: 100vh;
   background-color: black;
-  // background-image: url($spaceSvg);
-  // background-size: cover;
-  // overflow: hidden;
+  overflow: hidden;
 
   .spaceBg {
     position: absolute;
@@ -80,6 +70,7 @@ onBeforeRouteLeave(async (to, from, next) => {
     position: absolute;
     top: 0;
     left: 50%;
+    width: 1000px;
     transform: translateX(-50%);
     z-index: 3;
     @extend .center;
