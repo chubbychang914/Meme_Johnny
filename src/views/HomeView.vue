@@ -1,16 +1,16 @@
 <template>
   <div id="HomeView">
     <div class="baseLayer">
-      <BaseLayer />
+      <SpaceBaseLayer />
     </div>
     <div class="infoLayer">
-      <InfoLayer />
+      <!-- <InfoLayer /> -->
     </div>
   </div>
 </template>
 
 <script setup>
-import BaseLayer from "@/components/home/BaseLayer.vue"
+import SpaceBaseLayer from "@/components/home/SpaceBaseLayer.vue";
 import InfoLayer from "@/components/home/InfoLayer.vue";
 </script>
 
