@@ -41,29 +41,18 @@ const ArcaneInfoObj = {
 }
 // Animations ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 const _animateBgLoop = () => {
+  const backgroundImageWidth = contentRef.value.clientWidth;
   const tl = $gsapPack.gsap.timeline({ paused: true, defaults: { repeat: -1 } })
-  tl.to('.content', { backgroundPosition: "10000px 0px", duration: 60, ease: "linear" })
+  tl.to('.content', {
+    // backgroundPosition: "10000px 0px",
+    backgroundPosition: `${backgroundImageWidth}px 0px`,
+    duration: 10,
+    ease: "linear"
+  })
+
   return tl
 }
 
-// const _animateBgLoop = (contentElement) => {
-//   const backgroundImageWidth = contentElement.clientWidth; // Assuming the background image covers the entire element
-
-//   const tl = $gsapPack.gsap.timeline({ defaults: { repeat: -1 } });
-
-//   const animationDuration = 60; // Duration in seconds
-//   const positionIncrement = backgroundImageWidth / (animationDuration * 60); // Calculate the increment for each frame
-
-//   tl.to(contentElement, {
-//     backgroundPosition: `+=${positionIncrement}px 0px`, // Increment the position on each frame
-//     duration: 1, // Set a shorter duration for smoother animation
-//     ease: "none", // Disable easing for linear movement
-//     modifiers: {
-//       backgroundPositionX: $gsapPack.gsap.utils.unitize // Ensure the position value is properly formatted
-//     }
-//   });
-
-// };
 // onMounted ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 onMounted(() => {
   _animateBgLoop().play();

@@ -37,10 +37,6 @@ const props = defineProps({
 </script>
 
 <style lang="scss" scoped>
-* {
-  // outline: auto;
-}
-
 // 排版
 #JobPanel {
   display: grid;
