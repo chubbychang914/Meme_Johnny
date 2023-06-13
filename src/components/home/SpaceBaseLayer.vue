@@ -11,28 +11,23 @@
 </script>
 
 <style lang="scss" scoped>
-// 排版
-
 #SpaceBaseLayer {
   $spaceSvg: "src/assets/svgs/space.svg";
   width: 100%;
   height: 100vh;
   background-image: url($spaceSvg);
+  background-size: cover;
 
   .spaceShip {
     @extend .center;
 
     img {
-      // width: 100%;
-      height: 100vh;
+      // height: 100vh;
+      width: 100%;
       object-fit: contain;
     }
   }
 }
-
-// 元件
-#SpaceBaseLayer {}
-
 
 .center {
   display: flex;
