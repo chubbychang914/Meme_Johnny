@@ -31,7 +31,7 @@ const SelectGoInfoObj = {
 const ArcaneInfoObj = {
   title: "Arcane",
   imgUrl: "src/assets/imgs/projects/ArcaneScreenShot.png",
-  description: "Built a website based on the popular Netflix series Arcane. Utilized GSAP for animations.",
+  description: "Created a website based on the popular Netflix series Arcane.",
   skillsUsedList: ["Utilized CSS Flexbox for layout design", "Utilized GSAP for animations", "Implemented GSAP Scrolltrigger to achieve on scroll effects and scrolltrigger"],
   reverseLayout: false
 }
@@ -44,12 +44,13 @@ const ArcaneInfoObj = {
   height: 100vh;
   display: grid;
   grid-template-rows: 80px auto 80px;
-  // background-color: blue;
 
   .content {
     display: flex;
     flex-direction: column;
     gap: 50px;
+    background-color: violet;
+    background-image: url("");
   }
 }
 

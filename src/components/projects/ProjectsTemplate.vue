@@ -7,7 +7,7 @@
     </div>
     <div class="row" :style="{ order: props.infoObj.reverseLayout ? 1 : 2 }">
       <div class="projectDesc">
-        <h1>{{ props.infoObj.title }}</h1>
+        <div class="title">{{ props.infoObj.title }}</div>
         <div class="text"> {{ props.infoObj.description }}</div>
         <ul class="skills-used">
           <li class="list" v-for="(item, index) in props.infoObj.skillsUsedList" :key="index">
@@ -15,7 +15,7 @@
           </li>
         </ul>
         <div class="btn">
-          <DrawButton />
+          <!-- <DrawButton /> -->
         </div>
       </div>
     </div>
@@ -51,7 +51,7 @@ const props = defineProps({
 
   .row {
     // background-color: blue;
-    outline: auto;
+    // outline: auto;
     @extend .center;
   }
 }
@@ -60,15 +60,36 @@ const props = defineProps({
 #ProjectsTemplate {
   .projectPic {
     width: 100%;
+    @extend .center;
 
     img {
-      width: 100%;
+      width: 700px;
       height: auto;
       object-fit: contain;
     }
   }
 
-  .projectDesc {}
+  .projectDesc {
+    max-width: 600px;
+    // background-color: blue;
+
+    .title {}
+
+    .text {
+      font-size: 18px;
+    }
+
+    .skills-used {
+
+      .list {
+        list-style-type: square;
+        word-wrap: break-word;
+        font-size: 18px;
+      }
+    }
+
+    .btn {}
+  }
 }
 
 .center {

@@ -52,7 +52,7 @@ const redirectTo = (url) => {
     }
 
     .navbarContent {
-      width: 70%;
+      width: 100%;
       display: flex;
       justify-content: flex-end;
       align-items: center;
