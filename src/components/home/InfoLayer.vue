@@ -31,13 +31,13 @@
     <div class="right-side">
       <div class="right-content">
         <!-- 背景 -->
-        <div class="square-bg"></div>
+        <!-- <div class="square-bg"></div> -->
         <!-- 圖片 -->
-        <img src="@/assets/imgs/home/personBg.png" alt="" class="img-bg">
+        <!-- <img src="@/assets/imgs/home/personBg.png" alt="" class="img-bg"> -->
         <!-- 連結 -->
-        <div class="link">
-          <div class="link-btn"></div>
-        </div>
+        <!-- <div class="link"> -->
+        <!-- <div class="link-btn"></div> -->
+        <!-- </div> -->
       </div>
     </div>
   </div>
@@ -76,7 +76,6 @@ onMounted(() => {
     grid-area: left;
     width: 100%; // 5fr
     height: 100vh;
-    // background-color: blue;
     @extend .center;
 
     .left-content {
@@ -115,7 +114,8 @@ onMounted(() => {
 // 元件
 #InfoLayer {
   .left-content {
-    // transform: rotate(-10deg);
+    // transform: rotate(-15deg);
+    // transform: skewX(15deg) translateX(50px);
 
     .name {
       display: flex;

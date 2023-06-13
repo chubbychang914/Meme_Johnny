@@ -2,7 +2,8 @@
   <div id="BaseLayer">
     <div class="left-panel"></div>
     <div class="right-panel">
-      <img class="trapezoidSvg" src="@/assets/svgs/trapezoid.svg" alt="">
+      <!-- <img class="trapezoidSvg" src="@/assets/svgs/trapezoid.svg" alt=""> -->
+      <img class="trapezoidSvg" src="src/assets/svgs/spaceship.svg" alt="">
     </div>
   </div>
 </template>
@@ -32,7 +33,9 @@ $background: #102336;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-areas: "left right";
-  background-color: $background ;
+  // background-color: $background ;
+  background-image: url("src/assets/svgs/space.svg");
+  background-size: cover;
 }
 
 // 元件
@@ -55,7 +58,8 @@ $background: #102336;
       position: absolute;
       right: 0;
       top: 0;
-      background-color: $background;
+      // background-color: $background;
+      background: none;
     }
   }
 
