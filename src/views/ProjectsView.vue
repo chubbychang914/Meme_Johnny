@@ -3,7 +3,7 @@
     <nav class="nav">
       <NavbarLayout />
     </nav>
-    <div class="content">
+    <div class="content" ref="contentRef">
       <ProjectsTemplate />
       <ProjectsTemplate :infoObj="SelectGoInfoObj" />
       <ProjectsTemplate :infoObj="ArcaneInfoObj" />
@@ -21,6 +21,8 @@ const { proxy: { $gsapPack } } = getCurrentInstance()
 import NavbarLayout from '@/components/layout/NavbarLayout.vue'
 import ProjectsTemplate from '@/components/projects/ProjectsTemplate.vue';
 import FooterLayout from '@/components/layout/FooterLayout.vue';
+// State ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+const contentRef = ref(null)
 // Props ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 const SelectGoInfoObj = {
   title: "Select Go",
@@ -44,10 +46,29 @@ const _animateBgLoop = () => {
   return tl
 }
 
-//  ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+// const _animateBgLoop = (contentElement) => {
+//   const backgroundImageWidth = contentElement.clientWidth; // Assuming the background image covers the entire element
+
+//   const tl = $gsapPack.gsap.timeline({ defaults: { repeat: -1 } });
+
+//   const animationDuration = 60; // Duration in seconds
+//   const positionIncrement = backgroundImageWidth / (animationDuration * 60); // Calculate the increment for each frame
+
+//   tl.to(contentElement, {
+//     backgroundPosition: `+=${positionIncrement}px 0px`, // Increment the position on each frame
+//     duration: 1, // Set a shorter duration for smoother animation
+//     ease: "none", // Disable easing for linear movement
+//     modifiers: {
+//       backgroundPositionX: $gsapPack.gsap.utils.unitize // Ensure the position value is properly formatted
+//     }
+//   });
+
+// };
+// onMounted ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 onMounted(() => {
-  _animateBgLoop().play()
+  _animateBgLoop().play();
 })
+
 </script>
 
 <style lang="scss" scoped>
@@ -68,11 +89,8 @@ onMounted(() => {
     flex-direction: column;
     gap: 50px;
     background-image: url("https://rare-gallery.com/uploads/posts/523062-pixels-pixel.jpg");
-    background-size: contain;
-    // background-repeat: no-repeat;
+    background-size: cover;
     background-attachment: fixed;
-    // background-position: center;
-    background-color: lightskyblue;
   }
 }
 
