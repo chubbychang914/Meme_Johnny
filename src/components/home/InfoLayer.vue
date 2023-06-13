@@ -19,9 +19,11 @@
         </div>
         <div class="job">Frontend Developer</div>
         <div class="menu">
-          <CustomButton />
-          <CustomButton />
-          <DrawButton />
+          <div class="btn-group">
+            <CustomButton btnContent="Start" />
+            <CustomButton btnContent="About" />
+            <CustomButton btnContent="Projects" />
+          </div>
         </div>
       </div>
     </div>
@@ -79,7 +81,8 @@ onMounted(() => {
 
       .name,
       .job,
-      .menu {
+      .menu,
+      .btn-group {
         // outline: auto;
       }
     }
@@ -105,7 +108,7 @@ onMounted(() => {
 // 元件
 #InfoLayer {
   .left-content {
-    transform: rotate(-10deg);
+    // transform: rotate(-10deg);
 
     .name {
       display: flex;
@@ -137,7 +140,6 @@ onMounted(() => {
     .menu {
       // background-color: green;
       @extend .center;
-      flex-direction: column;
       color: white;
 
       h1 {

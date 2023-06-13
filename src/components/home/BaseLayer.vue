@@ -25,7 +25,7 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
-$background: black;
+$background: #102336;
 
 // 排版
 #BaseLayer {
