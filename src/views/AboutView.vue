@@ -4,7 +4,7 @@
       <NavbarLayout />
     </nav>
     <div class="aboutContent">
-      <div class="bgMap"></div>
+      <div class="bgMap" ref="bgRef"></div>
       <ScrollPanel />
     </div>
     <footer class="aboutFooter">
@@ -14,12 +14,14 @@
 </template>
 
 <script setup>
-import { getCurrentInstance, onMounted, onUnmounted } from 'vue';
+import { getCurrentInstance, onMounted, ref } from 'vue';
 const { proxy: { $gsapPack } } = getCurrentInstance()
 import ScrollPanel from "@/components/about/ScrollPanel.vue";
 import FooterLayout from "@/components/layout/FooterLayout.vue";
 import NavbarLayout from '@/components/layout/NavbarLayout.vue';
 
+
+const bgRef = ref(null)
 // Flows ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 const enterPageAnimationFlow = () => {
   _animateContentEnter()
@@ -51,8 +53,15 @@ const _animateContentEnter = () => {
 }
 
 const _animateBgLoop = () => {
+  const backgroundImageWidth = bgRef.value.clientWidth;
   const tl = $gsapPack.gsap.timeline({ paused: true, defaults: { repeat: -1 } })
-  tl.to('.bgMap', { backgroundPosition: "-10000px 0px", duration: 60, ease: "linear" })
+  tl.to(bgRef.value, {
+    // backgroundPosition: "10000px 0px",
+    backgroundPosition: `${backgroundImageWidth * 10}px 0px`,
+    duration: 100,
+    ease: "linear"
+  })
+
   return tl
 }
 
