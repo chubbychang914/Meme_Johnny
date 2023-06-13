@@ -4,7 +4,7 @@
       <SpaceBaseLayer />
     </div>
     <div class="infoLayer">
-      <!-- <InfoLayer /> -->
+      <InfoLayer />
     </div>
   </div>
 </template>

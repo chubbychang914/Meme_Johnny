@@ -48,7 +48,7 @@ const btnStyles = computed(() => {
 // 元件
 #CustomButton {
   // width: 100%;
-  min-width: 150px;
+  width: 150px;
   background-color: #102336;
   color: white;
   display: flex;
@@ -74,7 +74,7 @@ const btnStyles = computed(() => {
 
   .btn-content {
     text-decoration: none;
-    font-size: 60px;
+    font-size: 20px;
   }
 
   .hover-style {

@@ -17,10 +17,11 @@
   height: 100vh;
   background-image: url($spaceSvg);
   background-size: cover;
+  overflow: hidden;
 
   .spaceShip {
     @extend .center;
-
+    
     img {
       // height: 100vh;
       width: 100%;
