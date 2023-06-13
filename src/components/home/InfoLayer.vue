@@ -2,37 +2,70 @@
   <div id="InfoLayer">
     <div class="content">
       <div class="name">
-        <div class="icon-left">
+        <!-- <div class="icon-left">
           <font-awesome-icon icon="fa-solid fa-caret-left" />
-        </div>
+        </div> -->
         <div class="name-letters">J</div>
         <div class="name-letters">O</div>
         <div class="name-letters">H</div>
         <div class="name-letters">N</div>
         <div class="name-letters">N</div>
         <div class="name-letters">Y</div>
-        <div class="icon-right">
+        <!-- <div class="icon-right">
           <font-awesome-icon icon="fa-solid fa-caret-right" />
-        </div>
+        </div> -->
       </div>
-      <div class="job">Frontend Developer</div>
+      <!-- <div class="job">Frontend Developer</div> -->
     </div>
     <div class="button-box">
       <CustomButton @on-click="redirectUrl('/about')" />
-      <CustomButton @on-click="redirectUrl('/about')" />
-      <CustomButton @on-click="redirectUrl('/projects')" />
+      <!-- <CustomButton @on-click="redirectUrl('/about')" /> -->
+      <!-- <CustomButton @on-click="redirectUrl('/projects')" /> -->
     </div>
   </div>
 </template>
 
 <script setup>
-import { useRouter } from "vue-router";
+import { onMounted, getCurrentInstance } from "vue";
+import { useRouter, onBeforeRouteLeave } from "vue-router";
+const { proxy: { $gsapPack } } = getCurrentInstance() // 要引入這包才能使用 gsap 的所有東西
 const router = useRouter()
+
 import CustomButton from "@/components/templates/CustomButton.vue"
 
 const redirectUrl = (url) => {
   router.push(url)
 }
+
+
+const _animateNameLeave = () => {
+  const action = $gsapPack.gsap.to('.name', {
+    y: -window.innerHeight,
+    duration: 1
+  })
+  return action;
+}
+
+
+onMounted(() => {
+  // _animateNameLeave()
+})
+
+// ==========
+let completeAnimation = null; // this is the resolve function
+const _animateRouterLeave = () => {
+  return new Promise((resolve) => {
+    completeAnimation = resolve
+    const tl = $gsapPack.gsap.timeline()
+    tl.add(_animateNameLeave())
+      .eventCallback("onComplete", () => completeAnimation())
+  })
+}
+
+onBeforeRouteLeave(async (to, from, next) => {
+  await _animateRouterLeave()
+  next()
+})
 </script>
 
 <style lang="scss" scoped>
@@ -63,7 +96,7 @@ const redirectUrl = (url) => {
       @extend .center;
       font-size: 100px;
       color: #FAE900;
-      gap: 50px;
+      gap: 20px;
       margin-top: 27vh;
 
       .name-letters {

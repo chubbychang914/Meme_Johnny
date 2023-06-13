@@ -2,14 +2,14 @@
   <div id="SpaceBaseLayer">
     <div class="spaceBg"></div>
     <div class="spaceShip">
-      <img class="ship-img" src="@/assets/svgs/spaceship2.svg">
+      <img class="ship-img" src="@/assets/svgs/spaceship.svg">
     </div>
     <div class="planet" ref="planetRef"></div>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted, getCurrentInstance } from 'vue';
+import { ref, onMounted, getCurrentInstance, onUnmounted } from 'vue';
 import { onBeforeRouteLeave } from 'vue-router';
 const { proxy: { $gsapPack } } = getCurrentInstance() // 要引入這包才能使用 gsap 的所有東西
 
@@ -18,16 +18,22 @@ const planetRef = ref(null)
 // Animation ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 // 星球放大
 const _animatePlanetEnlarge = () => {
-  const action = $gsapPack.gsap.to(planetRef.value, { scale: 3.5, duration: 2, delay: 0.1 })
+  const action = $gsapPack.gsap.to(planetRef.value, { scale: 8, duration: 2 })
   return action;
 }
-// 背景旋轉
+// 配景淡掉
+const _animateShipFade = () => {
+  const action = $gsapPack.gsap.to('#SpaceBaseLayer', { opacity: 0, duration: 1, delay: 1 })
+  return action
+}
 
 // onMount ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 onMounted(() => {
   // _animateRotateBg()
 })
-
+onUnmounted(() => {
+  $gsapPack.gsap.killTweensOf(_animatePlanetEnlarge)
+})
 // Router Leave ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 let completeAnimation = null; // this is the resolve function
 const _animateRouterLeave = () => {
@@ -35,6 +41,7 @@ const _animateRouterLeave = () => {
     completeAnimation = resolve
     const tl = $gsapPack.gsap.timeline()
     tl.add(_animatePlanetEnlarge())
+      .add(_animateShipFade(), "<")
       .eventCallback("onComplete", () => completeAnimation())
   })
 }
@@ -70,7 +77,6 @@ onBeforeRouteLeave(async (to, from, next) => {
     position: absolute;
     top: 0;
     left: 50%;
-    width: 1000px;
     transform: translateX(-50%);
     z-index: 3;
     @extend .center;
@@ -83,8 +89,8 @@ onBeforeRouteLeave(async (to, from, next) => {
 
   .planet {
     position: absolute;
-    top: 35%;
-    left: 75%;
+    top: 40%;
+    left: 50%;
     z-index: 2;
     transform: translateX(-50%) scale(0);
     width: 100px;
