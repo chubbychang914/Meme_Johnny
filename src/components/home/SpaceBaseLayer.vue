@@ -1,7 +1,7 @@
 <template>
   <div id="SpaceBaseLayer">
     <div class="spaceShip">
-      <img src="@/assets/svgs/spaceship.svg">
+      <img class="ship-img" src="@/assets/svgs/spaceship.svg">
     </div>
   </div>
 </template>
@@ -21,11 +21,10 @@
 
   .spaceShip {
     @extend .center;
-    
-    img {
-      // height: 100vh;
-      width: 100%;
-      object-fit: contain;
+
+    .ship-img {
+      width: auto;
+      height: 100vh;
     }
   }
 }

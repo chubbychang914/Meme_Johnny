@@ -2,18 +2,18 @@
   <div id="InfoLayer">
     <div class="content">
       <div class="name">
-        <div class="icon-left">
+        <!-- <div class="icon-left">
           <font-awesome-icon icon="fa-solid fa-caret-left" />
-        </div>
+        </div> -->
         <div class="name-letters">J</div>
         <div class="name-letters">o</div>
         <div class="name-letters">h</div>
         <div class="name-letters">n</div>
         <div class="name-letters">n</div>
         <div class="name-letters">y</div>
-        <div class="icon-right">
+        <!-- <div class="icon-right">
           <font-awesome-icon icon="fa-solid fa-caret-right" />
-        </div>
+        </div> -->
       </div>
       <div class="job">Frontend Developer</div>
     </div>
@@ -34,12 +34,13 @@ import CustomButton from "@/components/templates/CustomButton.vue"
 <style lang="scss" scoped>
 // 排版
 #InfoLayer {
+  width: 100%;
   @extend .center;
 
   .content {
-    width: 50%;
+    width: 50vw;
     height: 100%;
-    background-color: white;
+    background-color: lightslategray;
   }
 
   .button-box {
@@ -49,7 +50,23 @@ import CustomButton from "@/components/templates/CustomButton.vue"
 }
 
 // 元件
-#InfoLayer {}
+#InfoLayer {
+  font-family: 'VT323', monospace;
+
+  .content {
+    .name {
+      @extend .center;
+      font-size: 250px;
+      color: yellow;
+    }
+
+    .job {
+      @extend .center;
+    }
+  }
+
+  .button-box {}
+}
 
 
 .center {
