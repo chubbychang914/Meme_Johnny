@@ -6,11 +6,11 @@
           <font-awesome-icon icon="fa-solid fa-caret-left" />
         </div> -->
         <div class="name-letters">J</div>
-        <div class="name-letters">o</div>
-        <div class="name-letters">h</div>
-        <div class="name-letters">n</div>
-        <div class="name-letters">n</div>
-        <div class="name-letters">y</div>
+        <div class="name-letters">O</div>
+        <div class="name-letters">H</div>
+        <div class="name-letters">N</div>
+        <div class="name-letters">N</div>
+        <div class="name-letters">Y</div>
         <!-- <div class="icon-right">
           <font-awesome-icon icon="fa-solid fa-caret-right" />
         </div> -->
@@ -35,12 +35,11 @@ import CustomButton from "@/components/templates/CustomButton.vue"
 // 排版
 #InfoLayer {
   width: 100%;
+  height: 100vh;
   @extend .center;
 
   .content {
-    width: 50vw;
-    height: 100%;
-    background-color: lightslategray;
+    // background-color: lightslategray;
   }
 
   .button-box {
@@ -56,12 +55,30 @@ import CustomButton from "@/components/templates/CustomButton.vue"
   .content {
     .name {
       @extend .center;
-      font-size: 250px;
-      color: yellow;
+      font-size: 200px;
+      color: #FAE900;
+      gap: 50px;
+      // margin-top: 27vh;
+
+      .name-letters {
+        border: 10px double #FAE900;
+        border-radius: 10px;
+        background-color: black;
+        padding: 10px 20px;
+
+        &:hover {
+          background-color: white;
+          color: black;
+          border: 10px double black;
+        }
+      }
     }
 
     .job {
       @extend .center;
+      font-size: 7vh;
+      color: white;
+      transform: skewX(-10deg) rotate(-10deg);
     }
   }
 
