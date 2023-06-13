@@ -32,9 +32,10 @@ const handleClick = () => emit('on-click')
     border-radius: 10px;
     position: relative;
     padding: 20px 10px;
-    font-size: 5rem;
+    font-size: 16px;
     letter-spacing: 0.1em;
-    color: white;
+    color: blue;
+    z-index: 888;
     @extend .center;
 
     // this is the box that appears after outline
@@ -45,7 +46,7 @@ const handleClick = () => emit('on-click')
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: black;
+      background-color: green;
       transform: scale(0);
       z-index: -1;
       transform-origin: top left;

@@ -15,7 +15,7 @@
           </li>
         </ul>
         <div class="btn">
-          <!-- <DrawButton /> -->
+          <DrawButton />
         </div>
       </div>
     </div>
@@ -67,6 +67,7 @@ const props = defineProps({
       min-width: 650px;
       height: auto;
       object-fit: contain;
+      border-radius: 15px;
     }
   }
 
@@ -76,7 +77,9 @@ const props = defineProps({
     padding: 30px 50px;
     background-color: white;
 
-    .title {}
+    .title {
+      font-size: 50px;
+    }
 
     .text {
       font-size: 18px;

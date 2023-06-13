@@ -27,8 +27,8 @@ const contentRef = ref(null)
 const SelectGoInfoObj = {
   title: "Select Go",
   imgUrl: "src/assets/imgs/projects/SelectGoScreenShot.png",
-  description: "Developed a fully functional e-commerce website using React for the frontend and Laravel for the backend. Implemented features such as user authentication, shopping cart, and product listing.",
-  skillsUsedList: ["Utilized React Hooks and React Router", "Created RESTful APIs using Laravel", "Set up MySQL database", "Utilized Git and Sourcetree for version control"],
+  description: "Developed a fully functional e-commerce website using React and Larave. Implemented features such as user authentication, shopping cart, and product listing.",
+  // skillsUsedList: ["Utilized React Hooks and React Router", "Created RESTful APIs using Laravel", "Set up MySQL database", "Utilized Git and Sourcetree for version control"],
   reverseLayout: true
 }
 
@@ -36,7 +36,7 @@ const ArcaneInfoObj = {
   title: "Arcane",
   imgUrl: "src/assets/imgs/projects/ArcaneScreenShot.png",
   description: "Created a website based on the popular Netflix series Arcane.",
-  skillsUsedList: ["Utilized CSS Flexbox for layout design", "Utilized GSAP for animations", "Implemented GSAP Scrolltrigger to achieve on scroll effects and scrolltrigger"],
+  // skillsUsedList: ["Utilized CSS Flexbox for layout design", "Utilized GSAP for animations", "Implemented GSAP Scrolltrigger to achieve on scroll effects and scrolltrigger"],
   reverseLayout: false
 }
 // Animations ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
@@ -73,6 +73,7 @@ onMounted(() => {
     position: sticky;
     top: 0;
     left: 0;
+    z-index: 999;
   }
 
   .content {
