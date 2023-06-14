@@ -16,57 +16,57 @@ const { proxy: { $gsapPack } } = getCurrentInstance() // 要引入這包才能�
 
 const planetRef = ref(null)
 // Flow ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
-let enterPageTimeline = null;
-const enterPageAnimationFlow = () => {
-  enterPageTimeline = $gsapPack.gsap.timeline()
-  enterPageTimeline.add(_animatePageEnter())
-}
-// Animation ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
-// const _animatePageEnter = () => {
-//   const action = $gsapPack.gsap.from('#SpaceBaseLayer', { opacity: 0, duration: 2 })
+// let enterPageTimeline = null;
+// const enterPageAnimationFlow = () => {
+//   enterPageTimeline = $gsapPack.gsap.timeline()
+//   enterPageTimeline.add(_animatePageEnter())
+// }
+// // Animation ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+// // const _animatePageEnter = () => {
+// //   const action = $gsapPack.gsap.from('#SpaceBaseLayer', { opacity: 0, duration: 2 })
+// //   return action
+// // }
+// // 星球放大
+// const _animatePlanetEnlarge = () => {
+//   const action = $gsapPack.gsap.to(planetRef.value, { scale: 8, duration: 2 })
+//   return action;
+// }
+// // 配景淡掉
+// const _animateShipFade = () => {
+//   const action = $gsapPack.gsap.to('#SpaceBaseLayer', { opacity: 1, duration: 1, delay: 1 })
 //   return action
 // }
-// 星球放大
-const _animatePlanetEnlarge = () => {
-  const action = $gsapPack.gsap.to(planetRef.value, { scale: 8, duration: 2 })
-  return action;
-}
-// 配景淡掉
-const _animateShipFade = () => {
-  const action = $gsapPack.gsap.to('#SpaceBaseLayer', { opacity: 0, duration: 1, delay: 1 })
-  return action
-}
 
 // onMount ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 onMounted(() => {
   // enterPageAnimationFlow()
 })
 onUnmounted(() => {
-  if (enterPageTimeline) {
-    enterPageTimeline.kill()
-  }
+  // if (enterPageTimeline) {
+  //   enterPageTimeline.kill()
+  // }
 })
 // Router Leave ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
-let completeAnimation = null; // this is the resolve function
-const _animateRouterLeave = () => {
-  return new Promise((resolve) => {
-    completeAnimation = resolve
-    const tl = $gsapPack.gsap.timeline()
-    tl.add(_animatePlanetEnlarge())
-      .add(_animateShipFade(), "<")
-      .eventCallback("onComplete", () => completeAnimation())
-  })
-}
+// let completeAnimation = null; // this is the resolve function
+// const _animateRouterLeave = () => {
+//   return new Promise((resolve) => {
+//     completeAnimation = resolve
+//     const tl = $gsapPack.gsap.timeline()
+//     tl.add(_animatePlanetEnlarge())
+//       .add(_animateShipFade(), "<")
+//       .eventCallback("onComplete", () => completeAnimation())
+//   })
+// }
 
-onBeforeRouteLeave(async (to, from, next) => {
-  try {
-    await _animateRouterLeave()
-    next()
-  } catch (error) {
-    console.log(error);
-    next(false)
-  }
-})
+// onBeforeRouteLeave(async (to, from, next) => {
+//   try {
+//     await _animateRouterLeave()
+//     next()
+//   } catch (error) {
+//     console.log(error);
+//     next(false)
+//   }
+// })
 </script> 
 
 <style lang="scss" scoped>

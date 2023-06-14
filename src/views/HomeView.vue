@@ -22,20 +22,20 @@ const infoLayerRef = ref(null)
 
 let AnimateEnterOpacity = null;
 // hooks ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
-onMounted(() => {
-  AnimateEnterOpacity = $gsapPack.gsap.from([baseLayerRef.value, infoLayerRef.value], {
-    opacity: 0,
-    duration: 2.5,
-    paused: true
-  })
-  // ► 執行
-  AnimateEnterOpacity.play()
-})
+// onMounted(() => {
+//   AnimateEnterOpacity = $gsapPack.gsap.from([baseLayerRef.value, infoLayerRef.value], {
+//     opacity: 0,
+//     duration: 2.5,
+//     paused: true
+//   })
+//   // ► 執行
+//   AnimateEnterOpacity.play()
+// })
 
-onBeforeRouteLeave((to, from, next) => {
-  AnimateEnterOpacity.reverse();
-  next();
-})
+// onBeforeRouteLeave((to, from, next) => {
+//   AnimateEnterOpacity.reverse();
+//   next();
+// })
 </script>
 
 <style lang="scss" scoped>

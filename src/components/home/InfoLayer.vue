@@ -36,7 +36,6 @@ const router = useRouter()
 
 import CustomButton from "@/components/templates/CustomButton.vue"
 import NavbarLayout from "@/components/layout/NavbarLayout.vue"
-import { Power1 } from "gsap";
 // 跳轉
 const redirectUrl = (url) => {
   router.push(url)
@@ -55,17 +54,18 @@ let AnimateNameEnter = null;
 onMounted(() => {
   // 在 mounted 定義動畫，才可以每次進入頁面重新抓 element
   AnimateNavbarEnter = $gsapPack.gsap.from(navbarRef.value, {
-    y: -window.innerHeight,
-    duration: 1,
+    y: -100,
+    duration: 0.5,
     ease: "power1.out",
     paused: true
   })
-  AnimateNavbarLeave = $gsapPack.gsap.to(navbarRef.value, {
-    y: -window.innerHeight,
-    duration: 1,
-    ease: "power1.out",
-    paused: true
-  })
+  AnimateNavbarLeave = $gsapPack.gsap.fromTo(navbarRef.value,
+    { y: 0 },
+    {
+      y: -100,
+      duration: 0.5,
+      paused: true
+    })
   AnimateNameEnter = $gsapPack.gsap.from(nameRef.value, {
     y: -window.innerHeight,
     duration: 1,
@@ -76,41 +76,49 @@ onMounted(() => {
   PageEnterAnimationFlow
     .add(AnimateNavbarEnter.play())
     .add(AnimateNameEnter.play())
-  // ► 執行
-  PageEnterAnimationFlow.play()
   // 設定離場 timeline
   PageLeaveAnimationFlow = $gsapPack.gsap.timeline({ paused: true })
   PageLeaveAnimationFlow
     .add(AnimateNavbarLeave.play())
-  // console.log(PageEnterAnimationFlow.isActive());
+
+  // ►►► 執行
+  PageEnterAnimationFlow.play()
 })
+
+onBeforeRouteLeave(async (to, from, next) => {
+  await PageLeaveAnimationFlow.play()
+    .then(() => next())
+})
+
 
 onUnmounted(() => {
   // kill timeline to prevent errors
-  // PageEnterAnimationFlow?.kill();
+  PageEnterAnimationFlow?.kill();
+  PageLeaveAnimationFlow?.kill();
 })
+
 
 // Router Leave ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
-let completeAnimation = null; // this is the resolve function
-const _animateRouterLeave = () => {
-  return new Promise((resolve) => {
-    completeAnimation = resolve
-    const tl = $gsapPack.gsap.timeline()
-    tl.add(PageLeaveAnimationFlow.play())
-      .eventCallback("onComplete", () => completeAnimation())
-  })
-}
+// let completeAnimation = null; // this is the resolve function
+// const _animateRouterLeave = () => {
+//   return new Promise((resolve) => {
+//     completeAnimation = resolve
+//     const tl = $gsapPack.gsap.timeline()
+//     tl.add(PageLeaveAnimationFlow.play())
+//       .eventCallback("onComplete", () => completeAnimation())
+//   })
+// }
 
-onBeforeRouteLeave(async (to, from, next) => {
-  try {
-    await _animateRouterLeave()
-    next()
-  } catch (error) {
-    console.log(error);
-    next(false)
-  }
+// onBeforeRouteLeave(async (to, from, next) => {
+//   try {
+//     await _animateRouterLeave()
+//     next()
+//   } catch (error) {
+//     console.log(error);
+//     next(false)
+//   }
 
-})
+// })
 </script>
 
 <style lang="scss" scoped>
