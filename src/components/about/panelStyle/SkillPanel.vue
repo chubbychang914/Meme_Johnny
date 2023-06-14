@@ -1,7 +1,7 @@
 <template>
   <div id="SkillPanel">
     <div class="title">
-      Skills
+      Skills & Tools
     </div>
     <div class="skills"></div>
   </div>
@@ -14,8 +14,9 @@
 <style lang="scss" scoped>
 // 排版
 #SkillPanel {
-  width: 500px;
-  height: 400px;
+  width: 25vw;
+  height: 50vh;
+  min-height: 100px;
   display: grid;
   grid-template-rows: 1fr 3fr;
 }
@@ -25,12 +26,11 @@
   background-color: white;
   border: 5px solid black;
   border-radius: 20px;
-  font-family: 'VT323', monospace;
 
   .title {
     outline: auto;
     @extend .center;
-    font-size: 100px;
+    font-size: 6vh;
 
   }
 
