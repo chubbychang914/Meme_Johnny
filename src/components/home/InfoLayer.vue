@@ -36,6 +36,7 @@ const router = useRouter()
 
 import CustomButton from "@/components/templates/CustomButton.vue"
 import NavbarLayout from "@/components/layout/NavbarLayout.vue"
+import { Power1 } from "gsap";
 // 跳轉
 const redirectUrl = (url) => {
   router.push(url)
@@ -47,18 +48,25 @@ const nameRef = ref(null)
 // 設定 action variable
 let PageEnterAnimationFlow = null;
 let PageLeaveAnimationFlow = null;
-let NavbarEnterAction = null;
-let NameEnterAction = null;
+let AnimateNavbarEnter = null;
+let AnimateNavbarLeave = null;
+let AnimateNameEnter = null;
 
 onMounted(() => {
   // 在 mounted 定義動畫，才可以每次進入頁面重新抓 element
-  NavbarEnterAction = $gsapPack.gsap.from(navbarRef.value, {
+  AnimateNavbarEnter = $gsapPack.gsap.from(navbarRef.value, {
     y: -window.innerHeight,
     duration: 1,
     ease: "power1.out",
     paused: true
   })
-  NameEnterAction = $gsapPack.gsap.from(nameRef.value, {
+  AnimateNavbarLeave = $gsapPack.gsap.to(navbarRef.value, {
+    y: -window.innerHeight,
+    duration: 1,
+    ease: "power1.out",
+    paused: true
+  })
+  AnimateNameEnter = $gsapPack.gsap.from(nameRef.value, {
     y: -window.innerHeight,
     duration: 1,
     paused: true
@@ -66,14 +74,15 @@ onMounted(() => {
   // 設定入場 timeline
   PageEnterAnimationFlow = $gsapPack.gsap.timeline({ paused: true })
   PageEnterAnimationFlow
-    .add(NavbarEnterAction.play())
-    .add(NameEnterAction.play())
+    .add(AnimateNavbarEnter.play())
+    .add(AnimateNameEnter.play())
   // ► 執行
   PageEnterAnimationFlow.play()
   // 設定離場 timeline
   PageLeaveAnimationFlow = $gsapPack.gsap.timeline({ paused: true })
-
-  console.log(PageEnterAnimationFlow.isActive());
+  PageLeaveAnimationFlow
+    .add(AnimateNavbarLeave.play())
+  // console.log(PageEnterAnimationFlow.isActive());
 })
 
 onUnmounted(() => {
@@ -95,7 +104,6 @@ const _animateRouterLeave = () => {
 onBeforeRouteLeave(async (to, from, next) => {
   try {
     await _animateRouterLeave()
-
     next()
   } catch (error) {
     console.log(error);
