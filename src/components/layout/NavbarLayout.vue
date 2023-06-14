@@ -56,16 +56,14 @@ const redirectTo = (url) => {
       display: flex;
       justify-content: flex-end;
       align-items: center;
-      // padding-right: 30px;
-      // gap: 10px;
+      padding-right: 50px;
       background-color: #1B3B5B;
-      // background-color: yellow;
       list-style-type: none;
     }
 
     .link {
       @extend .center;
-      width: 100px;
+      width: 90px;
       height: 70px;
       flex-direction: column;
       position: relative;

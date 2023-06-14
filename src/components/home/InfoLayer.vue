@@ -36,6 +36,7 @@ const { proxy: { $gsapPack } } = getCurrentInstance() // 要引入這包才能�
 const router = useRouter()
 
 import CustomButton from "@/components/templates/CustomButton.vue"
+import DrawButton from  "@/components/templates/DrawButton.vue"
 import NavbarLayout from "@/components/layout/NavbarLayout.vue"
 // 跳轉
 const redirectUrl = (url) => {
@@ -118,14 +119,14 @@ onMounted(() => {
     duration: 1.5,
     paused: true,
   })
-  // // 設定入場 timeline
+  // 設定入場 timeline ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
   PageEnterAnimationFlow = $gsapPack.gsap.timeline({ paused: true })
   PageEnterAnimationFlow
     .add(AnimateNavbarEnter.play())
     .add(AnimateNameEnterLeft.play(), "<")
     .add(AnimateNameEnterRight.play(), "<")
     .add(AnimateJobEnter.play())
-  // 設定離場 timeline
+  // 設定離場 timeline ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
   PageLeaveAnimationFlow = $gsapPack.gsap.timeline({ paused: true })
   PageLeaveAnimationFlow
     .add(AnimateNavbarLeave.play())
@@ -225,6 +226,7 @@ onUnmounted(() => {
     .job {
       @extend .center;
       font-size: 7vh;
+      margin-top: 3vh;
       color: white;
       // transform: skewX(-10deg) rotate(-10deg);
     }
