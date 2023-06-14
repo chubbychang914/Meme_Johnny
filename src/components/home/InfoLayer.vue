@@ -37,9 +37,9 @@ const router = useRouter()
 import CustomButton from "@/components/templates/CustomButton.vue"
 import NavbarLayout from "@/components/layout/NavbarLayout.vue"
 
-// State ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+// set refs 給 gsap 指定 ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 const navbarRef = ref(null);
-
+// 設定 action variable
 let NavbarAction = null;
 
 
@@ -50,6 +50,8 @@ const redirectUrl = (url) => {
 // mounted hooks
 onMounted(() => {
   NavbarAction = $gsapPack.gsap.from(navbarRef.value, { y: -window.innerHeight, paused: true })
+
+  NavbarAction.play()
 })
 
 onUnmounted(() => {
