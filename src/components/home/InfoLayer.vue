@@ -9,17 +9,17 @@
         <div class="icon-left">
           <font-awesome-icon icon="fa-solid fa-caret-right" />
         </div>
-        <div class="name-letters">J</div>
-        <div class="name-letters">O</div>
-        <div class="name-letters">H</div>
-        <div class="name-letters">N</div>
-        <div class="name-letters">N</div>
-        <div class="name-letters">Y</div>
+        <div class="name-letters" ref="jRef">J</div>
+        <div class="name-letters" ref="oRef">O</div>
+        <div class="name-letters" ref="hRef">H</div>
+        <div class="name-letters" ref="nRef">N</div>
+        <div class="name-letters" ref="nRef2">N</div>
+        <div class="name-letters" ref="yRef">Y</div>
         <div class="icon-right">
           <font-awesome-icon icon="fa-solid fa-caret-left" />
         </div>
       </div>
-      <div class="job">Frontend Developer</div>
+      <div class="job" ref="jobRef">Frontend Developer</div>
     </div>
     <div class="button-box" style="display: flex;">
       <CustomButton @on-click="redirectUrl('/about')" />
@@ -46,13 +46,23 @@ const redirectUrl = (url) => {
 const navbarRef = ref(null);
 const nameRef = ref(null);
 const planetRef = ref(null);
+const jobRef = ref(null);
+const jRef = ref(null);
+const oRef = ref(null);
+const hRef = ref(null);
+const nRef = ref(null);
+const nRef2 = ref(null);
+const yRef = ref(null);
 // 設定 action variable
 let PageEnterAnimationFlow = null;
 let PageLeaveAnimationFlow = null;
 let AnimateNavbarEnter = null;
 let AnimateNavbarLeave = null;
-let AnimateNameEnter = null;
+let AnimateNameEnterLeft = null;
+let AnimateNameEnterRight = null;
 let AnimateNameLeave = null;
+let AnimateJobEnter = null;
+let AnimateJobLeave = null;
 let AnimatePlanetEnlarge = null;
 
 onMounted(() => {
@@ -71,9 +81,21 @@ onMounted(() => {
       ease: "power1.in",
       paused: true
     })
-  AnimateNameEnter = $gsapPack.gsap.from(nameRef.value, {
-    y: -window.innerHeight,
-    duration: 1,
+  // ==========
+  AnimateJobEnter = $gsapPack.gsap.from(jobRef.value, {
+    opacity: 0,
+    duration: 0.5,
+    paused: true
+  })
+  // ==========
+  AnimateNameEnterLeft = $gsapPack.gsap.from([jRef.value, oRef.value, hRef.value], {
+    opacity: 0,
+    duration: 2,
+    paused: true
+  })
+  AnimateNameEnterRight = $gsapPack.gsap.from([nRef.value, nRef2.value, yRef.value], {
+    opacity: 0,
+    duration: 2,
     paused: true
   })
   AnimateNameLeave = $gsapPack.gsap.to(nameRef.value, {
@@ -81,23 +103,26 @@ onMounted(() => {
     duration: 1,
     paused: true
   })
+  // ==========
   AnimatePlanetEnlarge = $gsapPack.gsap.to(planetRef.value, {
     scale: 3,
     ease: "power2.in",
     duration: 1.5,
-    paused: true
+    paused: true,
   })
-  // 設定入場 timeline
+  // // 設定入場 timeline
   PageEnterAnimationFlow = $gsapPack.gsap.timeline({ paused: true })
   PageEnterAnimationFlow
     .add(AnimateNavbarEnter.play())
-    .add(AnimateNameEnter.play())
+    .add(AnimateNameEnterLeft.play(), "<")
+    .add(AnimateNameEnterRight.play(), "<")
+    .add(AnimateJobEnter.play())
   // 設定離場 timeline
   PageLeaveAnimationFlow = $gsapPack.gsap.timeline({ paused: true })
   PageLeaveAnimationFlow
     .add(AnimateNavbarLeave.play())
     .add(AnimateNameLeave.play(), "<")
-    .add(AnimatePlanetEnlarge.play())
+    .add(AnimatePlanetEnlarge.play(), "<")
 
   // ►►► 執行
   PageEnterAnimationFlow.play()
