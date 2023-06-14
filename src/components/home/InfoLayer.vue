@@ -141,6 +141,10 @@ onBeforeRouteLeave(async (to, from, next) => {
       gap: 20px;
       margin-top: 27vh;
 
+      @include pad-media {
+        font-size: 10px;
+      }
+
       .name-letters {
         border: 10px double #FAE900;
         border-radius: 10px;
