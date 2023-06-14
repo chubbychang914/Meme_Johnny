@@ -11,8 +11,8 @@
 <style lang="scss" scoped>
 // 排版
 #JohnnyPanel {
-  width: 600px;
-  height: 600px;
+  width: 500px;
+  height: 400px;
 }
 
 // 元件
