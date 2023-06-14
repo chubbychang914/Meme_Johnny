@@ -6,7 +6,7 @@
     <div class="content">
       <div class="name" ref="nameRef">
         <div class="icon-left">
-          <!-- <font-awesome-icon icon="fa-solid fa-caret-left" /> -->
+          <font-awesome-icon icon="fa-solid fa-caret-right" />
         </div>
         <div class="name-letters">J</div>
         <div class="name-letters">O</div>
@@ -15,15 +15,15 @@
         <div class="name-letters">N</div>
         <div class="name-letters">Y</div>
         <div class="icon-right">
-          <!-- <font-awesome-icon icon="fa-solid fa-caret-right" /> -->
+          <font-awesome-icon icon="fa-solid fa-caret-left" />
         </div>
       </div>
       <div class="job">Frontend Developer</div>
     </div>
-    <div class="button-box">
+    <div class="button-box" style="display: flex;">
       <CustomButton @on-click="redirectUrl('/about')" />
-      <!-- <CustomButton @on-click="redirectUrl('/about')" /> -->
-      <!-- <CustomButton @on-click="redirectUrl('/projects')" /> -->
+      <CustomButton @on-click="redirectUrl('/about')" />
+      <CustomButton @on-click="redirectUrl('/projects')" />
     </div>
   </div>
 </template>
@@ -36,13 +36,7 @@ const router = useRouter()
 
 import CustomButton from "@/components/templates/CustomButton.vue"
 import NavbarLayout from "@/components/layout/NavbarLayout.vue"
-
-// 設定 action variable
-let PageEnterAnimationFlow = null;
-let NavbarAction = null;
-let NameEnterAction = null;
-
-
+// 跳轉
 const redirectUrl = (url) => {
   router.push(url)
 }
@@ -50,37 +44,42 @@ const redirectUrl = (url) => {
 // if not set in onMounted, the element will be bound differently everytime
 const navbarRef = ref(null);
 const nameRef = ref(null)
+// 設定 action variable
+let PageEnterAnimationFlow = null;
+let PageLeaveAnimationFlow = null;
+let NavbarEnterAction = null;
+let NameEnterAction = null;
 
 onMounted(() => {
   // 在 mounted 定義動畫，才可以每次進入頁面重新抓 element
-  NavbarAction = $gsapPack.gsap.from(navbarRef.value, { y: -window.innerHeight, paused: true })
-  NameEnterAction = $gsapPack.gsap.from(nameRef.value, { y: -window.innerHeight, paused: true })
+  NavbarEnterAction = $gsapPack.gsap.from(navbarRef.value, {
+    y: -window.innerHeight,
+    duration: 1,
+    ease: "power1.out",
+    paused: true
+  })
+  NameEnterAction = $gsapPack.gsap.from(nameRef.value, {
+    y: -window.innerHeight,
+    duration: 1,
+    paused: true
+  })
   // 設定入場 timeline
   PageEnterAnimationFlow = $gsapPack.gsap.timeline({ paused: true })
-  PageEnterAnimationFlow.add(NavbarAction.play())
+  PageEnterAnimationFlow
+    .add(NavbarEnterAction.play())
     .add(NameEnterAction.play())
   // ► 執行
   PageEnterAnimationFlow.play()
+  // 設定離場 timeline
+  PageLeaveAnimationFlow = $gsapPack.gsap.timeline({ paused: true })
+
+  console.log(PageEnterAnimationFlow.isActive());
 })
 
 onUnmounted(() => {
   // kill timeline to prevent errors
-  PageEnterAnimationFlow?.kill();
+  // PageEnterAnimationFlow?.kill();
 })
-
-
-// Flow ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
-
-// Animations ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
-// 名字離開
-const _animateNameLeave = () => {
-  const action = $gsapPack.gsap.to('.name', {
-    y: -window.innerHeight,
-    duration: 1
-  })
-  return action;
-}
-
 
 // Router Leave ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 let completeAnimation = null; // this is the resolve function
@@ -88,8 +87,7 @@ const _animateRouterLeave = () => {
   return new Promise((resolve) => {
     completeAnimation = resolve
     const tl = $gsapPack.gsap.timeline()
-    tl.add(_animateNameLeave())
-      .add(NavbarAction.play())
+    tl.add(PageLeaveAnimationFlow.play())
       .eventCallback("onComplete", () => completeAnimation())
   })
 }
@@ -97,6 +95,7 @@ const _animateRouterLeave = () => {
 onBeforeRouteLeave(async (to, from, next) => {
   try {
     await _animateRouterLeave()
+
     next()
   } catch (error) {
     console.log(error);
@@ -165,7 +164,7 @@ onBeforeRouteLeave(async (to, from, next) => {
       @extend .center;
       font-size: 7vh;
       color: white;
-      transform: skewX(-10deg) rotate(-10deg);
+      // transform: skewX(-10deg) rotate(-10deg);
     }
   }
 
