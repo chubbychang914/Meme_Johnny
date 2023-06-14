@@ -7,7 +7,7 @@
     <div class="content">
       <div class="name" ref="nameRef">
         <div class="icon-left">
-          <font-awesome-icon icon="fa-solid fa-caret-right" />
+          <!-- <font-awesome-icon icon="fa-solid fa-caret-right" /> -->
         </div>
         <div class="name-letters" ref="jRef">J</div>
         <div class="name-letters" ref="oRef">O</div>
@@ -16,7 +16,7 @@
         <div class="name-letters" ref="nRef2">N</div>
         <div class="name-letters" ref="yRef">Y</div>
         <div class="icon-right">
-          <font-awesome-icon icon="fa-solid fa-caret-left" />
+          <!-- <font-awesome-icon icon="fa-solid fa-caret-left" /> -->
         </div>
       </div>
       <div class="job" ref="jobRef">Frontend Developer</div>
@@ -69,7 +69,7 @@ onMounted(() => {
   // 在 mounted 定義動畫，才可以每次進入頁面重新抓 element
   AnimateNavbarEnter = $gsapPack.gsap.from(navbarRef.value, {
     y: -100,
-    duration: 0.5,
+    duration: 1.2,
     ease: "power1.out",
     paused: true
   })
@@ -87,16 +87,24 @@ onMounted(() => {
     duration: 0.5,
     paused: true
   })
-  // ==========
-  AnimateNameEnterLeft = $gsapPack.gsap.from([jRef.value, oRef.value, hRef.value], {
+  AnimateJobLeave = $gsapPack.gsap.to(jobRef.value, {
     opacity: 0,
-    duration: 2,
     paused: true
   })
+  // ==========
+  AnimateNameEnterLeft = $gsapPack.gsap.from([jRef.value, oRef.value, hRef.value], {
+    xPercent: -1000,
+    rotate: -360,
+    duration: 1.2,
+    paused: true,
+    stagger: 0.5,
+  })
   AnimateNameEnterRight = $gsapPack.gsap.from([nRef.value, nRef2.value, yRef.value], {
-    opacity: 0,
-    duration: 2,
-    paused: true
+    xPercent: 1000,
+    duration: 1.2,
+    rotate: 360,
+    paused: true,
+    stagger: 0.5
   })
   AnimateNameLeave = $gsapPack.gsap.to(nameRef.value, {
     opacity: 0,
@@ -105,7 +113,7 @@ onMounted(() => {
   })
   // ==========
   AnimatePlanetEnlarge = $gsapPack.gsap.to(planetRef.value, {
-    scale: 3,
+    scale: 4.5,
     ease: "power2.in",
     duration: 1.5,
     paused: true,
@@ -122,6 +130,7 @@ onMounted(() => {
   PageLeaveAnimationFlow
     .add(AnimateNavbarLeave.play())
     .add(AnimateNameLeave.play(), "<")
+    .add(AnimateJobLeave.play(), "<")
     .add(AnimatePlanetEnlarge.play(), "<")
 
   // ►►► 執行
@@ -192,8 +201,8 @@ onUnmounted(() => {
       @extend .center;
       font-size: 18vh;
       color: #FAE900;
-      gap: 20px;
-      margin-top: 27vh;
+      gap: 2vw;
+      margin-top: 30vh;
 
       @include pad-media {
         font-size: 10px;
@@ -202,9 +211,8 @@ onUnmounted(() => {
       .name-letters {
         border: 10px double #FAE900;
         border-radius: 10px;
-        background-color: black;
+        // background-color: blue;
         padding: 10px 20px;
-        // transform: skewX(-15deg);
 
         &:hover {
           background-color: white;

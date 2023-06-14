@@ -11,8 +11,8 @@
 
 <script setup>
 import { ref, onMounted, getCurrentInstance } from "vue";
-import { onBeforeRouteLeave } from "vue-router";
-const { proxy: { $gsapPack } } = getCurrentInstance() // 要引入這包才能使用 gsap 的所有東西
+// import { onBeforeRouteLeave } from "vue-router";
+// const { proxy: { $gsapPack } } = getCurrentInstance() // 要引入這包才能使用 gsap 的所有東西
 
 import SpaceBaseLayer from "@/components/home/SpaceBaseLayer.vue";
 import InfoLayer from "@/components/home/InfoLayer.vue";
