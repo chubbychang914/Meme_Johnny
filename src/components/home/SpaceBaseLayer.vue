@@ -22,10 +22,19 @@ const enterPageAnimationFlow = () => {
   enterPageTimeline.add(_animatePageEnter())
 }
 // Animation ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+// const _animatePageEnter = () => {
+//   const action = $gsapPack.gsap.from('#SpaceBaseLayer', { opacity: 0, duration: 2 })
+//   return action
+// }
 // 星球放大
 const _animatePlanetEnlarge = () => {
   const action = $gsapPack.gsap.to(planetRef.value, { scale: 8, duration: 2 })
   return action;
+}
+// 配景淡掉
+const _animateShipFade = () => {
+  const action = $gsapPack.gsap.to('#SpaceBaseLayer', { opacity: 0, duration: 1, delay: 1 })
+  return action
 }
 
 // onMount ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡

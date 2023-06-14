@@ -25,7 +25,7 @@ let AnimateEnterOpacity = null;
 onMounted(() => {
   AnimateEnterOpacity = $gsapPack.gsap.from(baseLayerRef.value, {
     opacity: 0,
-    duration: 2,
+    duration: 2.5,
     paused: true
   })
 
