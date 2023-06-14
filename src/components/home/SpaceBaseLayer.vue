@@ -4,7 +4,7 @@
     <div class="spaceShip">
       <img class="ship-img" src="@/assets/svgs/spaceship.svg">
     </div>
-    <div class="planet" ref="planetRef"></div>
+    <!-- <div class="planet" ref="planetRef"></div> -->
   </div>
 </template>
 
@@ -13,59 +13,38 @@ import { ref, onMounted, getCurrentInstance, onUnmounted } from 'vue';
 import { onBeforeRouteLeave } from 'vue-router';
 const { proxy: { $gsapPack } } = getCurrentInstance() // 要引入這包才能使用 gsap 的所有東西
 
-
+import NavbarLayout from "@/components/layout/NavbarLayout.vue"
+// state ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 const planetRef = ref(null)
-// Flow ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
-// let enterPageTimeline = null;
-// const enterPageAnimationFlow = () => {
-//   enterPageTimeline = $gsapPack.gsap.timeline()
-//   enterPageTimeline.add(_animatePageEnter())
-// }
-// // Animation ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
-// // const _animatePageEnter = () => {
-// //   const action = $gsapPack.gsap.from('#SpaceBaseLayer', { opacity: 0, duration: 2 })
-// //   return action
-// // }
-// // 星球放大
-// const _animatePlanetEnlarge = () => {
-//   const action = $gsapPack.gsap.to(planetRef.value, { scale: 8, duration: 2 })
-//   return action;
-// }
-// // 配景淡掉
-// const _animateShipFade = () => {
-//   const action = $gsapPack.gsap.to('#SpaceBaseLayer', { opacity: 1, duration: 1, delay: 1 })
-//   return action
-// }
 
-// onMount ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+// let AnimatePlanetEnlarge = null;
+// let PageLeaveAnimationFlow = null;
+
+// hooks ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 onMounted(() => {
-  // enterPageAnimationFlow()
+  // AnimatePlanetEnlarge = $gsapPack.gsap.to(planetRef.value, {
+  //   scale: 10,
+  //   ease: "power2.in",
+  //   duration: 1.5,
+  //   paused: true
+  // })
+
+  // PageLeaveAnimationFlow = $gsapPack.gsap.timeline({ paused: true })
+  // PageLeaveAnimationFlow.add(AnimatePlanetEnlarge.play())
 })
-onUnmounted(() => {
-  // if (enterPageTimeline) {
-  //   enterPageTimeline.kill()
-  // }
-})
-// Router Leave ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
-// let completeAnimation = null; // this is the resolve function
-// const _animateRouterLeave = () => {
-//   return new Promise((resolve) => {
-//     completeAnimation = resolve
-//     const tl = $gsapPack.gsap.timeline()
-//     tl.add(_animatePlanetEnlarge())
-//       .add(_animateShipFade(), "<")
-//       .eventCallback("onComplete", () => completeAnimation())
-//   })
-// }
 
 // onBeforeRouteLeave(async (to, from, next) => {
-//   try {
-//     await _animateRouterLeave()
-//     next()
-//   } catch (error) {
-//     console.log(error);
-//     next(false)
-//   }
+// try {
+//   await PageLeaveAnimationFlow.play()
+//     .then(() => next())
+// } catch (error) {
+//   console.log(error);
+//   next(false)
+// }
+// })
+
+// onUnmounted(() => {
+  // PageLeaveAnimationFlow?.kill()
 // })
 </script> 
 
@@ -95,26 +74,13 @@ onUnmounted(() => {
     top: 0;
     left: 50%;
     transform: translateX(-50%);
-    z-index: 3;
+    z-index: 999;
     @extend .center;
 
     .ship-img {
       width: auto;
       height: 100vh;
     }
-  }
-
-  .planet {
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    z-index: 2;
-    transform: translateX(-50%) scale(0);
-    width: 100px;
-    height: 100px;
-    // background-color: yellow;
-    border-radius: 50%;
-    background-image: url("https://img.freepik.com/free-photo/orange-details-moon-texture-concept_23-2149535766.jpg");
   }
 }
 

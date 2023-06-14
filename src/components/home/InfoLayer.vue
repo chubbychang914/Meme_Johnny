@@ -3,6 +3,7 @@
     <div class="navbar" ref="navbarRef">
       <NavbarLayout />
     </div>
+    <div class="planet" ref="planetRef"></div>
     <div class="content">
       <div class="name" ref="nameRef">
         <div class="icon-left">
@@ -43,13 +44,16 @@ const redirectUrl = (url) => {
 // set refs 給 gsap 指定，因為每次渲染都會抓新的 element
 // if not set in onMounted, the element will be bound differently everytime
 const navbarRef = ref(null);
-const nameRef = ref(null)
+const nameRef = ref(null);
+const planetRef = ref(null);
 // 設定 action variable
 let PageEnterAnimationFlow = null;
 let PageLeaveAnimationFlow = null;
 let AnimateNavbarEnter = null;
 let AnimateNavbarLeave = null;
 let AnimateNameEnter = null;
+let AnimateNameLeave = null;
+let AnimatePlanetEnlarge = null;
 
 onMounted(() => {
   // 在 mounted 定義動畫，才可以每次進入頁面重新抓 element
@@ -64,11 +68,23 @@ onMounted(() => {
     {
       y: -100,
       duration: 0.5,
+      ease: "power1.in",
       paused: true
     })
   AnimateNameEnter = $gsapPack.gsap.from(nameRef.value, {
     y: -window.innerHeight,
     duration: 1,
+    paused: true
+  })
+  AnimateNameLeave = $gsapPack.gsap.to(nameRef.value, {
+    opacity: 0,
+    duration: 1,
+    paused: true
+  })
+  AnimatePlanetEnlarge = $gsapPack.gsap.to(planetRef.value, {
+    scale: 3,
+    ease: "power2.in",
+    duration: 1.5,
     paused: true
   })
   // 設定入場 timeline
@@ -80,16 +96,22 @@ onMounted(() => {
   PageLeaveAnimationFlow = $gsapPack.gsap.timeline({ paused: true })
   PageLeaveAnimationFlow
     .add(AnimateNavbarLeave.play())
+    .add(AnimateNameLeave.play(), "<")
+    .add(AnimatePlanetEnlarge.play())
 
   // ►►► 執行
   PageEnterAnimationFlow.play()
 })
 
 onBeforeRouteLeave(async (to, from, next) => {
-  await PageLeaveAnimationFlow.play()
-    .then(() => next())
+  try {
+    await PageLeaveAnimationFlow.play()
+      .then(() => next())
+  } catch (error) {
+    console.log(error);
+    next(false)
+  }
 })
-
 
 onUnmounted(() => {
   // kill timeline to prevent errors
@@ -97,28 +119,6 @@ onUnmounted(() => {
   PageLeaveAnimationFlow?.kill();
 })
 
-
-// Router Leave ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
-// let completeAnimation = null; // this is the resolve function
-// const _animateRouterLeave = () => {
-//   return new Promise((resolve) => {
-//     completeAnimation = resolve
-//     const tl = $gsapPack.gsap.timeline()
-//     tl.add(PageLeaveAnimationFlow.play())
-//       .eventCallback("onComplete", () => completeAnimation())
-//   })
-// }
-
-// onBeforeRouteLeave(async (to, from, next) => {
-//   try {
-//     await _animateRouterLeave()
-//     next()
-//   } catch (error) {
-//     console.log(error);
-//     next(false)
-//   }
-
-// })
 </script>
 
 <style lang="scss" scoped>
@@ -133,6 +133,19 @@ onUnmounted(() => {
   .navbar {
     position: absolute;
     width: 100%;
+    z-index: 999;
+  }
+
+  .planet {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    z-index: -1;
+    transform: translateX(-50%) scale(0);
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-image: url("https://img.freepik.com/free-photo/orange-details-moon-texture-concept_23-2149535766.jpg");
   }
 
   .content {

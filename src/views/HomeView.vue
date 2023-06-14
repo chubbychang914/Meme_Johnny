@@ -19,23 +19,6 @@ import InfoLayer from "@/components/home/InfoLayer.vue";
 // state ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 const baseLayerRef = ref(null)
 const infoLayerRef = ref(null)
-
-let AnimateEnterOpacity = null;
-// hooks ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
-// onMounted(() => {
-//   AnimateEnterOpacity = $gsapPack.gsap.from([baseLayerRef.value, infoLayerRef.value], {
-//     opacity: 0,
-//     duration: 2.5,
-//     paused: true
-//   })
-//   // ► 執行
-//   AnimateEnterOpacity.play()
-// })
-
-// onBeforeRouteLeave((to, from, next) => {
-//   AnimateEnterOpacity.reverse();
-//   next();
-// })
 </script>
 
 <style lang="scss" scoped>
@@ -59,7 +42,7 @@ let AnimateEnterOpacity = null;
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 100;
+    z-index: 999;
   }
 }
 
