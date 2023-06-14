@@ -9,7 +9,6 @@
 </template>
 
 <script setup>
-import { faLessThanEqual } from '@fortawesome/free-solid-svg-icons';
 import { ref, onMounted, getCurrentInstance, onUnmounted } from 'vue';
 import { onBeforeRouteLeave } from 'vue-router';
 const { proxy: { $gsapPack } } = getCurrentInstance() // 要引入這包才能使用 gsap 的所有東西

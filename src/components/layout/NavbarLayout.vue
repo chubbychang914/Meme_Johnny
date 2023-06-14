@@ -78,7 +78,7 @@ const redirectTo = (url) => {
 
       &:hover .icon,
       &:active .icon {
-        font-size: 25px;
+        font-size: 20px;
         transform: translateY(-6px);
       }
 
@@ -90,12 +90,12 @@ const redirectTo = (url) => {
       .icon {
         line-height: 75px;
         transition: .5s;
-        font-size: 35px;
+        font-size: 25px;
       }
 
       .text {
         position: absolute;
-        font-size: 25px;
+        font-size: 20px;
         transition: 0.25s;
         text-transform: uppercase;
         transform: scale(0);

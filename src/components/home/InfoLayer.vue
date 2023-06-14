@@ -49,7 +49,7 @@ const redirectUrl = (url) => {
 // 設定 ref 指定 element, set a gsap action, 在 mounted 的時候才去執行 action, 全部 pause
 // mounted hooks
 onMounted(() => {
-  NavbarAction = $gsapPack.gsap.from(navbarRef.value, { y: -window.innerHeight })
+  NavbarAction = $gsapPack.gsap.from(navbarRef.value, { y: -window.innerHeight, paused: true })
 })
 
 onUnmounted(() => {
@@ -89,6 +89,7 @@ const _animateRouterLeave = () => {
     completeAnimation = resolve
     const tl = $gsapPack.gsap.timeline()
     tl.add(_animateNameLeave())
+      .add(NavbarAction.play())
       .eventCallback("onComplete", () => completeAnimation())
   })
 }
@@ -150,6 +151,7 @@ onBeforeRouteLeave(async (to, from, next) => {
         border-radius: 10px;
         background-color: black;
         padding: 10px 20px;
+        // transform: skewX(-15deg);
 
         &:hover {
           background-color: white;
