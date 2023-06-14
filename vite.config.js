@@ -12,7 +12,14 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
   },
-  // ================
-  base: "/Meme_Johnny/", // 設定 github page
-  // ================
+  // 設定 github page ================
+  base: "/Meme_Johnny/", 
+  // 引入 scss rwd ================
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@import "src/assets/styles/rwd/index.scss";`
+      }
+    }
+  }
 })

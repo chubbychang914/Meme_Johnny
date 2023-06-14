@@ -1,21 +1,24 @@
 <template>
   <div id="InfoLayer">
+    <div class="navbar" ref="navbarRef">
+      <NavbarLayout />
+    </div>
     <div class="content">
       <div class="name">
-        <!-- <div class="icon-left">
-          <font-awesome-icon icon="fa-solid fa-caret-left" />
-        </div> -->
+        <div class="icon-left">
+          <!-- <font-awesome-icon icon="fa-solid fa-caret-left" /> -->
+        </div>
         <div class="name-letters">J</div>
         <div class="name-letters">O</div>
         <div class="name-letters">H</div>
         <div class="name-letters">N</div>
         <div class="name-letters">N</div>
         <div class="name-letters">Y</div>
-        <!-- <div class="icon-right">
-          <font-awesome-icon icon="fa-solid fa-caret-right" />
-        </div> -->
+        <div class="icon-right">
+          <!-- <font-awesome-icon icon="fa-solid fa-caret-right" /> -->
+        </div>
       </div>
-      <!-- <div class="job">Frontend Developer</div> -->
+      <div class="job">Frontend Developer</div>
     </div>
     <div class="button-box">
       <CustomButton @on-click="redirectUrl('/about')" />
@@ -26,18 +29,50 @@
 </template>
 
 <script setup>
-import { onMounted, getCurrentInstance } from "vue";
+import { ref, onMounted, onUnmounted, getCurrentInstance } from "vue";
 import { useRouter, onBeforeRouteLeave } from "vue-router";
 const { proxy: { $gsapPack } } = getCurrentInstance() // 要引入這包才能使用 gsap 的所有東西
 const router = useRouter()
 
 import CustomButton from "@/components/templates/CustomButton.vue"
+import NavbarLayout from "@/components/layout/NavbarLayout.vue"
+
+// State ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+const navbarRef = ref(null);
+
+let NavbarAction = null;
+
 
 const redirectUrl = (url) => {
   router.push(url)
 }
+// 設定 ref 指定 element, set a gsap action, 在 mounted 的時候才去執行 action, 全部 pause
+// mounted hooks
+onMounted(() => {
+  NavbarAction = $gsapPack.gsap.from(navbarRef.value, { y: -window.innerHeight })
+})
+
+onUnmounted(() => {
+  NavbarAction?.kill();
+})
 
 
+// Flow ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+let enterPageTimeline = null
+const enterPageAnimationFlow = () => {
+  enterPageTimeline = $gsapPack.gsap.timeline()
+  enterPageTimeline.add(_animateNameEnter())
+}
+// Animations ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+// 名字進場
+const _animateNameEnter = () => {
+  const action = $gsapPack.gsap.from('.name-letters', {
+    scale: 0,
+    stagger: 0.2
+  })
+  return action;
+}
+// 名字離開
 const _animateNameLeave = () => {
   const action = $gsapPack.gsap.to('.name', {
     y: -window.innerHeight,
@@ -47,11 +82,7 @@ const _animateNameLeave = () => {
 }
 
 
-onMounted(() => {
-  // _animateNameLeave()
-})
-
-// ==========
+// Router Leave ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 let completeAnimation = null; // this is the resolve function
 const _animateRouterLeave = () => {
   return new Promise((resolve) => {
@@ -63,8 +94,14 @@ const _animateRouterLeave = () => {
 }
 
 onBeforeRouteLeave(async (to, from, next) => {
-  await _animateRouterLeave()
-  next()
+  try {
+    await _animateRouterLeave()
+    next()
+  } catch (error) {
+    console.log(error);
+    next(false)
+  }
+
 })
 </script>
 
@@ -76,6 +113,11 @@ onBeforeRouteLeave(async (to, from, next) => {
   display: flex;
   justify-content: center;
   align-items: flex-start;
+
+  .navbar {
+    position: absolute;
+    width: 100%;
+  }
 
   .content {
     // background-color: lightslategray;
@@ -94,7 +136,7 @@ onBeforeRouteLeave(async (to, from, next) => {
   .content {
     .name {
       @extend .center;
-      font-size: 100px;
+      font-size: 18vh;
       color: #FAE900;
       gap: 20px;
       margin-top: 27vh;

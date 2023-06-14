@@ -1,0 +1,48 @@
+@import "./size-config";
+
+// 電腦
+@mixin web-media() {
+  @media all and (min-width: $web-media) {
+    @content;
+  }
+}
+
+//---------------
+// 平板
+@mixin pad-media() {
+  @media all and (min-width: $pads-media) and (max-width: $pad-media) {
+    @content;
+  }
+}
+
+// 手機
+@mixin phone-media() {
+  @media all and (max-width: $phone-media) {
+    @content;
+  }
+}
+
+// 移動端
+@mixin mobile-media() {
+  @media all and (max-width: $pad-media) {
+    @content;
+  }
+}
+
+@mixin min($min) {
+  @media all and (min-width: $min + 'px') {
+    @content;
+  }
+}
+
+@mixin max($max) {
+  @media all and (max-width: $max + 'px') {
+    @content;
+  }
+}
+
+@mixin min-max($min, $max) {
+  @media all and (min-width: $min + 'px') and (max-width: $max + 'px') {
+    @content;
+  }
+}

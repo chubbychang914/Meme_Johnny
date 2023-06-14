@@ -9,13 +9,24 @@
 </template>
 
 <script setup>
+import { faLessThanEqual } from '@fortawesome/free-solid-svg-icons';
 import { ref, onMounted, getCurrentInstance, onUnmounted } from 'vue';
 import { onBeforeRouteLeave } from 'vue-router';
 const { proxy: { $gsapPack } } = getCurrentInstance() // 要引入這包才能使用 gsap 的所有東西
 
 
 const planetRef = ref(null)
+// Flow ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+let enterPageTimeline = null;
+const enterPageAnimationFlow = () => {
+  enterPageTimeline = $gsapPack.gsap.timeline()
+  enterPageTimeline.add(_animatePageEnter())
+}
 // Animation ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+const _animatePageEnter = () => {
+  const action = $gsapPack.gsap.from('#SpaceBaseLayer', { opacity: 0, duration: 2 })
+  return action
+}
 // 星球放大
 const _animatePlanetEnlarge = () => {
   const action = $gsapPack.gsap.to(planetRef.value, { scale: 8, duration: 2 })
@@ -29,10 +40,12 @@ const _animateShipFade = () => {
 
 // onMount ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 onMounted(() => {
-  // _animateRotateBg()
+  enterPageAnimationFlow()
 })
 onUnmounted(() => {
-  $gsapPack.gsap.killTweensOf(_animatePlanetEnlarge)
+  if (enterPageTimeline) {
+    enterPageTimeline.kill()
+  }
 })
 // Router Leave ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 let completeAnimation = null; // this is the resolve function
@@ -47,8 +60,13 @@ const _animateRouterLeave = () => {
 }
 
 onBeforeRouteLeave(async (to, from, next) => {
-  await _animateRouterLeave()
-  next()
+  try {
+    await _animateRouterLeave()
+    next()
+  } catch (error) {
+    console.log(error);
+    next(false)
+  }
 })
 </script> 
 
