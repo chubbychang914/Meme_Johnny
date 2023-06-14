@@ -47,18 +47,16 @@ const btnStyles = computed(() => {
 
 // 元件
 #CustomButton {
-  // width: 100%;
   width: 100px;
   height: 100px;
-  // background-color: #102336;
-  background-color: white;
+  background-color: #102336;
+  // background-color: white;
   color: white;
-  display: flex;
-  border-radius: 10px;
   user-select: none;
   cursor: pointer;
   display: flex;
   justify-content: flex-start;
+  border-radius: 50%;
   align-items: centerf;
 
   &:active {
