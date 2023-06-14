@@ -4,7 +4,7 @@
       <NavbarLayout />
     </div>
     <div class="content">
-      <div class="name">
+      <div class="name" ref="nameRef">
         <div class="icon-left">
           <!-- <font-awesome-icon icon="fa-solid fa-caret-left" /> -->
         </div>
@@ -37,43 +37,41 @@ const router = useRouter()
 import CustomButton from "@/components/templates/CustomButton.vue"
 import NavbarLayout from "@/components/layout/NavbarLayout.vue"
 
-// set refs 給 gsap 指定 ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
-const navbarRef = ref(null);
 // 設定 action variable
+let PageEnterAnimationFlow = null;
 let NavbarAction = null;
+let NameEnterAction = null;
 
 
 const redirectUrl = (url) => {
   router.push(url)
 }
-// 設定 ref 指定 element, set a gsap action, 在 mounted 的時候才去執行 action, 全部 pause
-// mounted hooks
-onMounted(() => {
-  NavbarAction = $gsapPack.gsap.from(navbarRef.value, { y: -window.innerHeight, paused: true })
+// set refs 給 gsap 指定，因為每次渲染都會抓新的 element
+// if not set in onMounted, the element will be bound differently everytime
+const navbarRef = ref(null);
+const nameRef = ref(null)
 
-  NavbarAction.play()
+onMounted(() => {
+  // 在 mounted 定義動畫，才可以每次進入頁面重新抓 element
+  NavbarAction = $gsapPack.gsap.from(navbarRef.value, { y: -window.innerHeight, paused: true })
+  NameEnterAction = $gsapPack.gsap.from(nameRef.value, { y: -window.innerHeight, paused: true })
+  // 設定入場 timeline
+  PageEnterAnimationFlow = $gsapPack.gsap.timeline({ paused: true })
+  PageEnterAnimationFlow.add(NavbarAction.play())
+    .add(NameEnterAction.play())
+  // ► 執行
+  PageEnterAnimationFlow.play()
 })
 
 onUnmounted(() => {
-  NavbarAction?.kill();
+  // kill timeline to prevent errors
+  PageEnterAnimationFlow?.kill();
 })
 
 
 // Flow ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
-let enterPageTimeline = null
-const enterPageAnimationFlow = () => {
-  enterPageTimeline = $gsapPack.gsap.timeline()
-  enterPageTimeline.add(_animateNameEnter())
-}
+
 // Animations ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
-// 名字進場
-const _animateNameEnter = () => {
-  const action = $gsapPack.gsap.from('.name-letters', {
-    scale: 0,
-    stagger: 0.2
-  })
-  return action;
-}
 // 名字離開
 const _animateNameLeave = () => {
   const action = $gsapPack.gsap.to('.name', {
