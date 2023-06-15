@@ -2,28 +2,20 @@
   <ul id="FooterLayout">
     <li class="contact-box" @click="openExternalPage('https://github.com/chubbychang914')">
       <div class="title">Github</div>
-      <div class="icon">
-        <img src="@/assets/svgs/icons/githubIcon.svg" alt="Github">
-      </div>
+      <div class="icon"><font-awesome-icon icon="fa-brands fa-github" /></div>
     </li>
     <li class="contact-box"
       @click="openExternalPage('https://www.linkedin.com/in/johnny-chang-b6b609204/')">
       <div class="title">LinkedIn</div>
-      <div class="icon">
-        <img src="@/assets/svgs/icons/linkedInIcon.svg" alt="Github">
-      </div>
+      <div class="icon"><font-awesome-icon icon="fa-brands fa-linkedin" /></div>
     </li>
     <li class="contact-box" @click="openExternalPage('mailto:johnny22375@gmail.com')">
       <div class="title">Email</div>
-      <div class="icon">
-        <img src="@/assets/svgs/icons/gmailIcon.svg" alt="Github">
-      </div>
+      <div class="icon"><font-awesome-icon icon="fa-solid fa-envelope" /></div>
     </li>
     <li class="contact-box" @click="openExternalPage('tel:+886981093375')">
       <div class="title">Phone</div>
-      <div class="icon">
-        <img src="@/assets/svgs/icons/phoneIcon.svg" alt="Github">
-      </div>
+      <div class="icon"><font-awesome-icon icon="fa-solid fa-mobile-screen-button" /></div>
     </li>
   </ul>
 </template>
@@ -46,7 +38,7 @@ const openExternalPage = (url) => {
   grid-template-columns: 1fr 1fr 1fr 1fr;
   list-style-type: none;
 
-  @include phone-media {
+  @include mobile-media {
     display: flex;
     flex-direction: column;
   }
@@ -57,27 +49,27 @@ const openExternalPage = (url) => {
   font-family: 'VT323', monospace;
 
   .contact-box {
-    // outline: auto;
+    box-sizing: border-box;
     width: 100%;
     height: var(--divHeight);
     display: flex;
     justify-content: space-around;
     align-items: center;
-    letter-spacing: 0.3em;
-
-    @include phone-media {
+    letter-spacing: 5px;
+    color: white;
+    
+    @include mobile-media {
       justify-content: space-between;
+      padding: 15px;
     }
 
     .title {
       font-size: 40px;
-      color: white;
-      // margin-left: -20px;
     }
 
     .icon {
-      width: 45px;
-      margin-top: 4px;
+      font-size: 35px;
+      @extend .center;
 
       img {
         object-fit: contain;
@@ -96,17 +88,12 @@ const openExternalPage = (url) => {
     }
 
     &:nth-child(3) {
-      background-color: #2B2E63
-    }
-
-    &:nth-child(4) {
       background-color: #57ADBF
     }
 
-    &:hover {
-      // transform: translateY(-5px);
+    &:nth-child(4) {
+      background-color: #2B2E63;
     }
-
   }
 }
 
