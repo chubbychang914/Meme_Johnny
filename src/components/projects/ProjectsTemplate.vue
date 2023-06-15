@@ -1,11 +1,11 @@
 <template>
   <div id="ProjectsTemplate">
-    <div class="row" :style="{ order: props.infoObj.reverseLayout ? 2 : 1 }">
+    <div class="imgBox" :style="{ order: props.infoObj.reverseLayout ? 2 : 1 }">
       <div class="projectPic">
         <img :src=props.infoObj.imgUrl>
       </div>
     </div>
-    <div class="row" :style="{ order: props.infoObj.reverseLayout ? 1 : 2 }">
+    <div class="txtBox" :style="{ order: props.infoObj.reverseLayout ? 1 : 2 }">
       <div class="projectDesc">
         <div class="title">
           <h1>{{ props.infoObj.title }}</h1>
@@ -35,11 +35,11 @@ const props = defineProps({
   infoObj: {
     type: Object,
     default: () => ({
-      title: "Title",
-      imgUrl: "https://cdn.pixabay.com/photo/2015/04/19/08/32/marguerite-729510_1280.jpg",
-      description: "Hello world",
-      skillsUsedList: ["1", "2", "3"],
-      reverseLayout: false
+      // title: "Title",
+      // imgUrl: "https://cdn.pixabay.com/photo/2015/04/19/08/32/marguerite-729510_1280.jpg",
+      // description: "Hello world",
+      // skillsUsedList: ["1", "2", "3"],
+      // reverseLayout: false
     })
   }
 })
@@ -58,9 +58,20 @@ const props = defineProps({
     flex-direction: column;
   }
 
-  .row {
-    // outline: auto;
+  .imgBox {
     @extend .center;
+
+    @include mobile-media {
+      order: 2
+    }
+  }
+
+  .txtBox {
+    @extend .center;
+
+    @include mobile-media {
+      order: 1
+    }
   }
 }
 
@@ -90,7 +101,8 @@ const props = defineProps({
     // background-color: #2b2e63;
     box-sizing: border-box;
     border-radius: 15px;
-    @include mobile-media{
+
+    @include mobile-media {
       width: 500px;
     }
 
