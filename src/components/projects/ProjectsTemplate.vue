@@ -30,7 +30,7 @@
 
 <script setup>
 import DrawButton from "@/components/templates/DrawButton.vue"
-
+import { onMounted } from "vue";
 
 const props = defineProps({
   infoObj: {
@@ -42,6 +42,13 @@ const props = defineProps({
       skillsUsedList: ["1", "2", "3"],
       reverseLayout: false
     })
+  }
+})
+
+onMounted(() => {
+  if (window.innerWidth <= 1024) {
+    props.infoObj.reverseLayout = false;
+    console.log("j");
   }
 })
 
