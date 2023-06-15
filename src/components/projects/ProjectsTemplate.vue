@@ -7,8 +7,12 @@
     </div>
     <div class="row" :style="{ order: props.infoObj.reverseLayout ? 1 : 2 }">
       <div class="projectDesc">
-        <div class="title">{{ props.infoObj.title }}</div>
-        <div class="text"> {{ props.infoObj.description }}</div>
+        <div class="title">
+          <h1>{{ props.infoObj.title }}</h1>
+        </div>
+        <div class="text">
+          <p>{{ props.infoObj.description }}</p>
+        </div>
         <!-- optional -->
         <ul class="skills-used">
           <li class="list" v-for="(item, index) in props.infoObj.skillsUsedList" :key="index">
@@ -91,7 +95,7 @@ const props = defineProps({
     border-radius: 10px;
 
     .title {
-      font-size: 50px;
+      // font-size: 50px;
       border: 10px ridge black;
       text-align: center;
     }

@@ -1,29 +1,29 @@
 <template>
   <ul id="FooterLayout">
     <li class="contact-box" @click="openExternalPage('https://github.com/chubbychang914')">
+      <div class="title">Github</div>
       <div class="icon">
         <img src="@/assets/svgs/icons/githubIcon.svg" alt="Github">
       </div>
-      <div class="title">Github</div>
     </li>
     <li class="contact-box"
       @click="openExternalPage('https://www.linkedin.com/in/johnny-chang-b6b609204/')">
+      <div class="title">LinkedIn</div>
       <div class="icon">
         <img src="@/assets/svgs/icons/linkedInIcon.svg" alt="Github">
       </div>
-      <div class="title">LinkedIn</div>
     </li>
     <li class="contact-box" @click="openExternalPage('mailto:johnny22375@gmail.com')">
+      <div class="title">Email</div>
       <div class="icon">
         <img src="@/assets/svgs/icons/gmailIcon.svg" alt="Github">
       </div>
-      <div class="title">Email</div>
     </li>
     <li class="contact-box" @click="openExternalPage('tel:+886981093375')">
+      <div class="title">Phone</div>
       <div class="icon">
         <img src="@/assets/svgs/icons/phoneIcon.svg" alt="Github">
       </div>
-      <div class="title">Phone</div>
     </li>
   </ul>
 </template>
@@ -38,12 +38,18 @@ const openExternalPage = (url) => {
 <style lang="scss" scoped>
 // 排版
 #FooterLayout {
-  --divHeight: 75px;
+  --divHeight: 80px;
+
   width: 100%;
   height: var(--divHeight);
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   list-style-type: none;
+
+  @include phone-media {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 // 元件
@@ -54,24 +60,29 @@ const openExternalPage = (url) => {
     // outline: auto;
     width: 100%;
     height: var(--divHeight);
-    @extend .center;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
     letter-spacing: 0.3em;
-    // gap: 10px;
+
+    @include phone-media {
+      justify-content: space-between;
+    }
 
     .title {
       font-size: 40px;
       color: white;
-      margin-left: -20px;
-
+      // margin-left: -20px;
     }
 
     .icon {
-      width: 70px;
+      width: 45px;
       margin-top: 4px;
 
       img {
         object-fit: contain;
-        width: 50%;
+        width: 100%;
+        height: auto;
       }
     }
 

@@ -80,7 +80,8 @@ onMounted(() => {
     padding-top: 100px;
     display: flex;
     flex-direction: column;
-    gap: 50px;
+    padding-bottom: 80px;
+    // gap: 50px;
     background-image: url("https://rare-gallery.com/uploads/posts/523062-pixels-pixel.jpg");
     background-size: cover;
     background-attachment: fixed;
