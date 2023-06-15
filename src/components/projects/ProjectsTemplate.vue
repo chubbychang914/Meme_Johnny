@@ -30,7 +30,6 @@
 
 <script setup>
 import DrawButton from "@/components/templates/DrawButton.vue"
-import { onMounted } from "vue";
 
 const props = defineProps({
   infoObj: {
@@ -44,14 +43,6 @@ const props = defineProps({
     })
   }
 })
-
-onMounted(() => {
-  if (window.innerWidth <= 1024) {
-    props.infoObj.reverseLayout = false;
-    console.log("j");
-  }
-})
-
 </script>
 
 <style lang="scss" scoped>
@@ -68,7 +59,7 @@ onMounted(() => {
   }
 
   .row {
-    outline: auto;
+    // outline: auto;
     @extend .center;
   }
 }
@@ -76,29 +67,32 @@ onMounted(() => {
 // 元件
 #ProjectsTemplate {
   .projectPic {
-    width: 100%;
+    width: 600px;
     @extend .center;
 
+    @include mobile-media {
+      width: 500px;
+    }
+
     img {
-      width: 30vw;
-      min-width: 500px;
+      width: 100%;
       height: auto;
       object-fit: contain;
       border-radius: 15px;
-
-      @include mobile-media {
-        // width: 100vw;
-      }
     }
   }
 
   .projectDesc {
-    width: 30vw;
-    min-width: 400px;
-    // padding: 30px;
+    width: 600px;
+    min-width: 500px;
+    padding: 20px 30px;
     color: white;
-    // background-color: #57ADBF;
+    // background-color: #2b2e63;
     box-sizing: border-box;
+    border-radius: 15px;
+    @include mobile-media{
+      width: 500px;
+    }
 
     .title {
       // font-size: 50px;

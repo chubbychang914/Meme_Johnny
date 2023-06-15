@@ -81,9 +81,10 @@ onMounted(() => {
     display: flex;
     flex-direction: column;
     padding-bottom: 80px;
-    // gap: 50px;
-    // background-image: url("https://static.vecteezy.com/system/resources/previews/009/956/003/non_2x/pixel-art-arcade-game-scene-with-mill-trees-and-clouds-8-bit-background-vector.jpg");
-    background-image: url('src/assets/imgs/about/aboutBg.jpeg');
+    gap: 100px;
+
+    // background-image: url('src/assets/imgs/about/aboutBg.jpeg');
+    background-color: black;
     background-size: cover;
     background-attachment: fixed;
   }
