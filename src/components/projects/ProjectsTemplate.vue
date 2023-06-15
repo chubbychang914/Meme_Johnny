@@ -61,7 +61,6 @@ const props = defineProps({
   }
 
   .row {
-    // background-color: blue;
     outline: auto;
     @extend .center;
   }
@@ -89,14 +88,14 @@ const props = defineProps({
   .projectDesc {
     width: 30vw;
     min-width: 400px;
-    padding: 30px 0;
+    // padding: 30px;
     color: white;
-    background-color: #57ADBF;
-    border-radius: 10px;
+    // background-color: #57ADBF;
+    box-sizing: border-box;
 
     .title {
       // font-size: 50px;
-      border: 10px ridge black;
+      // border: 10px ridge black;
       text-align: center;
     }
 
