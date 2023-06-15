@@ -1,11 +1,11 @@
 <template>
   <div id="ProjectsTemplate">
-    <div class="imgBox" :style="{ order: props.infoObj.reverseLayout ? 2 : 1 }">
+    <div class="imgBox" :style="imgLayoutStyle">
       <div class="projectPic">
         <img :src=props.infoObj.imgUrl>
       </div>
     </div>
-    <div class="txtBox" :style="{ order: props.infoObj.reverseLayout ? 1 : 2 }">
+    <div class="txtBox" :style="txtLayoutStyle">
       <div class="projectDesc">
         <div class="title">
           <h1>{{ props.infoObj.title }}</h1>
@@ -29,18 +29,25 @@
 </template>
 
 <script setup>
+import { computed } from "vue";
 import DrawButton from "@/components/templates/DrawButton.vue"
 
 const props = defineProps({
   infoObj: {
     type: Object,
-    default: () => ({
-      // title: "Title",
-      // imgUrl: "https://cdn.pixabay.com/photo/2015/04/19/08/32/marguerite-729510_1280.jpg",
-      // description: "Hello world",
-      // skillsUsedList: ["1", "2", "3"],
-      // reverseLayout: false
-    })
+    default: () => ({})
+  }
+})
+
+const imgLayoutStyle = computed(() => {
+  return {
+    order: props.infoObj.reverseLayout ? 2 : 1
+  }
+})
+
+const txtLayoutStyle = computed(() => {
+  return {
+    order: props.infoObj.reverseLayout ? 1 : 2
   }
 })
 </script>
@@ -60,18 +67,10 @@ const props = defineProps({
 
   .imgBox {
     @extend .center;
-
-    @include mobile-media {
-      order: 2
-    }
   }
 
   .txtBox {
     @extend .center;
-
-    @include mobile-media {
-      order: 1
-    }
   }
 }
 
