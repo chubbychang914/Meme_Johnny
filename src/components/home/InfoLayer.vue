@@ -22,12 +22,8 @@
       <div class="job" ref="jobRef">Frontend Developer</div>
     </div>
     <div class="panel">
-      <img src="@/assets/svgs/shipPanel.svg">
-      <div class="button-box" style="display: flex;">
-        <!-- <CustomButton @on-click="redirectUrl('/about')" /> -->
-        <CustomButton @on-click="redirectUrl('/about')" />
-        <CustomButton @on-click="redirectUrl('/projects')" />
-      </div>
+      <CustomButton @on-click="redirectUrl('/about')" />
+      <CustomButton @on-click="redirectUrl('/projects')" />
     </div>
   </div>
 </template>
@@ -195,9 +191,14 @@ onUnmounted(() => {
   }
 
   .panel {
-    width: 1600px;
+    width: 800px;
+    height: 250px;
     position: absolute;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     bottom: 0;
+    background-color: white;
   }
 }
 
