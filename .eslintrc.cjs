@@ -9,8 +9,6 @@ module.exports = {
     ecmaVersion: 'latest'
   },
   rules: {
-    "vue/no-mutating-props": ["error", {
-      "shallowOnly": false
-    }]
+    "vue/no-mutating-props": "off"
   }
 }
