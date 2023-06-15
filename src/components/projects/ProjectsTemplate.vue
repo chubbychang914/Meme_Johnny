@@ -9,11 +9,13 @@
       <div class="projectDesc">
         <div class="title">{{ props.infoObj.title }}</div>
         <div class="text"> {{ props.infoObj.description }}</div>
+        <!-- optional -->
         <ul class="skills-used">
           <li class="list" v-for="(item, index) in props.infoObj.skillsUsedList" :key="index">
             {{ item }}
           </li>
         </ul>
+        <!-- ======== -->
         <div class="btn">
           <DrawButton />
         </div>
@@ -49,6 +51,11 @@ const props = defineProps({
   display: grid;
   grid-template-columns: 1fr 1fr;
 
+  @include mobile-media {
+    display: flex;
+    flex-direction: column;
+  }
+
   .row {
     // background-color: blue;
     outline: auto;
@@ -63,22 +70,30 @@ const props = defineProps({
     @extend .center;
 
     img {
-      width: 35vw;
-      min-width: 650px;
+      width: 30vw;
+      min-width: 500px;
       height: auto;
       object-fit: contain;
       border-radius: 15px;
+
+      @include mobile-media {
+        // width: 100vw;
+      }
     }
   }
 
   .projectDesc {
-    width: 25vw;
-    min-width: 500px;
-    padding: 30px 50px;
-    background-color: white;
+    width: 30vw;
+    min-width: 400px;
+    padding: 30px 0;
+    color: white;
+    background-color: #57ADBF;
+    border-radius: 10px;
 
     .title {
       font-size: 50px;
+      border: 10px ridge black;
+      text-align: center;
     }
 
     .text {

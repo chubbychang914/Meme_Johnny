@@ -1,12 +1,25 @@
 @import "./size-config";
 
+
+@mixin pc-media() {
+  @media all and (min-width: 1025px) {
+    @content;
+  }
+}
+
+// 移動端
+@mixin mobile-media() {
+  @media all and (max-width: 1024px) {
+    @content;
+  }
+}
+
 // 電腦
 @mixin web-media() {
   @media all and (min-width: $web-media) {
     @content;
   }
 }
-
 //---------------
 // 平板
 @mixin pad-media() {
