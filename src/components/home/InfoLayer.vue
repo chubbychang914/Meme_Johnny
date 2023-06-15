@@ -21,10 +21,13 @@
       </div>
       <div class="job" ref="jobRef">Frontend Developer</div>
     </div>
-    <div class="button-box" style="display: flex;">
-      <CustomButton @on-click="redirectUrl('/about')" />
-      <CustomButton @on-click="redirectUrl('/about')" />
-      <CustomButton @on-click="redirectUrl('/projects')" />
+    <div class="panel">
+      <img src="@/assets/svgs/shipPanel.svg">
+      <div class="button-box" style="display: flex;">
+        <!-- <CustomButton @on-click="redirectUrl('/about')" /> -->
+        <CustomButton @on-click="redirectUrl('/about')" />
+        <CustomButton @on-click="redirectUrl('/projects')" />
+      </div>
     </div>
   </div>
 </template>
@@ -36,7 +39,6 @@ const { proxy: { $gsapPack } } = getCurrentInstance() // 要引入這包才能�
 const router = useRouter()
 
 import CustomButton from "@/components/templates/CustomButton.vue"
-import DrawButton from  "@/components/templates/DrawButton.vue"
 import NavbarLayout from "@/components/layout/NavbarLayout.vue"
 // 跳轉
 const redirectUrl = (url) => {
@@ -190,6 +192,12 @@ onUnmounted(() => {
   .button-box {
     position: absolute;
     bottom: 100px;
+  }
+
+  .panel {
+    width: 1600px;
+    position: absolute;
+    bottom: 0;
   }
 }
 
