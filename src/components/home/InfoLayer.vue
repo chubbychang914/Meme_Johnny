@@ -250,10 +250,11 @@ onUnmounted(() => {
     border-top-left-radius: 25px;
 
     .aim-btn {
-      width: 100%;
-      height: 100%;
+      width: 100px;
+      height: 100px;
       background-color: red;
       border-radius: 50%;
+      // background-image: url();
     }
   }
 }

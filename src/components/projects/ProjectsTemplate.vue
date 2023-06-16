@@ -45,6 +45,7 @@ const imgLayoutStyle = computed(() => {
   }
 })
 
+
 const txtLayoutStyle = computed(() => {
   return {
     order: props.infoObj.reverseLayout ? 1 : 2
