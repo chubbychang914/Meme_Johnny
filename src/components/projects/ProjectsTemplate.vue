@@ -1,11 +1,11 @@
 <template>
   <div id="ProjectsTemplate">
-    <div class="imgBox" :style="imgLayoutStyle">
+    <div class="imgBox" :style="{ order: props.infoObj.reverseLayout ? 2 : 1 }">
       <div class="projectPic">
         <img :src=props.infoObj.imgUrl>
       </div>
     </div>
-    <div class="txtBox" :style="txtLayoutStyle">
+    <div class="txtBox" :style="{ order: props.infoObj.reverseLayout ? 1 : 2 }">
       <div class="projectDesc">
         <div class="title">
           <h1>{{ props.infoObj.title }}</h1>
@@ -29,8 +29,10 @@
 </template>
 
 <script setup>
-import { computed } from "vue";
+import { ref, watchEffect } from "vue";
 import DrawButton from "@/components/templates/DrawButton.vue"
+
+const reverseLayoutVal = ref(false)
 
 const props = defineProps({
   infoObj: {
@@ -39,18 +41,20 @@ const props = defineProps({
   }
 })
 
-const imgLayoutStyle = computed(() => {
-  return {
-    order: props.infoObj.reverseLayout ? 2 : 1
-  }
-})
 
-
-const txtLayoutStyle = computed(() => {
-  return {
-    order: props.infoObj.reverseLayout ? 1 : 2
+const screenWidth = ref(window.innerWidth);
+// q make this change dynamically not on page reload
+watchEffect(() => {
+  if (screenWidth.value < 1024) {
+    props.infoObj.reverseLayout = false;
+  } else {
+    reverseLayoutVal.value = props.infoObj.reverseLayout;
   }
-})
+});
+
+window.addEventListener('resize', () => {
+  screenWidth.value = window.innerWidth;
+});
 </script>
 
 <style lang="scss" scoped>
