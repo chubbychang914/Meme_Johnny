@@ -47,8 +47,8 @@ const btnStyles = computed(() => {
 
 // 元件
 #CustomButton {
-  width: 100px;
-  height: 100px;
+  width: 50px;
+  height: 50px;
   background-color: #102336;
   // background-color: white;
   color: white;

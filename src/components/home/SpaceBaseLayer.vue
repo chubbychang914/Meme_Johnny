@@ -44,6 +44,8 @@ const { proxy: { $gsapPack } } = getCurrentInstance() // 要引入這包才能�
     z-index: 999;
     @extend .center;
 
+    @include mobile-media {}
+
     .ship-img {
       width: auto;
       height: 100vh;

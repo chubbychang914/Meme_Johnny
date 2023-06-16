@@ -23,6 +23,7 @@
     </div>
     <div class="panel">
       <CustomButton @on-click="redirectUrl('/about')" />
+      <div class="aim-btn"></div>
       <CustomButton @on-click="redirectUrl('/projects')" />
     </div>
   </div>
@@ -191,14 +192,11 @@ onUnmounted(() => {
   }
 
   .panel {
-    width: 800px;
-    height: 250px;
+    width: 50vw;
+    min-width: 500px;
+    height: 20vh;
+    min-height: 150px;
     position: absolute;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    bottom: 0;
-    background-color: white;
   }
 }
 
@@ -239,9 +237,25 @@ onUnmounted(() => {
       color: white;
       // transform: skewX(-10deg) rotate(-10deg);
     }
+
   }
 
-  .button-box {}
+  .panel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    bottom: 0;
+    background-color: slategrey;
+    border-top-right-radius: 25px;
+    border-top-left-radius: 25px;
+
+    .aim-btn {
+      width: 100%;
+      height: 100%;
+      background-color: red;
+      border-radius: 50%;
+    }
+  }
 }
 
 
