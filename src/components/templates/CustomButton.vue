@@ -57,7 +57,7 @@ const btnStyles = computed(() => {
   display: flex;
   justify-content: flex-start;
   border-radius: 50%;
-  align-items: centerf;
+  align-items: center;
 
   &:active {
     color: black;
