@@ -1,5 +1,5 @@
 <template>
-  <div id="SpaceBaseLayer">
+  <div id="SpaceBaseLayer" ref="SpaceBaseLayerRef">
     <div class="spaceBg"></div>
     <div class="spaceShip">
       <img class="ship-img" src="@/assets/svgs/spaceship.svg">
@@ -9,7 +9,7 @@
 </template>
 
 <script setup>
-import { getCurrentInstance, onMounted } from 'vue';
+import { ref, getCurrentInstance, onMounted } from 'vue';
 const { proxy: { $gsapPack } } = getCurrentInstance() // 要引入這包才能使用 gsap 的所有東西
 
 

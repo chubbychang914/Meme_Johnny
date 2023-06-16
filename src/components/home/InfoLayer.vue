@@ -1,5 +1,5 @@
 <template>
-  <div id="InfoLayer">
+  <div id="InfoLayer" ref="InfoLayerRef">
     <div class="navbar" ref="navbarRef">
       <NavbarLayout />
     </div>
@@ -22,9 +22,9 @@
       <div class="job" ref="jobRef">Frontend Developer</div>
     </div>
     <div class="panel">
-      <CustomButton @on-click="redirectUrl('/about')" />
+      <CustomButton btn-content="About" @on-click="redirectUrl('/about')" />
       <div class="aim-btn"></div>
-      <CustomButton @on-click="redirectUrl('/projects')" />
+      <CustomButton btn-content="Projects" @on-click="redirectUrl('/projects')" />
     </div>
   </div>
 </template>
@@ -43,6 +43,7 @@ const redirectUrl = (url) => {
 }
 // set refs 給 gsap 指定，因為每次渲染都會抓新的 element
 // if not set in onMounted, the element will be bound differently everytime
+const InfoLayerRef = ref(null);
 const navbarRef = ref(null);
 const nameRef = ref(null);
 const planetRef = ref(null);
@@ -56,6 +57,7 @@ const yRef = ref(null);
 // 設定 action variable
 let PageEnterAnimationFlow = null;
 let PageLeaveAnimationFlow = null;
+let AnimateOpacityLeave = null;
 let AnimateNavbarEnter = null;
 let AnimateNavbarLeave = null;
 let AnimateNameEnterLeft = null;
@@ -118,6 +120,12 @@ onMounted(() => {
     duration: 1.5,
     paused: true,
   })
+  // ==========
+  AnimateOpacityLeave = $gsapPack.gsap.to(InfoLayerRef.value, {
+    opacity: 0,
+    duration: 1,
+    paused: true
+  })
   // 設定入場 timeline ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
   PageEnterAnimationFlow = $gsapPack.gsap.timeline({ paused: true })
   PageEnterAnimationFlow
@@ -132,6 +140,7 @@ onMounted(() => {
     .add(AnimateNameLeave.play(), "<")
     .add(AnimateJobLeave.play(), "<")
     .add(AnimatePlanetEnlarge.play(), "<")
+    .add(AnimateOpacityLeave.play())
 
   // ►►► 執行
   PageEnterAnimationFlow.play()
