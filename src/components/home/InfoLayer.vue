@@ -22,9 +22,10 @@
       <div class="job" ref="jobRef">Frontend Developer</div>
     </div>
     <div class="panel" ref="panelRef">
-      <CustomButton btn-content="About" @on-click="redirectUrl('/about')" />
-      <div class="aim-btn"><font-awesome-icon icon="fa-solid fa-power-off" size="2xl" /></div>
-      <CustomButton btn-content="Projects" @on-click="redirectUrl('/projects')" />
+      <CustomButton btn-content="About" bgColor="red" @on-click="redirectUrl('/about')" />
+      <div class="aim-btn" @click="redirectUrl('/about')"><font-awesome-icon
+          icon="fa-solid fa-power-off" size="2xl" /></div>
+      <CustomButton btn-content="Projects" bgColor="blue" @on-click="redirectUrl('/projects')" />
     </div>
   </div>
 </template>
@@ -71,6 +72,7 @@ let AnimateJobEnter = null;
 let AnimateJobLeave = null;
 let AnimatePlanetEnlarge = null;
 let AnimatePanelEnter = null;
+let AnimatePanelLeave = null;
 
 onMounted(() => {
   // 在 mounted 定義動畫，才可以每次進入頁面重新抓 element
@@ -83,7 +85,7 @@ onMounted(() => {
   AnimateNavbarLeave = $gsapPack.gsap.fromTo(navbarRef.value,
     { y: 0 },
     {
-      y: -100,
+      y: -160,
       duration: 0.5,
       ease: "power1.in",
       paused: true
@@ -143,6 +145,14 @@ onMounted(() => {
     ease: "slowMo",
     paused: true
   })
+  AnimatePanelLeave = $gsapPack.gsap.fromTo(panelRef.value,
+    { y: 0 },
+    {
+      yPercent: 100,
+      duration: 1,
+      ease: "slowMo",
+      paused: true
+    })
   // 設定入場 timeline ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
   PageEnterAnimationFlow = $gsapPack.gsap.timeline({ paused: true })
   PageEnterAnimationFlow
@@ -158,6 +168,7 @@ onMounted(() => {
     .add(AnimateNavbarLeave.play())
     .add(AnimateNameLeave.play(), "<")
     .add(AnimateJobLeave.play(), "<")
+    .add(AnimatePanelLeave.play(), "<")
     .add(AnimatePlanetEnlarge.play(), "<")
     .add(AnimateOpacityLeave.play())
 
@@ -288,10 +299,11 @@ onUnmounted(() => {
     border-top-right-radius: 25px;
     border-top-left-radius: 25px;
     overflow: hidden;
-    
+
     .aim-btn {
-      width: 150px;
-      height: 150px;
+      position: absolute;
+      width: 100px;
+      height: 100px;
       background-color: red;
       border-radius: 50%;
       @extend .center;

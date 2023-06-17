@@ -1,10 +1,6 @@
 <template>
   <div id="CustomButton" @click="handleClick" :style="btnStyles">
     <div class="btn-content">{{ props.btnContent }}</div>
-    <!-- <div class="hover-style">
-      <img style="object-fit: contain;width: 50px;height: 50px;"
-        src="https://freepngimg.com/download/pacman/21623-6-pac-man-ghost-file.png" alt="">
-    </div> -->
   </div>
 </template>
 
@@ -16,10 +12,10 @@ const props = defineProps({
     type: String,
     default: "Custom Btn"
   },
-  padding: {
+  bgColor: {
     type: String,
-    default: "30px 60px"
-  }
+    default: "black"
+  },
 })
 // methods ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 const emit = defineEmits(['on-click'])
@@ -30,7 +26,6 @@ function handleClick() {
 // hooks ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 const btnStyles = computed(() => {
   return {
-    padding: props.padding,
     backgroundColor: props.bgColor
   }
 })
@@ -39,56 +34,28 @@ const btnStyles = computed(() => {
 
 <style lang="scss" scoped>
 // 排版
-#CustomButton {
-  &:hover {
-    background-image: url("src/assets/svgs/bg.svg");
-  }
-}
+#CustomButton {}
 
 // 元件
 #CustomButton {
-  width: 50px;
-  height: 50px;
-  background-color: #102336;
-  // background-color: white;
+  width: 100%;
+  height: 100%;
   color: white;
   user-select: none;
   cursor: pointer;
-  display: flex;
-  justify-content: flex-start;
-  border-radius: 50%;
-  align-items: center;
-
-  &:active {
-    color: black;
-    background-color: white;
-    box-shadow: 0 5px rgba(0, 0, 0, 0.5);
-    transform: scale(0.95);
-    user-select: none;
-  }
+  @extend .center;
 
   &:hover {
-    background-color: white;
-    // color: black;
+    background-image: url("src/assets/svgs/bg.svg");
   }
 
   .btn-content {
-    text-decoration: none;
-    font-size: 20px;
+    font-size: 30px;
   }
 
   .hover-style {
     display: none;
     position: absolute;
-  }
-
-
-  &:hover .hover-style {
-    display: block;
-  }
-
-  &:hover .btn-content {
-    z-index: 2;
   }
 }
 
