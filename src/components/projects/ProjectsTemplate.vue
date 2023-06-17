@@ -22,7 +22,6 @@
 </template>
 
 <script setup>
-import { ref, watchEffect } from "vue";
 import DrawButton from "@/components/templates/DrawButton.vue"
 
 const props = defineProps({
@@ -41,10 +40,22 @@ const props = defineProps({
   height: 100%;
   display: flex;
   justify-content: space-between;
+  // background-color: blue;
 
   @include mobile-media {
     display: flex;
     flex-direction: column;
+  }
+
+  &:nth-of-type(even) {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+
+    @include mobile-media {
+      display: flex;
+      flex-direction: column;
+    }
   }
 
   .imgBox {
@@ -58,6 +69,9 @@ const props = defineProps({
 
 // 元件
 #ProjectsTemplate {
+  box-sizing: border-box;
+  padding: 0 150px;
+
   .projectPic {
     width: 600px;
     @extend .center;
