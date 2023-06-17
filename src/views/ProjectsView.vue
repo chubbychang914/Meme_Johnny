@@ -47,12 +47,12 @@ const ArcaneInfoObj = {
 }
 // Animations ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 const _animateBgLoop = () => {
-  // const backgroundImageWidth = contentRef.value.clientWidth;
+  const backgroundImageWidth = contentRef.value.clientWidth;
   const tl = $gsapPack.gsap.timeline({ paused: true, defaults: { repeat: -1 } })
   tl.to(contentRef.value, {
-    // backgroundPosition: `${backgroundImageWidth * 100}px 0px`,
-    backgroundPosition: "10000px 0px",
-    duration: 60,
+    backgroundPosition: `${backgroundImageWidth * 100}px 0px`,
+    // backgroundPosition: "10000px 0px",
+    duration: 1000,
     ease: "linear"
   })
 
@@ -89,9 +89,9 @@ onMounted(() => {
     gap: 250px;
     background-color: black;
 
-    // background-image: url("https://pixelartmaker-data-78746291193.nyc3.digitaloceanspaces.com/image/e7f3b755129a46b.png");
-    // background-size: cover;
-    // background-attachment: fixed;
+    background-image: url("https://c4.wallpaperflare.com/wallpaper/53/889/264/pixel-art-stars-moon-clouds-wallpaper-preview.jpg");
+    background-size: cover;
+    background-attachment: fixed;
     @include mobile-media {
       padding: 50px 0;
       gap: 30px;
