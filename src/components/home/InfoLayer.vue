@@ -302,9 +302,9 @@ onUnmounted(() => {
 
     .aim-btn {
       position: absolute;
-      width: 100px;
-      height: 100px;
-      background-color: red;
+      width: 120px;
+      height: 120px;
+      background-color:darkgray;
       border-radius: 50%;
       @extend .center;
       color: white;
