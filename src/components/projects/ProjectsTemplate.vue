@@ -15,6 +15,7 @@
         </div>
         <div class="btn">
           <DrawButton />
+          <DrawButton />
         </div>
       </div>
     </div>
@@ -36,11 +37,14 @@ const props = defineProps({
 <style lang="scss" scoped>
 // 排版
 #ProjectsTemplate {
+  * {
+    object-fit: contain;
+  }
+
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: space-between;
-  // background-color: blue;
 
   @include mobile-media {
     display: flex;
@@ -70,20 +74,26 @@ const props = defineProps({
 // 元件
 #ProjectsTemplate {
   box-sizing: border-box;
-  padding: 0 150px;
+  padding: 0 10vw;
+  font-family: 'VT323', monospace;
+
+  // background-color: blue;
+  @include mobile-media {
+    padding: 0;
+  }
 
   .projectPic {
     width: 600px;
     @extend .center;
 
     @include mobile-media {
-      width: 500px;
+      width: 100%;
+
     }
 
     img {
       width: 100%;
       height: auto;
-      object-fit: contain;
       border-radius: 15px;
     }
   }
@@ -91,7 +101,10 @@ const props = defineProps({
   .projectDesc {
     width: 600px;
     min-width: 500px;
-    padding: 20px 30px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
     color: white;
     // background-color: #2b2e63;
     box-sizing: border-box;
@@ -99,16 +112,26 @@ const props = defineProps({
 
     @include mobile-media {
       width: 500px;
+      padding: 30px;
     }
 
     .title {
-      // font-size: 50px;
-      // border: 10px ridge black;
-      text-align: center;
+      font-size: 40px;
+      letter-spacing: 15px;
+      background-color: #2b2e63;
+
+      @include mobile-media {
+        font-size: 30px;
+      }
     }
 
     .text {
-      font-size: 18px;
+      font-size: 25px;
+      text-align: center;
+
+      @include mobile-media {
+        font-size: 20px;
+      }
     }
 
     .skills-used {
