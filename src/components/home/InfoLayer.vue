@@ -7,8 +7,7 @@
     <div class="content">
       <div class="name" ref="nameRef">
         <div class="icon-left">
-          <!-- <font-awesome-icon icon="fa-solid fa-caret-right" /> -->
-          <font-awesome-icon icon="fa-sharp fa-solid fa-angles-right" />
+          <font-awesome-icon icon="fa-solid fa-angles-right" />
         </div>
         <div class="name-letters" ref="jRef">J</div>
         <div class="name-letters" ref="oRef">O</div>
@@ -17,7 +16,7 @@
         <div class="name-letters" ref="nRef2">N</div>
         <div class="name-letters" ref="yRef">Y</div>
         <div class="icon-right">
-          <font-awesome-icon icon="fa-solid fa-caret-left" />
+          <font-awesome-icon icon="fa-solid fa-angles-left" />
         </div>
       </div>
       <div class="job" ref="jobRef">Frontend Developer</div>
