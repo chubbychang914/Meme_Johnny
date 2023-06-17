@@ -6,7 +6,7 @@
     <div class="planet" ref="planetRef"></div>
     <div class="content">
       <div class="name" ref="nameRef">
-        <div class="icon-left">
+        <div class="icon-left" ref="iconLeftRef">
           <font-awesome-icon icon="fa-solid fa-angles-right" />
         </div>
         <div class="name-letters" ref="jRef">J</div>
@@ -15,7 +15,7 @@
         <div class="name-letters" ref="nRef">N</div>
         <div class="name-letters" ref="nRef2">N</div>
         <div class="name-letters" ref="yRef">Y</div>
-        <div class="icon-right">
+        <div class="icon-right" ref="iconRightRef">
           <font-awesome-icon icon="fa-solid fa-angles-left" />
         </div>
       </div>
@@ -23,7 +23,7 @@
     </div>
     <div class="panel" ref="panelRef">
       <CustomButton btn-content="About" @on-click="redirectUrl('/about')" />
-      <div class="aim-btn"></div>
+      <div class="aim-btn"><font-awesome-icon icon="fa-solid fa-power-off" size="2xl" /></div>
       <CustomButton btn-content="Projects" @on-click="redirectUrl('/projects')" />
     </div>
   </div>
@@ -54,6 +54,8 @@ const hRef = ref(null);
 const nRef = ref(null);
 const nRef2 = ref(null);
 const yRef = ref(null);
+const iconRightRef = ref(null);
+const iconLeftRef = ref(null);
 const panelRef = ref(null)
 // 設定 action variable
 let PageEnterAnimationFlow = null;
@@ -61,8 +63,9 @@ let PageLeaveAnimationFlow = null;
 let AnimateOpacityLeave = null;
 let AnimateNavbarEnter = null;
 let AnimateNavbarLeave = null;
-let AnimateNameEnterLeft = null;
-let AnimateNameEnterRight = null;
+let AnimateNameEnter = null;
+let AnimateRightArrowEnter = null;
+let AnimateLeftArrowEnter = null;
 let AnimateNameLeave = null;
 let AnimateJobEnter = null;
 let AnimateJobLeave = null;
@@ -96,19 +99,24 @@ onMounted(() => {
     paused: true
   })
   // ==========
-  AnimateNameEnterLeft = $gsapPack.gsap.from([jRef.value, oRef.value, hRef.value, nRef.value, nRef2.value, yRef.value], {
-    xPercent: 1000,
+  AnimateNameEnter = $gsapPack.gsap.from([jRef.value, oRef.value, hRef.value, nRef.value, nRef2.value, yRef.value], {
+    opacity: 0,
     duration: 1,
-    rotate: 360,
     paused: true,
-    stagger: 0.2
+    stagger: 0.1
   })
-  AnimateNameEnterRight = $gsapPack.gsap.from([nRef.value, nRef2.value, yRef.value], {
-    xPercent: 1000,
+  AnimateRightArrowEnter = $gsapPack.gsap.from(iconRightRef.value, {
+    opacity: 0,
+    xPercent: -450,
     duration: 1,
-    rotate: 360,
     paused: true,
-    stagger: 0.2
+    ease: "power4.easeOut"
+  })
+  AnimateLeftArrowEnter = $gsapPack.gsap.from(iconLeftRef.value, {
+    opacity: 0,
+    xPercent: 450,
+    duration: 1,
+    paused: true,
   })
   AnimateNameLeave = $gsapPack.gsap.to(nameRef.value, {
     opacity: 0,
@@ -132,16 +140,18 @@ onMounted(() => {
   AnimatePanelEnter = $gsapPack.gsap.from(panelRef.value, {
     yPercent: 200,
     duration: 1,
+    ease: "slowMo",
     paused: true
   })
   // 設定入場 timeline ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
   PageEnterAnimationFlow = $gsapPack.gsap.timeline({ paused: true })
   PageEnterAnimationFlow
     .add(AnimateNavbarEnter.play())
-    .add(AnimateNameEnterLeft.play(), "<")
-    // .add(AnimateNameEnterRight.play(), "<")
     .add(AnimatePanelEnter.play(), "<")
-    .add(AnimateJobEnter.play())
+    .add(AnimateLeftArrowEnter.play(), "<")
+    .add(AnimateRightArrowEnter.play(), "<")
+    .add(AnimateNameEnter.play(), "-=0.6")
+    .add(AnimateJobEnter.play(), "-=0.6")
   // 設定離場 timeline ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
   PageLeaveAnimationFlow = $gsapPack.gsap.timeline({ paused: true })
   PageLeaveAnimationFlow
@@ -198,6 +208,9 @@ onUnmounted(() => {
     height: 100px;
     border-radius: 50%;
     background-image: url("https://img.freepik.com/free-photo/orange-details-moon-texture-concept_23-2149535766.jpg");
+    box-shadow:
+      inset -1.5em -1.5em 1.5em #000,
+      -0.2em -0.2em 0.5em #ccc;
   }
 
   .content {
@@ -221,6 +234,8 @@ onUnmounted(() => {
 // 元件
 #InfoLayer {
   font-family: 'VT323', monospace;
+  user-select: none;
+  overflow: hidden;
 
   .content {
     .name {
@@ -246,6 +261,11 @@ onUnmounted(() => {
           border: 10px double black;
         }
       }
+
+      .icon-right,
+      .icon-left {
+        font-size: 15vh
+      }
     }
 
     .job {
@@ -260,19 +280,29 @@ onUnmounted(() => {
 
   .panel {
     display: flex;
-    justify-content: space-between;
+    width: 42vw;
+    justify-content: space-around;
     align-items: center;
     bottom: 0;
-    background-color: slategrey;
+    background-color: slategray;
     border-top-right-radius: 25px;
     border-top-left-radius: 25px;
-
+    overflow: hidden;
+    
     .aim-btn {
-      width: 100px;
-      height: 100px;
+      width: 150px;
+      height: 150px;
       background-color: red;
       border-radius: 50%;
-      // background-image: url();
+      @extend .center;
+      color: white;
+      box-shadow:
+        inset -1em -1em 1em #000,
+        -0.2em -0.2em 0.5em #CCC;
+
+      &:active {
+        scale: 0.95;
+      }
     }
   }
 }
