@@ -8,6 +8,7 @@
       <div class="name" ref="nameRef">
         <div class="icon-left">
           <!-- <font-awesome-icon icon="fa-solid fa-caret-right" /> -->
+          <font-awesome-icon icon="fa-sharp fa-solid fa-angles-right" />
         </div>
         <div class="name-letters" ref="jRef">J</div>
         <div class="name-letters" ref="oRef">O</div>
@@ -16,12 +17,12 @@
         <div class="name-letters" ref="nRef2">N</div>
         <div class="name-letters" ref="yRef">Y</div>
         <div class="icon-right">
-          <!-- <font-awesome-icon icon="fa-solid fa-caret-left" /> -->
+          <font-awesome-icon icon="fa-solid fa-caret-left" />
         </div>
       </div>
       <div class="job" ref="jobRef">Frontend Developer</div>
     </div>
-    <div class="panel">
+    <div class="panel" ref="panelRef">
       <CustomButton btn-content="About" @on-click="redirectUrl('/about')" />
       <div class="aim-btn"></div>
       <CustomButton btn-content="Projects" @on-click="redirectUrl('/projects')" />
@@ -54,6 +55,7 @@ const hRef = ref(null);
 const nRef = ref(null);
 const nRef2 = ref(null);
 const yRef = ref(null);
+const panelRef = ref(null)
 // 設定 action variable
 let PageEnterAnimationFlow = null;
 let PageLeaveAnimationFlow = null;
@@ -66,6 +68,7 @@ let AnimateNameLeave = null;
 let AnimateJobEnter = null;
 let AnimateJobLeave = null;
 let AnimatePlanetEnlarge = null;
+let AnimatePanelEnter = null;
 
 onMounted(() => {
   // 在 mounted 定義動畫，才可以每次進入頁面重新抓 element
@@ -94,19 +97,19 @@ onMounted(() => {
     paused: true
   })
   // ==========
-  AnimateNameEnterLeft = $gsapPack.gsap.from([jRef.value, oRef.value, hRef.value], {
-    xPercent: -1000,
-    rotate: -360,
-    duration: 1.2,
+  AnimateNameEnterLeft = $gsapPack.gsap.from([jRef.value, oRef.value, hRef.value, nRef.value, nRef2.value, yRef.value], {
+    xPercent: 1000,
+    duration: 1,
+    rotate: 360,
     paused: true,
-    stagger: 0.5,
+    stagger: 0.2
   })
   AnimateNameEnterRight = $gsapPack.gsap.from([nRef.value, nRef2.value, yRef.value], {
     xPercent: 1000,
-    duration: 1.2,
+    duration: 1,
     rotate: 360,
     paused: true,
-    stagger: 0.5
+    stagger: 0.2
   })
   AnimateNameLeave = $gsapPack.gsap.to(nameRef.value, {
     opacity: 0,
@@ -126,12 +129,19 @@ onMounted(() => {
     duration: 1,
     paused: true
   })
+  // ==========
+  AnimatePanelEnter = $gsapPack.gsap.from(panelRef.value, {
+    yPercent: 200,
+    duration: 1,
+    paused: true
+  })
   // 設定入場 timeline ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
   PageEnterAnimationFlow = $gsapPack.gsap.timeline({ paused: true })
   PageEnterAnimationFlow
     .add(AnimateNavbarEnter.play())
     .add(AnimateNameEnterLeft.play(), "<")
-    .add(AnimateNameEnterRight.play(), "<")
+    // .add(AnimateNameEnterRight.play(), "<")
+    .add(AnimatePanelEnter.play(), "<")
     .add(AnimateJobEnter.play())
   // 設定離場 timeline ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
   PageLeaveAnimationFlow = $gsapPack.gsap.timeline({ paused: true })
@@ -228,7 +238,7 @@ onUnmounted(() => {
       .name-letters {
         border: 10px double #FAE900;
         border-radius: 10px;
-        // background-color: blue;
+        background-color: black;
         padding: 10px 20px;
 
         &:hover {
