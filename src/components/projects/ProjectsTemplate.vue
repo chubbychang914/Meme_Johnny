@@ -8,14 +8,13 @@
     <div class="txtBox">
       <div class="projectDesc">
         <div class="title">
-          <h1>{{ props.infoObj.title }}</h1>
+          <DrawButton :btnText="props.infoObj.title" @on-draw-click=redirectUrl(props.infoObj.url) />
         </div>
-        <div class="text">
+        <div class=" text">
           <p>{{ props.infoObj.description }}</p>
         </div>
         <div class="btn">
-          <DrawButton />
-          <DrawButton />
+          <!-- <DrawButton btnText="Visit Site" @on-draw-click=redirectUrl(props.infoObj.url) /> -->
         </div>
       </div>
     </div>
@@ -32,6 +31,9 @@ const props = defineProps({
   }
 })
 
+const redirectUrl = () => {
+  window.open(props.infoObj.url)
+}
 </script>
 
 <style lang="scss" scoped>
@@ -64,6 +66,13 @@ const props = defineProps({
 
   .imgBox {
     @extend .center;
+
+    &:hover {
+      .projectPic {
+        transition: 0.5s;
+        transform: rotateX(20deg) rotateY(25deg);
+      }
+    }
   }
 
   .txtBox {
@@ -118,7 +127,8 @@ const props = defineProps({
     .title {
       font-size: 40px;
       letter-spacing: 15px;
-      background-color: #2b2e63;
+      padding: 10px 20px;
+      // background-color: #CED1DA;
 
       @include mobile-media {
         font-size: 30px;

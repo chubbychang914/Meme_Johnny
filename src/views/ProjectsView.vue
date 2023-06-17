@@ -28,20 +28,22 @@ const JohnnyInfoObj = {
   title: "Johnny",
   imgUrl: "https://static.vecteezy.com/system/resources/thumbnails/009/956/040/small/pixel-art-desert-game-scene-with-pyramid-bridge-palm-tree-cactuses-direction-board-8bit-background-vector.jpg",
   description: "Built a personal website using Vue 3 Composition API and GSAP. Implemented features such as scroll-triggered animations and responsive design.",
-  reverseLayout: false
+  reverseLayout: false,
 }
 const SelectGoInfoObj = {
   title: "Select Go",
   imgUrl: "src/assets/imgs/projects/SelectGoScreenShot.png",
   description: "Developed a fully functional e-commerce website using React and Laravel. Implemented features such as user authentication, shopping cart, and product listing.",
-  reverseLayout: true
+  reverseLayout: true,
+  url: "https://github.com/chubbychang914/Select-Go-Final"
 }
 
 const ArcaneInfoObj = {
   title: "Arcane",
   imgUrl: "src/assets/imgs/projects/ArcaneScreenShot.png",
   description: "Created a website based on the popular Netflix series Arcane using HTML, CSS and JavaScript. Utilized GSAP to trigger scroll-related animations.",
-  reverseLayout: false
+  reverseLayout: false,
+  url: "https://chubbychang914.github.io/Arcane/"
 }
 // Animations ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 const _animateBgLoop = () => {
