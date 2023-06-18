@@ -83,7 +83,7 @@ const redirectUrl = () => {
 // 元件
 #ProjectsTemplate {
   box-sizing: border-box;
-  padding: 0 10vw;
+  padding: 0 6vw;
   font-family: 'VT323', monospace;
 
   // background-color: blue;

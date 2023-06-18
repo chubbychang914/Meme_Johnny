@@ -16,11 +16,13 @@
 
 <script setup >
 import { ref, onMounted, getCurrentInstance } from 'vue';
-const { proxy: { $gsapPack } } = getCurrentInstance()
 
 import NavbarLayout from '@/components/layout/NavbarLayout.vue'
 import ProjectsTemplate from '@/components/projects/ProjectsTemplate.vue';
 import FooterLayout from '@/components/layout/FooterLayout.vue';
+const { proxy: { $gsapPack } } = getCurrentInstance()
+
+
 // State ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 const contentRef = ref(null)
 // Props ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
@@ -92,6 +94,7 @@ onMounted(() => {
     background-image: url("https://c4.wallpaperflare.com/wallpaper/53/889/264/pixel-art-stars-moon-clouds-wallpaper-preview.jpg");
     background-size: cover;
     background-attachment: fixed;
+    
     @include mobile-media {
       padding: 50px 0;
       gap: 30px;
