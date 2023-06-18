@@ -32,14 +32,14 @@ const handleClick = () => emit('on-draw-click')
   cursor: pointer;
   .btn-txt {
     width: 300px;
-    height: 100px;
+    height: 80px;
     border-radius: 10px;
     border: 5px double yellow;
     position: relative;
     padding: 20px 10px;
     font-size: 60px;
     letter-spacing: 0.1em;
-    color: #CED1DA;
+    color: white;
     z-index: 888;
     @extend .center;
 

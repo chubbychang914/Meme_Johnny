@@ -67,12 +67,12 @@ const redirectUrl = () => {
   .imgBox {
     @extend .center;
 
-    &:hover {
-      .projectPic {
-        transition: 0.5s;
-        transform: rotateX(20deg) rotateY(25deg);
-      }
-    }
+    // &:hover {
+    //   .projectPic {
+    //     transition: 0.5s;
+    //     transform: rotateX(20deg) rotateY(25deg);
+    //   }
+    // }
   }
 
   .txtBox {
@@ -83,7 +83,6 @@ const redirectUrl = () => {
 // 元件
 #ProjectsTemplate {
   box-sizing: border-box;
-  padding: 0 6vw;
   font-family: 'VT323', monospace;
 
   // background-color: blue;
@@ -92,7 +91,7 @@ const redirectUrl = () => {
   }
 
   .projectPic {
-    width: 600px;
+    width: 570px;
     @extend .center;
 
     @include mobile-media {
@@ -108,7 +107,7 @@ const redirectUrl = () => {
   }
 
   .projectDesc {
-    width: 600px;
+    width: 500px;
     min-width: 500px;
     display: flex;
     align-items: center;
@@ -125,8 +124,8 @@ const redirectUrl = () => {
     }
 
     .title {
-      font-size: 40px;
-      letter-spacing: 15px;
+      font-size: 35px;
+      letter-spacing: 10px;
       padding: 10px 20px;
       // background-color: #CED1DA;
 
@@ -136,7 +135,7 @@ const redirectUrl = () => {
     }
 
     .text {
-      font-size: 25px;
+      font-size: 20px;
       text-align: center;
 
       @include mobile-media {

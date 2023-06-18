@@ -85,16 +85,14 @@ onMounted(() => {
   }
 
   .content {
-    padding: 200px 0;
+    padding: 150px 8vw;
     display: flex;
     flex-direction: column;
     gap: 250px;
-    background-color: black;
-
-    background-image: url("https://c4.wallpaperflare.com/wallpaper/53/889/264/pixel-art-stars-moon-clouds-wallpaper-preview.jpg");
+    background-image: url("src/assets/imgs/projects/projectsBg.jpg");
     background-size: cover;
     background-attachment: fixed;
-    
+
     @include mobile-media {
       padding: 50px 0;
       gap: 30px;
