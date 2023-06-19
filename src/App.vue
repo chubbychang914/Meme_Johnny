@@ -1,6 +1,6 @@
 <template>
   <NavbarLayout />
-  <RouterView></RouterView>
+  <RouterView />
 </template>
 
 <script setup>
@@ -14,9 +14,4 @@ onMounted(() => {
 })
 </script>
 
-<style lang="scss">
-* {
-  margin: 0;
-  padding: 0;
-}
-</style>
+<style lang="scss"></style>
