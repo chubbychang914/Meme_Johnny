@@ -35,6 +35,7 @@ import InfoLayer from "@/components/home/InfoLayer.vue"
       width: 50vh;
       height: 50vh;
       // background-color: yellow;
+      transform: scale(0);
       width: 100px;
       height: 100px;
       border-radius: 50%;
