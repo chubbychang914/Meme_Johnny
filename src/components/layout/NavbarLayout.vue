@@ -40,7 +40,6 @@ const redirectTo = (url) => {
     z-index: 999;
     width: 100%;
     height: 80px;
-    // color: #FAE900;
     color: white;
     font-family: 'VT323', monospace;
     display: flex;

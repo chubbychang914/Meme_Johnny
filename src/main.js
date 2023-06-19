@@ -1,9 +1,8 @@
-import 'normalize.css';
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import $gsapPack from '@/tools/animations/index.js' // gsap + scrolltrigger
-import '@/assets/styles/global/index.scss' // global css
+import '@/assets/styles/global/index.scss' // global scss
 // font awesome icons
 import { FontAwesomeIcon } from '@/assets/fonts/fontAwesome/index.js'
 

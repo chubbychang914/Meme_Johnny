@@ -1,0 +1,56 @@
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Remove list styles (bullet points, indentation) */
+ul,
+ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Remove default padding */
+body,
+figure {
+  padding: 0;
+}
+
+/* Set default font size and line height */
+body {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* Reset anchor text decoration */
+a {
+  text-decoration: none;
+}
+
+/* Reset button styles */
+button {
+  border: none;
+  outline: none;
+  background: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+/* Optionally, add more reset styles as needed */

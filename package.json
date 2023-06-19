@@ -16,7 +16,6 @@
     "@fortawesome/vue-fontawesome": "^3.0.3",
     "gsap": "^3.11.5",
     "lodash": "^4.17.21",
-    "normalize.css": "^8.0.1",
     "vue": "^3.3.2",
     "vue-cli-plugin-pug": "^2.0.0",
     "vue-router": "^4.2.0"
