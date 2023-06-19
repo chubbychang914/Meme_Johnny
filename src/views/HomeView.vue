@@ -28,13 +28,13 @@ import InfoLayer from "@/components/home/InfoLayer.vue"
   .planet-container {
     width: 100%;
     min-height: 100vh;
-    background-color: yellow;
+    // background-color: yellow;
     @extend .center;
 
     .planet {
       width: 50vh;
       height: 50vh;
-      background-color: yellow;
+      // background-color: yellow;
       width: 100px;
       height: 100px;
       border-radius: 50%;
@@ -63,12 +63,12 @@ import InfoLayer from "@/components/home/InfoLayer.vue"
 
   .info-layer {
     position: absolute;
-    top: 0;
+    top: 80px;
     left: 0;
     width: 100%;
-    min-height: 100vh;
+    min-height: calc(100vh - 80px);
     z-index: 100;
-    padding-top: 80px; // navbar height
+    // background-color: blue;
   }
 }
 

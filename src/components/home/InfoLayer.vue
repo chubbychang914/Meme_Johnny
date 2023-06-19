@@ -9,8 +9,8 @@
 <style lang="scss" scoped>
 #InfoLayer{
   width: 100%;
-  min-height: 100vh;
-  background-color: yellow;
+  height: calc(100vh - 80px);
+  // background-color: yellow;
 }
 
 </style>
