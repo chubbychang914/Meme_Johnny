@@ -135,7 +135,7 @@ onMounted(() => {
   })
   // ==========
   AnimatePanelEnter = $gsapPack.gsap.from(panelRef.value, {
-    y: 100,
+    yPercent: 150,
     duration: 1,
     ease: "slowMo",
     paused: true
@@ -280,7 +280,7 @@ onUnmounted(() => {
 
   .panel {
     position: absolute;
-    bottom: 30px;
+    // bottom: 30px;
     width: 40%;
     height: 15vh;
     // background-color: red;

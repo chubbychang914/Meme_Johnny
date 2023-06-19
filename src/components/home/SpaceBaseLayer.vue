@@ -2,7 +2,7 @@
   <div id="SpaceBaseLayer" ref="SpaceBaseLayerRef">
     <div class="spaceBg"></div>
     <div class="spaceShip-container">
-      <img class="spaceShip" src="@/assets/svgs/spaceship2.svg">
+      <img class="spaceShip" src="@/assets/svgs/spaceship3.svg">
     </div>
     <!-- <div class="planet" ref="planetRef"></div> -->
   </div>
