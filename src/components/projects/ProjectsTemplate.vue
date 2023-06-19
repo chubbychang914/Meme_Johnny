@@ -85,9 +85,11 @@ const redirectUrl = () => {
   box-sizing: border-box;
   font-family: 'VT323', monospace;
 
-  // background-color: blue;
   @include mobile-media {
     padding: 0;
+    &:nth-child(1){
+      padding-top: 80px;
+    }
   }
 
   .projectPic {

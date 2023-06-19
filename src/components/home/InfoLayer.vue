@@ -14,12 +14,17 @@
         <font-awesome-icon icon="fa-solid fa-angles-left" />
       </div> -->
     </div>
-    <div class="nav-panel" ref="navPanelRef"></div>
+    <div class="nav-panel" ref="navPanelRef">
+      <Panel />
+    </div>
   </div>
 </template>
 
 <script setup>
 import { getCurrentInstance, onMounted, ref } from "vue";
+
+import Panel from "@/components/layout/Panel.vue";
+
 const { proxy: { $gsapPack } } = getCurrentInstance() // 要引入這包才能使用 gsap 的所有東西
 // ref
 const navPanelRef = ref(null)
@@ -55,6 +60,8 @@ onMounted(() => {
 
     .name-letters {
       font-size: 200px;
+      letter-spacing: 25px;
+      // border: 1px solid yellow;
     }
   }
 
@@ -64,7 +71,11 @@ onMounted(() => {
     width: 60%;
     height: 15vh;
     min-height: 80px;
-    background-color: yellow;
+    // background-color: yellow;
+    transform-style: preserve-3d;
+    @include mobile-media{
+      width: 100%;
+    }
   }
 
 }

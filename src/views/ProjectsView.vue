@@ -14,7 +14,6 @@
 <script setup >
 import { ref, onMounted, getCurrentInstance } from 'vue';
 
-import NavbarLayout from '@/components/layout/NavbarLayout.vue'
 import ProjectsTemplate from '@/components/projects/ProjectsTemplate.vue';
 import FooterLayout from '@/components/layout/FooterLayout.vue';
 const { proxy: { $gsapPack } } = getCurrentInstance()
