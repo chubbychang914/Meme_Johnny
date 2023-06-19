@@ -5,11 +5,14 @@
     </div>
     <div class="ship-container"></div>
     <div class="info-layer">
+      <InfoLayer />
     </div>
   </div>
 </template>
 
 <script setup>
+import InfoLayer from "@/components/home/InfoLayer.vue"
+
 </script>
 
 <style lang="scss" scoped>
@@ -25,7 +28,7 @@
   .planet-container {
     width: 100%;
     min-height: 100vh;
-    // background-color: yellow;
+    background-color: yellow;
     @extend .center;
 
     .planet {
@@ -57,10 +60,21 @@
       display: none;
     }
   }
+
+  .info-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100vh;
+    z-index: 100;
+    padding-top: 80px; // navbar height
+  }
 }
 
 .center {
   display: flex;
   justify-content: center;
   align-items: center;
-}</style>
+}
+</style>

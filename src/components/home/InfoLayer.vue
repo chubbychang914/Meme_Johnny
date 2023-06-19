@@ -1,6 +1,6 @@
 <template>
   <div id="InfoLayer">
-    Hello
+    <h1>Hello</h1>
   </div>  
 </template>
 
