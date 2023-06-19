@@ -22,10 +22,7 @@
       <div class="job" ref="jobRef">Frontend Developer</div>
     </div>
     <div class="panel" ref="panelRef">
-      <CustomButton btn-content="About" bgColor="red" @on-click="redirectUrl('/about')" />
-      <div class="aim-btn" @click="redirectUrl('/about')"><font-awesome-icon
-          icon="fa-solid fa-power-off" size="2xl" /></div>
-      <CustomButton btn-content="Projects" bgColor="blue" @on-click="redirectUrl('/projects')" />
+      <Panel />
     </div>
   </div>
 </template>
@@ -35,13 +32,11 @@ import { ref, onMounted, onUnmounted, getCurrentInstance } from "vue";
 import { useRouter, onBeforeRouteLeave } from "vue-router";
 const { proxy: { $gsapPack } } = getCurrentInstance() // 要引入這包才能使用 gsap 的所有東西
 const router = useRouter()
-
-import CustomButton from "@/components/templates/CustomButton.vue"
-import NavbarLayout from "@/components/layout/NavbarLayout.vue"
+// components
+import NavbarLayout from "@/components/layout/NavbarLayout.vue";
+import Panel from "@/components/layout/Panel.vue";
 // 跳轉
-const redirectUrl = (url) => {
-  router.push(url)
-}
+
 // set refs 給 gsap 指定，因為每次渲染都會抓新的 element
 // if not set in onMounted, the element will be bound differently everytime
 const InfoLayerRef = ref(null);
@@ -140,11 +135,13 @@ onMounted(() => {
   })
   // ==========
   AnimatePanelEnter = $gsapPack.gsap.from(panelRef.value, {
-    yPercent: 200,
+    y: 100,
     duration: 1,
     ease: "slowMo",
     paused: true
-  })
+  },
+    { y: 0 }
+  )
   AnimatePanelLeave = $gsapPack.gsap.fromTo(panelRef.value,
     { y: 0 },
     {
@@ -199,14 +196,20 @@ onUnmounted(() => {
 #InfoLayer {
   width: 100%;
   height: 100vh;
+  max-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: flex-start;
+  overflow: hidden !important;
 
   .navbar {
     position: absolute;
     width: 100%;
     z-index: 999;
+  }
+
+  .panel {
+    position: absolute;
   }
 
   .planet {
@@ -224,22 +227,6 @@ onUnmounted(() => {
       -0.2em -0.2em 0.5em #ccc;
   }
 
-  .content {
-    // background-color: lightslategray;
-  }
-
-  .button-box {
-    position: absolute;
-    bottom: 100px;
-  }
-
-  .panel {
-    width: 50vw;
-    min-width: 500px;
-    height: 20vh;
-    min-height: 150px;
-    position: absolute;
-  }
 }
 
 // 元件
@@ -255,6 +242,7 @@ onUnmounted(() => {
       color: #FAE900;
       gap: 2vw;
       margin-top: 30vh;
+   
 
       @include pad-media {
         font-size: 10px;
@@ -270,6 +258,7 @@ onUnmounted(() => {
           background-color: white;
           color: black;
           border: 10px double black;
+          transform: skewX(-10deg);
         }
       }
 
@@ -290,32 +279,12 @@ onUnmounted(() => {
   }
 
   .panel {
-    display: flex;
-    width: 42vw;
-    justify-content: space-around;
-    align-items: center;
-    bottom: 0;
-    background-color: slategray;
-    border-top-right-radius: 25px;
-    border-top-left-radius: 25px;
-    overflow: hidden;
-
-    .aim-btn {
-      position: absolute;
-      width: 120px;
-      height: 120px;
-      background-color:darkgray;
-      border-radius: 50%;
-      @extend .center;
-      color: white;
-      box-shadow:
-        inset -1em -1em 1em #000,
-        -0.2em -0.2em 0.5em #CCC;
-
-      &:active {
-        scale: 0.95;
-      }
-    }
+    position: absolute;
+    bottom: 30px;
+    width: 40%;
+    height: 15vh;
+    // background-color: red;
+    @extend .center;
   }
 }
 
