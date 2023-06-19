@@ -9,10 +9,6 @@
 </template>
 
 <script setup>
-import { ref, getCurrentInstance, onMounted } from 'vue';
-const { proxy: { $gsapPack } } = getCurrentInstance() // 要引入這包才能使用 gsap 的所有東西
-
-
 </script> 
 
 <style lang="scss" scoped>
