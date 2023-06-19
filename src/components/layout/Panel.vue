@@ -28,7 +28,7 @@ const redirectUrl = (url) => {
   background-color: slategray;
   border-top-right-radius: 25px;
   border-top-left-radius: 25px;
-  border-radius: 25px;
+  // border-radius: 25px;
   overflow: hidden;
 
   .aim-btn {

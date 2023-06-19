@@ -204,12 +204,9 @@ onUnmounted(() => {
 
   .navbar {
     position: absolute;
+    top: 0;
     width: 100%;
     z-index: 999;
-  }
-
-  .panel {
-    position: absolute;
   }
 
   .planet {
@@ -242,7 +239,7 @@ onUnmounted(() => {
       color: #FAE900;
       gap: 2vw;
       margin-top: 30vh;
-   
+
 
       @include pad-media {
         font-size: 10px;
@@ -280,8 +277,8 @@ onUnmounted(() => {
 
   .panel {
     position: absolute;
-    // bottom: 30px;
-    width: 40%;
+    bottom: 0px;
+    width: 60%;
     height: 15vh;
     // background-color: red;
     @extend .center;
