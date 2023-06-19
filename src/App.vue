@@ -14,4 +14,9 @@ onMounted(() => {
 })
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+#App{
+  margin: 0;
+  padding: 0;
+}
+</style>
