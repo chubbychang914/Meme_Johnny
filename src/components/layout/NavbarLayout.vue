@@ -1,6 +1,7 @@
 <template>
   <div id="NavbarLayout">
     <nav class="nav">
+      <div class="logo"></div>
       <ul class="navbarContent">
         <li class="link" @click="redirectTo('/')">
           <span class="icon"><font-awesome-icon icon="fa-solid fa-house" /></span>
@@ -42,21 +43,39 @@ const redirectTo = (url) => {
   @extend .center;
   user-select: none;
   background-color: #1B3B5B;
+  background-color: yellow;
+
+  @include mobile-media {
+    height: auto;
+  }
 }
 
 // 元件
 #NavbarLayout {
   .nav {
     width: 90%;
+    // width: 100%;
     height: 80px;
     color: white;
     font-family: 'VT323', monospace;
-    // background-color: green;
+    display: flex;
+    justify-content: space-between;
+
+    // rwd ==========
+    @include mobile-media {
+      width: 100%;
+      height: auto;
+    }
 
     &:hover {
       cursor: pointer;
     }
 
+    .logo {
+      width: 100px;
+      height: 100%;
+      background-color: red;
+    }
 
     .navbarContent {
       width: 100%;
@@ -64,9 +83,12 @@ const redirectTo = (url) => {
       display: flex;
       justify-content: flex-end;
       align-items: center;
-      // padding-right: 50px;
       background-color: #1B3B5B;
-      list-style-type: none;
+
+      // rwd ==========
+      @include mobile-media {
+        flex-direction: column
+      }
     }
 
     .link {
@@ -76,6 +98,11 @@ const redirectTo = (url) => {
       flex-direction: column;
       position: relative;
       border-radius: 12px;
+
+      // rwd ==========
+      @include mobile-media {
+        width: 100%;
+      }
 
       &:hover,
       &:active {
@@ -108,6 +135,7 @@ const redirectTo = (url) => {
         bottom: 3px;
       }
     }
+
   }
 }
 
@@ -115,5 +143,4 @@ const redirectTo = (url) => {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-</style>
+}</style>
