@@ -7,9 +7,9 @@
       <div class="bgMap" ref="bgRef"></div>
       <ScrollPanel />
     </div>
-    <footer class="aboutFooter">
+    <!-- <footer class="aboutFooter">
       <FooterLayout />
-    </footer>
+    </footer> -->
   </div>
 </template>
 

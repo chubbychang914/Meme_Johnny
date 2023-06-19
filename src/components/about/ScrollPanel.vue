@@ -13,9 +13,6 @@
       <li class="card">
         <JobPanel :jobInfoObj="tyrInfoObj" />
       </li>
-      <li class="card">
-        <button>Next</button>
-      </li>
     </ul>
   </div>
 </template>
@@ -139,17 +136,6 @@ onMounted(() => {
         // background-color: hotpink;
         left: calc(var(--spacing)*4);
         z-index: 4;
-      }
-
-      // next button
-      &:nth-child(5) {
-        // background-color: hotpink;
-        left: calc(var(--spacing)*5);
-        width: 25%;
-        z-index: 5;
-        display: flex;
-        justify-content: flex-end;
-        align-items: flex-end;
       }
     }
   }
