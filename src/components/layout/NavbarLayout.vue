@@ -43,11 +43,7 @@ const redirectTo = (url) => {
   @extend .center;
   user-select: none;
   background-color: #1B3B5B;
-  background-color: yellow;
-
-  @include mobile-media {
-    height: auto;
-  }
+  // background-color: yellow;
 }
 
 // 元件
@@ -60,12 +56,6 @@ const redirectTo = (url) => {
     font-family: 'VT323', monospace;
     display: flex;
     justify-content: space-between;
-
-    // rwd ==========
-    @include mobile-media {
-      width: 100%;
-      height: auto;
-    }
 
     &:hover {
       cursor: pointer;
@@ -85,10 +75,6 @@ const redirectTo = (url) => {
       align-items: center;
       background-color: #1B3B5B;
 
-      // rwd ==========
-      @include mobile-media {
-        flex-direction: column
-      }
     }
 
     .link {
@@ -98,11 +84,6 @@ const redirectTo = (url) => {
       flex-direction: column;
       position: relative;
       border-radius: 12px;
-
-      // rwd ==========
-      @include mobile-media {
-        width: 100%;
-      }
 
       &:hover,
       &:active {

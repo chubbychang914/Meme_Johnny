@@ -4,8 +4,13 @@
       <div class="planet"></div>
     </div>
     <div class="ship-container"></div>
+    <div class="info-layer">
+    </div>
   </div>
 </template>
+
+<script setup>
+</script>
 
 <style lang="scss" scoped>
 #HomeView {
