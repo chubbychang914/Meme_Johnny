@@ -34,7 +34,7 @@ const aboutViewRef = ref(null);
 
 let AnimateAboutViewBg = null;
 onMounted(() => {
-  const backgroundImageWidth = aboutViewRef.value.clientWidth;
+  // const backgroundImageWidth = aboutViewRef.value.clientWidth;
   AnimateAboutViewBg = $gsapPack.gsap.timeline({ paused: true, defaults: { repeat: -1 } })
   AnimateAboutViewBg.to(aboutViewRef.value, {
     duration: 60,
