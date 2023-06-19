@@ -1,7 +1,9 @@
 <template>
   <div id="SpaceBaseLayer" ref="SpaceBaseLayerRef">
     <div class="spaceBg"></div>
-    <img class="spaceShip" src="@/assets/svgs/spaceship.svg">
+    <div class="spaceShip-container">
+      <img class="spaceShip" src="@/assets/svgs/spaceship.svg">
+    </div>
     <!-- <div class="planet" ref="planetRef"></div> -->
   </div>
 </template>
@@ -15,26 +17,26 @@ const { proxy: { $gsapPack } } = getCurrentInstance() // 要引入這包才能�
 
 <style lang="scss" scoped>
 #SpaceBaseLayer {
+  box-sizing: border-box;
   width: 100%;
   height: 100vh;
-  background-color: black;
-  overflow: hidden;
+  overflow-y: hidden !important;
 
   .spaceBg {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     background-image: url("src/assets/svgs/space.svg");
     background-size: cover;
     background-position: center;
-    overflow: hidden;
-    z-index: 1;
   }
+
 
   .spaceShip {
     position: absolute;
+    width: auto;
     height: 100%;
     top: 0;
     left: 50%;
@@ -43,7 +45,7 @@ const { proxy: { $gsapPack } } = getCurrentInstance() // 要引入這包才能�
     @extend .center;
 
     @include mobile-media {
-    
+      display: none !important;
     }
   }
 }
