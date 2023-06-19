@@ -3,9 +3,9 @@
     <div class="baseLayer" ref="baseLayerRef">
       <SpaceBaseLayer />
     </div>
-    <div class="infoLayer" ref="infoLayerRef">
-      <InfoLayer />
-    </div>
+    <!-- <div class="infoLayer" ref="infoLayerRef"> -->
+      <!-- <InfoLayer /> -->
+    <!-- </div> -->
   </div>
 </template>
 
