@@ -4,7 +4,7 @@
 </template>
 
 <script setup>
-import { onMounted, ref, getCurrentInstance } from 'vue';
+import { onMounted, onUnmounted, ref, getCurrentInstance } from 'vue';
 import { RouterView } from 'vue-router'
 import consoleLog from '@/tools/consoleLog.js'
 
@@ -15,18 +15,25 @@ const navbarLayoutRef = ref(null)
 
 let AnimateNavbarEnter = null;
 
+// hooks ==================================================
 onMounted(() => {
   consoleLog()
+  // set gsap animations
   AnimateNavbarEnter = $gsapPack.gsap.from(navbarLayoutRef.value.$el, {
     yPercent: -100,
     duration: 1.2,
     ease: "power1.out",
     paused: true
   })
-
-
+  // play animations
   AnimateNavbarEnter.play()
 })
+
+onUnmounted(() => {
+  // kill gsap animations
+  AnimateNavbarEnter?.kill()
+})
+
 </script>
 
 <style lang="scss">

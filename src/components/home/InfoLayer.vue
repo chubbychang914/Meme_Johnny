@@ -14,11 +14,29 @@
         <font-awesome-icon icon="fa-solid fa-angles-left" />
       </div> -->
     </div>
-    <div class="nav-panel"></div>
+    <div class="nav-panel" ref="navPanelRef"></div>
   </div>
 </template>
 
 <script setup>
+import { getCurrentInstance, onMounted, ref } from "vue";
+const { proxy: { $gsapPack } } = getCurrentInstance() // 要引入這包才能使用 gsap 的所有東西
+// ref
+const navPanelRef = ref(null)
+// animations
+let AnimateNavPanelEnter = null;
+onMounted(() => {
+  AnimateNavPanelEnter = $gsapPack.gsap.from(navPanelRef.value, {
+    y: 100,
+    duration: 2,
+    opacity: 0,
+    ease: "power4.out",
+    paused: true,
+  });
+
+  AnimateNavPanelEnter.play();
+})
+
 </script>
 
 <style lang="scss" scoped>
@@ -40,11 +58,11 @@
     }
   }
 
-  .nav-panel{
+  .nav-panel {
     position: absolute;
     bottom: 0;
-    width: 100%;
-    height: 100px;
+    width: 60%;
+    height: 80px;
     background-color: yellow;
   }
 
