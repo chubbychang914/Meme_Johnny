@@ -1,8 +1,5 @@
 <template>
   <div id="ProjectsView">
-    <nav class="nav">
-      <NavbarLayout />
-    </nav>
     <div class="content" ref="contentRef">
       <ProjectsTemplate :infoObj="JohnnyInfoObj" reactive />
       <ProjectsTemplate :infoObj="SelectGoInfoObj" />
@@ -75,7 +72,7 @@ onMounted(() => {
 #ProjectsView {
   height: 100vh;
   display: grid;
-  grid-template-rows: 80px auto 80px;
+  // grid-template-rows: 80px auto 80px;
 
   .nav {
     position: sticky;

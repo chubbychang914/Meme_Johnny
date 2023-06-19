@@ -1,4 +1,5 @@
 <template>
+  <NavbarLayout />
   <RouterView></RouterView>
 </template>
 
@@ -6,6 +7,7 @@
 import { onMounted } from 'vue';
 import { RouterView } from 'vue-router'
 import consoleLog from '@/tools/consoleLog.js'
+import NavbarLayout from './components/layout/NavbarLayout.vue';
 
 onMounted(() => {
   consoleLog()

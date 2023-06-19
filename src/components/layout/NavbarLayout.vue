@@ -31,31 +31,40 @@ const redirectTo = (url) => {
 
 <style lang="scss" scoped>
 // 排版
-#NavbarLayout {}
+#NavbarLayout {
+  position: sticky;
+  width: 100%;
+  height: 80px;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  @extend .center;
+  user-select: none;
+  background-color: #1B3B5B;
+}
 
 // 元件
 #NavbarLayout {
   .nav {
-    position: absolute;
-    z-index: 999;
-    width: 100%;
+    width: 90%;
     height: 80px;
     color: white;
     font-family: 'VT323', monospace;
-    display: flex;
-    justify-content: center;
-    user-select: none;
+    // background-color: green;
 
     &:hover {
       cursor: pointer;
     }
 
+
     .navbarContent {
       width: 100%;
+      height: 100%;
       display: flex;
       justify-content: flex-end;
       align-items: center;
-      padding-right: 50px;
+      // padding-right: 50px;
       background-color: #1B3B5B;
       list-style-type: none;
     }
