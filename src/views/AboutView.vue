@@ -40,7 +40,7 @@ onMounted(() => {
     duration: 60,
     // backgroundPosition: `${backgroundImageWidth * 100}px 0px`,
     backgroundPosition: "10000px 0px",
-    ease: "none"
+    ease: "linear"
   })
 
   AnimateAboutViewBg.play()

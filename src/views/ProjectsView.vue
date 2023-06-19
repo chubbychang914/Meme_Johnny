@@ -1,5 +1,5 @@
 <template>
-  <div id="ProjectsView">
+  <div id="ProjectsView" ref="projectsViewRef">
     <div class="content" ref="contentRef">
       <ProjectsTemplate :infoObj="JohnnyInfoObj" reactive />
       <ProjectsTemplate :infoObj="SelectGoInfoObj" />
@@ -20,7 +20,10 @@ const { proxy: { $gsapPack } } = getCurrentInstance()
 
 
 // State ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
-const contentRef = ref(null)
+const projectsViewRef = ref(null);
+const contentRef = ref(null);
+
+let AnimateProjectsViewBg = null;
 // Props ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 const JohnnyInfoObj = {
   title: "Johnny",
@@ -44,24 +47,21 @@ const ArcaneInfoObj = {
   url: "https://chubbychang914.github.io/Arcane/"
 }
 // Animations ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
-const _animateBgLoop = () => {
-  const backgroundImageWidth = contentRef.value.clientWidth;
-  const tl = $gsapPack.gsap.timeline({ paused: true, defaults: { repeat: -1 } })
-  tl.to(contentRef.value, {
-    backgroundPosition: `${backgroundImageWidth * 100}px 0px`,
-    // backgroundPosition: "10000px 0px",
-    duration: 1000,
-    ease: "linear"
-  })
-
-  return tl
-}
 
 
 
 // onMounted ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 onMounted(() => {
-  _animateBgLoop().play();
+  // const backgroundImageWidth = aboutViewRef.value.clientWidth;
+  AnimateProjectsViewBg = $gsapPack.gsap.timeline({ paused: true, defaults: { repeat: -1 } })
+  AnimateProjectsViewBg.to(projectsViewRef.value, {
+    duration: 60,
+    // backgroundPosition: `${backgroundImageWidth * 100}px 0px`,
+    backgroundPosition: "10000px 0px",
+    ease: "linear"
+  })
+
+  AnimateProjectsViewBg.play()
 })
 
 </script>
@@ -69,9 +69,13 @@ onMounted(() => {
 <style lang="scss" scoped>
 // 排版
 #ProjectsView {
-  height: 100vh;
+  width: 100%;
+  min-height: 100vh;
   display: grid;
-  // grid-template-rows: 80px auto 80px;
+  background-image: url("src/assets/imgs/projects/projectsBg.jpg");
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
 
   .nav {
     position: sticky;
@@ -85,9 +89,7 @@ onMounted(() => {
     display: flex;
     flex-direction: column;
     gap: 250px;
-    background-image: url("src/assets/imgs/projects/projectsBg.jpg");
-    background-size: cover;
-    background-attachment: fixed;
+
 
     @include mobile-media {
       padding: 50px 0;
