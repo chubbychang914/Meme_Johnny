@@ -62,7 +62,8 @@ onMounted(() => {
     position: absolute;
     bottom: 0;
     width: 60%;
-    height: 80px;
+    height: 15vh;
+    min-height: 80px;
     background-color: yellow;
   }
 
