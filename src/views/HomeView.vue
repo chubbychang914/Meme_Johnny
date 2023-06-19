@@ -64,12 +64,11 @@ import InfoLayer from "@/components/home/InfoLayer.vue"
 
   .info-layer {
     position: absolute;
-    top: 80px;
+    top: 0;
     left: 0;
     width: 100%;
-    min-height: calc(100vh - 80px);
+    min-height: 100vh;
     z-index: 100;
-    // background-color: blue;
   }
 }
 
