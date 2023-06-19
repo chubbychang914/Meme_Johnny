@@ -1,19 +1,11 @@
+import 'normalize.css';
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import $gsapPack from '@/tools/animations/index.js' // gsap + scrolltrigger
 import '@/assets/styles/global/index.scss' // global css
-
+// font awesome icons
 import { FontAwesomeIcon } from '@/assets/fonts/fontAwesome/index.js'
-
-// /* import the fontawesome core */
-// import { library } from '@fortawesome/fontawesome-svg-core'
-// /* import font awesome icon component */
-// import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-// /* import specific icons */
-// import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
-// /* add icons to the library */
-// library.add(faUserSecret)
 
 const app = createApp(App)
 
