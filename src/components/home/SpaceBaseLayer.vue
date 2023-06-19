@@ -2,7 +2,7 @@
   <div id="SpaceBaseLayer" ref="SpaceBaseLayerRef">
     <div class="spaceBg"></div>
     <div class="spaceShip-container">
-      <img class="spaceShip" src="@/assets/svgs/spaceship.svg">
+      <img class="spaceShip" src="@/assets/svgs/spaceship2.svg">
     </div>
     <!-- <div class="planet" ref="planetRef"></div> -->
   </div>
@@ -20,34 +20,40 @@ const { proxy: { $gsapPack } } = getCurrentInstance() // 要引入這包才能�
   box-sizing: border-box;
   width: 100%;
   height: 100vh;
-  overflow-y: hidden !important;
+  overflow: hidden !important;
 
   .spaceBg {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     background-image: url("src/assets/svgs/space.svg");
     background-size: cover;
     background-position: center;
   }
 
 
-  .spaceShip {
+  .spaceShip-container {
     position: absolute;
-    width: auto;
-    height: 100%;
+    width: 100%;
+    height: 100vh;
     top: 0;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 0;
     z-index: 800;
+    overflow: hidden;
     @extend .center;
 
     @include mobile-media {
       display: none !important;
+
+      .spaceShip {
+        width: 100%;
+        height: auto;
+      }
     }
   }
+
 }
 
 .center {
