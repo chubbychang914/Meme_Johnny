@@ -32,7 +32,7 @@ const redirectTo = (url) => {
 <style lang="scss" scoped>
 // 排版
 #NavbarLayout {
-  position: sticky;
+  position: fixed;
   width: 100%;
   height: 80px;
   z-index: 999;

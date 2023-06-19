@@ -1,5 +1,5 @@
 <template>
-  <NavbarLayout />
+  <NavbarLayout /> 
   <RouterView />
 </template>
 

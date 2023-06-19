@@ -1,8 +1,5 @@
 <template>
   <div id="InfoLayer" ref="InfoLayerRef">
-    <div class="navbar" ref="navbarRef">
-      <NavbarLayout />
-    </div>
     <div class="planet" ref="planetRef"></div>
     <div class="content">
       <div class="name" ref="nameRef">
@@ -21,9 +18,9 @@
       </div>
       <div class="job" ref="jobRef">Frontend Developer</div>
     </div>
-    <div class="panel" ref="panelRef">
+    <!-- <div class="panel" ref="panelRef">
       <Panel />
-    </div>
+    </div> -->
   </div>
 </template>
 
