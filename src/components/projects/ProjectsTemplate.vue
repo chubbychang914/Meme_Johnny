@@ -66,13 +66,6 @@ const redirectUrl = () => {
 
   .imgBox {
     @extend .center;
-
-    // &:hover {
-    //   .projectPic {
-    //     transition: 0.5s;
-    //     transform: rotateX(20deg) rotateY(25deg);
-    //   }
-    // }
   }
 
   .txtBox {
@@ -93,12 +86,11 @@ const redirectUrl = () => {
   }
 
   .projectPic {
-    width: 570px;
+    width: 40vw;
     @extend .center;
 
     @include mobile-media {
-      width: 80%;
-
+      width: 90%;
     }
 
     img {
@@ -109,7 +101,7 @@ const redirectUrl = () => {
   }
 
   .projectDesc {
-    width: 450px;
+    width: 40vw;
     display: flex;
     align-items: center;
     flex-direction: column;
