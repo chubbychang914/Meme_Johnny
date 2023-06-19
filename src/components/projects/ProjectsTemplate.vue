@@ -97,7 +97,7 @@ const redirectUrl = () => {
     @extend .center;
 
     @include mobile-media {
-      width: 100%;
+      width: 80%;
 
     }
 
@@ -109,8 +109,7 @@ const redirectUrl = () => {
   }
 
   .projectDesc {
-    width: 500px;
-    min-width: 500px;
+    width: 450px;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -121,7 +120,7 @@ const redirectUrl = () => {
     border-radius: 15px;
 
     @include mobile-media {
-      width: 500px;
+      width: 80%;
       padding: 30px;
     }
 
