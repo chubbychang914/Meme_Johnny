@@ -1,5 +1,8 @@
 <template>
   <div id="HomeView">
+    <div class="planet-container">
+      <div class="planet"></div>
+    </div>
     <div class="ship-container"></div>
   </div>
 </template>
@@ -14,6 +17,26 @@
   background-repeat: no-repeat;
   background-size: cover;
 
+  .planet-container {
+    width: 100%;
+    min-height: 100vh;
+    // background-color: yellow;
+    @extend .center;
+
+    .planet {
+      width: 50vh;
+      height: 50vh;
+      background-color: yellow;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background-image: url("https://img.freepik.com/free-photo/orange-details-moon-texture-concept_23-2149535766.jpg");
+      box-shadow:
+        inset -1.5em -1.5em 1.5em #000,
+        -0.2em -0.2em 0.5em #ccc;
+    }
+  }
+
   .ship-container {
     width: 100%;
     min-height: 100%;
@@ -24,6 +47,15 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+
+    @include mobile-media {
+      display: none;
+    }
   }
 }
-</style>
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}</style>
