@@ -14,10 +14,12 @@
         <font-awesome-icon icon="fa-solid fa-angles-left" />
       </div> -->
     </div>
+    <div class="nav-panel"></div>
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+</script>
 
 <style lang="scss" scoped>
 #InfoLayer {
@@ -36,6 +38,14 @@
     .name-letters {
       font-size: 200px;
     }
+  }
+
+  .nav-panel{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+    background-color: yellow;
   }
 
 }
