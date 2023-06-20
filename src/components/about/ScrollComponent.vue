@@ -8,37 +8,20 @@
 
 <script setup>
 import { getCurrentInstance, onMounted, ref } from 'vue';
-const { proxy: { $gsapPack } } = getCurrentInstance();
-
+const { proxy: { $gsapPack } } = getCurrentInstance()
 
 const testRef = ref(null);
 
 let AnimateTest = null;
 
 onMounted(() => {
-  AnimateTest = $gsapPack.gsap.timeline({
-    scrollTrigger: {
-      trigger: testRef.value,
-      start: "top top",
-      end: "bottom bottom",
-      scrub: true,
-      markers: true
-    }
+  AnimateTest = $gsapPack.gsap.to(testRef.value, {
+    paused: true,
+    duration: 1,
+    y: 500,
   })
-  AnimateTest.to(testRef.value, {
-    top: 0,
-    left: '50 %',
-    xPercent: -50,
-    position: "absolute"
-  })
-    .to(testRef.value, {
-      top: '50%',
-      yPercent: -50,
-      position: "absolute"
-    })
 
-
-    AnimateTest.play()
+  AnimateTest.play()
 })
 
 </script>
@@ -57,14 +40,15 @@ onMounted(() => {
   height: 100vh;
   background-color: yellow;
 
-  .testContainer{
+  .testContainer {
     position: relative;
     margin-bottom: 100px;
     width: 50%;
     height: 30%;
-    background-color:white;
+    background-color: white;
     border: 1px solid black;
   }
+
   .test {
     width: 100px;
     height: 100px;
