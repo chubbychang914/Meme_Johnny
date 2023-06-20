@@ -16,5 +16,5 @@ export default () => {
 
 Thanks for visiting my website! Check out my Github at https://github.com/chubbychang914 
 `;
-  console.log(text, `color:#fff`);
+  console.log(text, `color:darkblue`);
 };

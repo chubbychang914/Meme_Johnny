@@ -1,86 +1,64 @@
 <template>
-  <div id="ScrollComponent">
-    <section class="section1">
-      <div class="container1">
-        <div class="box1 scrub" ref="box1Ref">1</div>
-      </div>
-    </section>
-    <section class="section2">
-    </section>d
+  <div id="ScrollTemplate">
+    <div class="container" ref="containerRef">
+      <div class="panel" ref="panelRef"></div>
+    </div>
   </div>
 </template>
 
 <script setup>
-import { getCurrentInstance, onMounted, ref } from 'vue';
+import { getCurrentInstance, ref, onMounted } from 'vue';
 const { proxy: { $gsapPack } } = getCurrentInstance()
 
-const box1Ref = ref(null);
+const containerRef = ref(null);
+const panelRef = ref(null);
+
+let AboutScrollTimeLine = null;
 
 onMounted(() => {
-  const tl = $gsapPack.gsap.timeline({
+  AboutScrollTimeLine = $gsapPack.gsap.timeline({
     scrollTrigger: {
-      trigger: box1Ref.value,
-      markers: true,
+      trigger: containerRef.value,
       start: 'top 35%',
       end: 'top 1%',
       scrub: true,
-    },
-  })
-
-  tl.to(box1Ref.value, {
-    top: 0,
-    left: '50%',
-    xPercent: '-50',
-    // duration: 10,
-    position: 'absolute',
-    scale: 4
-  }).to('.box1', {
-    top: '100%',
-    yPercent: '-100',
-    // duration: 20,
-    position: 'absolute',
+      markers: true,
+    }
   })
 })
-
 </script>
 
-<style lang="scss" scoped>
-#ScrollComponent {
+
+<style lang="scss">
+#ScrollTemplate {
+  padding-top: 80px; // might need adjustments here
+  // background-color: yellow;
   width: 100%;
   min-height: 100vh;
-  background-color: darkblue;
-  padding-top: 80px;
+  display: flex;
+  justify-content: center;
 
-  // testing
-  .section1 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #fd89b9;
-  }
+  .container {
+    width: 70%;
+    background-color: white;
+    min-height: calc(100vh - 80px); // might need adjustments here
 
-  .container1 {
-    position: relative;
-    margin-bottom: -100px;
-    width: 50%;
-    height: 30%;
-    background-color: #fff;
-    border: 1px solid #000;
-  }
+    // rwd
+    @include mobile-media {
+      width: 100%;
+    }
 
-  .box1 {
-    width: 100px;
-    height: 100px;
-    background-color: #165e83;
+    .panel{
+      width: 100px;
+      height: 100px;
+      background-color: green;
+    }
   }
+}
 
-  .section2 {
-    display: flex;
-    justify-content: center;
-    padding: 200px 0;
-    background-color: #fd89b9;
-    // background-color: #1e2a60;
-  }
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>
