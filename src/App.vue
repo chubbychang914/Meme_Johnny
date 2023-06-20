@@ -1,5 +1,5 @@
 <template>
-  <NavbarLayout ref="navbarLayoutRef" />
+  <!-- <NavbarLayout ref="navbarLayoutRef" /> -->
   <RouterView />
 </template>
 
