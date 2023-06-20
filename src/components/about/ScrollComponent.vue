@@ -1,64 +1,90 @@
 <template>
-  <div id="ScrollTemplate">
-    <div class="container" ref="containerRef">
-      <div class="panel" ref="panelRef"></div>
+  <div id="ScrollComponent">
+    <!-- intro -->
+    <section class="section1">
+      <div class="container1">
+        <div class="box1 scrub" ref="box1Ref">1</div>
+      </div>
+    </section>
+    <!-- footer -->
+    <div class="footer">
+      <FooterLayOut />
     </div>
   </div>
 </template>
 
 <script setup>
-import { getCurrentInstance, ref, onMounted } from 'vue';
+import { getCurrentInstance, onMounted, ref } from 'vue';
+
+import FooterLayOut from '@/components/layout/FooterLayOut.vue';
 const { proxy: { $gsapPack } } = getCurrentInstance()
 
-const containerRef = ref(null);
-const panelRef = ref(null);
-
-let AboutScrollTimeLine = null;
+const box1Ref = ref(null);
 
 onMounted(() => {
-  AboutScrollTimeLine = $gsapPack.gsap.timeline({
+  const tl = $gsapPack.gsap.timeline({
     scrollTrigger: {
-      trigger: containerRef.value,
+      trigger: box1Ref.value,
+      markers: true,
       start: 'top 35%',
       end: 'top 1%',
       scrub: true,
-      markers: true,
-    }
+    },
+  })
+
+  tl.to(box1Ref.value, {
+    top: 0,
+    left: '50%',
+    xPercent: '-50',
+    // duration: 10,
+    position: 'absolute',
+  }).to('.box1', {
+    top: '100%',
+    yPercent: '-100',
+    // duration: 20,
+    position: 'absolute',
   })
 })
+
 </script>
 
-
-<style lang="scss">
-#ScrollTemplate {
-  padding-top: 80px; // might need adjustments here
-  // background-color: yellow;
+<style lang="scss" scoped>
+#ScrollComponent {
   width: 100%;
   min-height: 100vh;
-  display: flex;
-  justify-content: center;
+  background-color: darkblue;
+  padding-top: 80px;
 
-  .container {
-    width: 70%;
-    background-color: white;
-    min-height: calc(100vh - 80px); // might need adjustments here
-
-    // rwd
-    @include mobile-media {
-      width: 100%;
-    }
-
-    .panel{
-      width: 100px;
-      height: 100px;
-      background-color: green;
-    }
+  // testing
+  .section1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #fd89b9;
   }
-}
 
-.center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  .container1 {
+    position: relative;
+    margin-bottom: -100px;
+    width: 50%;
+    height: 30%;
+    background-color: #fff;
+    border: 1px solid #000;
+  }
+
+  .box1 {
+    width: 100px;
+    height: 100px;
+    background-color: #165e83;
+  }
+
+  .section2 {
+    display: flex;
+    justify-content: center;
+    padding: 200px 0;
+    background-color: #fd89b9;
+    // background-color: #1e2a60;
+  }
 }
 </style>
