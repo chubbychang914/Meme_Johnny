@@ -30,6 +30,7 @@ const JohnnyInfoObj = {
   imgUrl: "https://static.vecteezy.com/system/resources/thumbnails/009/956/040/small/pixel-art-desert-game-scene-with-pyramid-bridge-palm-tree-cactuses-direction-board-8bit-background-vector.jpg",
   description: "Built a personal website using Vue 3 Composition API and GSAP. Implemented features such as scroll-triggered animations and responsive design.",
   reverseLayout: false,
+  url: "https://github.com/chubbychang914/Meme_Johnny"
 }
 const SelectGoInfoObj = {
   title: "Select Go",
@@ -85,7 +86,7 @@ onMounted(() => {
   }
 
   .content {
-    padding: 150px 8vw;
+    padding: 150px 5vw; // 元件間的距離
     display: flex;
     flex-direction: column;
     gap: 250px;
