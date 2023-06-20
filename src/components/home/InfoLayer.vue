@@ -1,18 +1,21 @@
 <template>
   <div id="InfoLayer">
-    <div class="name" ref="nameRef">
-      <!-- <div class="icon-left" ref="iconLeftRef">
-        <font-awesome-icon icon="fa-solid fa-angles-right" />
-      </div> -->
-      <div class="name-letters" ref="jRef">J</div>
-      <div class="name-letters" ref="oRef">O</div>
-      <div class="name-letters" ref="hRef">H</div>
-      <div class="name-letters" ref="nRef">N</div>
-      <div class="name-letters" ref="nRef2">N</div>
-      <div class="name-letters" ref="yRef">Y</div>
-      <!-- <div class="icon-right" ref="iconRightRef">
-        <font-awesome-icon icon="fa-solid fa-angles-left" />
-      </div> -->
+    <div class="content">
+      <div class="name" ref="nameRef">
+        <div class="icon-left" ref="iconLeftRef">
+          <font-awesome-icon icon="fa-solid fa-angles-right" />
+        </div>
+        <div class="name-letters" ref="jRef">J</div>
+        <div class="name-letters" ref="oRef">O</div>
+        <div class="name-letters" ref="hRef">H</div>
+        <div class="name-letters" ref="nRef">N</div>
+        <div class="name-letters" ref="nRef2">N</div>
+        <div class="name-letters" ref="yRef">Y</div>
+        <div class="icon-right" ref="iconRightRef">
+          <font-awesome-icon icon="fa-solid fa-angles-left" />
+        </div>
+      </div>
+      <div class="job" ref="jobRef">Frontend Developer</div>
     </div>
     <div class="nav-panel" ref="navPanelRef">
       <Panel />
@@ -55,13 +58,38 @@ onMounted(() => {
   user-select: none;
   overflow: hidden;
 
-  .name {
-    display: flex;
+  .content {
+    // background-color: blue;
+    @extend .center;
+    flex-direction: column;
+    .name {
+      display: flex;
+      gap: 2vw;
 
-    .name-letters {
-      font-size: 200px;
-      letter-spacing: 25px;
-      // border: 1px solid yellow;
+      .name-letters {
+        border: 10px double #FAE900;
+        border-radius: 10px;
+        background-color: black;
+        padding: 10px 20px;
+        font-size: 150px;
+
+        // rwd
+        @include mobile-media {
+          font-size: 80px;
+          padding: 10px;
+        }
+
+        &:hover {
+          background-color: white;
+          color: black;
+          border: 10px double black;
+          transform: skewX(-10deg);
+        }
+      }
+    }
+    .job{
+      font-size: 100px;
+      color: white;
     }
   }
 
@@ -73,7 +101,8 @@ onMounted(() => {
     min-height: 80px;
     // background-color: yellow;
     transform-style: preserve-3d;
-    @include mobile-media{
+
+    @include mobile-media {
       width: 100%;
     }
   }
