@@ -1,44 +1,24 @@
 <template>
   <div id="AboutView" ref="aboutViewRef">
-    <!-- <h1>fist</h1>
-    <h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit, autem.</h1>
-    <h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit, autem.</h1>
-    <h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit, autem.</h1>
-    <h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit, autem.</h1>
-    <h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit, autem.</h1>
-    <h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit, autem.</h1>
-    <h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit, autem.</h1>
-    <h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit, autem.</h1>
-    <h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit, autem.</h1>
-    <h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit, autem.</h1>
-    <h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit, autem.</h1>
-    <h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit, autem.</h1>
-    <h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit, autem.</h1>
-    <h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit, autem.</h1>
-    <h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit, autem.</h1>
-    <h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit, autem.</h1>
-    <h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit, autem.</h1>
-    <h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit, autem.</h1>
-    <h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit, autem.</h1>
-    <h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit, autem.</h1>
-    <h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit, autem.</h1> -->
+    <ScrollComponent />
   </div>
 </template>
 
 
 <script setup>
 import { onMounted, getCurrentInstance, ref } from 'vue';
+
+// components ========================
+import ScrollComponent from '@/components/about/ScrollComponent.vue';
 const { proxy: { $gsapPack } } = getCurrentInstance();
 
 const aboutViewRef = ref(null);
 
 let AnimateAboutViewBg = null;
 onMounted(() => {
-  // const backgroundImageWidth = aboutViewRef.value.clientWidth;
   AnimateAboutViewBg = $gsapPack.gsap.timeline({ paused: true, defaults: { repeat: -1 } })
   AnimateAboutViewBg.to(aboutViewRef.value, {
     duration: 60,
-    // backgroundPosition: `${backgroundImageWidth * 100}px 0px`,
     backgroundPosition: "10000px 0px",
     ease: "linear"
   })
