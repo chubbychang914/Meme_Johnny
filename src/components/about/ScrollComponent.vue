@@ -1,7 +1,7 @@
 <template>
   <div id="ScrollComponent">
     <!-- intro -->
-    <section class="section1">
+    <section class="section section1">
       <div class="container1">
         <div class="box1 scrub" ref="box1Ref">1</div>
       </div>
@@ -26,23 +26,21 @@ onMounted(() => {
     scrollTrigger: {
       trigger: box1Ref.value,
       markers: true,
-      start: 'top 35%',
-      end: 'top 1%',
+      start: '-80', // 從trigger的-80px開始執行
+      end: 'bottom',
       scrub: true,
     },
   })
 
   tl.to(box1Ref.value, {
+    position: 'absolute',
     top: 0,
     left: '50%',
     xPercent: '-50',
-    // duration: 10,
+  }).to(box1Ref.value, {
     position: 'absolute',
-  }).to('.box1', {
     top: '100%',
     yPercent: '-100',
-    // duration: 20,
-    position: 'absolute',
   })
 })
 
@@ -51,7 +49,7 @@ onMounted(() => {
 <style lang="scss" scoped>
 #ScrollComponent {
   width: 100%;
-  min-height: 100vh;
+  min-height: 200vh;
   background-color: darkblue;
   padding-top: 80px;
 
@@ -59,7 +57,7 @@ onMounted(() => {
   .section1 {
     display: flex;
     justify-content: center;
-    align-items: center;
+    // align-items: center;
     height: 100vh;
     background-color: #fd89b9;
   }
@@ -68,7 +66,7 @@ onMounted(() => {
     position: relative;
     margin-bottom: -100px;
     width: 50%;
-    height: 30%;
+    height: 70%;
     background-color: #fff;
     border: 1px solid #000;
   }
