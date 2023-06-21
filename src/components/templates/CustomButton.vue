@@ -46,12 +46,20 @@ const btnStyles = computed(() => {
   border-radius: 10px;
   @extend .center;
 
-  &:hover {
-    background-image: url("src/assets/svgs/bg.svg");
-  }
 
   .btn-content {
-    font-size: 30px;
+    width: 90%;
+    height: 70%;
+    font-size: 50px;
+    // border: 5px double white;
+    border-radius: inherit;
+    @extend .center;
+
+    &:hover {
+      background-image: url("src/assets/svgs/bg.svg");
+      color: black;
+      border: none;
+    }
   }
 
   .hover-style {
