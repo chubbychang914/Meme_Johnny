@@ -77,7 +77,7 @@ onMounted(() => {
   })
   // ==========
   AnimatePlanetEnlarge = $gsapPack.gsap.to(planetRef.value, {
-    scale: 4.5,
+    scale: 3,
     ease: "power2.in",
     duration: 1.5,
     paused: true,
@@ -186,28 +186,29 @@ onUnmounted(() => {
   .content {
     .name {
       @extend .center;
-      font-size: 16vh;
       color: #FAE900;
       gap: 2vw;
       margin-top: 35vh;
       // transform: rotate(-5deg);
-
-
-      @include pad-media {
-        font-size: 10px;
-      }
 
       .name-letters {
         border: 10px double #FAE900;
         border-radius: 10px;
         background-color: black;
         padding: 10px 20px;
+        font-size: 16vh;
         transform: skewX(-10deg);
 
         &:hover {
           background-color: white;
           color: black;
           border: 10px double black;
+        }
+
+        // rwd
+        @include mobile-media {
+          font-size: 10vh;
+          padding: 0;
         }
       }
     }
@@ -218,17 +219,26 @@ onUnmounted(() => {
       margin-top: 3vh;
       color: white;
       // transform: skewX(-10deg) rotate(-10deg);
+
+      @include mobile-media {
+        font-size: 3vh;
+      }
     }
 
   }
 
   .panel {
     position: absolute;
-    bottom: 0px;
-    width: 60%;
+    bottom: 2vh;
+    width: 55%;
     height: 15vh;
     // background-color: red;
     @extend .center;
+    // transform: perspective(1000px) rotateX(30deg);
+
+    @include mobile-media {
+      width: 100%;
+    }
   }
 }
 

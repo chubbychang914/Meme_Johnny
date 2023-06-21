@@ -1,6 +1,6 @@
 <template>
   <div id="Panel">
-    <CustomButton btn-content="About" bgColor="red" @on-click="redirectUrl('/about')" />
+    <CustomButton btn-content="About" bgColor="gray" @on-click="redirectUrl('/about')" />
     <div class="aim-btn" @click="redirectUrl('/about')"><font-awesome-icon
         icon="fa-solid fa-power-off" size="2xl" /></div>
     <CustomButton btn-content="Projects" bgColor="blue" @on-click="redirectUrl('/projects')" />
@@ -24,24 +24,23 @@ const redirectUrl = (url) => {
   height: 100%;
   justify-content: space-around;
   align-items: center;
-  bottom: 0;
   background-color: slategray;
-  border-top-right-radius: 25px;
-  border-top-left-radius: 25px;
-  // border-radius: 25px;
+  border-radius: 25px;
   overflow: hidden;
+  transform: perspective(1000px) rotateX(30deg);
+
 
   .aim-btn {
     position: absolute;
     width: 90px;
     height: 90px;
-    background-color: darkgray;
-    border-radius: 50%;
+    // styles
+    transform-style: preserve-3d;
+    background-color: red;
     @extend .center;
     color: white;
-    box-shadow:
-      inset -1em -1em 1em #000,
-      -0.2em -0.2em 0.5em #CCC;
+    perspective: 800px;
+    transform: rotateX(45deg);
 
     &:active {
       scale: 0.95;
@@ -49,7 +48,7 @@ const redirectUrl = (url) => {
   }
 }
 
-.center{
+.center {
   display: flex;
   justify-content: center;
   align-items: center;

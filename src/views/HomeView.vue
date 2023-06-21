@@ -52,7 +52,7 @@ import InfoLayer from "@/components/home/InfoLayer.vue"
     position: absolute;
     top: 0;
     left: 0;
-    background-image: url("src/assets/svgs/spaceship.svg");
+    background-image: url("src/assets/svgs/spaceship2.svg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
