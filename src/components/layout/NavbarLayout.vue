@@ -1,7 +1,7 @@
 <template>
   <div id="NavbarLayout">
     <nav class="nav">
-      <div class="logo">
+      <div class="logo" @click="redirectTo('/')">
         <img src="@/assets/svgs/JohnnyLogo.svg">
       </div>
       <ul class="navbarContent">
@@ -51,7 +51,7 @@ const redirectTo = (url) => {
 // 元件
 #NavbarLayout {
   .nav {
-    width: 80%; // 設定navbar 內容寬度
+    width: 85%; // 設定navbar 內容寬度
     height: 80px;
     color: white;
     font-family: 'VT323', monospace;
