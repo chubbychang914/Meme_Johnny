@@ -229,12 +229,11 @@ onUnmounted(() => {
 
   .panel {
     position: absolute;
-    bottom: 2vh;
-    width: 55%;
+    bottom: 1vh;
+    width: 60%;
     height: 15vh;
     // background-color: red;
     @extend .center;
-    // transform: perspective(1000px) rotateX(30deg);
 
     @include mobile-media {
       width: 100%;

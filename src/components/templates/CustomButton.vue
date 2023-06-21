@@ -43,6 +43,7 @@ const btnStyles = computed(() => {
   color: white;
   user-select: none;
   cursor: pointer;
+  border-radius: 10px;
   @extend .center;
 
   &:hover {

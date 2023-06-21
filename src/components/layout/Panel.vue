@@ -23,16 +23,13 @@ const redirectUrl = (url) => {
   width: 100%;
   height: 100%;
   justify-content: space-around;
+  gap: 10vw;
   align-items: center;
-  background-color: slategray;
-  border-radius: 25px;
-  overflow: hidden;
   transform: perspective(1000px) rotateX(30deg);
-
 
   .aim-btn {
     position: absolute;
-    top: 0;
+    top: -15px;
     width: 90px;
     height: 90px;
     // styles
@@ -40,9 +37,9 @@ const redirectUrl = (url) => {
     background-color: red;
     @extend .center;
     color: white;
-    perspective: 800px;
-    transform: rotateX(45deg);
-    border-radius: 50%;
+    // perspective: 800px;
+    // transform: rotateX(-45deg);
+    border-radius: 20px;
 
     &::before {
       content: '';
@@ -54,9 +51,8 @@ const redirectUrl = (url) => {
       width: 100%;
       height: 100%;
       background-color: black;
-      // box-shadow: 0 0 0 2px #b18597, 0 .625em 0 0 #ffe3e2;
-      transform: translate3d(0, .75em, -1em);
-      border-radius: 50%;
+      transform: translate3d(0, 15px, -10px);
+      border-radius: 20px;
     }
 
     &:active {
