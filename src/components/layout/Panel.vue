@@ -2,7 +2,7 @@
   <div id="Panel">
     <CustomButton btn-content="About" bgColor="gray" @on-click="redirectUrl('/about')" />
     <div class="aim-btn" @click="redirectUrl('/about')"><font-awesome-icon
-        icon="fa-solid fa-power-off" size="2xl" /></div>
+        icon="fa-solid fa-power-off" size="2xl" class="fa" /></div>
     <CustomButton btn-content="Projects" bgColor="blue" @on-click="redirectUrl('/projects')" />
   </div>
 </template>
@@ -32,11 +32,11 @@ const redirectUrl = (url) => {
     top: -15px;
     width: 90px;
     height: 90px;
+    z-index: 999;
     // styles
     transform-style: preserve-3d;
     background-color: red;
     @extend .center;
-    color: white;
     // perspective: 800px;
     // transform: rotateX(-45deg);
     border-radius: 20px;
@@ -57,6 +57,17 @@ const redirectUrl = (url) => {
 
     &:active {
       scale: 0.95;
+    }
+
+
+    &:hover .fa{
+      scale: 1.5;
+      color: yellow;
+    }
+
+    .fa {
+      color: white;
+      transition: ease-in-out 0.2s;
     }
   }
 }

@@ -1,6 +1,10 @@
 <template>
   <div id="CustomButton" @click="handleClick" :style="btnStyles">
-    <div class="btn-content">{{ props.btnContent }}</div>
+    <div class="btn-content">
+      <font-awesome-icon icon="fa-solid fa-angles-right" class="fa" />
+      {{ props.btnContent }}
+      <font-awesome-icon icon="fa-solid fa-angles-left" class="fa" />
+    </div>
   </div>
 </template>
 
@@ -48,17 +52,29 @@ const btnStyles = computed(() => {
 
 
   .btn-content {
-    width: 90%;
+    width: 80%; // 調整方格大小
     height: 70%;
     font-size: 50px;
     // border: 5px double white;
     border-radius: inherit;
     @extend .center;
+    gap: 40px;
+    transition: ease-in-out 0.2s;
 
     &:hover {
       background-image: url("src/assets/svgs/bg.svg");
       color: black;
       border: none;
+      gap: 10px;
+      scale: 1.1;
+    }
+
+    .fa {
+      color: inherit;
+      font-size: 30px;
+      @include mobile-media{
+        display: none;
+      }
     }
   }
 

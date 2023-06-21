@@ -26,8 +26,8 @@ const contentRef = ref(null);
 let AnimateProjectsViewBg = null;
 // Props ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 const JohnnyInfoObj = {
-  title: "Johnny",
-  imgUrl: "https://static.vecteezy.com/system/resources/thumbnails/009/956/040/small/pixel-art-desert-game-scene-with-pyramid-bridge-palm-tree-cactuses-direction-board-8bit-background-vector.jpg",
+  title: "Portfolio",
+  imgUrl: "src/assets/imgs/projects/PortFolioScreenShot.png",
   description: "Built a personal website using Vue 3 Composition API and GSAP. Implemented features such as scroll-triggered animations and responsive design.",
   reverseLayout: false,
   url: "https://github.com/chubbychang914/Meme_Johnny"
@@ -78,15 +78,8 @@ onMounted(() => {
   background-size: cover;
   background-attachment: fixed;
 
-  .nav {
-    position: sticky;
-    top: 0;
-    left: 0;
-    z-index: 999;
-  }
-
   .content {
-    padding: 150px 5vw; // 元件間的距離
+    padding: calc(80px + 25vh) 5vw 25vh 5vw; // 元件間的距離
     display: flex;
     flex-direction: column;
     gap: 250px;

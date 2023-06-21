@@ -97,6 +97,7 @@ const redirectUrl = () => {
       width: 100%;
       height: auto;
       border-radius: 15px;
+      border: 1px solid white;
     }
   }
 
