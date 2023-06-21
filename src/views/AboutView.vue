@@ -33,7 +33,7 @@ onMounted(() => {
 #AboutView {
   width: 100%;
   min-height: 100vh;
-  background-color: yellow;
+  // background-color: yellow;
   background-image: url("src/assets/imgs/about/aboutBg.jpeg");
   background-position: center;
   background-size: cover;
