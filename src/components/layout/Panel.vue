@@ -32,6 +32,7 @@ const redirectUrl = (url) => {
 
   .aim-btn {
     position: absolute;
+    top: 0;
     width: 90px;
     height: 90px;
     // styles
@@ -41,6 +42,22 @@ const redirectUrl = (url) => {
     color: white;
     perspective: 800px;
     transform: rotateX(45deg);
+    border-radius: 50%;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: black;
+      // box-shadow: 0 0 0 2px #b18597, 0 .625em 0 0 #ffe3e2;
+      transform: translate3d(0, .75em, -1em);
+      border-radius: 50%;
+    }
 
     &:active {
       scale: 0.95;
