@@ -3,18 +3,12 @@
     <div class="planet" ref="planetRef"></div>
     <div class="content">
       <div class="name" ref="nameRef">
-        <div class="icon-left" ref="iconLeftRef">
-          <font-awesome-icon icon="fa-solid fa-angles-right" />
-        </div>
         <div class="name-letters" ref="jRef">J</div>
         <div class="name-letters" ref="oRef">O</div>
         <div class="name-letters" ref="hRef">H</div>
         <div class="name-letters" ref="nRef">N</div>
         <div class="name-letters" ref="nRef2">N</div>
         <div class="name-letters" ref="yRef">Y</div>
-        <div class="icon-right" ref="iconRightRef">
-          <font-awesome-icon icon="fa-solid fa-angles-left" />
-        </div>
       </div>
       <div class="job" ref="jobRef">Frontend Developer</div>
     </div>
@@ -35,7 +29,6 @@ import Panel from "@/components/layout/Panel.vue";
 // set refs 給 gsap 指定，因為每次渲染都會抓新的 element
 // if not set in onMounted, the element will be bound differently everytime
 const InfoLayerRef = ref(null);
-const navbarRef = ref(null);
 const nameRef = ref(null);
 const planetRef = ref(null);
 const jobRef = ref(null);
@@ -45,18 +38,12 @@ const hRef = ref(null);
 const nRef = ref(null);
 const nRef2 = ref(null);
 const yRef = ref(null);
-const iconRightRef = ref(null);
-const iconLeftRef = ref(null);
 const panelRef = ref(null)
 // 設定 action variable
 let PageEnterAnimationFlow = null;
 let PageLeaveAnimationFlow = null;
 let AnimateOpacityLeave = null;
-let AnimateNavbarEnter = null;
-let AnimateNavbarLeave = null;
 let AnimateNameEnter = null;
-let AnimateRightArrowEnter = null;
-let AnimateLeftArrowEnter = null;
 let AnimateNameLeave = null;
 let AnimateJobEnter = null;
 let AnimateJobLeave = null;
@@ -80,20 +67,8 @@ onMounted(() => {
     opacity: 0,
     duration: 1,
     paused: true,
-    stagger: 0.1
-  })
-  AnimateRightArrowEnter = $gsapPack.gsap.from(iconRightRef.value, {
-    opacity: 0,
-    xPercent: -450,
-    duration: 1,
-    paused: true,
-    ease: "power4.easeOut"
-  })
-  AnimateLeftArrowEnter = $gsapPack.gsap.from(iconLeftRef.value, {
-    opacity: 0,
-    xPercent: 450,
-    duration: 1,
-    paused: true,
+    stagger: 0.2,
+    scale: 2
   })
   AnimateNameLeave = $gsapPack.gsap.to(nameRef.value, {
     opacity: 0,
@@ -134,8 +109,6 @@ onMounted(() => {
   PageEnterAnimationFlow = $gsapPack.gsap.timeline({ paused: true })
   PageEnterAnimationFlow
     .add(AnimatePanelEnter.play(), "<")
-    .add(AnimateLeftArrowEnter.play(), "<")
-    .add(AnimateRightArrowEnter.play(), "<")
     .add(AnimateNameEnter.play(), "-=0.6")
     .add(AnimateJobEnter.play(), "-=0.6")
   // 設定離場 timeline ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
@@ -216,7 +189,8 @@ onUnmounted(() => {
       font-size: 16vh;
       color: #FAE900;
       gap: 2vw;
-      margin-top: 30vh;
+      margin-top: 35vh;
+      // transform: rotate(-5deg);
 
 
       @include pad-media {
@@ -228,18 +202,13 @@ onUnmounted(() => {
         border-radius: 10px;
         background-color: black;
         padding: 10px 20px;
+        transform: skewX(-10deg);
 
         &:hover {
           background-color: white;
           color: black;
           border: 10px double black;
-          transform: skewX(-10deg);
         }
-      }
-
-      .icon-right,
-      .icon-left {
-        font-size: 15vh
       }
     }
 
