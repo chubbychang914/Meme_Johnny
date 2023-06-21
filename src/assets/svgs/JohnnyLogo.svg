@@ -1,0 +1,22 @@
+<svg version="1.1" viewBox="0.0 0.0 288.0 288.0" fill="none" stroke="none" stroke-linecap="square"
+  stroke-miterlimit="10" xmlns:xlink="http://www.w3.org/1999/xlink"
+  xmlns="http://www.w3.org/2000/svg">
+  <clipPath id="p.0">
+    <path d="m0 0l288.0 0l0 288.0l-288.0 0l0 -288.0z" clip-rule="nonzero" />
+  </clipPath>
+  <g clip-path="url(#p.0)">
+    <!-- <path fill="#ffffff" d="m0 0l288.0 0l0 288.0l-288.0 0z" fill-rule="evenodd" /> -->
+    <path fill="#000000" d="m20.976377 233.53674l178.07874 0l0 54.456696l-178.07874 0z"
+      fill-rule="evenodd" />
+    <path fill="#fae900" d="m80.07874 67.62336l118.960625 0l0 45.574806l-118.960625 0z"
+      fill-rule="evenodd" />
+    <path fill="#fae900" d="m80.07874 174.17455l118.960625 0l0 45.5748l-118.960625 0z"
+      fill-rule="evenodd" />
+    <path fill="#fae900" d="m66.55118 67.62336l0 152.12598l-45.5748 0l0 -152.12598z"
+      fill-rule="evenodd" />
+    <path fill="#000000" d="m20.976377 0.0065616798l246.04724 0l0 54.45669l-246.04724 0z"
+      fill-rule="evenodd" />
+    <path fill="#000000" d="m267.02362 67.62336l0 219.1181l-54.456696 0l0 -219.1181z"
+      fill-rule="evenodd" />
+  </g>
+</svg>

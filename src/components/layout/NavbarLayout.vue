@@ -1,7 +1,9 @@
 <template>
   <div id="NavbarLayout">
     <nav class="nav">
-      <div class="logo"></div>
+      <div class="logo">
+        <img src="@/assets/svgs/JohnnyLogo.svg">
+      </div>
       <ul class="navbarContent">
         <li class="link" @click="redirectTo('/')">
           <span class="icon"><font-awesome-icon icon="fa-solid fa-house" /></span>
@@ -49,8 +51,7 @@ const redirectTo = (url) => {
 // 元件
 #NavbarLayout {
   .nav {
-    width: 90%;
-    // width: 100%;
+    width: 80%; // 設定navbar 內容寬度
     height: 80px;
     color: white;
     font-family: 'VT323', monospace;
@@ -62,9 +63,15 @@ const redirectTo = (url) => {
     }
 
     .logo {
-      width: 100px;
-      height: 100%;
-      background-color: red;
+      width: 80px;
+      height: 80px;
+      // background-color: red;
+      @extend .center;
+      img{
+        width: 90%;
+        height: auto;
+        object-fit: contain;
+      }
     }
 
     .navbarContent {
@@ -124,4 +131,5 @@ const redirectTo = (url) => {
   display: flex;
   justify-content: center;
   align-items: center;
-}</style>
+}
+</style>
