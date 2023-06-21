@@ -2,18 +2,18 @@
   <div id="InfoLayer">
     <div class="content">
       <div class="name" ref="nameRef">
-        <div class="icon-left" ref="iconLeftRef">
+        <!-- <div class="icon-left" ref="iconLeftRef">
           <font-awesome-icon icon="fa-solid fa-angles-right" />
-        </div>
+        </div> -->
         <div class="name-letters" ref="jRef">J</div>
         <div class="name-letters" ref="oRef">O</div>
         <div class="name-letters" ref="hRef">H</div>
         <div class="name-letters" ref="nRef">N</div>
         <div class="name-letters" ref="nRef2">N</div>
         <div class="name-letters" ref="yRef">Y</div>
-        <div class="icon-right" ref="iconRightRef">
+        <!-- <div class="icon-right" ref="iconRightRef">
           <font-awesome-icon icon="fa-solid fa-angles-left" />
-        </div>
+        </div> -->
       </div>
       <div class="job" ref="jobRef">Frontend Developer</div>
     </div>
@@ -62,9 +62,19 @@ onMounted(() => {
     // background-color: blue;
     @extend .center;
     flex-direction: column;
+    width: 70%; // 設定文字寬度，讓文字不會太靠近邊緣
+    background-color: white;
+
+    // rwd
+    @include mobile-media {
+      width: 100%;
+    }
+
     .name {
+      width: 100%; // .content同寬
       display: flex;
-      gap: 2vw;
+      justify-content: space-between;
+      background-color: blue;
 
       .name-letters {
         border: 10px double #FAE900;
@@ -75,7 +85,7 @@ onMounted(() => {
 
         // rwd
         @include mobile-media {
-          font-size: 80px;
+          font-size: 70px;
           padding: 10px;
         }
 
@@ -87,9 +97,15 @@ onMounted(() => {
         }
       }
     }
-    .job{
-      font-size: 100px;
+
+    .job {
+      font-size: 50px;
       color: white;
+
+      // rwd
+      include mobile-media {
+        font-size: 30px;
+      }
     }
   }
 

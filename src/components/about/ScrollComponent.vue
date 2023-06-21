@@ -3,12 +3,7 @@
     <!-- intro -->
     <section class="section section1" ref="section1Ref">
       <div class="container1" ref="container1Ref">
-        <div class="box1 scrub" ref="box1Ref">1</div>
-      </div>
-    </section>
-    <section class="section section2" ref="section2Ref">
-      <div class="container1" ref="container1Ref">
-        <div class="box1">1</div>
+        <div class="box1 scrub" ref="box1Ref">AboutMe</div>
       </div>
     </section>
     <!-- footer -->
@@ -47,7 +42,7 @@ onMounted(() => {
   }).to(box1Ref.value, {
     position: 'absolute',
     top: '100%',
-    // yPercent: '-100',
+    yPercent: '-100',
   })
 })
 
@@ -67,6 +62,7 @@ onMounted(() => {
     // align-items: center;
     height: 100vh;
     background-color: #fd89b9;
+    padding-top: 10vh;
   }
 
   .container1 {
