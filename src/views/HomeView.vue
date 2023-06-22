@@ -67,8 +67,9 @@ import InfoLayer from "@/components/home/InfoLayer.vue"
     top: 0;
     left: 0;
     width: 100%;
-    min-height: 100vh;
+    height: 100vh;
     z-index: 100;
+    overflow: hidden;
   }
 }
 
