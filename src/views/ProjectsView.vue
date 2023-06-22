@@ -5,7 +5,7 @@
       <ProjectsTemplate :infoObj="SelectGoInfoObj" />
       <ProjectsTemplate :infoObj="ArcaneInfoObj" />
     </div>
-    <footer>
+    <footer class="footer">
       <FooterLayout />
     </footer>
   </div>
@@ -77,6 +77,11 @@ onMounted(() => {
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
+
+  .content,
+  .footer {
+    overflow: hidden;
+  }
 
   .content {
     padding: calc(80px + 25vh) 5vw 25vh 5vw; // 元件間的距離

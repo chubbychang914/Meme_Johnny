@@ -68,7 +68,7 @@ const redirectTo = (url) => {
       // background-color: red;
       @extend .center;
       img{
-        width: 90%;
+        width: 60%;
         height: auto;
         object-fit: contain;
       }
@@ -111,7 +111,7 @@ const redirectTo = (url) => {
       .icon {
         line-height: 75px;
         transition: .5s;
-        font-size: 25px;
+        font-size: 20px;
       }
 
       .text {

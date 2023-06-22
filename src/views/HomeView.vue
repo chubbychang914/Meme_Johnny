@@ -19,7 +19,7 @@ import InfoLayer from "@/components/home/InfoLayer.vue"
 #HomeView {
   width: 100%;
   height: 100vh;
-  overflow: hidden !important;
+  overflow: hidden;
   background-image: url("src/assets/svgs/space.svg");
   background-position: center;
   background-repeat: no-repeat;
