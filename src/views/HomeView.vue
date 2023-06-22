@@ -27,7 +27,7 @@ import InfoLayer from "@/components/home/InfoLayer.vue"
 
   .planet-container {
     width: 100%;
-    min-height: 100vh;
+    height: 100vh;
     // background-color: yellow;
     @extend .center;
 
@@ -48,7 +48,7 @@ import InfoLayer from "@/components/home/InfoLayer.vue"
 
   .ship-container {
     width: 100%;
-    min-height: 100%;
+    height: 100%;
     position: absolute;
     top: 0;
     left: 0;

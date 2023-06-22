@@ -31,9 +31,9 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 #AboutView {
-  width: 100%;
-  min-height: 100vh;
-  // background-color: yellow;
+  width: 100vw;
+  height: 100vh;
+
   background-image: url("src/assets/imgs/about/aboutBg.jpeg");
   background-position: center;
   background-size: cover;

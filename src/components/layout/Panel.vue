@@ -61,7 +61,7 @@ const redirectUrl = (url) => {
 
 
     &:hover .fa{
-      scale: 1.5;
+      // scale: 1.5;
       color: yellow;
     }
 
