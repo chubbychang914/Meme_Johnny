@@ -25,6 +25,13 @@ import InfoLayer from "@/components/home/InfoLayer.vue"
   background-repeat: no-repeat;
   background-size: cover;
 
+  // this fixes the overflow issue of panel when animation enter
+  .planet-container,
+  .ship-container,
+  .info-layer {
+    overflow: hidden;
+  }
+
   .planet-container {
     width: 100%;
     height: 100vh;
@@ -48,7 +55,7 @@ import InfoLayer from "@/components/home/InfoLayer.vue"
 
   .ship-container {
     width: 100%;
-    height: 100%;
+    height: 100vh;
     position: absolute;
     top: 0;
     left: 0;
@@ -69,7 +76,6 @@ import InfoLayer from "@/components/home/InfoLayer.vue"
     width: 100%;
     height: 100vh;
     z-index: 100;
-    overflow: hidden;
   }
 }
 
