@@ -4,7 +4,12 @@
       <transition-group class="carousel-container" tag="div" :name="transitionName">
         <div class="carousel-box" v-for="(item, index) of panelList" :key="item.title"
           v-show="index === showPanel">
-          <PanelTemplate />
+          <PanelTemplate>
+            <div v-if="item.title === 'me'">me</div>
+            <div v-if="item.title === 'skills'">skill</div>
+            <div v-if="item.title === 'iSpan'">ispan</div>
+            <div v-if="item.title === 'tyr'">tyr</div>
+          </PanelTemplate>
         </div>
       </transition-group>
       <button class="button right" @click="goRight">Go Right</button>

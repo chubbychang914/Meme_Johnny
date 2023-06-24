@@ -1,6 +1,6 @@
 <template>
   <div id="PanelTemplate">
-    <h1>hlldkfja</h1>
+    <slot></slot>
   </div>
 </template>
 
@@ -12,6 +12,6 @@
 #PanelTemplate {
   width: 200px;
   height: 200px;
-  background-color: red;
+  background-color: blue;
 }
 </style>
