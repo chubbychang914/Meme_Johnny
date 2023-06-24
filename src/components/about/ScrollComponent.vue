@@ -7,6 +7,8 @@
           <img :src="img.src">
         </div>
       </transition-group>
+      <button class="button right" @click="goRight">Go Right</button>
+      <button class="button left" @click="goLeft">Go Left</button>
     </div>
   </div>
 </template>
@@ -32,6 +34,15 @@ let imgList = [
   { src: "https://picsum.photos/1000/600?7" },
   { src: "https://picsum.photos/1000/600?8" },
 ]
+
+
+const goRight = () => {
+  console.log('goRight')
+}
+
+const goLeft = () => {
+  console.log('goLeft')
+}
 </script>
 
 
@@ -51,9 +62,10 @@ let imgList = [
       position: absolute;
       width: 100%;
       height: 100%;
+      @extend .center;
 
       img {
-        width: 100%;
+        width: auto;
         height: 100%;
         object-fit: contain;
       }
@@ -86,5 +98,25 @@ let imgList = [
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.button {
+  position: absolute;
+  padding: 10px 20px;
+  border: 1px solid black;
+  background-color: white;
+
+  &:hover {
+    background-color: black;
+    color: white;
+  }
+}
+
+.button.right {
+  right: 0;
+}
+
+.button.left {
+  left: 0;
 }
 </style>
