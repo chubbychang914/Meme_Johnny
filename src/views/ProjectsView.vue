@@ -78,8 +78,7 @@ onMounted(() => {
   background-size: cover;
   background-attachment: fixed;
 
-  .content,
-  .footer {
+  .content {
     overflow: hidden;
   }
 
