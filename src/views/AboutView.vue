@@ -1,6 +1,7 @@
 <template>
   <div id="AboutView" ref="aboutViewRef">
     <ScrollComponent />
+    <!-- <FooterLayout /> -->
   </div>
 </template>
 
@@ -10,6 +11,7 @@ import { onMounted, getCurrentInstance, ref } from 'vue';
 
 // components ========================
 import ScrollComponent from '@/components/about/ScrollComponent.vue';
+import FooterLayout from '@/components/layout/FooterLayout.vue';
 const { proxy: { $gsapPack } } = getCurrentInstance();
 
 const aboutViewRef = ref(null);
@@ -32,11 +34,12 @@ onMounted(() => {
 <style lang="scss" scoped>
 #AboutView {
   width: 100vw;
-  height: 100vh;
+  // height: 100vh;
 
   background-image: url("src/assets/imgs/about/aboutBg.jpeg");
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
+  overflow: hidden;
 }
 </style>
