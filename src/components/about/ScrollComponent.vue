@@ -19,7 +19,7 @@ import { ref } from 'vue';
 //     default: () => []
 //   }
 // })
-let transitionName = ref('right-in')
+let transitionName = ref('rightIn')
 let show = ref(0)
 
 let imgList = [
@@ -63,18 +63,25 @@ let imgList = [
 }
 
 // transition animations ========================
-.v-enter-from {}
+.rightIn-enter-from {
+  left: 100%; // 從左邊的 100% 進來
+}
 
-.v-enter-active {}
+.rightIn-enter-active,
+.rightIn-leave-active {
+  transition: left 0.7s ease-in-out;
+}
 
-.v-enter-to {}
+.rightIn-enter-to,
+.rightIn-leave-from {
+  left: 0%;
+}
 
-.v-leave-from {}
+.rightIn-leave-to {
+  left: -100%;
+}
 
-.v-leave-active {}
-
-.v-leave-to {}
-
+// ================================
 .center {
   display: flex;
   justify-content: center;
