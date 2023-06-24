@@ -1,7 +1,8 @@
 <template>
   <div id="AboutView" ref="aboutViewRef">
-    <ScrollComponent />
-    <!-- <FooterLayout /> -->
+    <div class="scroll-component">
+      <ScrollComponent />
+    </div>
   </div>
 </template>
 
@@ -34,12 +35,23 @@ onMounted(() => {
 <style lang="scss" scoped>
 #AboutView {
   width: 100vw;
-  // height: 100vh;
+  min-height: 100vh;
+  @extend .center;
 
   background-image: url("src/assets/imgs/about/aboutBg.jpeg");
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
   overflow: hidden;
+
+  .scroll-component{
+    overflow: hidden;
+  }
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>
