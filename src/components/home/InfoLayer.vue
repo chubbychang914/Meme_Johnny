@@ -100,7 +100,7 @@ onMounted(() => {
   AnimatePanelLeave = $gsapPack.gsap.fromTo(panelRef.value,
     { y: 0 },
     {
-      yPercent: 100,
+      yPercent: 150,
       duration: 1,
       ease: "slowMo",
       paused: true
@@ -189,7 +189,7 @@ onUnmounted(() => {
       color: #FAE900;
       gap: 2vw;
       margin-top: 35vh;
-      // transform: rotate(-5deg);
+      // transform: rotate(-10deg);
 
       .name-letters {
         border: 10px double #FAE900;
