@@ -44,8 +44,9 @@ onMounted(() => {
   background-attachment: fixed;
   overflow: hidden;
 
-  .scroll-component{
-    overflow: hidden;
+  .scroll-component {
+    position: relative;
+    // overflow: hidden;
   }
 }
 
