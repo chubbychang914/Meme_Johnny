@@ -2,9 +2,9 @@
   <div id="ScrollComponent">
     <div class="carousel-base">
       <transition-group class="carousel-container" tag="div" :name="transitionName">
-        <div class="carousel-box" v-for="(img, index) of imgList" :key="index"
+        <div class="carousel-box" v-for="(item, index) of panelList" :key="item.title"
           v-show="index === showPanel">
-          <img :src="img.src">
+          <PanelTemplate />
         </div>
       </transition-group>
       <button class="button right" @click="goRight">Go Right</button>
@@ -16,30 +16,22 @@
 <script setup>
 import { ref } from 'vue';
 import debounce from 'lodash/debounce';
-// const props = defineProps({
-//   imgList: {
-//     type: Array,
-//     default: () => []
-//   }
-// })
+
+import PanelTemplate from '@/components/about/PanelTemplate.vue';
+
 let transitionName = ref('')
 let showPanel = ref(0)
 
-let imgList = [
-  { src: "https://picsum.photos/1000/600?1" },
-  { src: "https://picsum.photos/1000/600?2" },
-  { src: "https://picsum.photos/1000/600?3" },
-  { src: "https://picsum.photos/1000/600?4" },
-  { src: "https://picsum.photos/1000/600?5" },
-  { src: "https://picsum.photos/1000/600?6" },
-  { src: "https://picsum.photos/1000/600?7" },
-  { src: "https://picsum.photos/1000/600?8" },
+let panelList = [
+  { title: "me" },
+  { title: "skills" },
+  { title: "iSpan" },
+  { title: "tyr" }
 ]
-
 
 const goRight = debounce(() => {
   transitionName.value = 'rightIn'
-  if (showPanel.value >= imgList.length - 1) {
+  if (showPanel.value >= panelList.length - 1) {
     showPanel.value = 0
     return
   }
@@ -49,7 +41,7 @@ const goRight = debounce(() => {
 const goLeft = debounce(() => {
   transitionName.value = 'leftIn'
   if (showPanel.value < 1) {
-    showPanel.value = imgList.length - 1
+    showPanel.value = panelList.length - 1
     return
   }
   showPanel.value--
@@ -65,8 +57,7 @@ const goLeft = debounce(() => {
     height: 500px;
     border: 10px solid black;
     background-color: yellow;
-    overflow: hidden;
-
+    // overflow: hidden;
 
     .carousel-box {
       position: absolute;
