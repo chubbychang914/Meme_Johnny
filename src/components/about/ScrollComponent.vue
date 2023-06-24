@@ -50,18 +50,21 @@ const goLeft = debounce(() => {
     return
   }
   showPanel.value--
-})
+}, 300)
 </script>
 
 
 <style lang="scss" scoped>
 #ScrollComponent {
+  width: 100%; // 根據AboutView裡的.scroll-component寬度
+  height: 100%;
+  // background-color: yellow;
+
   .carousel-base {
     position: relative;
-    width: 1000px;
-    height: 500px;
+    width: 100%; // 根據AboutView裡的.scroll-component寬度
+    height: 100%;
     border: 10px solid black;
-    background-color: yellow;
     // overflow: hidden;
 
     .carousel-box {
@@ -69,12 +72,6 @@ const goLeft = debounce(() => {
       width: 100%;
       height: 100%;
       @extend .center;
-
-      img {
-        width: auto;
-        height: 100%;
-        object-fit: contain;
-      }
     }
   }
 
@@ -139,9 +136,11 @@ const goLeft = debounce(() => {
 
 .button.right {
   right: 0;
+  top: 50%;
 }
 
 .button.left {
   left: 0;
+  top: 50%;
 }
 </style>
