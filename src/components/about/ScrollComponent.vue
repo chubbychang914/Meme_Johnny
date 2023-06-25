@@ -5,7 +5,7 @@
         <div class="carousel-box" v-for="(item, index) of panelList" :key="item.title"
           v-show="index === showPanel">
           <PanelTemplate>
-            <div v-if="item.title === 'me'">me</div>
+            <TyrPanel v-if="item.title === 'me'" />
             <div v-if="item.title === 'skills'">skill</div>
             <div v-if="item.title === 'iSpan'">ispan</div>
             <div v-if="item.title === 'tyr'">tyr</div>
@@ -23,6 +23,7 @@ import { ref } from 'vue';
 import debounce from 'lodash/debounce';
 
 import PanelTemplate from '@/components/about/PanelTemplate.vue';
+import TyrPanel from '@/components/about/panels/TyrPanel.vue';
 
 let transitionName = ref('')
 let showPanel = ref(0)
