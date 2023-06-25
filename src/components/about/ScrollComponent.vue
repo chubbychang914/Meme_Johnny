@@ -56,8 +56,8 @@ const goLeft = debounce(() => {
 
 <style lang="scss" scoped>
 #ScrollComponent {
-  width: 100%; // 根據AboutView裡的.scroll-component寬度
-  height: 100%;
+  width: 100vw; // 根據AboutView裡的.scroll-component寬度
+  height: 100vh;
   // background-color: yellow;
 
   .carousel-base {
@@ -72,6 +72,7 @@ const goLeft = debounce(() => {
       width: 100%;
       height: 100%;
       @extend .center;
+      // background-color: black;
     }
   }
 
