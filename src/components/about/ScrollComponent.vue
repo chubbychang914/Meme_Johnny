@@ -65,7 +65,7 @@ const goLeft = debounce(() => {
     width: 100%; // 根據AboutView裡的.scroll-component寬度
     height: 100%;
     border: 10px solid black;
-    // overflow: hidden;
+    overflow: hidden;
 
     .carousel-box {
       position: absolute;
