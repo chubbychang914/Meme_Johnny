@@ -1,8 +1,6 @@
 <template>
   <div id="AboutView" ref="aboutViewRef">
-    <div class="scroll-component">
-      <ScrollComponent />
-    </div>
+    <ScrollComponent />
   </div>
 </template>
 
@@ -43,14 +41,6 @@ onMounted(() => {
   background-size: cover;
   background-attachment: fixed;
   overflow: hidden;
-
-  .scroll-component {
-    // position: relative;
-    // width: 100%;
-    // height: 100vh;
-    // overflow: hidden;
-    // background-color: black;
-  }
 }
 
 .center {

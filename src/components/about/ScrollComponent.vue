@@ -56,15 +56,15 @@ const goLeft = debounce(() => {
 
 <style lang="scss" scoped>
 #ScrollComponent {
-  width: 100vw; // 根據AboutView裡的.scroll-component寬度
+  width: 100vw;
   height: 100vh;
   // background-color: yellow;
 
   .carousel-base {
     position: relative;
-    width: 100%; // 根據AboutView裡的.scroll-component寬度
+    width: 100%;
     height: 100%;
-    border: 10px solid black;
+    // border: 10px solid black;
     overflow: hidden;
 
     .carousel-box {

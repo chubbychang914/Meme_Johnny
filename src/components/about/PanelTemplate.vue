@@ -10,7 +10,7 @@
 
 <style lang="scss" scoped>
 #PanelTemplate {
-  width: 55%;
+  width: 60%;
   height: 60%;
   background-color: blue;
 }
