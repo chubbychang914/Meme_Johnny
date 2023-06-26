@@ -10,8 +10,8 @@
 
 <style lang="scss" scoped>
 #PanelTemplate {
-  width: 55%;
+  width: 55%; // 設定中間 panel 的寬高
   height: 60%;
-  background-color: blue;
+  background-color: blue; // remove this later
 }
 </style>

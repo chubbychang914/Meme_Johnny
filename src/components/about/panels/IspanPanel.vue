@@ -1,6 +1,6 @@
 <template>
-  <div id="TyrPanel">
-    <h1>This is the tyr panel</h1>
+  <div id="IspanPanel">
+    <h1>This is the ispan panel</h1>
   </div>
 </template>
 
@@ -9,10 +9,10 @@
 
 
 <style lang="scss" scoped>
-#TyrPanel {
+#IspanPanel {
   width: 100%;
   height: 100%;
-  background-color: yellow;
+  background-color: orange;
   border-radius: 20px;
 }
 </style>
