@@ -7,7 +7,7 @@
       </div>
       <div class="companyDesc">
         <h1 class="companyName">{{ tyrInfoObj.companyName }}
-          <span class="jobPeriod">{{ tyrInfoObj.jobPeriod }}</span>
+          <div class="jobPeriod">{{ tyrInfoObj.jobPeriod }}</div>
         </h1>
         <h3 class="jobTitle">{{ tyrInfoObj.jobTitle }}</h3>
       </div>
@@ -46,6 +46,7 @@ const tyrInfoObj = {
   height: 100%;
   background-color: white;
   border-radius: 20px;
+  border: 5px double black;
 
   display: grid;
   grid-template-rows: 1.5fr 3fr;
@@ -56,29 +57,32 @@ const tyrInfoObj = {
 
     .companyIcon {
       @extend .center;
-      // background-color: red;
+
+      img {}
     }
 
     .companyDesc {
       display: grid;
-      grid-template-rows: 1fr 1fr;
-      // background-color: green;
+      grid-template-rows: 1.5fr 1fr;
 
       .companyName {
         display: flex;
         align-items: flex-end;
-        // background-color: white;
+        font-size: 60px;
 
         .jobPeriod {
-          font-size: 15px;
-          margin-bottom: 10px;
-          margin-left: 15px;
+          font-size: 20px;
+          margin-bottom: 15px; // 期間
+          margin-left: 20px; // title跟time之間的距離
         }
       }
 
       .jobTitle {
         display: flex;
-        align-items: center;
+        align-items: flex-start;
+        font-size: 25px;
+        margin-left: 5px;
+
       }
     }
   }
@@ -92,9 +96,9 @@ const tyrInfoObj = {
 
     .jobDesc {
       list-style-type: square;
-      line-height: 30px;
+      line-height: 50px;
       word-wrap: break-word;
-      font-size: 18px;
+      font-size: 23px;
     }
   }
 }
