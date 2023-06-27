@@ -6,9 +6,10 @@
         <img :src="tyrInfoObj.companyIcon" />
       </div>
       <div class="companyDesc">
-        <h1 class="companyName">{{ tyrInfoObj.companyName }}
+        <div class="jobInfo">
+          <h1 class="companyName">{{ tyrInfoObj.companyName }}</h1>
           <div class="jobPeriod">{{ tyrInfoObj.jobPeriod }}</div>
-        </h1>
+        </div>
         <h3 class="jobTitle">{{ tyrInfoObj.jobTitle }}</h3>
       </div>
     </div>
@@ -64,16 +65,30 @@ const tyrInfoObj = {
     .companyDesc {
       display: grid;
       grid-template-rows: 1.5fr 1fr;
+      // background-color: green;
 
-      .companyName {
+      .jobInfo {
         display: flex;
-        align-items: flex-end;
-        font-size: 60px;
+        gap: 20px;
+
+
+
+        .companyName {
+          display: flex;
+          align-items: center;
+          font-size: 60px;
+          // background-color: blue;
+        }
 
         .jobPeriod {
           font-size: 20px;
-          margin-bottom: 15px; // 期間
-          margin-left: 20px; // title跟time之間的距離
+          // background-color: red;
+          display: flex;
+          align-items: center;
+
+          @include mobile-media {
+            display: none;
+          }
         }
       }
 
