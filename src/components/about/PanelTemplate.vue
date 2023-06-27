@@ -12,6 +12,12 @@
 #PanelTemplate {
   width: 55%; // 設定中間 panel 的寬高
   height: 60%;
-  background-color: blue; // remove this later
+  // background-color: blue; // remove this later
+
+  @include mobile-media{
+    width: 90%;
+    height: 80%;
+    margin-top: 15%;
+  }
 }
 </style>
