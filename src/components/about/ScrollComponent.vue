@@ -88,13 +88,11 @@ const goLeft = debounce(() => {
 #ScrollComponent {
   width: 100vw;
   height: 100vh;
-  // background-color: yellow;
 
   .carousel-base {
     position: relative;
     width: 100%;
     height: 100%;
-    // border: 10px solid black;
     overflow: hidden;
 
     .carousel-box {
@@ -102,11 +100,39 @@ const goLeft = debounce(() => {
       width: 100%;
       height: 100%;
       @extend .center;
-      // background-color: black;
     }
   }
 
 }
+
+// ================================
+
+.button {
+  position: absolute;
+  padding: 10px 20px;
+  border: 1px solid black;
+  background-color: white;
+
+  &:hover {
+    background-color: black;
+    color: white;
+  }
+
+  @include mobile-media {
+    display: none;
+  }
+}
+
+.button.right {
+  right: 0;
+  top: 50%;
+}
+
+.button.left {
+  left: 0;
+  top: 50%;
+}
+
 
 // transition animations ========================
 .rightIn-enter-from {
@@ -146,32 +172,9 @@ const goLeft = debounce(() => {
   left: 100%;
 }
 
-// ================================
 .center {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.button {
-  position: absolute;
-  padding: 10px 20px;
-  border: 1px solid black;
-  background-color: white;
-
-  &:hover {
-    background-color: black;
-    color: white;
-  }
-}
-
-.button.right {
-  right: 0;
-  top: 50%;
-}
-
-.button.left {
-  left: 0;
-  top: 50%;
 }
 </style>

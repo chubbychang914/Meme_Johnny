@@ -48,6 +48,7 @@ const props = defineProps({
   background-color: white;
   border-radius: 20px;
   border: 5px double black;
+  user-select: none;
 
   display: grid;
   grid-template-rows: 1.5fr 3fr;
