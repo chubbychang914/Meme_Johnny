@@ -2,13 +2,27 @@
   <div id="SkillsPanel">
     <div class="title">Skills & Tools</div>
     <div class="content">
-      <div class="tool-box" v-for="(item, index) in 9" :key="index"></div>
+      <ToolBox v-for="skill in skillList" :key="skill.title" :skillItem="skill" />
     </div>
   </div>
 </template>
 
 
-<script setup></script>
+<script setup>
+import ToolBox from '@/components/about/ToolBox.vue';
+
+const skillList = [
+  { title: "Vue", imgSrc: "src/assets/svgs/vue.svg" },
+  { title: "Nuxt", imgSrc: "src/assets/svgs/vue.svg" },
+  { title: "React", imgSrc: "src/assets/svgs/vue.svg" },
+  { title: "Laravel", imgSrc: "src/assets/svgs/vue.svg" },
+  { title: "JavaScript", imgSrc: "src/assets/svgs/vue.svg" },
+  { title: "SCSS", imgSrc: "src/assets/svgs/vue.svg" },
+  { title: "MySql", imgSrc: "src/assets/svgs/vue.svg" },
+  { title: "GSAP", imgSrc: "src/assets/svgs/vue.svg" },
+  { title: "Git", imgSrc: "src/assets/svgs/vue.svg" }
+]
+</script>
 
 
 <style lang="scss" scoped>
@@ -34,15 +48,13 @@
   .content {
     height: 80%;
     background-color: blue;
-    padding: 20px;
+    padding: 30px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    flex-wrap: wrap;
-    gap: 20px;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 30px;
 
     .tool-box {
-      width: 100%;
-      height: 100%;
       background-color: green;
     }
   }
