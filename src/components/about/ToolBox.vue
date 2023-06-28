@@ -33,9 +33,13 @@ const props = defineProps({
   .img {
     background-color: yellow;
     height: 100%;
-    img{
-      width: 100%;
-      height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      width: 50%;
+      height: auto;
       object-fit: contain;
     }
   }
@@ -43,6 +47,7 @@ const props = defineProps({
   .title {
     justify-self: center;
     align-self: center;
+    font-size: 1.2rem;
   }
 }
 </style>
