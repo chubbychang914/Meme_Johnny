@@ -52,32 +52,40 @@ const tyrInfoObj = {
   display: grid;
   grid-template-rows: 1.5fr 3fr;
 
+  @include mobile-media {
+    grid-template-rows: 1fr 4fr;
+  }
+
   .title {
     display: grid;
     grid-template-columns: 1fr 2fr;
 
     .companyIcon {
       @extend .center;
-
-      img {}
     }
 
     .companyDesc {
       display: grid;
       grid-template-rows: 1.5fr 1fr;
-      // background-color: green;
+
+      @include mobile-media {
+        padding-left: 15px;
+      }
 
       .jobInfo {
         display: flex;
         gap: 20px;
-
-
 
         .companyName {
           display: flex;
           align-items: center;
           font-size: 60px;
           // background-color: blue;
+
+          @include mobile-media {
+            font-size: 40px;
+            // align-items: flex-end;
+          }
         }
 
         .jobPeriod {
@@ -106,14 +114,21 @@ const tyrInfoObj = {
     display: flex;
     justify-content: space-around;
     align-items: flex-start;
-    // @extend .center;
-    // background-color: white;
+    // background-color: blue;
+
+    @include mobile-media {
+      padding: 30px;
+    }
 
     .jobDesc {
       list-style-type: square;
       line-height: 50px;
       word-wrap: break-word;
       font-size: 23px;
+
+      @include mobile-media {
+        line-height: 30px;
+      }
     }
   }
 }
