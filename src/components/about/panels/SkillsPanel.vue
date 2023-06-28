@@ -47,12 +47,11 @@ const skillList = [
 
   .content {
     height: 80%;
-    background-color: blue;
     padding: 30px;
+    gap: 30px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
-    gap: 30px;
 
     .tool-box {
       background-color: green;
