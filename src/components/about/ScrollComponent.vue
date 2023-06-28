@@ -3,7 +3,8 @@
     <div class="carousel-base">
       <transition-group class="carousel-container" tag="div" :name="transitionName">
         <div class="carousel-box" v-for="(item, index) of panelList" :key="item.title"
-          v-show="index === showPanel">
+          v-show="index === showPanel" @touchstart="handleTouchStart" @touchmove="handleTouchMove"
+          @touchend="handleTouchEnd">
           <PanelTemplate>
             <MePanel v-if="item.title === 'me'" />
             <SkillsPanel v-if="item.title === 'skills'" />
@@ -26,8 +27,11 @@ import PanelTemplate from '@/components/about/PanelTemplate.vue';
 import MePanel from '@/components/about/panels/MePanel.vue';
 import SkillsPanel from '@/components/about/panels/SkillsPanel.vue';
 import JobPanel from '@/components/about/panels/JobPanel.vue';
+// state
 let transitionName = ref('')
 let showPanel = ref(0)
+let startX = ref(null)
+let endX = ref(null)
 
 let panelList = [
   { title: "me" },
@@ -63,7 +67,7 @@ const tyrInfoObj = {
   ]
 }
 
-
+// functions for left and right slide buttons ====================
 const goRight = debounce(() => {
   transitionName.value = 'rightIn'
   if (showPanel.value >= panelList.length - 1) {
@@ -71,7 +75,7 @@ const goRight = debounce(() => {
     return
   }
   showPanel.value++
-}, 300)
+}, 200)
 
 const goLeft = debounce(() => {
   transitionName.value = 'leftIn'
@@ -80,7 +84,31 @@ const goLeft = debounce(() => {
     return
   }
   showPanel.value--
-}, 300)
+}, 200)
+
+// functions for touch events ====================
+const handleTouchStart = (e) => {
+  startX.value = e.touches[0].pageX;
+  // console.log(`startX: ${startX.value}`);
+}
+
+const handleTouchMove = (e) => {
+  endX.value = e.touches[0].pageX;
+  // console.log(`endX: ${endX.value}`);
+}
+
+const handleTouchEnd = (e) => {
+  if (!startX.value || !endX.value) {
+    startX.value = null;
+    endX.value = null;
+    return;
+  }
+  if (startX.value < endX.value) {
+    goLeft();
+    return;
+  }
+  goRight();
+}
 </script>
 
 
