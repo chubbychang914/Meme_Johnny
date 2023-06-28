@@ -12,15 +12,15 @@
 import ToolBox from '@/components/about/ToolBox.vue';
 
 const skillList = [
-  { title: "Vue", imgSrc: "src/assets/svgs/vue.svg" },
-  { title: "Nuxt", imgSrc: "src/assets/svgs/vue.svg" },
-  { title: "React", imgSrc: "src/assets/svgs/vue.svg" },
-  { title: "Laravel", imgSrc: "src/assets/svgs/vue.svg" },
-  { title: "JavaScript", imgSrc: "src/assets/svgs/vue.svg" },
-  { title: "SCSS", imgSrc: "src/assets/svgs/vue.svg" },
-  { title: "MySql", imgSrc: "src/assets/svgs/vue.svg" },
-  { title: "GSAP", imgSrc: "src/assets/svgs/vue.svg" },
-  { title: "Git", imgSrc: "src/assets/svgs/vue.svg" }
+  { title: "Vue", imgSrc: "src/assets/svgs/skills/vue.svg" },
+  { title: "Nuxt", imgSrc: "src/assets/svgs/skills/vue.svg" },
+  { title: "React", imgSrc: "src/assets/svgs/skills/vue.svg" },
+  { title: "Laravel", imgSrc: "src/assets/svgs/skills/vue.svg" },
+  { title: "JavaScript", imgSrc: "src/assets/svgs/skills/vue.svg" },
+  { title: "SCSS", imgSrc: "src/assets/svgs/skills/vue.svg" },
+  { title: "MySql", imgSrc: "src/assets/svgs/skills/vue.svg" },
+  { title: "GSAP", imgSrc: "src/assets/svgs/skills/vue.svg" },
+  { title: "Git", imgSrc: "src/assets/svgs/skills/vue.svg" }
 ]
 </script>
 
