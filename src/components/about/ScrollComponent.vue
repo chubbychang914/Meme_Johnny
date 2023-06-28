@@ -7,8 +7,8 @@
           <PanelTemplate>
             <MePanel v-if="item.title === 'me'" />
             <SkillsPanel v-if="item.title === 'skills'" />
-            <IspanPanel v-if="item.title === 'iSpan'" />
-            <TyrPanel v-if="item.title === 'tyr'" />
+            <JobPanel :infoObj="ispanInfoObj" v-if="item.title === 'iSpan'" />
+            <JobPanel :infoObj="tyrInfoObj" v-if="item.title === 'tyr'" />
           </PanelTemplate>
         </div>
       </transition-group>
@@ -25,8 +25,7 @@ import debounce from 'lodash/debounce';
 import PanelTemplate from '@/components/about/PanelTemplate.vue';
 import MePanel from '@/components/about/panels/MePanel.vue';
 import SkillsPanel from '@/components/about/panels/SkillsPanel.vue';
-import IspanPanel from '@/components/about/panels/IspanPanel.vue';
-import TyrPanel from '@/components/about/panels/TyrPanel.vue';
+import JobPanel from '@/components/about/panels/JobPanel.vue';
 let transitionName = ref('')
 let showPanel = ref(0)
 
@@ -36,6 +35,34 @@ let panelList = [
   { title: "iSpan" },
   { title: "tyr" }
 ]
+// props for JobPanel ====================
+const ispanInfoObj = {
+  companyIcon: "src/assets/svgs/ispanLogo.svg",
+  companyName: "iSpan",
+  jobPeriod: "2022/09 - 2023/02",
+  jobTitle: "FullStack Bootcamp",
+  companyDesc: [
+    "Learned frontend and backend languages such as JavaScript, PHP, and SQL",
+    "Collaborated with a team to build a fully functional e-commerce website",
+    "Utilized frontend and backend frameworks such as React and Laravel",
+    "Utilized MySQL for database management",
+  ],
+}
+
+const tyrInfoObj = {
+  companyIcon: "src/assets/svgs/tyrLogo.svg",
+  companyName: "Tyr Tech",
+  jobPeriod: "2023/03 - 2023/06",
+  jobTitle: "Frontend Developer",
+  companyDesc: [
+    "Utilized Vue and Nuxt to create frontend interfaces",
+    "Utilized Git Branches for version control",
+    "Created and maintained frontend code of website",
+    "Collaborated with team members to implement a Line login system",
+    "Worked in an agile environment with daily standup meetings"
+  ]
+}
+
 
 const goRight = debounce(() => {
   transitionName.value = 'rightIn'

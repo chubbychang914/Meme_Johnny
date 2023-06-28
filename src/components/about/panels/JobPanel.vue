@@ -3,20 +3,20 @@
     <!-- 上半 -->
     <div class="title">
       <div class="companyIcon">
-        <img :src="tyrInfoObj.companyIcon" />
+        <img :src="props.infoObj.companyIcon" />
       </div>
       <div class="companyDesc">
         <div class="jobInfo">
-          <h1 class="companyName">{{ tyrInfoObj.companyName }}</h1>
-          <div class="jobPeriod">{{ tyrInfoObj.jobPeriod }}</div>
+          <h1 class="companyName">{{ props.infoObj.companyName }}</h1>
+          <div class="jobPeriod">{{ props.infoObj.jobPeriod }}</div>
         </div>
-        <h3 class="jobTitle">{{ tyrInfoObj.jobTitle }}</h3>
+        <h3 class="jobTitle">{{ props.infoObj.jobTitle }}</h3>
       </div>
     </div>
     <!-- 下半 -->
     <div class="content">
       <ul class="jobDesc">
-        <li v-for="(item, index) in tyrInfoObj.companyDesc" :key="index">{{ item }}</li>
+        <li v-for="(item, index) in props.infoObj.companyDesc" :key="index">{{ item }}</li>
       </ul>
     </div>
   </div>
@@ -24,19 +24,19 @@
 
 
 <script setup>
-const tyrInfoObj = {
-  companyIcon: "src/assets/svgs/tyrLogo.svg",
-  companyName: "Tyr Tech",
-  jobPeriod: "2023/03 - 2023/06",
-  jobTitle: "Frontend Developer",
-  companyDesc: [
-    "Utilized Vue and Nuxt to create frontend interfaces",
-    "Utilized Git Branches for version control",
-    "Created and maintained frontend code of website",
-    "Collaborated with team members to implement a Line login system",
-    "Worked in an agile environment with daily standup meetings"
-  ]
-}
+const props = defineProps({
+  infoObj: {
+    type: Object,
+    default: () => {
+      // companyIcon ""
+      // companyName ""
+      // jobPeriod ""
+      // jobTitle ""
+      // companyDesc []
+    }
+  }
+})
+
 </script>
 
 
@@ -89,7 +89,7 @@ const tyrInfoObj = {
         }
 
         .jobPeriod {
-          font-size: 20px;
+          font-size: 25px;
           // background-color: red;
           display: flex;
           align-items: center;
