@@ -116,6 +116,8 @@ const props = defineProps({
     justify-content: space-around;
     align-items: flex-start;
     padding-left: 10%;
+    overflow: scroll;
+
 
     @include mobile-media {
       padding: 30px;
@@ -126,7 +128,6 @@ const props = defineProps({
       line-height: 50px;
       word-wrap: break-word;
       font-size: 23px;
-      // background-color: blue;
       width: 100%;
 
       @include mobile-media {

@@ -19,7 +19,7 @@
 const meObj = {
   imgSrc: "src/assets/imgs/home/personBg.png",
   titleTxt: "About Me",
-  messageTxt: "Hey there! I'm Johnny, a frontend developer with a passion to create clean and maintainable code. I'm eager to learn from experienced team members and expand my skills and knowledge in web development while contributing to collaborative projects!"
+  messageTxt: "Hey there! I'm Johnny, a frontend developer with a passion to create clean and maintainable code. I'm eager to learn from experienced team members and expand my skills and knowledge while contributing to collaborative projects!"
 }
 
 </script>
@@ -36,7 +36,25 @@ const meObj = {
   user-select: none;
   // ================================
   display: grid;
-  grid-template-columns: 1fr 1.4fr;
+  grid-template-columns: 1fr 1.2fr;
+
+  @include mobile-media {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 2fr;
+
+    .self-portrait {
+      background-color: white;
+      border-radius: 15px;
+
+      img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+      }
+    }
+
+    .message {}
+  }
 
 
   .self-portrait {
