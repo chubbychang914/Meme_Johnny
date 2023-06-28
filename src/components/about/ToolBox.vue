@@ -25,13 +25,14 @@ const props = defineProps({
   width: 100%;
   height: 100%;
   background-color: black;
+  border-radius: 20px;
   color: white;
 
   display: grid;
   grid-template-columns: 1fr 1fr;
 
   .img {
-    background-color: yellow;
+    // background-color: yellow;
     height: 100%;
     display: flex;
     justify-content: center;
@@ -45,9 +46,9 @@ const props = defineProps({
   }
 
   .title {
-    justify-self: center;
+    justify-self: self-start;
     align-self: center;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
   }
 }
 </style>
