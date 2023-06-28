@@ -42,8 +42,8 @@ const ispanInfoObj = {
   jobPeriod: "2022/09 - 2023/02",
   jobTitle: "FullStack Bootcamp",
   companyDesc: [
-    "Learned frontend and backend languages such as JavaScript, PHP, and SQL",
-    "Collaborated with a team to build a fully functional e-commerce website",
+    "Learned languages such as JavaScript, PHP, and SQL",
+    "Collaborated with a team to build an e-commerce website",
     "Utilized frontend and backend frameworks such as React and Laravel",
     "Utilized MySQL for database management",
   ],

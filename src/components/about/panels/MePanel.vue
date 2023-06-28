@@ -4,7 +4,11 @@
       <img :src="meObj.imgSrc" />
     </div>
     <div class="message">
-      <div class="title">{{ meObj.titleTxt }}</div>
+      <div class="title">
+        <!-- <font-awesome-icon icon="fa-solid fa-caret-right" /> -->
+        {{ meObj.titleTxt }}
+        <!-- <font-awesome-icon icon="fa-solid fa-caret-left" /> -->
+      </div>
       <div class="msg">{{ meObj.messageTxt }}</div>
     </div>
   </div>
@@ -15,7 +19,7 @@
 const meObj = {
   imgSrc: "src/assets/imgs/home/personBg.png",
   titleTxt: "About Me",
-  messageTxt: "Hey there 👋 I'm Johnny, a frontend developer with a passion to create clean and maintainable code. I'm eager to learn from experienced team members and expand my skills and knowledge in web development while contributing to collaborative projects!"
+  messageTxt: "Hey there! I'm Johnny, a frontend developer with a passion to create clean and maintainable code. I'm eager to learn from experienced team members and expand my skills and knowledge in web development while contributing to collaborative projects!"
 }
 
 </script>
@@ -32,13 +36,14 @@ const meObj = {
   user-select: none;
   // ================================
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1.4fr;
 
 
   .self-portrait {
-    background-color: red;
-    overflow: hidden;
+    width: auto;
+    height: 100%;
     @extend .center;
+    overflow: hidden;
 
     img {
       width: 100%;
@@ -51,14 +56,20 @@ const meObj = {
   .message {
     display: flex;
     flex-direction: column;
-    padding: 20px 50px;
+    padding: 10%;
+    gap: 20px;
+    overflow: scroll;
 
     .title {
       font-size: 50px;
+      @extend .center;
+      gap: 10%;
     }
 
     .msg {
       font-size: 25px;
+      padding-left: 5%;
+      @extend .center;
     }
   }
 }

@@ -115,7 +115,7 @@ const props = defineProps({
     display: flex;
     justify-content: space-around;
     align-items: flex-start;
-    // background-color: blue;
+    padding-left: 10%;
 
     @include mobile-media {
       padding: 30px;
@@ -126,6 +126,8 @@ const props = defineProps({
       line-height: 50px;
       word-wrap: break-word;
       font-size: 23px;
+      // background-color: blue;
+      width: 100%;
 
       @include mobile-media {
         line-height: 30px;
