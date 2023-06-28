@@ -5,9 +5,9 @@
     </div>
     <div class="message">
       <div class="title">
-        <!-- <font-awesome-icon icon="fa-solid fa-caret-right" /> -->
+        <font-awesome-icon icon="fa-solid fa-caret-left" />
         {{ meObj.titleTxt }}
-        <!-- <font-awesome-icon icon="fa-solid fa-caret-left" /> -->
+        <font-awesome-icon icon="fa-solid fa-caret-right" />
       </div>
       <div class="msg">{{ meObj.messageTxt }}</div>
     </div>
@@ -38,23 +38,7 @@ const meObj = {
   display: grid;
   grid-template-columns: 1fr 1.2fr;
 
-  @include mobile-media {
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 2fr;
 
-    .self-portrait {
-      background-color: white;
-      border-radius: 15px;
-
-      img {
-        width: 100%;
-        height: auto;
-        object-fit: contain;
-      }
-    }
-
-    .message {}
-  }
 
 
   .self-portrait {
@@ -88,6 +72,23 @@ const meObj = {
       font-size: 25px;
       padding-left: 5%;
       @extend .center;
+    }
+  }
+
+  // RWD ================================
+  @include mobile-media {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 2fr;
+
+    .self-portrait {
+      background-color: white;
+      border-radius: 15px;
+
+      img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+      }
     }
   }
 }

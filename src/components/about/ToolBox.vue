@@ -31,6 +31,14 @@ const props = defineProps({
   display: grid;
   grid-template-columns: 1fr 1fr;
 
+  @include mobile-media {
+    grid-template-columns: 1fr;
+
+    .title{
+      display: none;
+    }
+  }
+
   .img {
     // background-color: yellow;
     height: 100%;
