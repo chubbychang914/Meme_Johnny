@@ -30,7 +30,7 @@ const meObj = {
   font-family: 'VT323', monospace;
   width: 100%;
   height: 100%;
-  background-color: rgb(255, 215, 0);
+  background-color: rgb(255, 255, 224);
   border-radius: 20px;
   border: 5px double black;
   user-select: none;
@@ -60,17 +60,20 @@ const meObj = {
     flex-direction: column;
     padding: 10%;
     gap: 20px;
-    overflow: scroll;
 
     .title {
       font-size: 50px;
       @extend .center;
       gap: 10%;
+      // background-color: red;
+      padding: 10px 0;
     }
 
     .msg {
+      overflow: scroll;
       font-size: 25px;
-      padding-left: 5%;
+      line-height: 1.3em;
+      text-align: center;
       @extend .center;
     }
   }

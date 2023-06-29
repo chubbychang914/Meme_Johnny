@@ -37,7 +37,6 @@ const redirectUrl = (url) => {
     transform-style: preserve-3d;
     background-color: red;
     @extend .center;
-    // perspective: 800px;
     border-radius: 20px;
 
     &::before {
@@ -64,8 +63,15 @@ const redirectUrl = (url) => {
     }
 
     .fa {
-      // color: white;
       transition: ease-in-out 0.2s;
+    }
+  }
+
+
+  @include mobile-media {
+    .aim-btn {
+      top: -80%;
+      width: 100%;
     }
   }
 }

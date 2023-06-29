@@ -34,7 +34,7 @@ const skillList = [
   font-family: 'VT323', monospace;
   width: 100%;
   height: 100%;
-  background-color: white;
+  background-color: rgb(255, 255, 224);
   border-radius: 20px;
   border: 5px double black;
   user-select: none;
