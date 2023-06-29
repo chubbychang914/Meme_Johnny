@@ -5,9 +5,9 @@
     </div>
     <div class="message">
       <div class="title">
-        <font-awesome-icon icon="fa-solid fa-caret-left" />
+        <!-- <font-awesome-icon icon="fa-solid fa-caret-left" /> -->
         {{ meObj.titleTxt }}
-        <font-awesome-icon icon="fa-solid fa-caret-right" />
+        <!-- <font-awesome-icon icon="fa-solid fa-caret-right" /> -->
       </div>
       <div class="msg">{{ meObj.messageTxt }}</div>
     </div>
@@ -30,7 +30,7 @@ const meObj = {
   font-family: 'VT323', monospace;
   width: 100%;
   height: 100%;
-  background-color: khaki;
+  background-color: rgb(255, 215, 0);
   border-radius: 20px;
   border: 5px double black;
   user-select: none;

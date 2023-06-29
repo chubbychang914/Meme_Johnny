@@ -50,29 +50,28 @@ const btnStyles = computed(() => {
   border-radius: 10px;
   @extend .center;
 
-
   .btn-content {
     width: 80%; // 調整方格大小
     height: 70%;
     font-size: 50px;
-    // border: 5px double white;
     border-radius: inherit;
     @extend .center;
     gap: 40px;
     transition: ease-in-out 0.2s;
 
     &:hover {
-      background-image: url("src/assets/svgs/bg.svg");
       color: black;
       border: none;
       gap: 10px;
-      scale: 1.1;
+      // scale: 1.1;
+      background-image: url("src/assets/svgs/bg.svg");
     }
 
     .fa {
       color: inherit;
       font-size: 30px;
-      @include mobile-media{
+
+      @include mobile-media {
         display: none;
       }
     }

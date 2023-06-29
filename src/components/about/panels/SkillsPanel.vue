@@ -1,9 +1,9 @@
 <template>
   <div id="SkillsPanel">
     <div class="title">
-      <font-awesome-icon icon="fa-solid fa-caret-left" />
+      <!-- <font-awesome-icon icon="fa-solid fa-caret-left" /> -->
       Skills & Tools
-      <font-awesome-icon icon="fa-solid fa-caret-right" />
+      <!-- <font-awesome-icon icon="fa-solid fa-caret-right" /> -->
     </div>
     <div class="content">
       <ToolBox v-for="skill in skillList" :key="skill.title" :skillItem="skill" />

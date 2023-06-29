@@ -38,7 +38,6 @@ const redirectUrl = (url) => {
     background-color: red;
     @extend .center;
     // perspective: 800px;
-    // transform: rotateX(-45deg);
     border-radius: 20px;
 
     &::before {
@@ -60,13 +59,12 @@ const redirectUrl = (url) => {
     }
 
 
-    &:hover .fa{
-      // scale: 1.5;
+    &:hover .fa {
       color: yellow;
     }
 
     .fa {
-      color: white;
+      // color: white;
       transition: ease-in-out 0.2s;
     }
   }
