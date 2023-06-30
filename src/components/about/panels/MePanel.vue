@@ -1,14 +1,8 @@
 <template>
   <div id="MePanel">
-    <div class="self-portrait">
-      <img :src="meObj.imgSrc" />
-    </div>
+    <div class="self-portrait"><img :src="meObj.imgSrc" /></div>
     <div class="message">
-      <div class="title">
-        <!-- <font-awesome-icon icon="fa-solid fa-caret-left" /> -->
-        {{ meObj.titleTxt }}
-        <!-- <font-awesome-icon icon="fa-solid fa-caret-right" /> -->
-      </div>
+      <div class="title">{{ meObj.titleTxt }}</div>
       <div class="msg">{{ meObj.messageTxt }}</div>
     </div>
   </div>

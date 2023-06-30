@@ -10,7 +10,6 @@ import { onMounted, getCurrentInstance, ref } from 'vue';
 
 // components ========================
 import ScrollComponent from '@/components/about/ScrollComponent.vue';
-// import FooterLayout from '@/components/layout/FooterLayout.vue';
 const { proxy: { $gsapPack } } = getCurrentInstance();
 
 const aboutViewRef = ref(null);
