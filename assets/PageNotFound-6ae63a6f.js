@@ -1,0 +1,1 @@
+import{o,c as t,p as a,e as s,a as _,t as c,_ as d}from"./index-2f048aa2.js";const n=e=>(a("data-v-91510ad9"),e=e(),s(),e),r={id:"ErrorView"},p=n(()=>_("h1",null,c("Page Not Found"),-1)),i=[p];function u(e,h){return o(),t("div",r,i)}const l={},g=d(l,[["render",u],["__scopeId","data-v-91510ad9"]]);export{g as default};
