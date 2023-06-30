@@ -14,6 +14,8 @@
 <script setup >
 import { ref, onMounted, getCurrentInstance } from 'vue';
 import MemeImg from '@/assets/imgs/projects/PortFolioScreenShot.png';
+import SelectGoImg from '@/assets/imgs/projects/SelectGoScreenShot.png';
+import ArcaneImg from '@/assets/imgs/projects/ArcaneScreenShot.png'
 
 import ProjectsTemplate from '@/components/projects/ProjectsTemplate.vue';
 import FooterLayout from '@/components/layout/FooterLayout.vue';
@@ -35,7 +37,7 @@ const JohnnyInfoObj = {
 }
 const SelectGoInfoObj = {
   title: "Select Go",
-  imgUrl: "src/assets/imgs/projects/SelectGoScreenShot.png",
+  imgUrl: SelectGoImg,
   description: "Developed a fully functional e-commerce website using React and Laravel. Implemented features such as user authentication, shopping cart, and product listing.",
   reverseLayout: true,
   url: "https://github.com/chubbychang914/Select-Go-Final"
@@ -43,7 +45,7 @@ const SelectGoInfoObj = {
 
 const ArcaneInfoObj = {
   title: "Arcane",
-  imgUrl: "src/assets/imgs/projects/ArcaneScreenShot.png",
+  imgUrl: ArcaneImg,
   description: "Created a website based on the popular Netflix series Arcane using HTML, CSS and JavaScript. Utilized GSAP to trigger scroll-related animations.",
   reverseLayout: false,
   url: "https://chubbychang914.github.io/Arcane/"
