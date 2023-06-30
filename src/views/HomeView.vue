@@ -46,7 +46,7 @@ import InfoLayer from "@/components/home/InfoLayer.vue"
       width: 100px;
       height: 100px;
       border-radius: 50%;
-      background-image: url("https://img.freepik.com/free-photo/orange-details-moon-texture-concept_23-2149535766.jpg");
+      background-image: url("@/assets/imgs/home/moon-texture.jpg");
       box-shadow:
         inset -1.5em -1.5em 1.5em #000,
         -0.2em -0.2em 0.5em #ccc;
