@@ -36,7 +36,7 @@ onMounted(() => {
   min-height: 100vh;
   @extend .center;
 
-  background-image: url("src/assets/imgs/about/aboutBg.jpeg");
+  background-image: url("@/assets/imgs/about/aboutBg.jpeg");
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
