@@ -44,7 +44,7 @@ let panelList = [
 ]
 // props for JobPanel ====================
 const ispanInfoObj = {
-  companyIcon: tyrImg,
+  companyIcon: ispanImg,
   companyName: "iSpan",
   jobPeriod: "2022/09 - 2023/02",
   jobTitle: "FullStack Bootcamp",
@@ -57,7 +57,7 @@ const ispanInfoObj = {
 }
 
 const tyrInfoObj = {
-  companyIcon: ispanImg,
+  companyIcon: tyrImg,
   companyName: "Tyr Tech",
   jobPeriod: "2023/03 - 2023/06",
   jobTitle: "Frontend Developer",
