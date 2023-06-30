@@ -79,16 +79,18 @@ const meObj = {
   // RWD ================================
   @include mobile-media {
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr 2fr;
+    grid-template-rows: 0fr 1fr;
 
     .self-portrait {
       background-color: white;
       border-radius: 15px;
+      display: none;
 
       img {
-        width: 100%;
-        height: auto;
+        width: auto;
+        height: 100%;
         object-fit: contain;
+        display: none;
       }
     }
   }
