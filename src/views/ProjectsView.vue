@@ -13,6 +13,7 @@
 
 <script setup >
 import { ref, onMounted, getCurrentInstance } from 'vue';
+import MemeImg from '@/assets/imgs/projects/PortFolioScreenShot.png';
 
 import ProjectsTemplate from '@/components/projects/ProjectsTemplate.vue';
 import FooterLayout from '@/components/layout/FooterLayout.vue';
@@ -27,7 +28,7 @@ let AnimateProjectsViewBg = null;
 // Props ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 const JohnnyInfoObj = {
   title: "Portfolio",
-  imgUrl: "src/assets/imgs/projects/PortFolioScreenShot.png",
+  imgUrl: MemeImg,
   description: "Built a personal website using Vue 3 Composition API and GSAP. Implemented features such as scroll-triggered animations and responsive design.",
   reverseLayout: false,
   url: "https://github.com/chubbychang914/Meme_Johnny"
