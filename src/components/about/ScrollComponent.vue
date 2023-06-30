@@ -27,6 +27,9 @@ import PanelTemplate from '@/components/about/PanelTemplate.vue';
 import MePanel from '@/components/about/panels/MePanel.vue';
 import SkillsPanel from '@/components/about/panels/SkillsPanel.vue';
 import JobPanel from '@/components/about/panels/JobPanel.vue';
+
+import tyrImg from '@/assets/svgs/tyrLogo.svg';
+import ispanImg from '@/assets/svgs/ispanLogo.svg';
 // state
 let transitionName = ref('')
 let showPanel = ref(0)
@@ -41,7 +44,7 @@ let panelList = [
 ]
 // props for JobPanel ====================
 const ispanInfoObj = {
-  companyIcon: "src/assets/svgs/ispanLogo.svg",
+  companyIcon: tyrImg,
   companyName: "iSpan",
   jobPeriod: "2022/09 - 2023/02",
   jobTitle: "FullStack Bootcamp",
@@ -54,7 +57,7 @@ const ispanInfoObj = {
 }
 
 const tyrInfoObj = {
-  companyIcon: "src/assets/svgs/tyrLogo.svg",
+  companyIcon: ispanImg,
   companyName: "Tyr Tech",
   jobPeriod: "2023/03 - 2023/06",
   jobTitle: "Frontend Developer",

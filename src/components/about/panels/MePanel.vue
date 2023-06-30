@@ -40,9 +40,6 @@ const meObj = {
   display: grid;
   grid-template-columns: 1fr 1.2fr;
 
-
-
-
   .self-portrait {
     width: auto;
     height: 100%;
@@ -54,7 +51,6 @@ const meObj = {
       height: 100%;
       object-fit: contain;
     }
-
   }
 
   .message {
