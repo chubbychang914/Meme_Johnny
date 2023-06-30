@@ -73,7 +73,7 @@ onMounted(() => {
   width: 100%;
   min-height: 100vh;
   display: grid;
-  background-image: url("src/assets/imgs/projects/projectsBg.jpg");
+  background-image: url("@/assets/imgs/projects/projectsBg.jpg");
   background-position: center;
   background-size: cover;
   background-attachment: fixed;

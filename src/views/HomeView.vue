@@ -20,7 +20,7 @@ import InfoLayer from "@/components/home/InfoLayer.vue"
   width: 100%;
   height: 100vh;
   overflow: hidden;
-  background-image: url("src/assets/svgs/space.svg");
+  background-image: url("@/assets/svgs/space.svg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -59,7 +59,7 @@ import InfoLayer from "@/components/home/InfoLayer.vue"
     position: absolute;
     top: 0;
     left: 0;
-    background-image: url("src/assets/svgs/spaceship2.svg");
+    background-image: url("@/assets/svgs/spaceship2.svg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

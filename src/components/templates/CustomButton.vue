@@ -64,7 +64,7 @@ const btnStyles = computed(() => {
       border: none;
       gap: 10px;
       // scale: 1.1;
-      background-image: url("src/assets/svgs/bg.svg");
+      background-image: url("@/assets/svgs/bg.svg");
     }
 
     .fa {
