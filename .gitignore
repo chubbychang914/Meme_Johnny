@@ -9,7 +9,7 @@ lerna-debug.log*
 
 node_modules
 .DS_Store
-# / this is needed for gh pages
+# / need to comment for gh pages
 dist
 dist-ssr
 # / =======================
