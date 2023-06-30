@@ -13,12 +13,12 @@
 
 <script setup >
 import { ref, onMounted, getCurrentInstance } from 'vue';
-import MemeImg from '@/assets/imgs/projects/PortFolioScreenShot.png';
-import SelectGoImg from '@/assets/imgs/projects/SelectGoScreenShot.png';
-import ArcaneImg from '@/assets/imgs/projects/ArcaneScreenShot.png'
 
 import ProjectsTemplate from '@/components/projects/ProjectsTemplate.vue';
 import FooterLayout from '@/components/layout/FooterLayout.vue';
+import MemeImg from '@/assets/imgs/projects/PortFolioScreenShot.png';
+import SelectGoImg from '@/assets/imgs/projects/SelectGoScreenShot.png';
+import ArcaneImg from '@/assets/imgs/projects/ArcaneScreenShot.png'
 const { proxy: { $gsapPack } } = getCurrentInstance()
 
 
