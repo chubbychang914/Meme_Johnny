@@ -13,7 +13,7 @@ export default defineConfig({
     }
   },
   // 設定 github page ================
-  // base: "/Meme_Johnny/",  // 設定 github 專案路徑
+  base: "/Meme_Johnny/",  // 設定 github 專案路徑
   // 引入 scss rwd ================
   css: {
     preprocessorOptions: {

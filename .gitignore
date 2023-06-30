@@ -10,8 +10,8 @@ lerna-debug.log*
 node_modules
 .DS_Store
 # / need to comment for gh pages
-dist
-dist-ssr
+# dist
+# dist-ssr
 # / =======================
 coverage
 *.local
