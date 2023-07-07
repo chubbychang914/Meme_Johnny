@@ -182,6 +182,7 @@ onUnmounted(() => {
       color: #FAE900;
       gap: 2vw;
       margin-top: 35vh;
+      background-color: blue;
 
       .name-letters {
         border: 10px double #FAE900;
@@ -223,6 +224,8 @@ onUnmounted(() => {
   }
 }
 
+
+// RWD ====================================
 #InfoLayer {
   .content {
     .name {
@@ -234,6 +237,12 @@ onUnmounted(() => {
         @include mobile-media {
           font-size: 5rem;
           border: none;
+
+          &:hover {
+            background-color: white;
+            color: black;
+            border: none;
+          }
         }
       }
     }
