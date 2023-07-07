@@ -223,6 +223,23 @@ onUnmounted(() => {
   }
 }
 
+#InfoLayer {
+  .content {
+    .name {
+      @include mobile-media {
+        gap: 0;
+      }
+
+      .name-letters {
+        @include mobile-media {
+          font-size: 5rem;
+          border: none;
+        }
+      }
+    }
+  }
+}
+
 .center {
   display: flex;
   justify-content: center;
