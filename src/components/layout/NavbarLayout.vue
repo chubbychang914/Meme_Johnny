@@ -51,7 +51,7 @@ const redirectTo = (url) => {
 // 元件
 #NavbarLayout {
   .nav {
-    width: 85%; // 設定navbar 內容寬度
+    width: 90%; // 設定navbar 內容寬度
     height: 80px;
     color: white;
     font-family: 'VT323', monospace;
