@@ -32,7 +32,8 @@ const meObj = {
   font-family: 'VT323', monospace;
   width: 100%;
   height: 100%;
-  background-color: rgb(255, 255, 224);
+  // background-color: rgb(255, 255, 224);
+  background-color: white;
   border-radius: 20px;
   border: 5px double black;
   user-select: none;
