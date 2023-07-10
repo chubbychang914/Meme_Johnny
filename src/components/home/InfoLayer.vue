@@ -182,7 +182,7 @@ onUnmounted(() => {
       color: #FAE900;
       gap: 2vw;
       margin-top: 35vh;
-      background-color: blue;
+      // background-color: blue;
 
       .name-letters {
         border: 10px double #FAE900;
