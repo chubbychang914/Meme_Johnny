@@ -1,6 +1,6 @@
 <template>
   <div id="InfoLayer" ref="InfoLayerRef">
-    <div class="planet" ref="planetRef"></div>
+    <!-- <div class="planet" ref="planetRef"></div> -->
     <div class="content">
       <div class="name" ref="nameRef">
         <div class="name-letters" ref="jRef">J</div>
@@ -12,9 +12,9 @@
       </div>
       <div class="job" ref="jobRef">Frontend Developer</div>
     </div>
-    <div class="panel" ref="panelRef">
-      <Panel />
-    </div>
+    <!-- <div class="panel" ref="panelRef"> -->
+    <!-- <Panel /> -->
+    <!-- </div> -->
   </div>
 </template>
 
@@ -147,9 +147,10 @@ onUnmounted(() => {
 #InfoLayer {
   width: 100%;
   height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
+  // display: flex;
+  // justify-content: center;
+  // align-items: flex-start;
+  @extend .center;
   font-family: 'VT323', monospace;
   user-select: none;
   overflow: hidden;
@@ -177,26 +178,30 @@ onUnmounted(() => {
   }
 
   .content {
-    .name {
-      @extend .center;
-      color: #FAE900;
-      gap: 2vw;
-      margin-top: 35vh;
-      // background-color: blue;
+    width: 65%;
+    height: 100%;
+    @extend .center;
+    flex-direction: column;
 
+    .name {
+      display: flex;
+      justify-content: space-around;
+      color: #FAE900;
+      background-color: blue;
+      width: 100%; // of content
       .name-letters {
         border: 10px double #FAE900;
         border-radius: 10px;
         background-color: black;
         padding: 10px 20px;
         font-size: 8rem;
-        transform: skewX(-10deg);
+        // transform: skewX(-10deg);
 
-        &:hover {
-          background-color: white;
-          color: black;
-          border: 10px double black;
-        }
+        // &:hover {
+        //   background-color: white;
+        //   color: black;
+        //   border: 10px double black;
+        // }
       }
     }
 
@@ -227,23 +232,14 @@ onUnmounted(() => {
 
 // RWD ====================================
 #InfoLayer {
-  .content {
-    .name {
-      @include mobile-media {
-        gap: 0;
-      }
+  @include mobile-media {
+    .content {
+      width: 100%;
 
       .name-letters {
-        @include mobile-media {
-          font-size: 5rem;
-          border: none;
-
-          &:hover {
-            background-color: white;
-            color: black;
-            border: none;
-          }
-        }
+        font-size: 3rem;
+        color: blue;
+        border: none;
       }
     }
   }
