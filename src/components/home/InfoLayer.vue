@@ -147,11 +147,12 @@ onUnmounted(() => {
 #InfoLayer {
   width: 100%;
   height: 100vh;
-  max-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  overflow: hidden !important;
+  font-family: 'VT323', monospace;
+  user-select: none;
+  overflow: hidden;
 
   .navbar {
     position: absolute;
@@ -175,28 +176,20 @@ onUnmounted(() => {
       -0.2em -0.2em 0.5em #ccc;
   }
 
-}
-
-// 元件
-#InfoLayer {
-  font-family: 'VT323', monospace;
-  user-select: none;
-  overflow: hidden;
-
   .content {
     .name {
       @extend .center;
       color: #FAE900;
       gap: 2vw;
       margin-top: 35vh;
-      // transform: rotate(-10deg);
+      // background-color: blue;
 
       .name-letters {
         border: 10px double #FAE900;
         border-radius: 10px;
         background-color: black;
         padding: 10px 20px;
-        font-size: 16vh;
+        font-size: 8rem;
         transform: skewX(-10deg);
 
         &:hover {
@@ -204,25 +197,15 @@ onUnmounted(() => {
           color: black;
           border: 10px double black;
         }
-
-        // rwd
-        @include mobile-media {
-          font-size: 10vh;
-          padding: 0;
-        }
       }
     }
 
     .job {
       @extend .center;
-      font-size: 7vh;
+      font-size: 3rem;
       margin-top: 3vh;
       color: white;
       // transform: skewX(-10deg) rotate(-10deg);
-
-      @include mobile-media {
-        font-size: 3vh;
-      }
     }
 
   }
@@ -241,6 +224,30 @@ onUnmounted(() => {
   }
 }
 
+
+// RWD ====================================
+#InfoLayer {
+  .content {
+    .name {
+      @include mobile-media {
+        gap: 0;
+      }
+
+      .name-letters {
+        @include mobile-media {
+          font-size: 5rem;
+          border: none;
+
+          &:hover {
+            background-color: white;
+            color: black;
+            border: none;
+          }
+        }
+      }
+    }
+  }
+}
 
 .center {
   display: flex;
