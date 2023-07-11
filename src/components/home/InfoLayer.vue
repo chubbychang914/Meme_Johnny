@@ -23,7 +23,7 @@ import { ref, onMounted, onUnmounted, getCurrentInstance } from "vue";
 import { onBeforeRouteLeave } from "vue-router";
 const { proxy: { $gsapPack } } = getCurrentInstance() // 要引入這包才能使用 gsap 的所有東西
 // components
-import Panel from "@/components/layout/Panel.vue";
+import Panel from "@/components/home/Panel.vue";
 // 跳轉
 
 // set refs 給 gsap 指定，因為每次渲染都會抓新的 element
