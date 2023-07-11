@@ -8,6 +8,7 @@
 
 <script setup>
 import { onMounted, onUnmounted, ref, getCurrentInstance } from 'vue';
+import { resolveComponent } from 'vue';
 import { RouterView } from 'vue-router'
 
 import NavbarLayout from './components/layout/NavbarLayout.vue';
@@ -22,9 +23,27 @@ const imgList = ref([])
 const isLoading = ref(true)
 // functions ==============================================
 const loadImages = async () => {
-  imgList.value = [
+  const importAll = (r) => r.keys().map((key) => r(key).default);
+  const images = importAll(require.context("./assets/img", false, /\.(png|jpe?g|svg)$/));
 
-  ]
+  const imagePromises = images.map((image) => {
+    return new Promise((resolve) => {
+      const img = new Image();
+      img.onload = resolve;
+      img.src = image;
+    });
+  });
+
+  await Promise.all(imagePromises);
+
+  imgList.value = images.map((image) => {
+    return {
+      src: image,
+      alt: 'Image description',
+    };
+  });
+
+  isLoading.value = false;
 }
 
 // gsap animations ========================================
@@ -32,7 +51,8 @@ let AnimateNavbarEnter = null;
 // hooks ==================================================
 onMounted(() => {
   // set and play gsap animations
-  AnimateNavbarEnter = $gsapPack.gsap.from(navbarLayoutRef.value.$el, {
+  // there is a slight problem here with .value.$el
+  AnimateNavbarEnter = $gsapPack.gsap.from(navbarLayoutRef.value, {
     yPercent: -100,
     duration: 1.2,
     ease: "power1.out",
@@ -42,6 +62,7 @@ onMounted(() => {
   AnimateNavbarEnter.play()
   // other functions
   consoleLog()
+  loadImages()
 })
 
 onUnmounted(() => {
