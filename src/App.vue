@@ -18,22 +18,30 @@ const { proxy: { $gsapPack } } = getCurrentInstance() // 要引入這包才能�
 const navbarLayoutRef = ref(null)
 
 // state ==================================================
-let isLoading = true;
+const imgList = ref([])
+const isLoading = ref(true)
+// functions ==============================================
+const loadImages = async () => {
+  imgList.value = [
 
+  ]
+}
+
+// gsap animations ========================================
 let AnimateNavbarEnter = null;
-
 // hooks ==================================================
 onMounted(() => {
-  consoleLog()
-  // set gsap animations
+  // set and play gsap animations
   AnimateNavbarEnter = $gsapPack.gsap.from(navbarLayoutRef.value.$el, {
     yPercent: -100,
     duration: 1.2,
     ease: "power1.out",
     paused: true
   })
-  // play animations
+
   AnimateNavbarEnter.play()
+  // other functions
+  consoleLog()
 })
 
 onUnmounted(() => {
