@@ -5,17 +5,16 @@
       <ProjectsTemplate :infoObj="SelectGoInfoObj" />
       <ProjectsTemplate :infoObj="ArcaneInfoObj" />
     </div>
-    <footer class="footer">
-      <FooterLayout />
-    </footer>
+    <FooterLayout />
   </div>
 </template >
 
 <script setup >
 import { ref, onMounted, getCurrentInstance } from 'vue';
-
+// components
 import ProjectsTemplate from '@/components/projects/ProjectsTemplate.vue';
 import FooterLayout from '@/components/layout/FooterLayout.vue';
+// images need to be imported
 import MemeImg from '@/assets/imgs/projects/PortFolioScreenShot.png';
 import SelectGoImg from '@/assets/imgs/projects/SelectGoScreenShot.png';
 import ArcaneImg from '@/assets/imgs/projects/ArcaneScreenShot.png'
@@ -90,18 +89,16 @@ onMounted(() => {
     display: flex;
     flex-direction: column;
     gap: 250px;
+  }
+}
 
-
-    @include mobile-media {
+// RWD ========================================
+#ProjectsView {
+  @include mobile-media {
+    .content {
       padding: 50px 0;
       gap: 30px;
     }
   }
 }
-
-
-.change {}
-
-// 元件
-#ProjectsView {}
 </style>

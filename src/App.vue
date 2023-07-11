@@ -1,17 +1,24 @@
 <template>
-  <NavbarLayout ref="navbarLayoutRef" />
-  <RouterView />
+  <LoadingPage v-if="isLoading" />
+  <div v-else>
+    <NavbarLayout ref="navbarLayoutRef" />
+    <RouterView />
+  </div>
 </template>
 
 <script setup>
 import { onMounted, onUnmounted, ref, getCurrentInstance } from 'vue';
 import { RouterView } from 'vue-router'
-import consoleLog from '@/tools/consoleLog.js'
 
 import NavbarLayout from './components/layout/NavbarLayout.vue';
+import LoadingPage from './components/layout/LoadingPage.vue';
+import consoleLog from '@/tools/consoleLog.js'
 
 const { proxy: { $gsapPack } } = getCurrentInstance() // 要引入這包才能使用 gsap 的所有東西
 const navbarLayoutRef = ref(null)
+
+// state ==================================================
+let isLoading = true;
 
 let AnimateNavbarEnter = null;
 
@@ -37,8 +44,5 @@ onUnmounted(() => {
 </script>
 
 <style lang="scss">
-#App {
-  margin: 0;
-  padding: 0;
-}
+#App {}
 </style>
