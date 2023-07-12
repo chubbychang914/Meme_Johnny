@@ -4,31 +4,67 @@
       <div class="logo" @click="redirectTo('/')">
         <img src="@/assets/svgs/JohnnyLogo.svg">
       </div>
-      <ul class="navbarContent">
-        <li class="link" @click="redirectTo('/')">
-          <span class="icon"><font-awesome-icon icon="fa-solid fa-house" /></span>
-          <span class="text">Home</span>
+      <!-- Web Nav Layout -->
+      <ul v-show="!mobile" class="navbarContent">
+        <li>
+          <router-link to="/" class="link">
+            <span class="icon"><font-awesome-icon icon="fa-solid fa-house" /></span>
+            <span class="text">Home</span>
+          </router-link>
         </li>
-        <li class="link" @click="redirectTo('/about')">
-          <span class="icon"><font-awesome-icon icon="fa-solid fa-user" /></span>
-          <span class="text">About</span>
+        <li>
+          <router-link to="/about" class="link">
+            <span class="icon"><font-awesome-icon icon="fa-solid fa-user" /></span>
+            <span class="text">About</span>
+          </router-link>
         </li>
-        <li class="link" @click="redirectTo('/projects')">
-          <span class="icon"><font-awesome-icon icon="fa-solid fa-layer-group" /></span>
-          <span class="text">Projects</span>
+        <li>
+          <router-link to="/projects" class="link">
+            <span class="icon"><font-awesome-icon icon="fa-solid fa-layer-group" /></span>
+            <span class="text">Projects</span>
+          </router-link>
         </li>
       </ul>
+      <!-- Mobile Nav Layout -->
+      <div v-show="mobile" class="mobile-nav-icon">
+        <font-awesome-icon icon="fa-solid fa-bars" />
+      </div>
+      <transition name="mobile-nav">
+        <ul v-show="mobile" class="dropdown">
+          <li>
+            <router-link to="/" class="link">
+              <span class="icon"><font-awesome-icon icon="fa-solid fa-house" /></span>
+              <span class="text">Home</span>
+            </router-link>
+          </li>
+          <li>
+            <router-link to="/about" class="link">
+              <span class="icon"><font-awesome-icon icon="fa-solid fa-user" /></span>
+              <span class="text">About</span>
+            </router-link>
+          </li>
+          <li>
+            <router-link to="/projects" class="link">
+              <span class="icon"><font-awesome-icon icon="fa-solid fa-layer-group" /></span>
+              <span class="text">Projects</span>
+            </router-link>
+          </li>
+        </ul>
+      </transition>
     </nav>
   </div>
 </template>
 
 <script setup>
+import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 const router = useRouter()
 
 const redirectTo = (url) => {
   router.push(url)
 }
+// set state ====================
+const mobile = ref(false)
 
 </script>
 
@@ -43,7 +79,7 @@ const redirectTo = (url) => {
   left: 0;
   width: 100%;
   @extend .center;
-  user-select: none;
+  user-select: none !important;
   background-color: #1B3B5B;
   // background-color: yellow;
 }
@@ -67,7 +103,8 @@ const redirectTo = (url) => {
       height: 80px;
       // background-color: red;
       @extend .center;
-      img{
+
+      img {
         width: 60%;
         height: auto;
         object-fit: contain;
@@ -91,6 +128,7 @@ const redirectTo = (url) => {
       flex-direction: column;
       position: relative;
       border-radius: 12px;
+      color: white;
 
       &:hover,
       &:active {
@@ -126,6 +164,14 @@ const redirectTo = (url) => {
 
   }
 }
+
+#NavbarLayout {
+  @include mobile-media {
+    top: calc(100vh - 80px);
+  }
+
+}
+
 
 .center {
   display: flex;
