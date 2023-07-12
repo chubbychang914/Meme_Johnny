@@ -63,8 +63,8 @@ const router = useRouter()
 const redirectTo = (url) => {
   router.push(url)
 }
-
-const mobile = ref(true)
+// set state ====================
+const mobile = ref(false)
 
 </script>
 
@@ -79,7 +79,7 @@ const mobile = ref(true)
   left: 0;
   width: 100%;
   @extend .center;
-  user-select: none;
+  user-select: none !important;
   background-color: #1B3B5B;
   // background-color: yellow;
 }
@@ -164,6 +164,14 @@ const mobile = ref(true)
 
   }
 }
+
+#NavbarLayout {
+  @include mobile-media {
+    top: calc(100vh - 80px);
+  }
+
+}
+
 
 .center {
   display: flex;
