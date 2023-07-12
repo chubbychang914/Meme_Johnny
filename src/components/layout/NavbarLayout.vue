@@ -6,17 +6,23 @@
       </div>
       <!-- Web Nav Layout -->
       <ul v-show="!mobile" class="navbarContent">
-        <li class="link" @click="redirectTo('/')">
-          <span class="icon"><font-awesome-icon icon="fa-solid fa-house" /></span>
-          <span class="text">Home</span>
+        <li>
+          <router-link to="/" class="link">
+            <span class="icon"><font-awesome-icon icon="fa-solid fa-house" /></span>
+            <span class="text">Home</span>
+          </router-link>
         </li>
-        <li class="link" @click="redirectTo('/about')">
-          <span class="icon"><font-awesome-icon icon="fa-solid fa-user" /></span>
-          <span class="text">About</span>
+        <li>
+          <router-link to="/about" class="link">
+            <span class="icon"><font-awesome-icon icon="fa-solid fa-user" /></span>
+            <span class="text">About</span>
+          </router-link>
         </li>
-        <li class="link" @click="redirectTo('/projects')">
-          <span class="icon"><font-awesome-icon icon="fa-solid fa-layer-group" /></span>
-          <span class="text">Projects</span>
+        <li>
+          <router-link to="/projects" class="link">
+            <span class="icon"><font-awesome-icon icon="fa-solid fa-layer-group" /></span>
+            <span class="text">Projects</span>
+          </router-link>
         </li>
       </ul>
       <!-- Mobile Nav Layout -->
@@ -25,17 +31,23 @@
       </div>
       <transition name="mobile-nav">
         <ul v-show="mobile" class="dropdown">
-          <li class="link" @click="redirectTo('/')">
-            <span class="icon"><font-awesome-icon icon="fa-solid fa-house" /></span>
-            <span class="text">Home</span>
+          <li>
+            <router-link to="/" class="link">
+              <span class="icon"><font-awesome-icon icon="fa-solid fa-house" /></span>
+              <span class="text">Home</span>
+            </router-link>
           </li>
-          <li class="link" @click="redirectTo('/about')">
-            <span class="icon"><font-awesome-icon icon="fa-solid fa-user" /></span>
-            <span class="text">About</span>
+          <li>
+            <router-link to="/about" class="link">
+              <span class="icon"><font-awesome-icon icon="fa-solid fa-user" /></span>
+              <span class="text">About</span>
+            </router-link>
           </li>
-          <li class="link" @click="redirectTo('/projects')">
-            <span class="icon"><font-awesome-icon icon="fa-solid fa-layer-group" /></span>
-            <span class="text">Projects</span>
+          <li>
+            <router-link to="/projects" class="link">
+              <span class="icon"><font-awesome-icon icon="fa-solid fa-layer-group" /></span>
+              <span class="text">Projects</span>
+            </router-link>
           </li>
         </ul>
       </transition>
@@ -52,7 +64,7 @@ const redirectTo = (url) => {
   router.push(url)
 }
 
-const mobile = ref(false)
+const mobile = ref(true)
 
 </script>
 
@@ -116,6 +128,7 @@ const mobile = ref(false)
       flex-direction: column;
       position: relative;
       border-radius: 12px;
+      color: white;
 
       &:hover,
       &:active {
