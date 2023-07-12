@@ -13,7 +13,7 @@
       <div class="job" ref="jobRef">Frontend Developer</div>
     </div>
     <!-- <div class="panel" ref="panelRef"> -->
-    <!-- <Panel /> -->
+    <Panel />
     <!-- </div> -->
   </div>
 </template>
@@ -147,9 +147,6 @@ onUnmounted(() => {
 #InfoLayer {
   width: 100%;
   height: 100vh;
-  // display: flex;
-  // justify-content: center;
-  // align-items: flex-start;
   @extend .center;
   font-family: 'VT323', monospace;
   user-select: none;
@@ -188,7 +185,8 @@ onUnmounted(() => {
       justify-content: space-around;
       color: #FAE900;
       background-color: blue;
-      width: 100%; // of content
+      width: 100%; // of .content
+
       .name-letters {
         border: 10px double #FAE900;
         border-radius: 10px;
@@ -210,21 +208,6 @@ onUnmounted(() => {
       font-size: 3rem;
       margin-top: 3vh;
       color: white;
-      // transform: skewX(-10deg) rotate(-10deg);
-    }
-
-  }
-
-  .panel {
-    position: absolute;
-    bottom: 1vh;
-    width: 60%;
-    height: 15vh;
-    // background-color: red;
-    @extend .center;
-
-    @include mobile-media {
-      width: 100%;
     }
   }
 }

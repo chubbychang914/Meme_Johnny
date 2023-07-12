@@ -19,9 +19,11 @@ const redirectUrl = (url) => {
 
 <style lang="scss" scoped>
 #Panel {
+  position: absolute;
+  bottom: 1vh;
+  width: 60%;
+  height: 15vh;
   display: flex;
-  width: 100%;
-  height: 100%;
   justify-content: space-around;
   gap: 10vw;
   align-items: center;
