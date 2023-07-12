@@ -12,8 +12,9 @@
       </div>
       <div class="job" ref="jobRef">Frontend Developer</div>
     </div>
+    <div class="monitor"></div>
     <div class="panel" ref="panelRef">
-      <Panel />
+      <Panel v-show="!mobile" />
     </div>
   </div>
 </template>
@@ -25,7 +26,7 @@ const { proxy: { $gsapPack } } = getCurrentInstance() // 要引入這包才能�
 // components
 import Panel from "@/components/home/Panel.vue";
 // 跳轉
-
+const mobile = ref(false);
 // set refs 給 gsap 指定，因為每次渲染都會抓新的 element
 // if not set in onMounted, the element will be bound differently everytime
 const InfoLayerRef = ref(null);
@@ -182,7 +183,7 @@ onUnmounted(() => {
       display: flex;
       justify-content: space-around;
       color: #FAE900;
-      background-color: blue;
+      // background-color: blue;
       width: 100%; // of .content
 
       .name-letters {
@@ -209,13 +210,20 @@ onUnmounted(() => {
     }
   }
 
+  .monitor {
+    position: absolute;
+    bottom: 15vh;
+    width: 300px;
+    height: 100px;
+    background-color: yellow;
+  }
+
   .panel {
     position: absolute;
-    bottom: 1vh;
+    bottom: 0;
     width: 60%;
     height: 15vh;
-    background-color: red;
-    @extend .center;
+    // background-color: red;
   }
 }
 
@@ -227,10 +235,18 @@ onUnmounted(() => {
       width: 100%;
 
       .name-letters {
-        font-size: 3rem;
-        color: blue;
-        border: none;
+        // font-size: 4rem !important;
+        padding: 0 !important;
+        gap: 0 !important;
+        border: none !important;
       }
+    }
+
+    .panel {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
   }
 }

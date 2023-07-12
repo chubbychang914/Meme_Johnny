@@ -166,9 +166,7 @@ const mobile = ref(false)
 }
 
 #NavbarLayout {
-  @include mobile-media {
-    top: calc(100vh - 80px);
-  }
+  @include mobile-media {}
 
 }
 
