@@ -32,16 +32,14 @@ const meObj = {
   font-family: 'VT323', monospace;
   width: 100%;
   height: 100%;
-  background-color: rgb(255, 255, 224);
+  // background-color: rgb(255, 255, 224);
+  background-color: white;
   border-radius: 20px;
   border: 5px double black;
   user-select: none;
   // ================================
   display: grid;
   grid-template-columns: 1fr 1.2fr;
-
-
-
 
   .self-portrait {
     width: auto;
@@ -54,7 +52,6 @@ const meObj = {
       height: 100%;
       object-fit: contain;
     }
-
   }
 
   .message {
@@ -83,16 +80,18 @@ const meObj = {
   // RWD ================================
   @include mobile-media {
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr 2fr;
+    grid-template-rows: 0fr 1fr;
 
     .self-portrait {
       background-color: white;
       border-radius: 15px;
+      display: none;
 
       img {
-        width: 100%;
-        height: auto;
+        width: auto;
+        height: 100%;
         object-fit: contain;
+        display: none;
       }
     }
   }

@@ -1,10 +1,6 @@
 <template>
   <div id="SkillsPanel">
-    <div class="title">
-      <!-- <font-awesome-icon icon="fa-solid fa-caret-left" /> -->
-      Skills & Tools
-      <!-- <font-awesome-icon icon="fa-solid fa-caret-right" /> -->
-    </div>
+    <div class="title">Skills & Tools</div>
     <div class="content">
       <ToolBox v-for="skill in skillList" :key="skill.title" :skillItem="skill" />
     </div>
@@ -14,17 +10,26 @@
 
 <script setup>
 import ToolBox from '@/components/about/ToolBox.vue';
+import vueImg from '@/assets/svgs/skills/vue.svg';
+import nuxtImg from '@/assets/svgs/skills/nuxt.svg';
+import reactImg from '@/assets/svgs/skills/react.svg';
+import laravelImg from '@/assets/svgs/skills/laravel.svg';
+import jsImg from '@/assets/svgs/skills/javascript.svg';
+import scssImg from '@/assets/svgs/skills/scss.svg';
+import mysqlImg from '@/assets/svgs/skills/mysql.svg';
+import gsapImg from '@/assets/svgs/skills/gsap.svg';
+import gitImg from '@/assets/svgs/skills/git.svg';
 
 const skillList = [
-  { title: "Vue", imgSrc: "src/assets/svgs/skills/vue.svg" },
-  { title: "Nuxt", imgSrc: "src/assets/svgs/skills/nuxt.svg" },
-  { title: "React", imgSrc: "src/assets/svgs/skills/react.svg" },
-  { title: "Laravel", imgSrc: "src/assets/svgs/skills/laravel.svg" },
-  { title: "JavaScript", imgSrc: "src/assets/svgs/skills/javascript.svg" },
-  { title: "SCSS", imgSrc: "src/assets/svgs/skills/scss.svg" },
-  { title: "MySql", imgSrc: "src/assets/svgs/skills/mysql.svg" },
-  { title: "GSAP", imgSrc: "src/assets/svgs/skills/gsap.svg" },
-  { title: "Git", imgSrc: "src/assets/svgs/skills/git.svg" }
+  { title: "Vue", imgSrc: vueImg },
+  { title: "Nuxt", imgSrc: nuxtImg },
+  { title: "React", imgSrc: reactImg },
+  { title: "Laravel", imgSrc: laravelImg },
+  { title: "JavaScript", imgSrc: jsImg },
+  { title: "SCSS", imgSrc: scssImg },
+  { title: "MySql", imgSrc: mysqlImg },
+  { title: "GSAP", imgSrc: gsapImg },
+  { title: "Git", imgSrc: gitImg }
 ]
 </script>
 
@@ -34,7 +39,8 @@ const skillList = [
   font-family: 'VT323', monospace;
   width: 100%;
   height: 100%;
-  background-color: rgb(255, 255, 224);
+  // background-color: rgb(255, 255, 224);
+  background-color: white;
   border-radius: 20px;
   border: 5px double black;
   user-select: none;
@@ -44,7 +50,6 @@ const skillList = [
 
   .title {
     height: 20%;
-    // background-color: red;
     font-size: 50px;
     @extend .center;
     gap: 15px;

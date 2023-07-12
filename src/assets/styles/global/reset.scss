@@ -36,7 +36,18 @@ figure {
 /* Set default font size and line height */
 body {
   font-size: 16px;
-  // line-height: 1.5;
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  body {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 767px) {
+  body {
+    font-size: 12px;
+  }
 }
 
 /* Reset anchor text decoration */

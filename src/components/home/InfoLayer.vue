@@ -23,7 +23,7 @@ import { ref, onMounted, onUnmounted, getCurrentInstance } from "vue";
 import { onBeforeRouteLeave } from "vue-router";
 const { proxy: { $gsapPack } } = getCurrentInstance() // 要引入這包才能使用 gsap 的所有東西
 // components
-import Panel from "@/components/layout/Panel.vue";
+import Panel from "@/components/home/Panel.vue";
 // 跳轉
 
 // set refs 給 gsap 指定，因為每次渲染都會抓新的 element
@@ -94,9 +94,7 @@ onMounted(() => {
     duration: 1,
     ease: "slowMo",
     paused: true
-  },
-    { y: 0 }
-  )
+  })
   AnimatePanelLeave = $gsapPack.gsap.fromTo(panelRef.value,
     { y: 0 },
     {
@@ -147,11 +145,10 @@ onUnmounted(() => {
 #InfoLayer {
   width: 100%;
   height: 100vh;
-  max-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  overflow: hidden !important;
+  @extend .center;
+  font-family: 'VT323', monospace;
+  user-select: none;
+  overflow: hidden;
 
   .navbar {
     position: absolute;
@@ -169,62 +166,47 @@ onUnmounted(() => {
     width: 100px;
     height: 100px;
     border-radius: 50%;
-    background-image: url("src/assets/imgs/home/moon-texture.jpg");
+    background-image: url("@/assets/imgs/home/moon-texture.jpg");
     box-shadow:
       inset -1.5em -1.5em 1.5em #000,
       -0.2em -0.2em 0.5em #ccc;
   }
 
-}
-
-// 元件
-#InfoLayer {
-  font-family: 'VT323', monospace;
-  user-select: none;
-  overflow: hidden;
-
   .content {
+    width: 65%;
+    height: 100%;
+    @extend .center;
+    flex-direction: column;
+
     .name {
-      @extend .center;
+      display: flex;
+      justify-content: space-around;
       color: #FAE900;
-      gap: 2vw;
-      margin-top: 35vh;
-      // transform: rotate(-10deg);
+      background-color: blue;
+      width: 100%; // of .content
 
       .name-letters {
         border: 10px double #FAE900;
         border-radius: 10px;
         background-color: black;
         padding: 10px 20px;
-        font-size: 16vh;
-        transform: skewX(-10deg);
+        font-size: 8rem;
+        // transform: skewX(-10deg);
 
-        &:hover {
-          background-color: white;
-          color: black;
-          border: 10px double black;
-        }
-
-        // rwd
-        @include mobile-media {
-          font-size: 10vh;
-          padding: 0;
-        }
+        // &:hover {
+        //   background-color: white;
+        //   color: black;
+        //   border: 10px double black;
+        // }
       }
     }
 
     .job {
       @extend .center;
-      font-size: 7vh;
+      font-size: 3rem;
       margin-top: 3vh;
       color: white;
-      // transform: skewX(-10deg) rotate(-10deg);
-
-      @include mobile-media {
-        font-size: 3vh;
-      }
     }
-
   }
 
   .panel {
@@ -232,15 +214,26 @@ onUnmounted(() => {
     bottom: 1vh;
     width: 60%;
     height: 15vh;
-    // background-color: red;
+    background-color: red;
     @extend .center;
-
-    @include mobile-media {
-      width: 100%;
-    }
   }
 }
 
+
+// RWD ====================================
+#InfoLayer {
+  @include mobile-media {
+    .content {
+      width: 100%;
+
+      .name-letters {
+        font-size: 3rem;
+        color: blue;
+        border: none;
+      }
+    }
+  }
+}
 
 .center {
   display: flex;
