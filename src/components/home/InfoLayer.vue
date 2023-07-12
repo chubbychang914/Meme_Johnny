@@ -1,6 +1,6 @@
 <template>
   <div id="InfoLayer" ref="InfoLayerRef">
-    <!-- <div class="planet" ref="planetRef"></div> -->
+    <div class="planet" ref="planetRef"></div>
     <div class="content">
       <div class="name" ref="nameRef">
         <div class="name-letters" ref="jRef">J</div>
@@ -12,9 +12,9 @@
       </div>
       <div class="job" ref="jobRef">Frontend Developer</div>
     </div>
-    <!-- <div class="panel" ref="panelRef"> -->
-    <Panel />
-    <!-- </div> -->
+    <div class="panel" ref="panelRef">
+      <Panel />
+    </div>
   </div>
 </template>
 
@@ -94,9 +94,7 @@ onMounted(() => {
     duration: 1,
     ease: "slowMo",
     paused: true
-  },
-    { y: 0 }
-  )
+  })
   AnimatePanelLeave = $gsapPack.gsap.fromTo(panelRef.value,
     { y: 0 },
     {
@@ -209,6 +207,15 @@ onUnmounted(() => {
       margin-top: 3vh;
       color: white;
     }
+  }
+
+  .panel {
+    position: absolute;
+    bottom: 1vh;
+    width: 60%;
+    height: 15vh;
+    background-color: red;
+    @extend .center;
   }
 }
 

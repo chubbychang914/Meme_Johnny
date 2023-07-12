@@ -4,7 +4,8 @@
       <div class="logo" @click="redirectTo('/')">
         <img src="@/assets/svgs/JohnnyLogo.svg">
       </div>
-      <ul class="navbarContent">
+      <!-- Web Nav Layout -->
+      <ul v-show="!mobile" class="navbarContent">
         <li class="link" @click="redirectTo('/')">
           <span class="icon"><font-awesome-icon icon="fa-solid fa-house" /></span>
           <span class="text">Home</span>
@@ -18,17 +19,40 @@
           <span class="text">Projects</span>
         </li>
       </ul>
+      <!-- Mobile Nav Layout -->
+      <div v-show="mobile" class="mobile-nav-icon">
+        <font-awesome-icon icon="fa-solid fa-bars" />
+      </div>
+      <transition name="mobile-nav">
+        <ul v-show="mobile" class="dropdown">
+          <li class="link" @click="redirectTo('/')">
+            <span class="icon"><font-awesome-icon icon="fa-solid fa-house" /></span>
+            <span class="text">Home</span>
+          </li>
+          <li class="link" @click="redirectTo('/about')">
+            <span class="icon"><font-awesome-icon icon="fa-solid fa-user" /></span>
+            <span class="text">About</span>
+          </li>
+          <li class="link" @click="redirectTo('/projects')">
+            <span class="icon"><font-awesome-icon icon="fa-solid fa-layer-group" /></span>
+            <span class="text">Projects</span>
+          </li>
+        </ul>
+      </transition>
     </nav>
   </div>
 </template>
 
 <script setup>
+import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 const router = useRouter()
 
 const redirectTo = (url) => {
   router.push(url)
 }
+
+const mobile = ref(false)
 
 </script>
 
@@ -67,7 +91,8 @@ const redirectTo = (url) => {
       height: 80px;
       // background-color: red;
       @extend .center;
-      img{
+
+      img {
         width: 60%;
         height: auto;
         object-fit: contain;
