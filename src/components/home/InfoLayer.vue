@@ -12,9 +12,10 @@
       </div>
       <div class="job" ref="jobRef">Frontend Developer</div>
     </div>
-    <div class="monitor"></div>
+    <!-- <div class="monitor"></div> -->
     <div class="panel" ref="panelRef">
       <Panel v-show="!mobile" />
+      <MobilePanel v-show="mobile" />
     </div>
   </div>
 </template>
@@ -25,8 +26,9 @@ import { onBeforeRouteLeave } from "vue-router";
 const { proxy: { $gsapPack } } = getCurrentInstance() // 要引入這包才能使用 gsap 的所有東西
 // components
 import Panel from "@/components/home/Panel.vue";
+import MobilePanel from "@/components/home/MobilePanel.vue";
 // 跳轉
-const mobile = ref(false);
+const mobile = ref(true);
 // set refs 給 gsap 指定，因為每次渲染都會抓新的 element
 // if not set in onMounted, the element will be bound differently everytime
 const InfoLayerRef = ref(null);
@@ -240,10 +242,14 @@ onUnmounted(() => {
         gap: 0 !important;
         border: none !important;
       }
+
+      .job {
+        font-size: 2rem;
+      }
     }
 
     .panel {
-      width: 100%;
+      width: 90%;
       display: flex;
       justify-content: center;
       align-items: center;
