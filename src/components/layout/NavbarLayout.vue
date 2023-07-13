@@ -26,7 +26,7 @@
         </li>
       </ul>
       <!-- Mobile Nav Layout -->
-      <div v-show="mobile" class="mobile-nav-icon">
+      <div v-show="mobile" class="mobile-nav-icon" @click="toggleMobileNav">
         <font-awesome-icon icon="fa-solid fa-bars" />
       </div>
       <transition name="mobile-nav">
@@ -64,7 +64,14 @@ const redirectTo = (url) => {
   router.push(url)
 }
 // set state ====================
+const screenWidth = ref(null)
 const mobile = ref(false)
+
+// functions ====================
+const toggleMobileNav = () => {
+  mobile.value = !mobile.value
+}
+
 
 </script>
 
