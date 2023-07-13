@@ -41,5 +41,7 @@ onUnmounted(() => {
 </script>
 
 <style lang="scss">
-#App {}
+#App {
+  min-width: 767px;
+}
 </style>
