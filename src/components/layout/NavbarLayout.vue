@@ -27,13 +27,19 @@
       </ul>
       <!-- Mobile Nav Layout -->
       <div v-show="mobile" class="mobile-nav-icon" @click="toggleMobileNav">
-        <font-awesome-icon icon="fa-solid fa-bars" v-if="!openMobileNav" />
+        <font-awesome-icon icon="fa-solid fa-bars" class="fa-bars" />
       </div>
       <transition name="mobile-nav">
         <ul v-show="openMobileNav" class="dropdown">
-          <li><router-link to="/" class="mobile-link">Home</router-link></li>
-          <li><router-link to="/about" class="mobile-link">About</router-link></li>
-          <li><router-link to="/projects" class="mobile-link">Projects</router-link></li>
+          <li><router-link to="/" class="mobile-link">
+              <div class="link-text" @click="openMobileNav.value === false">Home</div>
+            </router-link></li>
+          <li><router-link to="/about" class="mobile-link">
+              <div class="link-text">About</div>
+            </router-link></li>
+          <li><router-link to="/projects" class="mobile-link">
+              <div class="link-text">Projects</div>
+            </router-link></li>
         </ul>
       </transition>
     </nav>
@@ -66,11 +72,6 @@ const toggleMobileNav = () => {
   openMobileNav.value = !openMobileNav.value
 }
 
-const closeMobileNav = () => {
-  if (openMobileNav.value) {
-    openMobileNav.value = false
-  }
-}
 // hooks ====================
 onMounted(() => {
   setMobile()
@@ -177,10 +178,37 @@ onMounted(() => {
 }
 
 #NavbarLayout {
-  @include mobile-media {}
+  .mobile-nav-icon {
+    // background-color: black;
+    @extend .center;
 
+    .fa-bars {
+      color: white;
+      font-size: 1.5rem;
+    }
+  }
+
+  .dropdown {
+    background-color: blue;
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100vw !important;
+    @extend .center;
+    flex-direction: column;
+
+    .link-text {
+      box-sizing: border-box;
+      background-color: green;
+      padding: 20px;
+      width: 100vw;
+
+      &:hover {
+        background-color: red;
+      }
+    }
+  }
 }
-
 
 .center {
   display: flex;
