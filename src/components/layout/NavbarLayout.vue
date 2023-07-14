@@ -30,7 +30,7 @@
         <font-awesome-icon icon="fa-solid fa-bars" />
       </div>
       <transition name="mobile-nav">
-        <ul v-show="mobile" class="dropdown">
+        <ul v-show="openMobileNav" class="dropdown">
           <li>
             <router-link to="/" class="link">
               <span class="icon"><font-awesome-icon icon="fa-solid fa-house" /></span>
@@ -56,7 +56,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 const router = useRouter()
 
@@ -64,14 +64,25 @@ const redirectTo = (url) => {
   router.push(url)
 }
 // set state ====================
-const screenWidth = ref(null)
 const mobile = ref(false)
+const openMobileNav = ref(false)
 
+const setMobile = () => {
+  if (window.innerWidth < 1024) {
+    mobile.value = true
+  } else {
+    mobile.value = false
+  }
+}
 // functions ====================
 const toggleMobileNav = () => {
-  mobile.value = !mobile.value
+  openMobileNav.value = !openMobileNav.value
 }
 
+onMounted(() => {
+  setMobile()
+  window.addEventListener('resize', setMobile)
+})
 
 </script>
 
