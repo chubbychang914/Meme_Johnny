@@ -27,28 +27,13 @@
       </ul>
       <!-- Mobile Nav Layout -->
       <div v-show="mobile" class="mobile-nav-icon" @click="toggleMobileNav">
-        <font-awesome-icon icon="fa-solid fa-bars" />
+        <font-awesome-icon icon="fa-solid fa-bars" v-if="!openMobileNav" />
       </div>
       <transition name="mobile-nav">
         <ul v-show="openMobileNav" class="dropdown">
-          <li>
-            <router-link to="/" class="link">
-              <span class="icon"><font-awesome-icon icon="fa-solid fa-house" /></span>
-              <span class="text">Home</span>
-            </router-link>
-          </li>
-          <li>
-            <router-link to="/about" class="link">
-              <span class="icon"><font-awesome-icon icon="fa-solid fa-user" /></span>
-              <span class="text">About</span>
-            </router-link>
-          </li>
-          <li>
-            <router-link to="/projects" class="link">
-              <span class="icon"><font-awesome-icon icon="fa-solid fa-layer-group" /></span>
-              <span class="text">Projects</span>
-            </router-link>
-          </li>
+          <li><router-link to="/" class="mobile-link">Home</router-link></li>
+          <li><router-link to="/about" class="mobile-link">About</router-link></li>
+          <li><router-link to="/projects" class="mobile-link">Projects</router-link></li>
         </ul>
       </transition>
     </nav>
@@ -58,6 +43,7 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
+
 const router = useRouter()
 
 const redirectTo = (url) => {
@@ -72,6 +58,7 @@ const setMobile = () => {
     mobile.value = true
   } else {
     mobile.value = false
+    openMobileNav.value = false
   }
 }
 // functions ====================
@@ -79,6 +66,12 @@ const toggleMobileNav = () => {
   openMobileNav.value = !openMobileNav.value
 }
 
+const closeMobileNav = () => {
+  if (openMobileNav.value) {
+    openMobileNav.value = false
+  }
+}
+// hooks ====================
 onMounted(() => {
   setMobile()
   window.addEventListener('resize', setMobile)
