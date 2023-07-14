@@ -23,12 +23,23 @@
 <script setup>
 import { ref, onMounted, onUnmounted, getCurrentInstance } from "vue";
 import { onBeforeRouteLeave } from "vue-router";
+import debounce from 'lodash/debounce';
 const { proxy: { $gsapPack } } = getCurrentInstance() // 要引入這包才能使用 gsap 的所有東西
 // components
 import Panel from "@/components/home/Panel.vue";
 import MobilePanel from "@/components/home/MobilePanel.vue";
-// 跳轉
-const mobile = ref(true);
+
+// set mobile ref to false when screenwidth < 768px
+const mobile = ref(false);
+const setMobile = debounce(() => {
+  if (window.innerWidth < 1024) {
+    mobile.value = true;
+  } else {
+    mobile.value = false;
+  }
+}, 100)
+window.addEventListener("resize", setMobile);
+
 // set refs 給 gsap 指定，因為每次渲染都會抓新的 element
 // if not set in onMounted, the element will be bound differently everytime
 const InfoLayerRef = ref(null);
@@ -123,6 +134,7 @@ onMounted(() => {
 
   // ►►► 執行
   PageEnterAnimationFlow.play()
+  setMobile()
 })
 
 onBeforeRouteLeave(async (to, from, next) => {
