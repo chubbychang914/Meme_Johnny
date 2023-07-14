@@ -27,28 +27,19 @@
       </ul>
       <!-- Mobile Nav Layout -->
       <div v-show="mobile" class="mobile-nav-icon" @click="toggleMobileNav">
-        <font-awesome-icon icon="fa-solid fa-bars" />
+        <font-awesome-icon icon="fa-solid fa-bars" class="fa-bars" />
       </div>
       <transition name="mobile-nav">
-        <ul v-show="mobile" class="dropdown">
-          <li>
-            <router-link to="/" class="link">
-              <span class="icon"><font-awesome-icon icon="fa-solid fa-house" /></span>
-              <span class="text">Home</span>
-            </router-link>
-          </li>
-          <li>
-            <router-link to="/about" class="link">
-              <span class="icon"><font-awesome-icon icon="fa-solid fa-user" /></span>
-              <span class="text">About</span>
-            </router-link>
-          </li>
-          <li>
-            <router-link to="/projects" class="link">
-              <span class="icon"><font-awesome-icon icon="fa-solid fa-layer-group" /></span>
-              <span class="text">Projects</span>
-            </router-link>
-          </li>
+        <ul v-show="openMobileNav" class="dropdown">
+          <li><router-link to="/" class="mobile-link">
+              <div class="link-text" @click="openMobileNav.value === false">Home</div>
+            </router-link></li>
+          <li><router-link to="/about" class="mobile-link">
+              <div class="link-text">About</div>
+            </router-link></li>
+          <li><router-link to="/projects" class="mobile-link">
+              <div class="link-text">Projects</div>
+            </router-link></li>
         </ul>
       </transition>
     </nav>
@@ -56,22 +47,36 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
+
 const router = useRouter()
 
 const redirectTo = (url) => {
   router.push(url)
 }
 // set state ====================
-const screenWidth = ref(null)
 const mobile = ref(false)
+const openMobileNav = ref(false)
 
+const setMobile = () => {
+  if (window.innerWidth < 1024) {
+    mobile.value = true
+  } else {
+    mobile.value = false
+    openMobileNav.value = false
+  }
+}
 // functions ====================
 const toggleMobileNav = () => {
-  mobile.value = !mobile.value
+  openMobileNav.value = !openMobileNav.value
 }
 
+// hooks ====================
+onMounted(() => {
+  setMobile()
+  window.addEventListener('resize', setMobile)
+})
 
 </script>
 
@@ -173,10 +178,37 @@ const toggleMobileNav = () => {
 }
 
 #NavbarLayout {
-  @include mobile-media {}
+  .mobile-nav-icon {
+    // background-color: black;
+    @extend .center;
 
+    .fa-bars {
+      color: white;
+      font-size: 1.5rem;
+    }
+  }
+
+  .dropdown {
+    background-color: blue;
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100vw !important;
+    @extend .center;
+    flex-direction: column;
+
+    .link-text {
+      box-sizing: border-box;
+      background-color: green;
+      padding: 20px;
+      width: 100vw;
+
+      &:hover {
+        background-color: red;
+      }
+    }
+  }
 }
-
 
 .center {
   display: flex;

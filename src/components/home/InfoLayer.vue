@@ -31,14 +31,13 @@ import MobilePanel from "@/components/home/MobilePanel.vue";
 
 // set mobile ref to false when screenwidth < 768px
 const mobile = ref(false);
-const setMobile = debounce(() => {
+const setMobile = () => {
   if (window.innerWidth < 1024) {
     mobile.value = true;
   } else {
     mobile.value = false;
   }
-}, 100)
-window.addEventListener("resize", setMobile);
+}
 
 // set refs 給 gsap 指定，因為每次渲染都會抓新的 element
 // if not set in onMounted, the element will be bound differently everytime
@@ -135,6 +134,7 @@ onMounted(() => {
   // ►►► 執行
   PageEnterAnimationFlow.play()
   setMobile()
+  window.addEventListener("resize", setMobile);
 })
 
 onBeforeRouteLeave(async (to, from, next) => {
