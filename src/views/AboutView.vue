@@ -7,7 +7,21 @@
 
 <script setup>
 import { onMounted, getCurrentInstance, ref } from 'vue';
-
+// only show when imgs are done loading
+const images = [
+  "@/assets/imgs/about/aboutBg",
+]
+let count = 0
+for (const img of images) {
+  const image = new Image()
+  image.onload = () => {
+    count++
+    if (count === images.length) {
+      document.getElementById("AboutView").style.visibility = "visible"
+    }
+  }
+  image.src = img
+}
 // components ========================
 import ScrollComponent from '@/components/about/ScrollComponent.vue';
 const { proxy: { $gsapPack } } = getCurrentInstance();
