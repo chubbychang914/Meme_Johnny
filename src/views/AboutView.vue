@@ -31,7 +31,7 @@ onMounted(() => {
 <style lang="scss" scoped>
 #AboutView {
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
   @extend .center;
 
   background-image: url("@/assets/imgs/about/aboutBg.jpeg");
