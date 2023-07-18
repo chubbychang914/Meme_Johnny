@@ -1,3 +1,45 @@
+<script setup>
+import { ref, onMounted } from 'vue';
+import { useRouter } from 'vue-router';
+
+const router = useRouter()
+
+const redirectTo = (url) => {
+  router.push(url)
+}
+// set state ====================
+const mobile = ref(false)
+const openMobileNav = ref(false)
+
+const menuItemsList = [
+  { to: '/', text: 'Home' },
+  { to: '/about', text: 'About' },
+  { to: '/projects', text: 'Projects' }
+]
+
+const setMobile = () => {
+  if (window.innerWidth < 1024) {
+    mobile.value = true
+  } else {
+    mobile.value = false
+    openMobileNav.value = false
+  }
+}
+
+
+// functions ====================
+const toggleMobileNav = () => {
+  openMobileNav.value = !openMobileNav.value
+}
+
+// hooks ====================
+onMounted(() => {
+  setMobile()
+  window.addEventListener('resize', setMobile)
+})
+
+</script>
+
 <template>
   <div id="NavbarLayout">
     <nav class="nav">
@@ -27,58 +69,19 @@
       </ul>
       <!-- Mobile Nav Layout -->
       <div v-show="mobile" class="mobile-nav-icon" @click="toggleMobileNav">
-        <font-awesome-icon icon="fa-solid fa-bars" class="fa-bars" />
+        <font-awesome-icon icon="fa-solid fa-bars" class="fa" v-if="!openMobileNav" />
+        <font-awesome-icon icon="fa-solid fa-x" class="fa" v-else />
       </div>
-      <transition name="mobile-nav">
-        <ul v-show="openMobileNav" class="dropdown">
-          <li><router-link to="/" class="mobile-link">
-              <div class="link-text" @click="openMobileNav.value === false">Home</div>
-            </router-link></li>
-          <li><router-link to="/about" class="mobile-link">
-              <div class="link-text">About</div>
-            </router-link></li>
-          <li><router-link to="/projects" class="mobile-link">
-              <div class="link-text">Projects</div>
-            </router-link></li>
-        </ul>
-      </transition>
+      <transition-group name="nav-stagger" tag="ul" v-show="openMobileNav" class="dropdown">
+        <li v-for="(item, index) in menuItemsList" :key="index" class="stagger-item">
+          <router-link :to="item.to" class="mobile-link">
+            <div class="link-text" @click="openMobileNav = false">{{ item.text }}</div>
+          </router-link>
+        </li>
+      </transition-group>
     </nav>
   </div>
 </template>
-
-<script setup>
-import { ref, onMounted } from 'vue';
-import { useRouter } from 'vue-router';
-
-const router = useRouter()
-
-const redirectTo = (url) => {
-  router.push(url)
-}
-// set state ====================
-const mobile = ref(false)
-const openMobileNav = ref(false)
-
-const setMobile = () => {
-  if (window.innerWidth < 1024) {
-    mobile.value = true
-  } else {
-    mobile.value = false
-    openMobileNav.value = false
-  }
-}
-// functions ====================
-const toggleMobileNav = () => {
-  openMobileNav.value = !openMobileNav.value
-}
-
-// hooks ====================
-onMounted(() => {
-  setMobile()
-  window.addEventListener('resize', setMobile)
-})
-
-</script>
 
 <style lang="scss" scoped>
 // 排版
@@ -182,14 +185,15 @@ onMounted(() => {
     // background-color: black;
     @extend .center;
 
-    .fa-bars {
+    .fa {
       color: white;
       font-size: 1.5rem;
+      transition: rotate(360deg);
     }
   }
 
   .dropdown {
-    background-color: blue;
+    // background-color: blue;
     position: absolute;
     top: 80px;
     left: 0;
@@ -214,5 +218,4 @@ onMounted(() => {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-</style>
+}</style>

@@ -12,23 +12,6 @@
 
 <script setup>
 import InfoLayer from "@/components/home/InfoLayer.vue"
-// show components only when imgs are finished loading
-const images = [
-  "@/assets/imgs/home/moon-texture.jpg",
-  "@/assets/svgs/spaceship2.svg",
-  "@/assets/svgs/space.svg",
-]
-let count = 0
-for (const img of images) {
-  const image = new Image()
-  image.onload = () => {
-    count++
-    if (count === images.length) {
-      document.getElementById("HomeView").style.visibility = "visible"
-    }
-  }
-  image.src = img
-}
 </script>
 
 <style lang="scss" scoped>
