@@ -27,9 +27,10 @@
       </ul>
       <!-- Mobile Nav Layout -->
       <div v-show="mobile" class="mobile-nav-icon" @click="toggleMobileNav">
-        <font-awesome-icon icon="fa-solid fa-bars" class="fa-bars" />
+        <font-awesome-icon icon="fa-solid fa-bars" class="fa" v-if="!openMobileNav" />
+        <font-awesome-icon icon="fa-solid fa-x" class="fa" v-else />
       </div>
-      <transition name="mobile-nav">
+      <transition name="nav-drop">
         <ul v-show="openMobileNav" class="dropdown">
           <li><router-link to="/" class="mobile-link">
               <div class="link-text" @click="openMobileNav.value === false">Home</div>
@@ -182,9 +183,10 @@ onMounted(() => {
     // background-color: black;
     @extend .center;
 
-    .fa-bars {
+    .fa {
       color: white;
       font-size: 1.5rem;
+      transition: rotate(360deg);
     }
   }
 
@@ -208,6 +210,19 @@ onMounted(() => {
       }
     }
   }
+
+  // make nav-drop transition show one by one with a 1 sec delay between each
+  .nav-drop-enter-from {}
+
+  .nav-drop-enter-active {}
+
+  .nav-drop-enter-to {}
+
+  .nav-drop-leave-from {}
+
+  .nav-drop-leave-active {}
+
+  .nav-drop-leave-to {}
 }
 
 .center {
