@@ -115,6 +115,9 @@ const handleTouchEnd = (e) => {
       <button class="button left" @click="goLeft">
         <font-awesome-icon class="fa-icon" icon="fa-solid fa-caret-left" />
       </button>
+      <button class="mobile-btn" @click="goRight">
+        <font-awesome-icon class="fa-icon" icon="fa-solid fa-caret-right" />
+      </button>
     </div>
   </div>
 </template>
@@ -162,21 +165,43 @@ const handleTouchEnd = (e) => {
   &:active {
     scale: 0.95;
   }
+
+  @include mobile-media {
+    display: none !important;
+  }
 }
 
 .button.right {
   right: 50px;
   top: 50%;
-
-  @include mobile-media {
-    right: 50%;
-    bottom: 0;
-  }
 }
 
 .button.left {
   left: 50px;
   top: 50%;
+}
+
+.mobile-btn {
+  display: none;
+
+  @include mobile-media {
+    display: block;
+    position: absolute;
+    left: 50%;
+    bottom: 4vh;
+    transform: translateX(-50%);
+
+    width: 25%;
+    padding: 10px 0;
+    font-size: 30px;
+    border-radius: 10px;
+    background: beige;
+    color: black;
+
+    &:active {
+      scale: 0.97;
+    }
+  }
 }
 
 // transition animations ========================
