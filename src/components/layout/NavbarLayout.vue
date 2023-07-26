@@ -1,3 +1,45 @@
+<script setup>
+import { ref, onMounted } from 'vue';
+import { useRouter } from 'vue-router';
+
+const router = useRouter()
+
+const redirectTo = (url) => {
+  router.push(url)
+}
+// set state ====================
+const mobile = ref(false)
+const openMobileNav = ref(false)
+
+const menuItemsList = [
+  { to: '/', text: 'Home' },
+  { to: '/about', text: 'About' },
+  { to: '/projects', text: 'Projects' }
+]
+
+const setMobile = () => {
+  if (window.innerWidth < 1024) {
+    mobile.value = true
+  } else {
+    mobile.value = false
+    openMobileNav.value = false
+  }
+}
+
+
+// functions ====================
+const toggleMobileNav = () => {
+  openMobileNav.value = !openMobileNav.value
+}
+
+// hooks ====================
+onMounted(() => {
+  setMobile()
+  window.addEventListener('resize', setMobile)
+})
+
+</script>
+
 <template>
   <div id="NavbarLayout">
     <nav class="nav">
@@ -26,47 +68,20 @@
         </li>
       </ul>
       <!-- Mobile Nav Layout -->
-      <div v-show="mobile" class="mobile-nav-icon">
-        <font-awesome-icon icon="fa-solid fa-bars" />
+      <div v-show="mobile" class="mobile-nav-icon" @click="toggleMobileNav">
+        <font-awesome-icon icon="fa-solid fa-bars" class="fa" v-if="!openMobileNav" />
+        <font-awesome-icon icon="fa-solid fa-x" class="fa" v-else />
       </div>
-      <transition name="mobile-nav">
-        <ul v-show="mobile" class="dropdown">
-          <li>
-            <router-link to="/" class="link">
-              <span class="icon"><font-awesome-icon icon="fa-solid fa-house" /></span>
-              <span class="text">Home</span>
-            </router-link>
-          </li>
-          <li>
-            <router-link to="/about" class="link">
-              <span class="icon"><font-awesome-icon icon="fa-solid fa-user" /></span>
-              <span class="text">About</span>
-            </router-link>
-          </li>
-          <li>
-            <router-link to="/projects" class="link">
-              <span class="icon"><font-awesome-icon icon="fa-solid fa-layer-group" /></span>
-              <span class="text">Projects</span>
-            </router-link>
-          </li>
-        </ul>
-      </transition>
+      <transition-group name="nav-stagger" tag="ul" v-show="openMobileNav" class="dropdown">
+        <li v-for="(item, index) in menuItemsList" :key="index" class="stagger-item">
+          <router-link :to="item.to" class="mobile-link">
+            <div class="link-text" @click="openMobileNav = false">{{ item.text.toUpperCase() }}</div>
+          </router-link>
+        </li>
+      </transition-group>
     </nav>
   </div>
 </template>
-
-<script setup>
-import { ref } from 'vue';
-import { useRouter } from 'vue-router';
-const router = useRouter()
-
-const redirectTo = (url) => {
-  router.push(url)
-}
-
-const mobile = ref(true)
-
-</script>
 
 <style lang="scss" scoped>
 // 排版
@@ -79,9 +94,8 @@ const mobile = ref(true)
   left: 0;
   width: 100%;
   @extend .center;
-  user-select: none;
+  user-select: none !important;
   background-color: #1B3B5B;
-  // background-color: yellow;
 }
 
 // 元件
@@ -101,7 +115,6 @@ const mobile = ref(true)
     .logo {
       width: 80px;
       height: 80px;
-      // background-color: red;
       @extend .center;
 
       img {
@@ -162,6 +175,43 @@ const mobile = ref(true)
       }
     }
 
+  }
+}
+
+#NavbarLayout {
+  .mobile-nav-icon {
+    @extend .center;
+
+    .fa {
+      color: white;
+      font-size: 1.5rem;
+      transition: rotate(360deg);
+    }
+  }
+
+  .dropdown {
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100vw !important;
+    @extend .center;
+    flex-direction: column;
+
+    .link-text {
+      box-sizing: border-box;
+      background-color: #102336;
+      border-top: 1px solid black;
+      font-size: large;
+      color: white;
+      padding: 20px;
+      width: 100vw;
+      @extend .center;
+
+      &:hover {
+        background-color: #57ADBF;
+
+      }
+    }
   }
 }
 

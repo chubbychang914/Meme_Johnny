@@ -1,3 +1,7 @@
+<script setup>
+import InfoLayer from "@/components/home/InfoLayer.vue"
+</script>
+
 <template>
   <div id="HomeView">
     <div class="planet-container">
@@ -9,11 +13,6 @@
     </div>
   </div>
 </template>
-
-<script setup>
-import InfoLayer from "@/components/home/InfoLayer.vue"
-
-</script>
 
 <style lang="scss" scoped>
 #HomeView {

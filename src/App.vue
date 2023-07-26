@@ -20,7 +20,6 @@ let AnimateNavbarEnter = null;
 // hooks ==================================================
 onMounted(() => {
   // set and play gsap animations
-  // there is a slight problem here with .value.$el
   AnimateNavbarEnter = $gsapPack.gsap.from(navbarLayoutRef.value.$el, {
     yPercent: -100,
     duration: 1.2,
@@ -41,5 +40,7 @@ onUnmounted(() => {
 </script>
 
 <style lang="scss">
-#App {}
+#App {
+  min-width: 767px;
+}
 </style>
