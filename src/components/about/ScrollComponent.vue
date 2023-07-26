@@ -1,24 +1,3 @@
-<template>
-  <div id="ScrollComponent">
-    <div class="carousel-base">
-      <transition-group class="carousel-container" tag="div" :name="transitionName">
-        <div class="carousel-box" v-for="(item, index) of panelList" :key="item.title"
-          v-show="index === showPanel" @touchstart="handleTouchStart" @touchmove="handleTouchMove"
-          @touchend="handleTouchEnd">
-          <PanelTemplate>
-            <MePanel v-if="item.title === 'me'" />
-            <SkillsPanel v-if="item.title === 'skills'" />
-            <JobPanel :infoObj="ispanInfoObj" v-if="item.title === 'iSpan'" />
-            <JobPanel :infoObj="tyrInfoObj" v-if="item.title === 'tyr'" />
-          </PanelTemplate>
-        </div>
-      </transition-group>
-      <button class="button right" @click="goRight">Go Right</button>
-      <button class="button left" @click="goLeft">Go Left</button>
-    </div>
-  </div>
-</template>
-
 <script setup>
 import { ref } from 'vue';
 import debounce from 'lodash/debounce';
@@ -30,6 +9,7 @@ import JobPanel from '@/components/about/panels/JobPanel.vue';
 
 import tyrImg from '@/assets/svgs/tyrLogo.svg';
 import ispanImg from '@/assets/svgs/ispanLogo.svg';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 // state
 let transitionName = ref('')
 let showPanel = ref(0)
@@ -114,6 +94,30 @@ const handleTouchEnd = (e) => {
 }
 </script>
 
+<template>
+  <div id="ScrollComponent">
+    <div class="carousel-base">
+      <transition-group class="carousel-container" tag="div" :name="transitionName">
+        <div class="carousel-box" v-for="(item, index) of panelList" :key="item.title"
+          v-show="index === showPanel" @touchstart="handleTouchStart" @touchmove="handleTouchMove"
+          @touchend="handleTouchEnd">
+          <PanelTemplate>
+            <MePanel v-if="item.title === 'me'" />
+            <SkillsPanel v-if="item.title === 'skills'" />
+            <JobPanel :infoObj="ispanInfoObj" v-if="item.title === 'iSpan'" />
+            <JobPanel :infoObj="tyrInfoObj" v-if="item.title === 'tyr'" />
+          </PanelTemplate>
+        </div>
+      </transition-group>
+      <button class="button right" @click="goRight">
+        <font-awesome-icon class="fa-icon" icon="fa-solid fa-caret-right" />
+      </button>
+      <button class="button left" @click="goLeft">
+        <font-awesome-icon class="fa-icon" icon="fa-solid fa-caret-left" />
+      </button>
+    </div>
+  </div>
+</template>
 
 <style lang="scss" scoped>
 #ScrollComponent {
@@ -140,30 +144,40 @@ const handleTouchEnd = (e) => {
 
 .button {
   position: absolute;
+  width: 50px;
+  height: 50px;
   padding: 10px 20px;
-  border: 1px solid black;
   background-color: white;
+  font-size: 50px;
+  border: 2px double black;
+  border-radius: 10px;
+  color: black;
+  @extend .center;
 
   &:hover {
     background-color: black;
     color: white;
   }
 
-  @include mobile-media {
-    display: none;
+  &:active {
+    scale: 0.95;
   }
 }
 
 .button.right {
-  right: 0;
+  right: 50px;
   top: 50%;
+
+  @include mobile-media {
+    right: 50%;
+    bottom: 0;
+  }
 }
 
 .button.left {
-  left: 0;
+  left: 50px;
   top: 50%;
 }
-
 
 // transition animations ========================
 .rightIn-enter-from {

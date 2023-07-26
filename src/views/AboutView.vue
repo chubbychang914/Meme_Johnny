@@ -1,15 +1,6 @@
-<template>
-  <div id="AboutView" ref="aboutViewRef">
-    <ScrollComponent />
-  </div>
-</template>
-
-
 <script setup>
 import { onMounted, getCurrentInstance, ref } from 'vue';
-// components ========================
 import ScrollComponent from '@/components/about/ScrollComponent.vue';
-// import FooterLayout from '@/components/layout/FooterLayout.vue';
 const { proxy: { $gsapPack } } = getCurrentInstance();
 
 const aboutViewRef = ref(null);
@@ -26,6 +17,12 @@ onMounted(() => {
   AnimateAboutViewBg.play()
 })
 </script>
+
+<template>
+  <div id="AboutView" ref="aboutViewRef">
+    <ScrollComponent />
+  </div>
+</template>
 
 <style lang="scss" scoped>
 #AboutView {
