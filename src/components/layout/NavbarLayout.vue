@@ -75,7 +75,7 @@ onMounted(() => {
       <transition-group name="nav-stagger" tag="ul" v-show="openMobileNav" class="dropdown">
         <li v-for="(item, index) in menuItemsList" :key="index" class="stagger-item">
           <router-link :to="item.to" class="mobile-link">
-            <div class="link-text" @click="openMobileNav = false">{{ item.text }}</div>
+            <div class="link-text" @click="openMobileNav = false">{{ item.text.toUpperCase() }}</div>
           </router-link>
         </li>
       </transition-group>
@@ -96,7 +96,6 @@ onMounted(() => {
   @extend .center;
   user-select: none !important;
   background-color: #1B3B5B;
-  // background-color: yellow;
 }
 
 // 元件
@@ -116,7 +115,6 @@ onMounted(() => {
     .logo {
       width: 80px;
       height: 80px;
-      // background-color: red;
       @extend .center;
 
       img {
@@ -182,7 +180,6 @@ onMounted(() => {
 
 #NavbarLayout {
   .mobile-nav-icon {
-    // background-color: black;
     @extend .center;
 
     .fa {
@@ -193,7 +190,6 @@ onMounted(() => {
   }
 
   .dropdown {
-    // background-color: blue;
     position: absolute;
     top: 80px;
     left: 0;
@@ -203,12 +199,17 @@ onMounted(() => {
 
     .link-text {
       box-sizing: border-box;
-      background-color: green;
+      background-color: #102336;
+      border-top: 1px solid black;
+      font-size: large;
+      color: white;
       padding: 20px;
       width: 100vw;
+      @extend .center;
 
       &:hover {
-        background-color: red;
+        background-color: #57ADBF;
+
       }
     }
   }
@@ -218,4 +219,5 @@ onMounted(() => {
   display: flex;
   justify-content: center;
   align-items: center;
-}</style>
+}
+</style>

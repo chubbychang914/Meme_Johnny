@@ -1,29 +1,6 @@
-<template>
-  <div id="InfoLayer" ref="InfoLayerRef">
-    <div class="planet" ref="planetRef"></div>
-    <div class="content">
-      <div class="name" ref="nameRef">
-        <div class="name-letters" ref="jRef">J</div>
-        <div class="name-letters" ref="oRef">O</div>
-        <div class="name-letters" ref="hRef">H</div>
-        <div class="name-letters" ref="nRef">N</div>
-        <div class="name-letters" ref="nRef2">N</div>
-        <div class="name-letters" ref="yRef">Y</div>
-      </div>
-      <div class="job" ref="jobRef">Frontend Developer</div>
-    </div>
-    <!-- <div class="monitor"></div> -->
-    <div class="panel" ref="panelRef">
-      <Panel v-show="!mobile" />
-      <MobilePanel v-show="mobile" />
-    </div>
-  </div>
-</template>
-
 <script setup>
 import { ref, onMounted, onUnmounted, getCurrentInstance } from "vue";
 import { onBeforeRouteLeave } from "vue-router";
-import debounce from 'lodash/debounce';
 const { proxy: { $gsapPack } } = getCurrentInstance() // 要引入這包才能使用 gsap 的所有東西
 // components
 import Panel from "@/components/home/Panel.vue";
@@ -152,8 +129,28 @@ onUnmounted(() => {
   PageEnterAnimationFlow?.kill();
   PageLeaveAnimationFlow?.kill();
 })
-
 </script>
+
+<template>
+  <div id="InfoLayer" ref="InfoLayerRef">
+    <div class="planet" ref="planetRef"></div>
+    <div class="content">
+      <div class="name" ref="nameRef">
+        <div class="name-letters" ref="jRef">J</div>
+        <div class="name-letters" ref="oRef">O</div>
+        <div class="name-letters" ref="hRef">H</div>
+        <div class="name-letters" ref="nRef">N</div>
+        <div class="name-letters" ref="nRef2">N</div>
+        <div class="name-letters" ref="yRef">Y</div>
+      </div>
+      <div class="job" ref="jobRef">Frontend Developer</div>
+    </div>
+    <div class="panel" ref="panelRef">
+      <Panel v-show="!mobile" />
+      <MobilePanel v-show="mobile" />
+    </div>
+  </div>
+</template>
 
 <style lang="scss" scoped>
 // 排版
@@ -206,13 +203,6 @@ onUnmounted(() => {
         background-color: black;
         padding: 10px 20px;
         font-size: 8rem;
-        // transform: skewX(-10deg);
-
-        // &:hover {
-        //   background-color: white;
-        //   color: black;
-        //   border: 10px double black;
-        // }
       }
     }
 
@@ -224,20 +214,11 @@ onUnmounted(() => {
     }
   }
 
-  .monitor {
-    position: absolute;
-    bottom: 15vh;
-    width: 300px;
-    height: 100px;
-    background-color: yellow;
-  }
-
   .panel {
     position: absolute;
     bottom: 0;
     width: 60%;
     height: 15vh;
-    // background-color: red;
   }
 }
 
@@ -249,7 +230,6 @@ onUnmounted(() => {
       width: 100%;
 
       .name-letters {
-        // font-size: 4rem !important;
         padding: 0 !important;
         gap: 0 !important;
         border: none !important;

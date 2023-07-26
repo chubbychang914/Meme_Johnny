@@ -1,14 +1,3 @@
-<template>
-  <div id="ProjectsView" ref="projectsViewRef">
-    <div class="content" ref="contentRef">
-      <ProjectsTemplate :infoObj="JohnnyInfoObj" reactive />
-      <ProjectsTemplate :infoObj="SelectGoInfoObj" />
-      <ProjectsTemplate :infoObj="ArcaneInfoObj" />
-    </div>
-    <FooterLayout />
-  </div>
-</template >
-
 <script setup >
 import { ref, onMounted, getCurrentInstance } from 'vue';
 // components
@@ -66,8 +55,18 @@ onMounted(() => {
 
   AnimateProjectsViewBg.play()
 })
-
 </script>
+
+<template>
+  <div id="ProjectsView" ref="projectsViewRef">
+    <div class="content" ref="contentRef">
+      <ProjectsTemplate :infoObj="JohnnyInfoObj" reactive />
+      <ProjectsTemplate :infoObj="SelectGoInfoObj" />
+      <ProjectsTemplate :infoObj="ArcaneInfoObj" />
+    </div>
+    <FooterLayout />
+  </div>
+</template >
 
 <style lang="scss" scoped>
 // 排版
