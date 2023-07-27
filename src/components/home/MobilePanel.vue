@@ -1,19 +1,17 @@
-<template>
-  <div id="MobilePanel" @click="redirectUrl('/about')">
-    <font-awesome-icon icon="fa-solid fa-caret-right" class="fa-icon" />
-    <h1>Press Start</h1>
-  </div>
-</template>
-
 <script setup>
 import { useRouter } from 'vue-router';
-
 const router = useRouter();
 const redirectUrl = (url) => {
   router.push(url)
 }
 </script>
 
+<template>
+  <div id="MobilePanel" @click="redirectUrl('/about')">
+    <font-awesome-icon icon="fa-solid fa-caret-right" class="fa-icon" />
+    <h1>Press Start</h1>
+  </div>
+</template>
 
 <style lang="scss">
 #MobilePanel {

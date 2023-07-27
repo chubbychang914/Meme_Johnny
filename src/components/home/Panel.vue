@@ -1,14 +1,3 @@
-<template>
-  <div id="Panel">
-    <CustomButton v-show="!mobile" btn-content="About" bgColor="gray"
-      @on-click="redirectUrl('/about')" />
-    <!-- <div class="aim-btn" @click="redirectUrl('/about')"><font-awesome-icon
-        icon="fa-solid fa-power-off" size="2xl" class="fa" /></div> -->
-    <CustomButton v-show="!mobile" btn-content="Projects" bgColor="blue"
-      @on-click="redirectUrl('/projects')" />
-  </div>
-</template>
-
 <script setup>
 import { ref } from "vue";
 import { useRouter } from "vue-router";
@@ -18,10 +7,17 @@ const router = useRouter();
 const redirectUrl = (url) => {
   router.push(url)
 }
-
-
 const mobile = ref(false);
 </script>
+
+<template>
+  <div id="Panel">
+    <CustomButton v-show="!mobile" btn-content="About" bgColor="gray"
+      @on-click="redirectUrl('/about')" />
+    <CustomButton v-show="!mobile" btn-content="Projects" bgColor="blue"
+      @on-click="redirectUrl('/projects')" />
+  </div>
+</template>
 
 <style lang="scss" scoped>
 #Panel {
