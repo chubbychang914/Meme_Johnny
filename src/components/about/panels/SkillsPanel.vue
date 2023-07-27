@@ -1,13 +1,3 @@
-<template>
-  <div id="SkillsPanel">
-    <div class="title">Skills & Tools</div>
-    <div class="content">
-      <ToolBox v-for="skill in skillList" :key="skill.title" :skillItem="skill" />
-    </div>
-  </div>
-</template>
-
-
 <script setup>
 import ToolBox from '@/components/about/ToolBox.vue';
 import vueImg from '@/assets/svgs/skills/vue.svg';
@@ -33,13 +23,20 @@ const skillList = [
 ]
 </script>
 
+<template>
+  <div id="SkillsPanel">
+    <div class="title">Skills & Tools</div>
+    <div class="content">
+      <ToolBox v-for="skill in skillList" :key="skill.title" :skillItem="skill" />
+    </div>
+  </div>
+</template>
 
 <style lang="scss" scoped>
 #SkillsPanel {
   font-family: 'VT323', monospace;
   width: 100%;
   height: 100%;
-  // background-color: rgb(255, 255, 224);
   background-color: white;
   border-radius: 20px;
   border: 5px double black;

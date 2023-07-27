@@ -1,3 +1,18 @@
+<script setup>
+const props = defineProps({
+  infoObj: {
+    type: Object,
+    default: () => {
+      // companyIcon ""
+      // companyName ""
+      // jobPeriod ""
+      // jobTitle ""
+      // companyDesc []
+    }
+  }
+})
+</script>
+
 <template>
   <div id="TyrPanel">
     <!-- 上半 -->
@@ -21,24 +36,6 @@
     </div>
   </div>
 </template>
-
-
-<script setup>
-const props = defineProps({
-  infoObj: {
-    type: Object,
-    default: () => {
-      // companyIcon ""
-      // companyName ""
-      // jobPeriod ""
-      // jobTitle ""
-      // companyDesc []
-    }
-  }
-})
-
-</script>
-
 
 <style lang="scss" scoped>
 #TyrPanel {
