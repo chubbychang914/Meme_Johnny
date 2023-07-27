@@ -1,15 +1,3 @@
-<template>
-  <div id="DrawButton" @click="handleClick">
-    <div class="btn-txt">
-      {{ props.btnText }}
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-  </div>
-</template>
-
 <script setup>
 const props = defineProps({
   btnText: {
@@ -22,14 +10,24 @@ const emit = defineEmits(['on-draw-click'])
 const handleClick = () => emit('on-draw-click')
 </script>
 
-<style lang="scss" scoped>
-// 排版
-#DrawButton {}
+<template>
+  <div id="DrawButton" @click="handleClick">
+    <div class="btn-txt">
+      {{ props.btnText }}
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+</template>
 
-// 元件
+
+<style lang="scss" scoped>
 #DrawButton {
   user-select: none;
   cursor: pointer;
+
   .btn-txt {
     width: 300px;
     height: 80px;

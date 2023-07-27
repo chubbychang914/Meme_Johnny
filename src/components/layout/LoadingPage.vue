@@ -4,10 +4,6 @@
   </div>
 </template>
 
-<script setup>
-
-</script>
-
 <style lang="scss">
 #LoadingPage {
   background-color: blue;

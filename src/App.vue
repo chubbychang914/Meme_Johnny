@@ -1,8 +1,3 @@
-<template>
-  <NavbarLayout ref="navbarLayoutRef" />
-  <RouterView />
-</template>
-
 <script setup>
 import { onMounted, onUnmounted, ref, getCurrentInstance } from 'vue';
 import { RouterView } from 'vue-router'
@@ -12,8 +7,6 @@ import consoleLog from '@/tools/consoleLog.js'
 
 const { proxy: { $gsapPack } } = getCurrentInstance() // 要引入這包才能使用 gsap 的所有東西
 const navbarLayoutRef = ref(null)
-
-
 
 // gsap animations ========================================
 let AnimateNavbarEnter = null;
@@ -36,8 +29,12 @@ onUnmounted(() => {
   // kill gsap animations
   AnimateNavbarEnter?.kill()
 })
-
 </script>
+
+<template>
+  <NavbarLayout ref="navbarLayoutRef" />
+  <RouterView />
+</template>
 
 <style lang="scss">
 #App {
