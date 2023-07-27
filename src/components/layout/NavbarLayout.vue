@@ -26,7 +26,6 @@ const setMobile = () => {
   }
 }
 
-
 // functions ====================
 const toggleMobileNav = () => {
   openMobileNav.value = !openMobileNav.value
@@ -37,7 +36,6 @@ onMounted(() => {
   setMobile()
   window.addEventListener('resize', setMobile)
 })
-
 </script>
 
 <template>

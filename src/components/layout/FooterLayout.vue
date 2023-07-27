@@ -1,3 +1,10 @@
+<script setup>
+// 轉導到其他頁面
+const openExternalPage = (url) => {
+  window.open(url, '_blank')
+}
+</script>
+
 <template>
   <ul id="FooterLayout">
     <li class="contact-box" @click="openExternalPage('https://github.com/chubbychang914')">
@@ -19,13 +26,6 @@
     </li>
   </ul>
 </template>
-
-<script setup>
-// 轉導到其他頁面
-const openExternalPage = (url) => {
-  window.open(url, '_blank')
-}
-</script>
 
 <style lang="scss" scoped>
 // 排版
@@ -57,7 +57,7 @@ const openExternalPage = (url) => {
     align-items: center;
     letter-spacing: 5px;
     color: white;
-    
+
     @include mobile-media {
       justify-content: space-between;
       padding: 15px;
