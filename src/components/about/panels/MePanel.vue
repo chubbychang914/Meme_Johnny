@@ -1,3 +1,13 @@
+<script setup>
+import imgSrc from "@/assets/imgs/home/personBg.png"
+
+const meObj = {
+  imgSrc,
+  titleTxt: "About Me",
+  messageTxt: "Hey there! I'm Johnny, a frontend developer with a passion to create clean and maintainable code. I'm eager to learn from experienced team members and expand my skills and knowledge while contributing to collaborative projects!"
+}
+</script>
+
 <template>
   <div id="MePanel">
     <div class="self-portrait">
@@ -13,19 +23,6 @@
     </div>
   </div>
 </template>
-
-
-<script setup>
-import imgSrc from "@/assets/imgs/home/personBg.png"
-
-const meObj = {
-  imgSrc,
-  titleTxt: "About Me",
-  messageTxt: "Hey there! I'm Johnny, a frontend developer with a passion to create clean and maintainable code. I'm eager to learn from experienced team members and expand my skills and knowledge while contributing to collaborative projects!"
-}
-
-</script>
-
 
 <style lang="scss" scoped>
 #MePanel {

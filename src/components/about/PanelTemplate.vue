@@ -4,10 +4,6 @@
   </div>
 </template>
 
-<script setup>
-
-</script>
-
 <style lang="scss" scoped>
 #PanelTemplate {
   width: 55vw; // 設定中間 panel 的寬高

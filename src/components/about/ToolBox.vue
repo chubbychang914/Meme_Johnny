@@ -1,12 +1,3 @@
-<template>
-  <div id="ToolBox">
-    <div class="img">
-      <img :src="skillItem.imgSrc">
-    </div>
-    <div class="title">{{ props.skillItem.title }}</div>
-  </div>
-</template>
-
 <script setup>
 const props = defineProps({
   skillItem: {
@@ -19,6 +10,14 @@ const props = defineProps({
 })
 </script>
 
+<template>
+  <div id="ToolBox">
+    <div class="img">
+      <img :src="skillItem.imgSrc">
+    </div>
+    <div class="title">{{ props.skillItem.title }}</div>
+  </div>
+</template>
 
 <style lang="scss" scoped>
 #ToolBox {
@@ -40,7 +39,6 @@ const props = defineProps({
   }
 
   .img {
-    // background-color: yellow;
     height: 100%;
     display: flex;
     justify-content: center;
