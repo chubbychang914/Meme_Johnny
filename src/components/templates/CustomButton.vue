@@ -1,13 +1,3 @@
-<template>
-  <div id="CustomButton" @click="handleClick" :style="btnStyles">
-    <div class="btn-content">
-      <font-awesome-icon icon="fa-solid fa-angles-right" class="fa" />
-      {{ props.btnContent }}
-      <font-awesome-icon icon="fa-solid fa-angles-left" class="fa" />
-    </div>
-  </div>
-</template>
-
 <script setup>
 import { computed } from 'vue';
 // props ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
@@ -35,6 +25,15 @@ const btnStyles = computed(() => {
 })
 </script>
 
+<template>
+  <div id="CustomButton" @click="handleClick" :style="btnStyles">
+    <div class="btn-content">
+      <font-awesome-icon icon="fa-solid fa-angles-right" class="fa" />
+      {{ props.btnContent }}
+      <font-awesome-icon icon="fa-solid fa-angles-left" class="fa" />
+    </div>
+  </div>
+</template>
 
 <style lang="scss" scoped>
 // 排版

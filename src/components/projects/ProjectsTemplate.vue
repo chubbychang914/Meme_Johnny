@@ -1,3 +1,18 @@
+<script setup>
+import DrawButton from "@/components/templates/DrawButton.vue"
+
+const props = defineProps({
+  infoObj: {
+    type: Object,
+    default: () => ({})
+  }
+})
+
+const redirectUrl = () => {
+  window.open(props.infoObj.url)
+}
+</script>
+
 <template>
   <div id="ProjectsTemplate">
     <div class="imgBox">
@@ -20,21 +35,6 @@
     </div>
   </div>
 </template>
-
-<script setup>
-import DrawButton from "@/components/templates/DrawButton.vue"
-
-const props = defineProps({
-  infoObj: {
-    type: Object,
-    default: () => ({})
-  }
-})
-
-const redirectUrl = () => {
-  window.open(props.infoObj.url)
-}
-</script>
 
 <style lang="scss" scoped>
 // 排版
@@ -80,7 +80,8 @@ const redirectUrl = () => {
 
   @include mobile-media {
     padding: 0;
-    &:nth-child(1){
+
+    &:nth-child(1) {
       padding-top: 80px;
     }
   }
